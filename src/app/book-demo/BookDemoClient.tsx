@@ -14,14 +14,30 @@ const features = [
 export function BookDemoClient() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const data = Object.fromEntries(form);
     setLoading(true);
+    setError("");
     try {
-      const res = await fetch("/api/demo-requests", { method: "POST", body: form });
-      if (res.ok) setSubmitted(true);
+      const res = await fetch("/api/demo-bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        setError(body?.error ?? "Unable to submit your request. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Unable to submit your request. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -129,7 +145,13 @@ export function BookDemoClient() {
                     Message / questions
                     <textarea name="message" rows={3} placeholder="What would you like to explore?" className="mt-2 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 py-3 text-[13px] text-foreground placeholder:text-black/30 outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
                   </label>
+                  {error && (
+                    <p className="rounded-xl border border-red-200 bg-red-50 px-3.5 py-2 text-[13px] font-medium text-red-700">
+                      {error}
+                    </p>
+                  )}
                   <button
+                    type="submit"
                     disabled={loading}
                     className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground text-[13px] font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-60"
                   >

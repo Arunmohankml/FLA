@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { HiOutlinePencil, HiOutlinePlus, HiOutlineSave, HiOutlineTrash, HiOutlineX } from "react-icons/hi";
+import { HiOutlineChevronDown, HiOutlinePencil, HiOutlinePlus, HiOutlineSave, HiOutlineTrash, HiOutlineX } from "react-icons/hi";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 interface Career {
   id: string;
@@ -53,6 +54,50 @@ const roleTemplates = [
   },
 ];
 
+const workModeOptions = ["Online", "Offline", "Hybrid", "Remote"];
+const employmentTypeOptions = ["Full-time", "Part-time"];
+
+function SelectField({
+  value,
+  onChange,
+  options,
+  placeholder,
+  className,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+  placeholder: string;
+  className: string;
+}) {
+  const hasCustomValue = value.length > 0 && !options.includes(value);
+
+  return (
+    <div className="group relative">
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        required
+        aria-label={placeholder}
+        className={`${className} ${value ? "text-black/75" : "text-black/40"}`}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {hasCustomValue && <option value={value}>{value}</option>}
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      <span className="pointer-events-none absolute right-3 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-black/45 shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition group-hover:text-[#c9573a]">
+        <HiOutlineChevronDown className="size-4" />
+      </span>
+    </div>
+  );
+}
+
 function mapCareer(row: {
   id: string;
   title: string;
@@ -81,6 +126,7 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingDraft, setEditingDraft] = useState<CareerDraft>(emptyDraft);
   const [loading, setLoading] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -124,13 +170,15 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
   }
 
   async function deleteCareer(id: string) {
-    const confirmed = window.confirm("Delete this career listing?");
-    if (!confirmed) return;
     const res = await fetch(`/api/careers/${id}`, { method: "DELETE" });
-    if (res.ok) setCareers((prev) => prev.filter((job) => job.id !== id));
+    if (res.ok) {
+      setCareers((prev) => prev.filter((job) => job.id !== id));
+      setDeleteTarget(null);
+    }
   }
 
   const inputClass = "h-11 rounded-xl border border-black/8 bg-[#faf5f0] px-4 text-sm outline-none focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10";
+  const selectClass = "h-11 w-full cursor-pointer appearance-none rounded-xl border border-[#eadfd6] bg-[#fffaf6] px-4 pr-11 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_6px_18px_rgba(0,0,0,0.025)] outline-none transition hover:border-[#e8734a]/30 hover:bg-white focus:border-[#e8734a]/50 focus:ring-4 focus:ring-[#e8734a]/10";
   const textAreaClass = "w-full rounded-xl border border-black/8 bg-[#faf5f0] px-4 py-3 text-sm outline-none focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10";
 
   return (
@@ -160,14 +208,14 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
           </datalist>
           <input value={draft.code} onChange={(e) => setDraft({ ...draft, code: e.target.value })} required placeholder="ID, e.g. LAN018" className={inputClass} />
           <input value={draft.location} onChange={(e) => setDraft({ ...draft, location: e.target.value })} required placeholder="e.g. Chennai, Remote" className={inputClass} />
-          <input value={draft.workMode} onChange={(e) => setDraft({ ...draft, workMode: e.target.value })} required placeholder="e.g. Offline, Hybrid, Remote" className={inputClass} />
-          <input value={draft.employmentType} onChange={(e) => setDraft({ ...draft, employmentType: e.target.value })} required placeholder="e.g. Full-time, Part-time" className={inputClass} />
-          <button disabled={loading} className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-foreground text-sm font-semibold text-background disabled:opacity-60">
-            <HiOutlinePlus className="size-4" />
-            {loading ? "Adding..." : "Add Career"}
-          </button>
+          <SelectField value={draft.workMode} onChange={(value) => setDraft({ ...draft, workMode: value })} options={workModeOptions} placeholder="Choose mode" className={selectClass} />
+          <SelectField value={draft.employmentType} onChange={(value) => setDraft({ ...draft, employmentType: value })} options={employmentTypeOptions} placeholder="Choose job type" className={selectClass} />
         </div>
         <textarea value={draft.description} onChange={(e) => setDraft({ ...draft, description: e.target.value })} required rows={3} placeholder="Short role description" className={`${textAreaClass} mt-4`} />
+        <button disabled={loading} className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-foreground text-sm font-semibold text-background disabled:opacity-60 lg:w-[31.5%]">
+          <HiOutlinePlus className="size-4" />
+          {loading ? "Adding..." : "Add Career"}
+        </button>
       </form>
 
       <div className="rounded-2xl border border-black/6 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.035)]">
@@ -195,8 +243,8 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
                       }} className={inputClass} list="role-suggestions" />
                       <input value={editingDraft.code} onChange={(e) => setEditingDraft({ ...editingDraft, code: e.target.value })} className={inputClass} />
                       <input value={editingDraft.location} onChange={(e) => setEditingDraft({ ...editingDraft, location: e.target.value })} className={inputClass} />
-                      <input value={editingDraft.workMode} onChange={(e) => setEditingDraft({ ...editingDraft, workMode: e.target.value })} className={inputClass} />
-                      <input value={editingDraft.employmentType} onChange={(e) => setEditingDraft({ ...editingDraft, employmentType: e.target.value })} className={inputClass} />
+                      <SelectField value={editingDraft.workMode} onChange={(value) => setEditingDraft({ ...editingDraft, workMode: value })} options={workModeOptions} placeholder="Choose mode" className={selectClass} />
+                      <SelectField value={editingDraft.employmentType} onChange={(value) => setEditingDraft({ ...editingDraft, employmentType: value })} options={employmentTypeOptions} placeholder="Choose job type" className={selectClass} />
                     </div>
                     <textarea value={editingDraft.description} onChange={(e) => setEditingDraft({ ...editingDraft, description: e.target.value })} rows={3} className={textAreaClass} />
                     <div className="flex flex-wrap gap-3">
@@ -245,7 +293,7 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
                         <HiOutlinePencil className="size-4" />
                         Edit
                       </button>
-                      <button onClick={() => deleteCareer(job.id)} className="inline-flex h-10 items-center gap-2 rounded-full bg-red-50 px-4 text-sm font-semibold text-red-600">
+                      <button onClick={() => setDeleteTarget(job.id)} className="inline-flex h-10 items-center gap-2 rounded-full bg-red-50 px-4 text-sm font-semibold text-red-600">
                         <HiOutlineTrash className="size-4" />
                         Delete
                       </button>
@@ -257,6 +305,17 @@ export function CareersAdminClient({ careers: initialCareers }: { careers: Caree
           })}
         </div>
       </div>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        title="Delete career"
+        message="Are you sure you want to delete this career listing? This action cannot be undone."
+        confirmLabel="Delete"
+        cancelLabel="Cancel"
+        variant="danger"
+        onConfirm={() => deleteTarget && deleteCareer(deleteTarget)}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }

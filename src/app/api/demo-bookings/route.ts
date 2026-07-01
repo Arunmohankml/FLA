@@ -11,10 +11,18 @@ function generateId() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, phone, email, qualification, state, course } = body;
+    const contentType = request.headers.get("content-type") ?? "";
+    const body = contentType.includes("multipart/form-data")
+      ? Object.fromEntries(await request.formData())
+      : await request.json();
 
-    if (!name || !phone || !email || !qualification || !state || !course) {
+    const name = String(body.name ?? "").trim();
+    const phone = String(body.phone ?? "").trim();
+    const email = String(body.email ?? "").trim();
+    const preferred_date = String(body.date ?? "").trim();
+    const message = String(body.message ?? "").trim();
+
+    if (!name || !phone || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -23,9 +31,8 @@ export async function POST(request: Request) {
       name,
       phone,
       email,
-      qualification,
-      state,
-      course,
+      preferred_date,
+      message,
       status: "new",
     });
 

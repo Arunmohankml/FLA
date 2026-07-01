@@ -1,3 +1,7 @@
+import pg from "pg";
+const { Client } = pg;
+
+const sql = `
 create table if not exists demo_bookings (
   id text primary key,
   name text not null,
@@ -36,3 +40,17 @@ create table if not exists career_applications (
   status text not null default 'new',
   created_at timestamptz not null default now()
 );
+`;
+
+async function main() {
+  const client = new Client({ connectionString: process.env.DATABASE_URL });
+  await client.connect();
+  await client.query(sql);
+  console.log("Tables created successfully");
+  await client.end();
+}
+
+main().catch((e) => {
+  console.error("Error:", e.message);
+  process.exit(1);
+});

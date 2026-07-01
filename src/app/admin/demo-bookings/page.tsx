@@ -8,9 +8,8 @@ interface DemoBookingRow {
   name: string;
   phone: string;
   email: string;
-  qualification: string;
-  state: string;
-  course: string;
+  preferred_date: string;
+  message: string;
   status?: string;
   created_at?: string;
 }
@@ -26,11 +25,10 @@ export default async function DemoBookingsPage() {
     name: item.name,
     phone: item.phone,
     email: item.email,
-    qualification: item.qualification,
-    state: item.state,
-    course: item.course,
+    preferred_date: item.preferred_date ?? "",
+    message: item.message ?? "",
     status: item.status ?? "new",
-    createdAt: item.created_at ?? "",
+    created_at: item.created_at ?? "",
   }));
 
   return <DemoBookingsClient bookings={bookings} />;

@@ -1,5 +1,6 @@
-import { supabaseAdmin } from "@/lib/supabase";
-import { CareerListing, fallbackCareers } from "@/lib/careers";
+import { connection } from "next/server";
+import { CareerListing } from "@/lib/careers";
+import { listCareerRows } from "@/lib/careerStore";
 import { CareersView } from "@/components/CareersView";
 
 export const metadata = {
@@ -7,26 +8,10 @@ export const metadata = {
   description: "Explore career opportunities at Foreign Language Academy.",
 };
 
-interface CareerRow {
-  id: string;
-  title: string;
-  description: string;
-  location: string;
-  work_mode: string;
-  employment_type: string;
-  code: string;
-  accent?: string;
-  created_at?: string;
-}
-
 export default async function CareersPage() {
-  const { data } = await supabaseAdmin
-    .from("careers")
-    .select("*")
-    .eq("is_active", true)
-    .order("created_at", { ascending: false });
-
-  const careers: CareerListing[] = ((data ?? []) as CareerRow[]).map((item) => ({
+  await connection();
+  const rows = await listCareerRows({ activeOnly: true });
+  const careers: CareerListing[] = rows.map((item) => ({
     id: item.id,
     title: item.title,
     description: item.description,
@@ -34,9 +19,9 @@ export default async function CareersPage() {
     workMode: item.work_mode,
     employmentType: item.employment_type,
     code: item.code,
-    accent: item.accent,
+    accent: item.accent ?? undefined,
     createdAt: item.created_at,
   }));
 
-  return <CareersView listings={careers.length > 0 ? careers : fallbackCareers} />;
+  return <CareersView listings={careers} />;
 }
