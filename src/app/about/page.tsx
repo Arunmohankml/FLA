@@ -213,7 +213,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-muted-foreground">
-                Founded in 2007, we are now one of the largest and best-known
+                Founded in 2007, Foreign Language Academy is now one of the largest and best-known
                 language schools in India and Germany. We offer over 100
                 courses yearly in 10+ languages with branches in Bangalore,
                 Chennai, Pune, Delhi, Berlin, Australia, New Zealand, and
@@ -265,7 +265,7 @@ export default function AboutPage() {
           <h2 className="font-heading text-3xl font-medium leading-[1.33] tracking-[-0.02em] text-white sm:text-5xl">
             Ready to speak your first
             <br />
-            sentence in a new language?
+            sentence in a new language with FLA?
           </h2>
 
           <p className="mx-auto mt-4 max-w-md text-lg text-white/50">

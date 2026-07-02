@@ -28,7 +28,7 @@ export function FinalCTA() {
             <br />
             first sentence in a
             <br />
-            <span className="text-white/60">new language?</span>
+            <span className="text-white/60">new language with FLA?</span>
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-lg text-white/50">
             Book a free demo class. No payment required. No obligation.

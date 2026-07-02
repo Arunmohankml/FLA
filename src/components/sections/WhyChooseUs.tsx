@@ -269,7 +269,7 @@ export function WhyChooseUs() {
           ) as HTMLDivElement[];
 
           gsap.set(imageMaskRef.current, {
-            clipPath: "circle(60px at 50% 60%)",
+            clipPath: "circle(60px at 50% 72%)",
             opacity: 1,
           });
 
@@ -300,7 +300,7 @@ export function WhyChooseUs() {
           tlMobile.to(
             imageMaskRef.current,
             {
-              clipPath: "circle(85px at 50% 44%)",
+              clipPath: "circle(85px at 50% 62%)",
               ease: "power2.inOut",
               duration: 1,
             },
@@ -396,11 +396,11 @@ export function WhyChooseUs() {
             Why Choose Us
           </span>
 
-          <h2 className="font-heading text-[clamp(2.4rem,5vw,5.1rem)] font-medium leading-[1.02] tracking-[-0.055em] text-foreground">
-            <span className="block whitespace-nowrap">
+          <h2 className="font-heading text-[clamp(1.85rem,8vw,2.35rem)] font-medium leading-[1.06] tracking-[-0.045em] text-foreground md:text-[clamp(2.4rem,5vw,5.1rem)] md:leading-[1.02] md:tracking-[-0.055em]">
+            <span className="block md:whitespace-nowrap">
               Let Your Language Journey
             </span>
-            <span className="block whitespace-nowrap">
+            <span className="block md:whitespace-nowrap">
               Begin in the Right Place
             </span>
           </h2>
