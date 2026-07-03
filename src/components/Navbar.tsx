@@ -29,7 +29,7 @@ export function Navbar() {
       animate={{
         backgroundColor: showWhite ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0)",
         boxShadow: showWhite
-          ? "0 4px 24px rgba(0,0,0,0.06)"
+          ? "0 4px 24px rgba(15,20,25,0.06)"
           : "0 2px 12px rgba(0,0,0,0.1)",
       }}
       transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
@@ -58,11 +58,11 @@ export function Navbar() {
               <motion.span
                 animate={{
                   color: pathname === item.href
-                    ? showWhite ? "#1B1B1B" : "#ffffff"
-                    : showWhite ? "#6b7280" : "rgba(255,255,255,0.7)",
+                    ? showWhite ? "#1D9BF0" : "#ffffff"
+                    : showWhite ? "#536471" : "rgba(255,255,255,0.7)",
                 }}
                 whileHover={{
-                  color: showWhite ? "#1B1B1B" : "#ffffff",
+                  color: showWhite ? "#1D9BF0" : "#ffffff",
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -91,12 +91,12 @@ export function Navbar() {
           )}
           <motion.div
             animate={{
-              backgroundColor: showWhite ? "#fff1e8" : "rgba(232,115,74,0.18)",
-              borderColor: "rgba(232,115,74,0.24)",
-              color: "#c9573a",
+              backgroundColor: showWhite ? "#EAF4FF" : "rgba(29,155,240,0.18)",
+              borderColor: "rgba(29,155,240,0.24)",
+              color: "#0C8BDD",
             }}
             whileHover={{
-              backgroundColor: showWhite ? "#ffe4d5" : "rgba(232,115,74,0.28)",
+              backgroundColor: showWhite ? "#DCEEFF" : "rgba(29,155,240,0.28)",
             }}
             transition={{ duration: 0.3 }}
             className="rounded-full border px-5 py-2 text-sm font-semibold"
@@ -105,12 +105,12 @@ export function Navbar() {
           </motion.div>
           <motion.div
             animate={{
-              backgroundColor: showWhite ? "#1B1B1B" : "rgba(255,255,255,0.1)",
+              backgroundColor: showWhite ? "#1D9BF0" : "rgba(255,255,255,0.1)",
               borderColor: showWhite ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.2)",
               color: showWhite ? "#ffffff" : "#ffffff",
             }}
             whileHover={{
-              backgroundColor: showWhite ? "#333333" : "rgba(255,255,255,0.2)",
+              backgroundColor: showWhite ? "#0C8BDD" : "rgba(255,255,255,0.2)",
             }}
             transition={{ duration: 0.3 }}
             className="rounded-full px-5 py-2 text-sm font-medium"
@@ -166,9 +166,9 @@ export function Navbar() {
                   >
                     <motion.span
                       animate={{
-                        color: pathname === item.href ? "#1B1B1B" : "#6b7280",
+                        color: pathname === item.href ? "#1D9BF0" : "#536471",
                       }}
-                      whileHover={{ color: "#1B1B1B" }}
+                      whileHover={{ color: "#1D9BF0" }}
                     >
                       {item.label}
                     </motion.span>
@@ -200,7 +200,7 @@ export function Navbar() {
                 >
                   <button
                     onClick={logout}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#334155]"
                   >
                     <HiOutlineLogout className="size-4" />
                     Logout
@@ -214,7 +214,7 @@ export function Navbar() {
               >
                 <Link
                   href="/book-demo"
-                  className="mt-2 inline-block rounded-full border border-[#e8734a]/20 bg-[#fff1e8] px-5 py-2 text-center text-sm font-semibold text-[#c9573a] transition-colors hover:bg-[#ffe4d5]"
+                  className="mt-2 inline-block rounded-full border border-[#1D9BF0]/20 bg-[#EAF4FF] px-5 py-2 text-center text-sm font-semibold text-[#0C8BDD] transition-colors hover:bg-[#DCEEFF]"
                   onClick={() => setOpen(false)}
                 >
                   Book a Demo
@@ -227,7 +227,7 @@ export function Navbar() {
               >
                 <Link
                   href="/register"
-                  className="mt-2 inline-block rounded-full border border-border/40 bg-background px-5 py-2 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                  className="mt-2 inline-block rounded-full bg-[#1D9BF0] px-5 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[#0C8BDD]"
                 >
                   Register
                 </Link>

@@ -75,13 +75,13 @@ const rightReasons = [
 function BenefitCard({ icon, title, desc }: { icon: ReactNode; title: string; desc: string }) {
   return (
     <div className="rounded-[22px] border border-white/30 bg-white/40 p-5 text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl">
-      <div className="mb-4 flex size-11 items-center justify-center rounded-[14px] bg-white/60 text-black/40 ring-1 ring-white/40">
+      <div className="mb-4 flex size-11 items-center justify-center rounded-[14px] bg-white/60 text-black/60 ring-1 ring-white/40">
         {icon}
       </div>
       <h3 className="font-heading text-[15px] font-medium tracking-[-0.01em] text-foreground">
         {title}
       </h3>
-      <p className="mt-1.5 text-[13px] leading-6 text-black/45">{desc}</p>
+      <p className="mt-1.5 text-[13px] leading-6 text-black/65">{desc}</p>
     </div>
   );
 }
@@ -117,13 +117,13 @@ export function ReasonsToLearn() {
           transition={{ duration: 0.5 }}
           className="mb-10 max-w-2xl"
         >
-          <span className="inline-flex rounded-full border border-white/40 bg-white/50 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-black/50 backdrop-blur-sm">
+          <span className="inline-flex rounded-full border border-white/40 bg-white/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-black/70 backdrop-blur-sm">
             Benefits
           </span>
           <h2 className="mt-4 font-heading text-[clamp(2.5rem,4.4vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.05em] text-foreground">
             Reasons to Learn a New Language
           </h2>
-          <p className="mt-4 max-w-lg text-[15px] leading-6 text-muted-foreground">
+          <p className="mt-4 max-w-lg text-[15px] leading-6 text-[#334155]">
             Learning a new language opens doors you never knew existed.
           </p>
         </motion.div>
@@ -160,7 +160,7 @@ export function ReasonsToLearn() {
             />
             <div className="absolute inset-x-0 bottom-0 p-5">
               <div className="rounded-[18px] border border-white/30 bg-white/60 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-black/45">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-black/65">
                   Real conversations
                 </p>
                 <p className="mt-1 font-heading text-lg font-medium tracking-[-0.02em] text-foreground">

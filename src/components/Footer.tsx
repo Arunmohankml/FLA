@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="mb-4 text-lg font-bold text-primary">{site.name}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="text-[15px] leading-7 text-[#334155]">
               {site.tagline}
             </p>
           </div>
@@ -19,7 +19,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               Contact
             </h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
+            <ul className="space-y-3 text-sm text-[#334155]">
               <li className="flex items-center gap-2">
                 <HiOutlinePhone className="size-4 shrink-0" />
                 <a href={`tel:${site.phone}`}>{site.phone}</a>
@@ -39,7 +39,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-[#334155]">
               {footerQuickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -57,7 +57,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               Languages
             </h4>
-            <ul className="space-y-1.5 text-sm text-muted-foreground">
+            <ul className="space-y-1.5 text-sm text-[#334155]">
               {languages.map((lang) => (
                 <li key={lang.name}>
                   <Link
@@ -72,7 +72,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-center border-t border-border pt-8 text-center text-xs text-muted-foreground">
+        <div className="mt-12 flex items-center justify-center border-t border-border pt-8 text-center text-xs text-[#334155]">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
         </div>
       </div>

@@ -39,13 +39,13 @@ export function LearningPaths() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[#334155]">
             Who You Are
           </p>
           <h2 className="text-3xl font-black tracking-[-1.5px] text-foreground sm:text-4xl">
             Find Your Perfect Learning Style
           </h2>
-          <p className="mt-3 mx-auto max-w-lg text-muted-foreground">
+          <p className="mt-3 mx-auto max-w-lg text-[#334155]">
             Different goals need different paths. Pick what fits you.
           </p>
         </motion.div>
@@ -58,8 +58,8 @@ export function LearningPaths() {
                 onClick={() => setActive(i)}
                 className={`flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 ${
                   active === i
-                    ? "bg-foreground text-background shadow-[0_4px_12px_rgba(0,0,0,0.15)]"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-primary text-primary-foreground shadow-[0_4px_12px_rgba(29,155,240,0.18)]"
+                    : "text-[#334155] hover:text-foreground"
                 }`}
               >
                 <span>{p.icon}</span>
@@ -85,7 +85,7 @@ export function LearningPaths() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground">{paths[active].title}</h3>
-                  <p className="text-sm text-muted-foreground">Tailored for your needs</p>
+                  <p className="text-sm text-[#334155]">Tailored for your needs</p>
                 </div>
               </div>
               <div className="mt-6 grid grid-cols-2 gap-3">
@@ -95,9 +95,9 @@ export function LearningPaths() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: j * 0.05 }}
-                    className="flex items-center gap-2.5 rounded-xl bg-[#faf5f0] px-4 py-3"
+                    className="flex items-center gap-2.5 rounded-xl bg-[#F5FAFF] px-4 py-3"
                   >
-                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-black/[0.04] text-[10px] font-bold text-black/40">
+                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-black/[0.04] text-xs font-bold text-black/60">
                       ✓
                     </span>
                     <span className="text-sm font-medium text-foreground">{item}</span>

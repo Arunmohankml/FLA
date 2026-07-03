@@ -32,7 +32,7 @@ export function PrivateCoaching() {
               transition={{ duration: 0.5 }}
               className="mb-6 max-w-xl"
             >
-              <span className="inline-flex rounded-full border border-white/40 bg-white/50 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-black/50 backdrop-blur-sm">
+              <span className="inline-flex rounded-full border border-white/40 bg-white/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-black/70 backdrop-blur-sm">
                 One-on-One
               </span>
               <h2 className="mt-4 font-heading text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.06em] text-foreground">
@@ -40,13 +40,13 @@ export function PrivateCoaching() {
                 <br />
                 Coaching
               </h2>
-              <p className="mt-3 max-w-md text-[15px] leading-6 text-black/50">
+              <p className="mt-3 max-w-md text-[15px] leading-6 text-black/70">
                 One instructor. One student. One personalized roadmap built around
                 your goals, pace, and schedule.
               </p>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex h-12 items-center rounded-full bg-foreground px-7 text-sm font-semibold text-background transition-all duration-300 hover:scale-105"
+                className="mt-6 inline-flex h-12 items-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
               >
                 Book Consultation →
               </Link>
@@ -63,14 +63,14 @@ export function PrivateCoaching() {
                   transition={{ duration: 0.45, delay: i * 0.05 }}
                   className="group flex gap-4 overflow-hidden rounded-[22px] border border-white/30 bg-white/40 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-500 hover:bg-white/55"
                 >
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-[12px] bg-white/60 text-[11px] font-semibold text-black/50 ring-1 ring-white/40">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-[12px] bg-white/60 text-xs font-semibold text-black/70 ring-1 ring-white/40">
                     {f.n}
                   </div>
                   <div>
-                    <h3 className="font-heading text-[13px] font-medium text-foreground">
+                    <h3 className="font-heading text-base font-medium text-foreground">
                       {f.title}
                     </h3>
-                    <p className="mt-0.5 text-[11px] leading-5 text-black/45">
+                    <p className="mt-1 text-sm leading-6 text-black/75">
                       {f.desc}
                     </p>
                   </div>

@@ -52,14 +52,14 @@ export function BookDemoClient() {
 
             <div className="relative p-5 sm:p-6 lg:p-8">
               <div className="mb-6 max-w-xl">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black/50 backdrop-blur-sm">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-black/70 backdrop-blur-sm">
                   <HiOutlineSparkles className="size-3.5" />
                   Book a demo
                 </span>
                 <h1 className="mt-5 font-heading text-[clamp(2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.06em] text-foreground">
                   Discover your future with FLA
                 </h1>
-                <p className="mt-3 max-w-md text-[15px] leading-6 text-black/50">
+                <p className="mt-3 max-w-md text-[15px] leading-6 text-black/70">
                   Not sure which programme fits your goals? Book a free demo
                   session and we will walk you through everything FLA has to
                   offer.
@@ -91,7 +91,7 @@ export function BookDemoClient() {
               <ul className="space-y-3 px-5 py-5">
                 {features.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-[13px] leading-snug text-black/52">
-                    <HiOutlineCheckCircle className="mt-0.5 size-4 shrink-0 text-[#b76042]" />
+                    <HiOutlineCheckCircle className="mt-0.5 size-4 shrink-0 text-[#0C8BDD]" />
                     {item}
                   </li>
                 ))}
@@ -107,11 +107,11 @@ export function BookDemoClient() {
             >
               {submitted ? (
                 <div className="flex flex-col items-center justify-center px-7 py-16 text-center">
-                  <HiOutlineCheckCircle className="size-12 text-[#b76042]" />
+                  <HiOutlineCheckCircle className="size-12 text-[#0C8BDD]" />
                   <h2 className="mt-4 font-heading text-2xl font-medium text-foreground">
                     Request submitted
                   </h2>
-                  <p className="mx-auto mt-2 max-w-xs text-[13px] text-black/52">
+                  <p className="mx-auto mt-2 max-w-xs text-sm text-black/52">
                     We will reach out to schedule your demo session within 24
                     hours.
                   </p>
@@ -122,38 +122,38 @@ export function BookDemoClient() {
                     Book your free demo
                   </h2>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block text-[13px] font-semibold text-foreground">
+                    <label className="block text-sm font-semibold text-foreground">
                       Full name *
-                      <input required name="name" placeholder="Enter your full name" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[13px] text-foreground placeholder:text-black/30 outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
+                      <input required name="name" placeholder="Enter your full name" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-sm text-foreground placeholder:text-black/50 outline-none transition focus:ring-4 focus:ring-[#1D9BF0]/10" />
                     </label>
-                    <label className="block text-[13px] font-semibold text-foreground">
+                    <label className="block text-sm font-semibold text-foreground">
                       Email address *
-                      <input required name="email" type="email" placeholder="Enter your email" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[13px] text-foreground placeholder:text-black/30 outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
+                      <input required name="email" type="email" placeholder="Enter your email" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-sm text-foreground placeholder:text-black/50 outline-none transition focus:ring-4 focus:ring-[#1D9BF0]/10" />
                     </label>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block text-[13px] font-semibold text-foreground">
+                    <label className="block text-sm font-semibold text-foreground">
                       Phone / WhatsApp *
-                      <input required name="phone" type="tel" placeholder="Enter your number" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[13px] text-foreground placeholder:text-black/30 outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
+                      <input required name="phone" type="tel" placeholder="Enter your number" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-sm text-foreground placeholder:text-black/50 outline-none transition focus:ring-4 focus:ring-[#1D9BF0]/10" />
                     </label>
-                    <label className="block text-[13px] font-semibold text-foreground">
+                    <label className="block text-sm font-semibold text-foreground">
                       Preferred date
-                      <input required name="date" type="date" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[13px] text-foreground outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
+                      <input required name="date" type="date" className="mt-2 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-sm text-foreground outline-none transition focus:ring-4 focus:ring-[#1D9BF0]/10" />
                     </label>
                   </div>
-                  <label className="block text-[13px] font-semibold text-foreground">
+                  <label className="block text-sm font-semibold text-foreground">
                     Message / questions
-                    <textarea name="message" rows={3} placeholder="What would you like to explore?" className="mt-2 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 py-3 text-[13px] text-foreground placeholder:text-black/30 outline-none transition focus:ring-4 focus:ring-[#e8734a]/10" />
+                    <textarea name="message" rows={3} placeholder="What would you like to explore?" className="mt-2 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 py-3 text-sm text-foreground placeholder:text-black/50 outline-none transition focus:ring-4 focus:ring-[#1D9BF0]/10" />
                   </label>
                   {error && (
-                    <p className="rounded-xl border border-red-200 bg-red-50 px-3.5 py-2 text-[13px] font-medium text-red-700">
+                    <p className="rounded-xl border border-red-200 bg-red-50 px-3.5 py-2 text-sm font-medium text-red-700">
                       {error}
                     </p>
                   )}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground text-[13px] font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground transition hover:bg-[#0C8BDD] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {loading ? "Sending…" : "Request a demo"}
                   </button>

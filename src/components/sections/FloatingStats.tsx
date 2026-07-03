@@ -78,7 +78,7 @@ export function FloatingStats() {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
                 Testimonials
               </span>
               <h2 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
@@ -97,23 +97,23 @@ export function FloatingStats() {
                   className="group rounded-2xl border border-black/5 bg-white p-6 shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#faf5f0] text-xl">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F5FAFF] text-xl">
                       {t.flag}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <div className="mb-2 flex gap-0.5 text-black/30">
+                      <div className="mb-2 flex gap-0.5 text-black/50">
                         {[...Array(5)].map((_, j) => (
                           <svg key={j} viewBox="0 0 20 20" fill="currentColor" className="size-3.5">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
+                      <p className="text-[15px] leading-7 text-[#334155]">
                         &ldquo;{t.quote}&rdquo;
                       </p>
                       <div className="mt-3 pt-3 border-t border-black/5">
                         <p className="text-sm font-bold text-foreground">{t.name}</p>
-                        <p className="text-xs text-muted-foreground">{t.role}</p>
+                        <p className="text-xs text-[#334155]">{t.role}</p>
                       </div>
                     </div>
                   </div>

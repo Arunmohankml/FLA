@@ -20,7 +20,7 @@ export function CoursesPreview() {
           className="mb-8 flex items-end justify-between"
         >
           <div>
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#334155]">
               Languages
             </p>
             <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-4xl">
@@ -29,7 +29,7 @@ export function CoursesPreview() {
           </div>
           <Link
             href="/courses"
-            className="hidden items-center gap-1.5 text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-muted-foreground sm:inline-flex"
+            className="hidden items-center gap-1.5 text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-[#334155] sm:inline-flex"
           >
             View All
             <HiOutlineArrowRight className="size-3.5" />
@@ -53,7 +53,7 @@ export function CoursesPreview() {
                   <p className="mt-3 text-sm font-bold text-foreground sm:text-base">
                     {lang.name}
                   </p>
-                  <p className="mt-0.5 text-[10px] text-muted-foreground sm:text-xs">
+                  <p className="mt-0.5 text-xs text-[#334155] sm:text-xs">
                     {lang.levels} · {lang.duration}
                   </p>
                   <div className="pointer-events-none absolute -right-4 -top-4 text-[80px] leading-none opacity-[0.04] transition-opacity group-hover:opacity-[0.08] sm:text-[100px]">
@@ -78,7 +78,7 @@ export function CoursesPreview() {
               >
                 <span className="text-lg leading-none">{lang.flag}</span>
                 <span className="text-xs font-semibold text-foreground">{lang.name}</span>
-                <span className="text-[10px] text-muted-foreground">{lang.duration}</span>
+                <span className="text-xs text-[#334155]">{lang.duration}</span>
               </motion.div>
             </Link>
           ))}

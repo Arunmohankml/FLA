@@ -104,13 +104,13 @@ export function ExamPreparation() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl"
         >
-          <span className="inline-flex rounded-full bg-[#f6efe3] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b89249]">
+          <span className="inline-flex rounded-full bg-[#f6efe3] px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#b89249]">
             Certifications
           </span>
           <h2 className="mt-4 font-heading text-[clamp(2.5rem,4.4vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.05em] text-foreground">
             Exam Preparation
           </h2>
-          <p className="mt-4 max-w-md text-[15px] leading-6 text-muted-foreground">
+          <p className="mt-4 max-w-md text-[15px] leading-6 text-[#334155]">
             We prepare you for the world&apos;s most recognised language certifications.
           </p>
         </motion.div>
@@ -125,29 +125,29 @@ export function ExamPreparation() {
               transition={{ duration: 0.45, delay: index * 0.04 }}
               className="group relative overflow-hidden rounded-[32px] border border-black/[0.04] bg-white/95 px-6 pb-5 pt-5 shadow-[0_24px_70px_rgba(15,23,42,0.10)] backdrop-blur-[2px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(15,23,42,0.14)]"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,115,74,0.05),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7))]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(29,155,240,0.05),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7))]" />
 
               <div className="relative flex items-start justify-between gap-4">
                 <div>
-                  <p className={["text-[11px] font-semibold uppercase tracking-[0.14em]", card.categoryColor].join(" ")}>
+                  <p className={["text-xs font-semibold uppercase tracking-[0.14em]", card.categoryColor].join(" ")}>
                     {card.category}
                   </p>
                   <h3 className="mt-3 font-heading text-[clamp(1.55rem,2vw,2.05rem)] font-medium tracking-[-0.05em] text-foreground">
                     {card.title}
                   </h3>
-                  <p className="mt-1 text-[13px] text-muted-foreground">{card.subtitle}</p>
+                  <p className="mt-1 text-sm text-[#334155]">{card.subtitle}</p>
                 </div>
 
                 <LogoBadge logoSrc={card.logoSrc} logoAlt={card.logoAlt} logoClassName={card.logoClassName} />
               </div>
 
               <div className="relative mt-5">
-                <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Levels</p>
+                <p className="text-xs uppercase tracking-[0.14em] text-[#334155]">Levels</p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {card.levels.map((level) => (
                     <span
                       key={level}
-                      className="inline-flex h-7 items-center rounded-full border border-black/8 bg-white px-2.5 text-[11px] font-medium text-foreground shadow-[0_1px_1px_rgba(15,23,42,0.03)]"
+                      className="inline-flex h-7 items-center rounded-full border border-black/8 bg-white px-2.5 text-xs font-medium text-foreground shadow-[0_1px_1px_rgba(15,23,42,0.03)]"
                     >
                       {level}
                     </span>
@@ -158,16 +158,16 @@ export function ExamPreparation() {
               <div className="relative mt-5 flex items-center justify-between gap-3 border-t border-black/5 pt-4">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="flex size-4 items-center justify-center text-black/35">
+                    <span className="flex size-4 items-center justify-center text-black/55">
                       <span className="block size-2 rounded-full border border-current" />
                     </span>
-                    <p className="truncate text-[11px] text-muted-foreground">{card.institution}</p>
+                    <p className="truncate text-xs text-[#334155]">{card.institution}</p>
                   </div>
                 </div>
 
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-1 text-[12px] font-medium text-foreground transition-opacity duration-200 hover:opacity-70"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-foreground transition-opacity duration-200 hover:opacity-70"
                 >
                   Learn More
                   <span aria-hidden="true">→</span>

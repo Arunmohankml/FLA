@@ -19,7 +19,7 @@ export const fallbackCareers: CareerListing[] = [
     workMode: "Online",
     employmentType: "Full-time",
     code: "FLA001",
-    accent: "#e8734a",
+    accent: "#1D9BF0",
   },
   {
     id: "fallback-lxo",
@@ -29,7 +29,7 @@ export const fallbackCareers: CareerListing[] = [
     workMode: "Remote",
     employmentType: "Full-time",
     code: "FLA002",
-    accent: "#f0a35e",
+    accent: "#60A5FA",
   },
   {
     id: "fallback-soft-skills",

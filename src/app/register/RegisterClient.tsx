@@ -44,8 +44,8 @@ export function RegisterClient() {
     }
   }
 
-  const inputClass = "flex h-12 w-full rounded-xl border border-black/8 bg-[#faf5f0] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/60 focus:border-[#e8734a]/40 focus:outline-none focus:ring-2 focus:ring-[#e8734a]/10";
-  const selectClass = "flex h-12 w-full appearance-none rounded-xl border border-black/8 bg-[#faf5f0] px-4 text-sm text-foreground transition-all duration-200 focus:border-[#e8734a]/40 focus:outline-none focus:ring-2 focus:ring-[#e8734a]/10";
+  const inputClass = "flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10";
+  const selectClass = "flex h-12 w-full appearance-none rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10";
 
   return (
     <section className="px-6 pt-20 pb-16 lg:px-12 lg:pt-28 lg:pb-24">
@@ -53,7 +53,7 @@ export function RegisterClient() {
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left — Heading + info + steps */}
           <div>
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
               Registration
             </span>
             <motion.h1
@@ -70,7 +70,7 @@ export function RegisterClient() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="mt-5 max-w-lg text-lg leading-[1.6] text-muted-foreground"
+              className="mt-5 max-w-lg text-lg leading-[1.6] text-[#334155]"
             >
               Fill in your details and we&apos;ll get you enrolled in the
               perfect course. It only takes a few minutes.
@@ -87,12 +87,12 @@ export function RegisterClient() {
                   transition={{ duration: 0.4, delay: i * 0.08 }}
                   className="flex items-start gap-4"
                 >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-black/[0.04] font-heading text-xs font-semibold text-black/40">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-black/[0.04] font-heading text-xs font-semibold text-black/60">
                     {step.num}
                   </div>
                   <div>
                     <h3 className="font-heading text-base font-medium text-foreground">{step.title}</h3>
-                    <p className="mt-0.5 text-sm text-muted-foreground">{step.desc}</p>
+                    <p className="mt-0.5 text-sm text-[#334155]">{step.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -108,8 +108,8 @@ export function RegisterClient() {
           >
             <div className="relative rounded-[28px] border border-black/5 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] lg:p-10">
               {/* Decorative arcs */}
-              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-[#e8734a]/10 opacity-60" />
-              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-[#e8734a]/8 opacity-40" />
+              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-[#1D9BF0]/10 opacity-60" />
+              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-[#1D9BF0]/8 opacity-40" />
 
               {submitted ? (
                 <motion.div
@@ -117,21 +117,21 @@ export function RegisterClient() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex flex-col items-center py-16 text-center"
                 >
-                  <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-black/[0.04] text-black/40">
+                  <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-black/[0.04] text-black/60">
                     <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
                   </div>
                   <p className="font-heading text-xl font-medium text-foreground">Registration submitted!</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-sm text-[#334155]">
                     We&apos;ll contact you shortly to confirm your enrollment.
                   </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-6 text-center">
-                    <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-black/[0.04] text-black/40">
+                    <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-black/[0.04] text-black/60">
                       <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
@@ -209,7 +209,7 @@ export function RegisterClient() {
                     disabled={loading}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-foreground text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 disabled:opacity-50"
+                    className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0C8BDD] disabled:opacity-50"
                   >
                     {loading ? "Submitting..." : "Submit Registration"}
                   </motion.button>

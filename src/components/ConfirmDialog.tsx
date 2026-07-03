@@ -75,7 +75,7 @@ export function ConfirmDialog({
                 className={`flex size-10 shrink-0 items-center justify-center rounded-full ${
                   variant === "danger"
                     ? "bg-red-50 text-red-600"
-                    : "bg-[#faf5f0] text-black/50"
+                    : "bg-[#F5FAFF] text-black/70"
                 }`}
               >
                 <HiOutlineExclamationTriangle className="size-5" />
@@ -89,14 +89,14 @@ export function ConfirmDialog({
             </div>
             <p
               id="confirm-message"
-              className="mb-6 text-sm leading-relaxed text-black/55"
+              className="mb-6 text-[15px] leading-7 text-black/75"
             >
               {message}
             </p>
             <div className="flex gap-3">
               <button
                 onClick={onCancel}
-                className="flex-1 rounded-xl border border-black/8 bg-[#faf5f0] px-4 py-2.5 text-sm font-semibold text-black/60 transition-all hover:bg-white hover:text-black/80"
+                className="flex-1 rounded-xl border border-black/8 bg-[#F5FAFF] px-4 py-2.5 text-sm font-semibold text-black/60 transition-all hover:bg-white hover:text-black/80"
               >
                 {cancelLabel}
               </button>

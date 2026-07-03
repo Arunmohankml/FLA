@@ -32,7 +32,7 @@ export function CorporateTraining() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[#334155]">
             For Companies
           </p>
           <h2 className="text-3xl font-black tracking-[-1.5px] text-foreground sm:text-4xl">
@@ -57,10 +57,10 @@ export function CorporateTraining() {
                 whileHover={{ y: -4 }}
                 className="group flex flex-col items-center gap-2"
               >
-                <div className="flex size-16 items-center justify-center rounded-xl border border-border bg-muted/50 text-lg font-bold text-muted-foreground/60 transition-all duration-300 group-hover:border-foreground/20 group-hover:bg-foreground/[0.03] group-hover:text-foreground group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:size-20 sm:text-xl">
+                <div className="flex size-16 items-center justify-center rounded-xl border border-border bg-muted/50 text-lg font-bold text-[#334155]/80 transition-all duration-300 group-hover:border-foreground/20 group-hover:bg-foreground/[0.03] group-hover:text-foreground group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:size-20 sm:text-xl">
                   {logo.abbr}
                 </div>
-                <span className="text-[10px] font-medium text-muted-foreground/60 transition-colors group-hover:text-foreground sm:text-xs">
+                <span className="text-xs font-medium text-[#334155]/80 transition-colors group-hover:text-foreground sm:text-xs">
                   {logo.name}
                 </span>
               </motion.div>

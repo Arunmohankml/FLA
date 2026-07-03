@@ -62,7 +62,7 @@ const CourseCard = memo(function CourseCard({
 
           {/* Level badge */}
           <div className="absolute left-4 top-4 z-10">
-            <span className="inline-flex rounded-full bg-white/20 px-3 py-1 font-heading text-[10px] font-semibold text-white backdrop-blur-sm">
+            <span className="inline-flex rounded-full bg-white/20 px-3 py-1 font-heading text-xs font-semibold text-white backdrop-blur-sm">
               {lang.levels}
             </span>
           </div>
@@ -71,7 +71,7 @@ const CourseCard = memo(function CourseCard({
           <div className="absolute left-4 bottom-4 z-10">
             <p className="font-heading text-sm font-semibold tracking-wider text-white/80">{lang.slug.toUpperCase()}</p>
             <p className="font-heading text-3xl font-medium leading-tight text-white">{lang.name}</p>
-            <p className="mt-1 text-xs text-white/70">Duration: {lang.duration} · Hybrid Mode</p>
+            <p className="mt-1 text-xs text-white/85">Duration: {lang.duration} · Hybrid Mode</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ const CourseCard = memo(function CourseCard({
           <h3 className="font-heading text-[22px] font-medium leading-[1.33] text-foreground">
             {lang.name}
           </h3>
-          <p className="mt-1.5 text-sm text-muted-foreground">
+          <p className="mt-1.5 text-[15px] leading-6 text-[#334155]">
             Master one of the world&apos;s most in-demand languages.
           </p>
 
@@ -88,15 +88,15 @@ const CourseCard = memo(function CourseCard({
 
           <div className="flex justify-between">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Duration</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#334155]">Duration</p>
               <p className="mt-1 font-heading text-sm font-medium">{lang.duration}</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Mode</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#334155]">Mode</p>
               <p className="mt-1 font-heading text-sm font-medium">All modes</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Certificate</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#334155]">Certificate</p>
               <p className="mt-1 font-heading text-sm font-medium">Global</p>
             </div>
           </div>
@@ -107,7 +107,7 @@ const CourseCard = memo(function CourseCard({
         <Link
           href="/register"
           onClick={(e) => e.stopPropagation()}
-          className="flex h-12 w-full items-center justify-center rounded-full bg-foreground text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90"
+          className="flex h-12 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0C8BDD]"
         >
           Register →
         </Link>
@@ -142,7 +142,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
               className="absolute left-6 top-6 lg:left-10 lg:top-10"
             >
               <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 font-heading text-xs font-semibold text-white backdrop-blur-md">
-                <span className="size-1.5 rounded-full bg-[#e8734a] animate-pulse" />
+                <span className="size-1.5 rounded-full bg-[#1D9BF0] animate-pulse" />
                 9 LANGUAGES AVAILABLE
               </span>
             </motion.div>
@@ -180,13 +180,13 @@ export function CoursesClient({ languages }: CoursesClientProps) {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
               Explore Courses
             </span>
             <h1 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
               Find the Right Class for Your Journey
             </h1>
-            <p className="mt-3 max-w-lg text-base text-muted-foreground">
+            <p className="mt-3 max-w-lg text-base text-[#334155]">
               Discover beginner to advanced language programs for online
               classes, offline classroom training, and flexible hybrid batches.
             </p>
@@ -210,9 +210,9 @@ export function CoursesClient({ languages }: CoursesClientProps) {
       <ReasonsToLearn />
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-[#1a1a1a] py-16">
-        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
-        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
+      <section className="relative overflow-hidden bg-[#071D2E] py-16">
+        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
+        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
 
         <div className="relative page-shell max-w-3xl text-center">
           <motion.span
@@ -220,7 +220,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-white/75"
           >
             Get Started
           </motion.span>
@@ -235,14 +235,14 @@ export function CoursesClient({ languages }: CoursesClientProps) {
             <br />
             first sentence in a
             <br />
-            <span className="text-white/60">new language?</span>
+            <span className="text-white/80">new language?</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="mx-auto mt-4 max-w-md text-lg text-white/50"
+            className="mx-auto mt-4 max-w-md text-lg text-white/75"
           >
             Book a free demo class. No payment required. No obligation.
           </motion.p>
@@ -255,7 +255,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
           >
             <Link
               href="/register"
-              className="inline-flex h-14 items-center rounded-full bg-[#e8734a] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#d65a30]"
+              className="inline-flex h-14 items-center rounded-full bg-[#1D9BF0] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#0C8BDD]"
             >
               Book Free Demo →
             </Link>

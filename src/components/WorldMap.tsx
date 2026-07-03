@@ -58,7 +58,7 @@ export function WorldMap() {
             >
               {/* Breathing glow ring */}
               <motion.div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400/10"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/10"
                 animate={{
                   width: isHovered ? 32 : [20, 28, 20],
                   height: isHovered ? 32 : [20, 28, 20],
@@ -74,7 +74,7 @@ export function WorldMap() {
 
               {/* Soft pulse ring */}
               <motion.div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber-400/20"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-400/20"
                 animate={{
                   width: isHovered ? [12, 30] : [10, 22],
                   height: isHovered ? [12, 30] : [10, 22],
@@ -90,7 +90,7 @@ export function WorldMap() {
 
               {/* Main dot */}
               <motion.div
-                className="relative z-10 rounded-full bg-amber-400/70 shadow-[0_0_6px_rgba(251,191,36,0.3)]"
+                className="relative z-10 rounded-full bg-blue-400/70 shadow-[0_0_6px_rgba(251,191,36,0.3)]"
                 animate={{
                   width: isHovered ? 8 : [5, 6.5, 5],
                   height: isHovered ? 8 : [5, 6.5, 5],
@@ -135,7 +135,7 @@ export function WorldMap() {
               {markers.find((m) => m.id === hovered)?.flag}{" "}
               {markers.find((m) => m.id === hovered)?.name}
             </p>
-            <p className="mt-0.5 text-[11px] text-muted-foreground">
+            <p className="mt-0.5 text-xs text-[#334155]">
               {markers.find((m) => m.id === hovered)?.levels}
             </p>
           </motion.div>

@@ -392,7 +392,7 @@ export function WhyChooseUs() {
           ref={introRef}
           className="absolute inset-x-0 top-[18vh] z-20 mx-auto flex max-w-[1200px] flex-col items-center px-6 text-center"
         >
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
             Why Choose Us
           </span>
 
@@ -405,7 +405,7 @@ export function WhyChooseUs() {
             </span>
           </h2>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-black/55 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-black/75 sm:text-lg">
             We help students build real communication skills, prepare for global
             certifications, and move closer to study, work, and life abroad with
             confidence.
@@ -441,7 +441,7 @@ export function WhyChooseUs() {
             data-side={feature.side}
             className={`absolute z-40 hidden w-[335px] rounded-[30px] border border-white/70 bg-white/88 p-7 text-foreground shadow-[0_28px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl will-change-transform md:block ${feature.position}`}
           >
-            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-black/[0.04] text-black/45">
+            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-black/[0.04] text-black/65">
               {feature.icon}
             </div>
 
@@ -468,7 +468,7 @@ export function WhyChooseUs() {
               <h3 className="font-heading text-lg font-medium text-foreground">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-sm leading-6 text-black/55">
+              <p className="mt-2 text-[15px] leading-7 text-black/75">
                 {feature.desc}
               </p>
             </div>

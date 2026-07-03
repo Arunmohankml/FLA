@@ -125,7 +125,7 @@ export function ApproachSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.55 }}
             >
-              <span className="inline-flex rounded-full border border-[#e7c7b6] bg-white/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-black/55 backdrop-blur">
+              <span className="inline-flex rounded-full border border-[#e7c7b6] bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-black/75 backdrop-blur">
                 Our Approach
               </span>
 
@@ -135,7 +135,7 @@ export function ApproachSection() {
                 Teaching
               </h2>
 
-              <p className="mt-6 max-w-lg text-[15px] leading-7 text-black/55">
+              <p className="mt-6 max-w-lg text-[15px] leading-7 text-black/75">
                 We combine structured lessons, practical speaking, certification
                 preparation, and flexible online/offline learning to help every
                 student progress with confidence.
@@ -143,10 +143,10 @@ export function ApproachSection() {
 
               <div className="mt-10 grid max-w-lg grid-cols-2 gap-6">
                 <div className="flex items-center gap-4">
-                  <span className="flex size-14 items-center justify-center rounded-full bg-white/70 text-[#c98468] shadow-sm">
+                  <span className="flex size-14 items-center justify-center rounded-full bg-white/70 text-[#1D9BF0] shadow-sm">
                     12K+
                   </span>
-                  <p className="text-sm leading-5 text-black/55">
+                  <p className="text-sm leading-5 text-black/75">
                     Students
                     <br />
                     guided
@@ -154,10 +154,10 @@ export function ApproachSection() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className="flex size-14 items-center justify-center rounded-full bg-white/70 text-[#c98468] shadow-sm">
+                  <span className="flex size-14 items-center justify-center rounded-full bg-white/70 text-[#1D9BF0] shadow-sm">
                     8+
                   </span>
-                  <p className="text-sm leading-5 text-black/55">
+                  <p className="text-sm leading-5 text-black/75">
                     Countries
                     <br />
                     reached
@@ -218,7 +218,7 @@ export function ApproachSection() {
                 }}
                 className="absolute bottom-12 left-1 max-w-[145px] rounded-[18px] border border-white/70 bg-white/90 p-3 shadow-[0_18px_45px_rgba(0,0,0,0.1)] backdrop-blur-xl will-change-transform sm:bottom-4 sm:left-0 sm:max-w-[260px] sm:rounded-[24px] sm:p-5"
               >
-                <div className="mb-2 flex size-8 items-center justify-center rounded-full bg-[#fff3ec] text-sm text-[#c98468] sm:mb-3 sm:size-10">
+                <div className="mb-2 flex size-8 items-center justify-center rounded-full bg-[#EAF4FF] text-sm text-[#1D9BF0] sm:mb-3 sm:size-10">
                   ✦
                 </div>
 
@@ -226,7 +226,7 @@ export function ApproachSection() {
                   Student-Centered Learning
                 </h3>
 
-                <p className="mt-2 text-[11px] leading-5 text-black/55 sm:text-sm sm:leading-6">
+                <p className="mt-2 text-xs leading-5 text-black/75 sm:text-sm sm:leading-6">
                   Personalised paths for every goal, level, and schedule.
                 </p>
               </motion.div>
@@ -234,8 +234,8 @@ export function ApproachSection() {
           </div>
 
           <div className="relative mt-12 overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#fff3ec] to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#fff3ec] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#EAF4FF] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#EAF4FF] to-transparent" />
 
             <motion.div
               className="flex w-max gap-4 pb-4"
@@ -251,7 +251,7 @@ export function ApproachSection() {
                   key={`${card.title}-${index}`}
                   className="group w-[260px] shrink-0 overflow-hidden rounded-[28px] border border-white/60 bg-white/65 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.07)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-white/85"
                 >
-                  <div className="relative mb-5 h-36 overflow-hidden rounded-[22px] bg-[#f9e8dd]">
+                  <div className="relative mb-5 h-36 overflow-hidden rounded-[22px] bg-[#EFF6FF]">
                     <img
                       src={card.image}
                       alt={card.title}
@@ -261,7 +261,7 @@ export function ApproachSection() {
                     />
                   </div>
 
-                  <span className="text-[11px] font-semibold text-[#c98468]">
+                  <span className="text-xs font-semibold text-[#1D9BF0]">
                     {card.n}
                   </span>
 
@@ -269,7 +269,7 @@ export function ApproachSection() {
                     {card.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-black/55">
+                  <p className="mt-3 text-[15px] leading-7 text-black/75">
                     {card.desc}
                   </p>
                 </div>
@@ -366,7 +366,7 @@ function TrainersDesktop() {
       className="relative min-h-screen"
     >
       <div className="page-shell flex min-h-screen flex-col justify-center py-8">
-        <div ref={viewportRef} className="relative overflow-hidden rounded-[40px] border border-black/5 bg-[#FBF3EA] px-6 py-10 sm:px-10">
+        <div ref={viewportRef} className="relative overflow-hidden rounded-[40px] border border-black/5 bg-[#F5FAFF] px-6 py-10 sm:px-10">
           <svg
             className="pointer-events-none absolute inset-0 size-full opacity-40"
             viewBox="0 0 1200 500"
@@ -376,7 +376,7 @@ function TrainersDesktop() {
             <motion.path
               d="M40,380 C260,120 420,420 620,180 C800,-20 980,340 1160,120"
               fill="none"
-              stroke="#C98468"
+              stroke="#1D9BF0"
               strokeWidth="1.5"
               strokeDasharray="6 8"
               strokeLinecap="round"
@@ -386,7 +386,7 @@ function TrainersDesktop() {
 
           <div className="relative z-10 mb-8 flex items-end justify-between gap-6">
             <div className="max-w-xl">
-              <span className="inline-flex rounded-full border border-[#C98468]/30 bg-white px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C98468]">
+              <span className="inline-flex rounded-full border border-[#1D9BF0]/30 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#1D9BF0]">
                 Our Team &middot; Worldwide
               </span>
               <h2 className="mt-4 font-heading text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.02] tracking-[-0.06em] text-foreground">
@@ -394,13 +394,13 @@ function TrainersDesktop() {
                 <br />
                 What They Teach
               </h2>
-              <p className="mt-3 max-w-md text-[15px] leading-6 text-black/50">
+              <p className="mt-3 max-w-md text-[15px] leading-6 text-black/70">
                 Six languages, six homelands. Scroll to meet the certified native trainers behind every lesson.
               </p>
             </div>
 
             <div className="hidden shrink-0 flex-col items-end gap-2 sm:flex">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-black/40">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-black/60">
                 {String(active + 1).padStart(2, "0")} / {String(faculty.length).padStart(2, "0")}
               </span>
               <div className="flex gap-1.5">
@@ -410,7 +410,7 @@ function TrainersDesktop() {
                     className="h-1.5 rounded-full transition-all duration-500"
                     style={{
                       width: i === active ? 20 : 6,
-                      backgroundColor: i === active ? "#C98468" : "rgba(0,0,0,0.15)",
+                      backgroundColor: i === active ? "#1D9BF0" : "rgba(0,0,0,0.15)",
                     }}
                   />
                 ))}
@@ -464,34 +464,34 @@ function TrainerCard({
   return (
     <motion.div
       style={{ rotate: `${rotate}deg`, scale, opacity }}
-      className="w-[320px] shrink-0 overflow-hidden rounded-[24px] border border-black/5 bg-white p-5 shadow-[0_18px_40px_rgba(201,132,104,0.16)]"
+      className="w-[320px] shrink-0 overflow-hidden rounded-[24px] border border-black/5 bg-white p-5 shadow-[0_18px_40px_rgba(29,155,240,0.16)]"
     >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
-          <span className="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-[#C98468]/50 text-[12px] font-bold tracking-wide text-[#C98468]">
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-[#1D9BF0]/50 text-sm font-bold tracking-wide text-[#1D9BF0]">
             {t.code}
           </span>
           <div>
             <h3 className="font-heading text-[14px] font-medium text-foreground">
               {t.lang} Trainers
             </h3>
-            <p className="mt-0.5 text-[11px] text-black/45">{t.cert}</p>
+            <p className="mt-0.5 text-xs text-black/65">{t.cert}</p>
           </div>
         </div>
-        <span className="mt-1 text-[10px] font-medium uppercase tracking-wider text-black/30">
+        <span className="mt-1 text-xs font-medium uppercase tracking-wider text-black/50">
           {t.coord}
         </span>
       </div>
 
-      <p className="mt-4 text-[12px] leading-5 text-black/55">{t.blurb}</p>
+      <p className="mt-4 text-[15px] leading-7 text-black/75">{t.blurb}</p>
 
       <div className="mt-4 flex flex-col gap-1.5 border-t border-black/5 pt-4">
         {t.points.map((pt) => (
           <span
             key={pt}
-            className="inline-flex items-center gap-1.5 text-[11px] text-black/50"
+            className="inline-flex items-center gap-2 text-sm text-black"
           >
-            <svg className="size-3 shrink-0 text-[#C98468]" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <svg className="size-3 shrink-0 text-[#1D9BF0]" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path
                 d="M4.5 10.4 8.1 14 15.8 6.2"
                 stroke="currentColor"
@@ -513,7 +513,7 @@ function TrainersMobile() {
     <section className="py-8">
       <div className="page-shell">
         <div className="mb-6 max-w-xl">
-          <span className="inline-flex rounded-full border border-[#C98468]/30 bg-white px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C98468]">
+          <span className="inline-flex rounded-full border border-[#1D9BF0]/30 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#1D9BF0]">
             Our Team
           </span>
           <h2 className="mt-4 font-heading text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.02] tracking-[-0.06em] text-foreground">
@@ -521,7 +521,7 @@ function TrainersMobile() {
             <br />
             What They Teach
           </h2>
-          <p className="mt-3 max-w-lg text-[15px] leading-6 text-black/50">
+          <p className="mt-3 max-w-lg text-[15px] leading-6 text-black/70">
             Six languages, six homelands. Meet the certified native trainers behind every lesson.
           </p>
         </div>
@@ -534,27 +534,27 @@ function TrainersMobile() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.05 }}
-              className="rounded-[22px] border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(201,132,104,0.12)]"
+              className="rounded-[22px] border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(29,155,240,0.12)]"
             >
               <div className="flex items-center gap-3">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-[#C98468]/50 text-[12px] font-bold tracking-wide text-[#C98468]">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-[#1D9BF0]/50 text-sm font-bold tracking-wide text-[#1D9BF0]">
                   {t.code}
                 </span>
                 <div>
                   <h3 className="font-heading text-[14px] font-medium text-foreground">
                     {t.lang} Trainers
                   </h3>
-                  <p className="mt-0.5 text-[11px] text-black/45">{t.cert}</p>
+                  <p className="mt-0.5 text-xs text-black/65">{t.cert}</p>
                 </div>
               </div>
-              <p className="mt-3 text-[12px] leading-5 text-black/55">{t.blurb}</p>
+              <p className="mt-3 text-[15px] leading-7 text-black/75">{t.blurb}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {t.points.map((pt) => (
                   <span
                     key={pt}
-                    className="inline-flex items-center gap-1.5 rounded-[10px] border border-black/5 bg-[#FBF3EA] px-3 py-1.5 text-[11px] text-black/50"
+                    className="inline-flex items-center gap-2 rounded-[10px] border border-black/5 bg-[#F5FAFF] px-3 py-1.5 text-sm text-black"
                   >
-                    <svg className="size-3 shrink-0 text-[#C98468]" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <svg className="size-3 shrink-0 text-[#1D9BF0]" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                       <path
                         d="M4.5 10.4 8.1 14 15.8 6.2"
                         stroke="currentColor"

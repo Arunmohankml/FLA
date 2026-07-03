@@ -26,7 +26,7 @@ export function VerifyClient({
   createdAt,
 }: VerifyProps) {
   return (
-    <div className="min-h-screen bg-[#faf5f0]">
+    <div className="min-h-screen bg-[#F5FAFF]">
       <div className="mx-auto max-w-2xl px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ export function VerifyClient({
           <h1 className="font-heading text-3xl font-semibold tracking-[-0.02em] text-foreground">
             Certificate Verified
           </h1>
-          <p className="mt-2 text-sm text-black/50">
+          <p className="mt-2 text-sm text-black/70">
             This certificate is authentic and issued by Foreign Language Academy
           </p>
 
@@ -55,35 +55,35 @@ export function VerifyClient({
           <div className="mt-8 rounded-2xl border border-black/5 bg-white p-6 text-left shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Student Name</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Student Name</p>
                 <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{studentName}</p>
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Certificate Number</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Certificate Number</p>
                 <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{certificateNumber}</p>
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Course Level</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Course Level</p>
                 <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{courseLevel}</p>
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Course Name</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Course Name</p>
                 <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{courseName}</p>
               </div>
               {grade && (
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Grade</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Grade</p>
                   <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{grade}</p>
                 </div>
               )}
               {totalScore && (
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Total Score</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Total Score</p>
                   <p className="mt-0.5 font-heading text-sm font-medium text-foreground">{totalScore}</p>
                 </div>
               )}
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">Issue Date</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">Issue Date</p>
                 <p className="mt-0.5 font-heading text-sm font-medium text-foreground">
                   {new Date(createdAt).toLocaleDateString("en-GB")}
                 </p>
@@ -104,7 +104,7 @@ export function VerifyClient({
           {/* Back link */}
           <Link
             href="/"
-            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-black/50 transition-colors hover:text-black/80"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-black/70 transition-colors hover:text-black/80"
           >
             <HiOutlineArrowLeft className="size-4" />
             Back to Home

@@ -36,7 +36,7 @@ export function ProcessPath() {
   const desktopLineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="bg-[#faf5f0] page-section py-16 lg:py-24">
+    <section ref={sectionRef} className="bg-[#F5FAFF] page-section py-16 lg:py-24">
       <div className="mx-auto w-full max-w-7xl">
         {/* ── Header ──────────────────────────────────────── */}
         <motion.div
@@ -46,7 +46,7 @@ export function ProcessPath() {
           transition={{ duration: 0.6 }}
           className="mb-14 text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
             How It Works
           </span>
           <h2 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
@@ -61,7 +61,7 @@ export function ProcessPath() {
             <div className="h-px w-full bg-black/5">
               <motion.div
                 style={{ scaleX: desktopLineScale, transformOrigin: "left center" }}
-                className="h-px w-full bg-[#e8734a]/30 will-change-transform"
+                className="h-px w-full bg-[#1D9BF0]/30 will-change-transform"
               />
             </div>
           </div>
@@ -81,13 +81,13 @@ export function ProcessPath() {
                 whileInView={{
                   boxShadow: [
                     "0 2px 8px rgba(0,0,0,0.04)",
-                    "0 0 20px rgba(232,115,74,0.25), 0 0 40px rgba(232,115,74,0.1)",
+                    "0 0 20px rgba(29,155,240,0.25), 0 0 40px rgba(29,155,240,0.1)",
                     "0 2px 8px rgba(0,0,0,0.04)",
                   ],
                 }}
                 viewport={{ once: false, amount: 0.8 }}
                 transition={{ duration: 1.2, delay: i * 0.2 }}
-                className="relative z-10 mx-auto mb-6 hidden size-16 items-center justify-center rounded-2xl border border-black/8 bg-white text-sm font-bold transition-all duration-300 group-hover:border-[#e8734a]/30 group-hover:bg-[#e8734a] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(232,115,74,0.15)] lg:flex"
+                className="relative z-10 mx-auto mb-6 hidden size-16 items-center justify-center rounded-2xl border border-black/8 bg-white text-sm font-bold transition-all duration-300 group-hover:border-[#1D9BF0]/30 group-hover:bg-[#1D9BF0] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(29,155,240,0.15)] lg:flex"
               >
                 <span className="transition-colors group-hover:text-white">{step.num}</span>
               </motion.div>
@@ -105,7 +105,7 @@ export function ProcessPath() {
               </div>
 
               <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{step.desc}</p>
+              <p className="mt-1.5 text-sm text-[#334155]">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -120,7 +120,7 @@ export function ProcessPath() {
         >
           <Link
             href="/register"
-            className="inline-flex h-12 items-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition-all duration-300 hover:scale-105"
+            className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
           >
             Book Free Demo →
           </Link>

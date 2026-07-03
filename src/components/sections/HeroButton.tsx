@@ -18,7 +18,7 @@ export function HeroButton({ href, children, variant = "primary" }: HeroButtonPr
     primary:
       "bg-white/5 backdrop-blur-lg border border-white/15 text-white/90 hover:bg-white/15",
     secondary:
-      "bg-white/5 backdrop-blur-lg border border-white/10 text-white/70 hover:bg-white/15 hover:text-white",
+      "bg-white/5 backdrop-blur-lg border border-white/10 text-white/85 hover:bg-white/15 hover:text-white",
     white:
       "bg-white text-[#111] shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:bg-white/90",
   };

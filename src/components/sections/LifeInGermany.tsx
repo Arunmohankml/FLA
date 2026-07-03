@@ -88,7 +88,7 @@ export function LifeInGermany() {
       <div className="page-shell pt-3 lg:pt-4">
         <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
           <div>
-            <span className="mb-4 inline-flex w-fit rounded-full bg-[#6f4a36]/8 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6f4a36]">
+            <span className="mb-4 inline-flex w-fit rounded-full bg-[#6f4a36]/8 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#6f4a36]">
               Life in Europe
             </span>
 
@@ -96,7 +96,7 @@ export function LifeInGermany() {
               Europe opens doors to healthcare success
             </h2>
 
-            <p className="mt-3 max-w-md text-[14px] leading-6 text-black/50">
+            <p className="mt-3 max-w-md text-[15px] leading-7 text-black/70">
               Master the language, earn globally recognised certifications, and
               prepare for international study, work, and career opportunities
               with expert guidance, practical learning, and personalized support
@@ -106,7 +106,7 @@ export function LifeInGermany() {
             <div className="mt-6 flex items-center gap-4">
               <Link
                 href="/courses"
-                className="inline-flex h-10 items-center rounded-full bg-foreground px-6 text-[13px] font-semibold text-background transition duration-300 hover:-translate-y-0.5"
+                className="inline-flex h-10 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD]"
               >
                 Explore Courses
                 <span className="ml-1.5" aria-hidden="true">
@@ -116,14 +116,14 @@ export function LifeInGermany() {
 
               <Link
                 href="/book-demo"
-                className="text-[13px] font-semibold text-foreground/60 underline decoration-black/15 underline-offset-4 transition-colors hover:text-foreground"
+                className="text-sm font-semibold text-foreground/80 underline decoration-black/15 underline-offset-4 transition-colors hover:text-foreground"
               >
                 Book Free Demo
               </Link>
             </div>
           </div>
 
-          <div className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#faf5f0] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
+          <div className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
             <img
               src="/euimage.png"
               alt="European study abroad and language learning"
@@ -163,7 +163,7 @@ export function LifeInGermany() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
 
                 <div className="absolute inset-x-0 top-0 p-6">
-                  <span className="inline-flex rounded-full bg-white/15 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+                  <span className="inline-flex rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                     {card.country}
                   </span>
                 </div>
@@ -179,7 +179,7 @@ export function LifeInGermany() {
                     {card.value}
                   </p>
 
-                  <p className="mt-3 max-w-[46ch] text-[14px] leading-6 text-white/90">
+                  <p className="mt-3 max-w-[46ch] text-[15px] leading-7 text-white/90">
                     {card.body}
                   </p>
                 </div>

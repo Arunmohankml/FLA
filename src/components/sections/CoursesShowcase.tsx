@@ -43,7 +43,7 @@ export function CoursesShowcase() {
   const shouldAnimateMarquee = isInView && !prefersReducedMotion;
 
   return (
-    <section ref={sectionRef} className="bg-[#faf5f0] py-16 lg:py-24">
+    <section ref={sectionRef} className="bg-[#F5FAFF] py-16 lg:py-24">
       <div className="page-shell">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.45fr] lg:items-center">
           <motion.div
@@ -53,19 +53,19 @@ export function CoursesShowcase() {
             transition={{ duration: 0.55 }}
             className="max-w-xl"
           >
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-black/60">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#cfa77a]" />
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-black/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1D9BF0]" />
               Our Courses
             </span>
 
             <h2 className="font-heading text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
               Discover the Right Course for{" "}
-              <span className="text-[#c89f74]">Your Path</span>
+              <span className="text-[#1D9BF0]">Your Path</span>
             </h2>
 
-            <div className="mt-5 h-px w-28 bg-[#c89f74]/60" />
+            <div className="mt-5 h-px w-28 bg-[#1D9BF0]/60" />
 
-            <p className="mt-7 max-w-md text-base leading-7 text-muted-foreground">
+            <p className="mt-7 max-w-md text-base leading-7 text-[#334155]">
               From beginners to advanced learners, our structured and immersive
               courses help you grow through online, offline, and hybrid learning.
             </p>
@@ -97,7 +97,7 @@ export function CoursesShowcase() {
                     transition={{ duration: 0.45, delay: 0.1 + index * 0.08 }}
                     className="group flex cursor-default gap-4 rounded-3xl p-2 transition-all duration-500 ease-out hover:scale-[1.04] hover:bg-white/55 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)]"
                   >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/8 bg-white text-foreground shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-[#f1d1b9]">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/8 bg-white text-foreground shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-[#EAF4FF]">
                       {item.icon === "GraduationCap" ? (
                         <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -121,7 +121,7 @@ export function CoursesShowcase() {
                       <span className="block text-base font-semibold text-foreground">
                         {item.title}
                       </span>
-                      <span className="mt-1 block max-w-xs text-sm leading-6 text-muted-foreground">
+                      <span className="mt-1 block max-w-xs text-[15px] leading-7 text-[#334155]">
                         {item.text}
                       </span>
                     </span>
@@ -132,7 +132,7 @@ export function CoursesShowcase() {
 
             <Link
               href="/courses"
-              className="mt-9 inline-flex h-12 items-center rounded-full bg-foreground px-7 text-sm font-semibold text-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.16)]"
+              className="mt-9 inline-flex h-12 items-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD] hover:shadow-[0_12px_30px_rgba(29,155,240,0.18)]"
             >
               View All Courses
               <span className="ml-2" aria-hidden="true">
@@ -163,7 +163,7 @@ export function CoursesShowcase() {
                     {featured[0].levels}
                   </div>
 
-                  <div className="absolute right-6 top-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-white/60 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20 group-hover:text-white/90">
+                  <div className="absolute right-6 top-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-white/80 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20 group-hover:text-white/90">
                     <span aria-hidden="true">↗</span>
                   </div>
 
@@ -172,7 +172,7 @@ export function CoursesShowcase() {
                       {featured[0].name}
                     </h3>
 
-                    <p className="mt-4 max-w-sm text-base leading-7 text-white/82">
+                    <p className="mt-4 max-w-sm text-base leading-7 text-white/90">
                       Master one of the world&apos;s most in-demand languages.
                     </p>
 
@@ -210,7 +210,7 @@ export function CoursesShowcase() {
                         {lang.levels}
                       </div>
 
-                      <div className="absolute right-5 bottom-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white/60 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20 group-hover:text-white/90">
+                      <div className="absolute right-5 bottom-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white/80 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20 group-hover:text-white/90">
                         <span aria-hidden="true">↗</span>
                       </div>
 
@@ -218,7 +218,7 @@ export function CoursesShowcase() {
                         <h3 className="font-heading text-3xl font-medium leading-none tracking-[-0.03em] text-white">
                           {lang.name}
                         </h3>
-                        <p className="mt-2 text-sm text-white/78">
+                        <p className="mt-2 text-sm text-white/88">
                           {lang.duration} · Hybrid
                         </p>
                       </div>
@@ -237,8 +237,8 @@ export function CoursesShowcase() {
           transition={{ duration: 0.55, delay: 0.25 }}
           className="relative mt-10 overflow-hidden"
         >
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#faf5f0] to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#faf5f0] to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#F5FAFF] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#F5FAFF] to-transparent" />
 
           <motion.div
             animate={shouldAnimateMarquee ? { x: ["0%", "-50%"] } : { x: "0%" }}
@@ -255,9 +255,9 @@ export function CoursesShowcase() {
                   whileHover={{ y: -3, scale: 1.03 }}
                   className="flex min-w-[152px] items-center gap-3 rounded-full border border-black/8 bg-white px-5 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.05)]"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#faf5f0]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5FAFF]">
                     {lang.slug === "soft-skills" ? (
-                      <GraduationCap className="h-5 w-5 text-[#c89f74]" />
+                      <GraduationCap className="h-5 w-5 text-[#1D9BF0]" />
                     ) : (
                       <img
                         src={`https://api.iconify.design/circle-flags:${langFlags[lang.slug]}.svg`}
@@ -274,7 +274,7 @@ export function CoursesShowcase() {
                     <span className="block text-sm font-semibold text-foreground">
                       {lang.name}
                     </span>
-                    <span className="block text-xs text-muted-foreground">
+                    <span className="block text-xs text-[#334155]">
                       {lang.duration}
                     </span>
                   </span>

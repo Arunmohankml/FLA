@@ -253,7 +253,7 @@ export function LearningRhythm() {
       <div ref={pinRef} className="relative bg-background">
         <div ref={headingRef} className="page-shell pt-0">
           <div className="mb-2 lg:mb-3">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
               Schedule
             </span>
 
@@ -261,7 +261,7 @@ export function LearningRhythm() {
               Choose Your Learning Rhythm
             </h2>
 
-            <p className="mt-2 hidden max-w-[315px] text-[15px] leading-7 text-muted-foreground sm:block sm:max-w-lg sm:text-base">
+            <p className="mt-2 hidden max-w-[315px] text-[15px] leading-7 text-[#334155] sm:block sm:max-w-lg sm:text-base">
               Pick morning, afternoon, or evening batches designed for online,
               offline, and hybrid learners.
             </p>
@@ -298,7 +298,7 @@ export function LearningRhythm() {
                       }}
                       className="absolute bottom-0 left-0 right-0 max-w-full sm:right-auto sm:max-w-xl"
                     >
-                      <span className="mb-2 inline-flex rounded-full bg-white/15 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md sm:mb-3 sm:text-[11px]">
+                      <span className="mb-2 inline-flex rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md sm:mb-3 sm:text-xs">
                         {rhythm.time}
                       </span>
 
@@ -306,7 +306,7 @@ export function LearningRhythm() {
                         {rhythm.label}
                       </h3>
 
-                      <p className="mt-2 max-w-[280px] text-xs leading-5 text-white/78 sm:mt-3 sm:max-w-md sm:text-base sm:leading-6">
+                      <p className="mt-2 max-w-[280px] text-xs leading-5 text-white/88 sm:mt-3 sm:max-w-md sm:text-base sm:leading-6">
                         {rhythm.note}
                       </p>
                     </div>
@@ -319,7 +319,7 @@ export function LearningRhythm() {
               <div className="relative hidden w-1 shrink-0 overflow-hidden rounded-full bg-black/5 lg:block">
                 <div
                   ref={progressRef}
-                  className="absolute inset-x-0 top-0 h-full rounded-full bg-[#e8734a]/45"
+                  className="absolute inset-x-0 top-0 h-full rounded-full bg-[#1D9BF0]/45"
                 />
               </div>
 
@@ -334,8 +334,8 @@ export function LearningRhythm() {
                     className={[
                       "flex size-12 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
                       active === index
-                        ? "border-[#e8734a]/35 bg-[#fff7f2] text-[#e8734a] shadow-[0_10px_26px_rgba(232,115,74,0.16)]"
-                        : "border-black/6 bg-white text-black/35",
+                        ? "border-[#1D9BF0]/35 bg-[#F5FAFF] text-[#1D9BF0] shadow-[0_10px_26px_rgba(29,155,240,0.16)]"
+                        : "border-black/6 bg-white text-black/55",
                     ].join(" ")}
                   >
                     {rhythm.icon}
@@ -353,15 +353,15 @@ export function LearningRhythm() {
                     className={[
                       "group relative min-w-full max-w-full snap-start overflow-hidden rounded-[22px] border p-4 text-left transition-all duration-500 sm:min-w-[270px] sm:max-w-none sm:p-5 lg:min-w-0 lg:rounded-[26px]",
                       active === index
-                        ? "border-[#e8734a]/18 bg-[#faf5f0] shadow-[0_18px_55px_rgba(0,0,0,0.055)]"
-                        : "border-black/5 bg-white hover:border-black/10 hover:bg-[#faf5f0]/45",
+                        ? "border-[#1D9BF0]/18 bg-[#F5FAFF] shadow-[0_18px_55px_rgba(0,0,0,0.055)]"
+                        : "border-black/5 bg-white hover:border-black/10 hover:bg-[#F5FAFF]/45",
                     ].join(" ")}
                   >
                     <div
                       className={[
                         "absolute inset-y-0 left-0 w-1 rounded-full transition-all duration-500",
                         active === index
-                          ? "bg-[#e8734a]/70 opacity-100"
+                          ? "bg-[#1D9BF0]/70 opacity-100"
                           : "bg-transparent opacity-0",
                       ].join(" ")}
                     />
@@ -371,8 +371,8 @@ export function LearningRhythm() {
                         className={[
                           "flex size-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 sm:size-12",
                           active === index
-                            ? "bg-white text-[#e8734a] shadow-[0_10px_30px_rgba(232,115,74,0.12)]"
-                            : "bg-[#faf5f0] text-black/35",
+                            ? "bg-white text-[#1D9BF0] shadow-[0_10px_30px_rgba(29,155,240,0.12)]"
+                            : "bg-[#F5FAFF] text-black/55",
                         ].join(" ")}
                       >
                         {rhythm.icon}
@@ -383,7 +383,7 @@ export function LearningRhythm() {
                           {rhythm.label}
                         </h4>
 
-                        <p className="mt-1 text-sm text-muted-foreground">
+                        <p className="mt-1 text-sm text-[#334155]">
                           {rhythm.time}
                         </p>
                       </div>
@@ -393,7 +393,7 @@ export function LearningRhythm() {
                           "hidden max-w-[150px] text-right text-xs font-semibold leading-5 transition-colors duration-500 sm:block",
                           active === index
                             ? "text-foreground"
-                            : "text-muted-foreground",
+                            : "text-[#334155]",
                         ].join(" ")}
                       >
                         {rhythm.desc}
@@ -403,7 +403,7 @@ export function LearningRhythm() {
                     <div className="mt-4 h-1 overflow-hidden rounded-full bg-black/[0.04]">
                       <div
                         className={[
-                          "h-full rounded-full bg-[#e8734a]/70 transition-all duration-700",
+                          "h-full rounded-full bg-[#1D9BF0]/70 transition-all duration-700",
                           active === index ? "w-full" : "w-0",
                         ].join(" ")}
                       />

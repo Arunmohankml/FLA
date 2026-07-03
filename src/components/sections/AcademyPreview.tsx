@@ -52,7 +52,7 @@ export function AcademyPreview() {
               <p className="text-3xl font-black tracking-tight">
                 <Counter end={1900} suffix="+" />
               </p>
-              <p className="text-sm font-medium text-muted-foreground">Students Enrolled</p>
+              <p className="text-sm font-medium text-[#334155]">Students Enrolled</p>
             </motion.div>
           </motion.div>
 
@@ -64,7 +64,7 @@ export function AcademyPreview() {
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
             className="order-1 lg:order-2"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
               About Us
             </span>
             <h2 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
@@ -72,18 +72,18 @@ export function AcademyPreview() {
               <br />
               learning since 2007
             </h2>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[#334155]">
               One of the best Language Academies - SUPER STAR among the
               world&apos;s best language academies with 18+ years of excellence.
             </p>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-md text-base leading-relaxed text-[#334155]">
               What started with two languages and a handful of students has grown
               into one of the city&apos;s most trusted language institutes, offering
               9 languages taught by certified native trainers.
             </p>
             <Link
               href="/about"
-              className="mt-8 inline-flex h-12 items-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition-all duration-300 hover:scale-105"
+              className="mt-8 inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
             >
               Learn More About Us →
             </Link>

@@ -30,7 +30,7 @@ export function StudentJourney() {
   return (
     <>
       <div className="text-center">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-black/40">
+        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
           Student Journey
         </span>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -51,13 +51,13 @@ export function StudentJourney() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group relative flex items-center gap-6"
             >
-              <div className="relative z-10 flex size-16 shrink-0 items-center justify-center rounded-xl border border-black/5 bg-white text-black/40 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 group-hover:shadow-[0_4px_16px_rgba(232,115,74,0.12)] group-hover:scale-105">
+              <div className="relative z-10 flex size-16 shrink-0 items-center justify-center rounded-xl border border-black/5 bg-white text-black/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 group-hover:shadow-[0_4px_16px_rgba(29,155,240,0.12)] group-hover:scale-105">
                 {step.icon}
               </div>
 
               <div className="py-4">
                 <h3 className="text-lg font-bold text-foreground">{step.title}</h3>
-                <p className="mt-0.5 text-sm text-muted-foreground">{step.desc}</p>
+                <p className="mt-0.5 text-sm text-[#334155]">{step.desc}</p>
               </div>
             </motion.div>
           ))}

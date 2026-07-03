@@ -40,7 +40,7 @@ export function TrustSection() {
                       : ""
                   } ${i > 0 ? "border-t border-black/8 pt-6 md:border-t-0 md:pt-0" : ""}`}
                 >
-                  <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-black/[0.04] text-black/40">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-black/[0.04] text-black/60">
                     <Icon className="size-5" />
                   </div>
                   <div className="min-w-0">
@@ -55,7 +55,7 @@ export function TrustSection() {
                     <p className="mt-0.5 text-sm font-semibold text-foreground">
                       {stat.label}
                     </p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
+                    <p className="mt-0.5 text-xs text-[#334155]">
                       {stat.description}
                     </p>
                   </div>

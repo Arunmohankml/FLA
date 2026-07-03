@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 const decorativePatterns = [
-  "from-[#e8734a]/8 to-[#e8734a]/3",
-  "from-[#1a2e2b]/6 to-[#1a2e2b]/2",
-  "from-[#e8734a]/6 to-[#d65a30]/3",
+  "from-[#1D9BF0]/8 to-[#1D9BF0]/3",
+  "from-[#EAF4FF] to-[#1D9BF0]/5",
+  "from-[#1D9BF0]/6 to-[#0C8BDD]/3",
 ];
 
 export default function BlogPage() {
@@ -30,7 +30,7 @@ export default function BlogPage() {
       {/* ── Header ──────────────────────────────────────── */}
       <section className="px-6 pt-20 pb-4 lg:px-12 lg:pt-28">
         <div className="mx-auto max-w-7xl">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
             Blog
           </span>
           <h1
@@ -39,7 +39,7 @@ export default function BlogPage() {
             Insights &amp; Articles
           </h1>
           <p
-            className="mt-5 max-w-xl text-lg leading-[1.6] text-muted-foreground"
+            className="mt-5 max-w-xl text-lg leading-[1.6] text-[#334155]"
           >
             Discover language learning tips, student stories, instructor
             interviews, and more.
@@ -66,28 +66,28 @@ export default function BlogPage() {
 
                   {/* Tag */}
                   {post.tags[0] && (
-                    <span className="inline-flex rounded-full bg-white/60 px-3 py-1 font-heading text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/60 backdrop-blur-sm">
+                    <span className="inline-flex rounded-full bg-white/60 px-3 py-1 font-heading text-xs font-semibold uppercase tracking-[0.15em] text-foreground/80 backdrop-blur-sm">
                       {post.tags[0]}
                     </span>
                   )}
 
                   {/* Title on decorative bg */}
-                  <h2 className="mt-4 font-heading text-2xl font-medium leading-[1.3] tracking-[-0.02em] text-foreground transition-colors group-hover:text-[#e8734a]">
+                  <h2 className="mt-4 font-heading text-2xl font-medium leading-[1.3] tracking-[-0.02em] text-foreground transition-colors group-hover:text-[#1D9BF0]">
                     {post.title}
                   </h2>
                 </div>
 
                 {/* Content area */}
                 <div className="flex flex-1 flex-col px-7 pb-7 pt-5">
-                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                  <p className="text-[15px] leading-7 text-[#334155] line-clamp-3">
                     {post.description}
                   </p>
 
                   <div className="mt-auto pt-5">
                     <div className="h-px bg-black/5" />
                     <div className="mt-4 flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">{post.date}</span>
-                      <span className="inline-flex h-10 items-center rounded-full border border-black/8 px-5 text-sm font-medium text-foreground transition-all duration-300 group-hover:border-[#e8734a]/30 group-hover:bg-[#e8734a] group-hover:text-white">
+                      <span className="text-sm text-[#334155]">{post.date}</span>
+                      <span className="inline-flex h-10 items-center rounded-full border border-black/8 px-5 text-sm font-medium text-foreground transition-all duration-300 group-hover:border-[#1D9BF0]/30 group-hover:bg-[#1D9BF0] group-hover:text-white">
                         View Article
                       </span>
                     </div>
@@ -102,27 +102,27 @@ export default function BlogPage() {
       {/* ── CTA section ──────────────────────────────────── */}
       <section className="px-6 pb-16 lg:px-12 lg:pb-24">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-[32px] bg-[#faf5f0] px-8 py-16 text-center lg:px-16">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
+          <div className="overflow-hidden rounded-[32px] bg-[#F5FAFF] px-8 py-16 text-center lg:px-16">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
               Stay Updated
             </span>
             <h2 className="mx-auto max-w-2xl font-heading text-3xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-4xl">
               Want to learn more about languages and culture?
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-base text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-lg text-base text-[#334155]">
               Follow us for tips, stories, and updates from the Foreign Language
               Academy community.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/courses"
-                className="inline-flex h-13 items-center rounded-full bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="inline-flex h-13 items-center rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD] hover:shadow-lg hover:shadow-[#1D9BF0]/20"
               >
                 Explore Courses →
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-13 items-center rounded-full border border-black/10 px-8 text-sm font-medium text-foreground transition-all duration-300 hover:bg-black/5"
+                className="inline-flex h-13 items-center rounded-full border border-[#1D9BF0]/30 bg-white px-8 text-sm font-medium text-[#0C8BDD] transition-all duration-300 hover:bg-[#EAF4FF]"
               >
                 Contact Us
               </Link>

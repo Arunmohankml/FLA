@@ -52,7 +52,7 @@ function LoginContent() {
       <div className="w-full max-w-sm space-y-8 text-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Admin Login</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-2 text-sm text-[#334155]">
             Sign in with your Google account to access the admin panel.
           </p>
         </div>
@@ -101,7 +101,7 @@ function LoginContent() {
           {signingIn ? "Signing in..." : "Continue with Google"}
         </button>
 
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-[#334155]">
           Only authorized admin accounts can access this panel.
         </p>
       </div>

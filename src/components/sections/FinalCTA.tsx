@@ -8,10 +8,10 @@ const MotionLink = motion.create(Link);
 
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-[#1a1a1a] px-6 py-24 lg:px-12 lg:py-36">
+    <section className="relative overflow-hidden bg-[#071D2E] px-6 py-24 lg:px-12 lg:py-36">
       {/* Background decorative elements */}
-      <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
-      <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
+      <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
+      <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
 
       <div className="relative mx-auto max-w-3xl text-center">
         <motion.div
@@ -20,7 +20,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
             Get Started
           </span>
           <h2 className="font-heading text-3xl font-medium leading-[1.33] tracking-[-0.02em] text-white sm:text-5xl">
@@ -28,9 +28,9 @@ export function FinalCTA() {
             <br />
             first sentence in a
             <br />
-            <span className="text-white/60">new language with FLA?</span>
+            <span className="text-white/80">new language with FLA?</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-lg text-white/50">
+          <p className="mx-auto mt-6 max-w-lg text-lg text-white/75">
             Book a free demo class. No payment required. No obligation.
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ export function FinalCTA() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 15, mass: 0.8 }}
-            className="inline-flex h-14 items-center rounded-full bg-white px-10 text-base font-semibold text-[#1a1a1a] transition-colors duration-200 hover:bg-white/90"
+            className="inline-flex h-14 items-center rounded-full bg-white px-10 text-base font-semibold text-[#071D2E] transition-colors duration-200 hover:bg-white/90"
           >
             Book Free Demo →
           </MotionLink>

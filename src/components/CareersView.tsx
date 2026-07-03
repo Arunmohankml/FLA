@@ -58,14 +58,14 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
               className="absolute inset-0 size-full object-cover opacity-[0.22]"
             />
             <div className="relative px-6 py-10 text-center sm:px-10 sm:py-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black/45 backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-black/65 backdrop-blur-sm">
                 <HiOutlineSparkles className="size-3.5" />
                 Careers at FLA
               </span>
               <h1 className="mx-auto mt-5 max-w-[12ch] font-heading text-[clamp(2.2rem,4.5vw,4.2rem)] font-medium leading-[0.95] tracking-[-0.06em] text-foreground">
                 We&apos;re Hiring
               </h1>
-              <p className="mx-auto mt-3 max-w-lg text-[15px] leading-6 text-black/50">
+              <p className="mx-auto mt-3 max-w-lg text-[15px] leading-6 text-black/70">
                 Join Foreign Language Academy and build a rewarding career in
                 education and student support. Explore our current openings and
                 become part of our growing team.
@@ -89,32 +89,32 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                       {job.title}
                     </h2>
                     <span
-                      className="shrink-0 rounded-full border px-2.5 py-0.5 text-[10px] font-semibold"
+                      className="shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold"
                       style={{
-                        borderColor: (job.accent || "#e8734a") + "35",
-                        color: job.accent || "#e8734a",
-                        backgroundColor: (job.accent || "#e8734a") + "10",
+                        borderColor: (job.accent || "#1D9BF0") + "35",
+                        color: job.accent || "#1D9BF0",
+                        backgroundColor: (job.accent || "#1D9BF0") + "10",
                       }}
                     >
                       ID:{job.code}
                     </span>
                   </div>
 
-                  <p className="mt-3 text-[13px] leading-5 text-black/45">
+                  <p className="mt-3 text-[15px] leading-7 text-black/65">
                     {job.description}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap items-center gap-3 text-[12px] text-black/40">
+                  <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-black/60">
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineLocationMarker className="size-3.5 text-[#b76042]" />
+                      <HiOutlineLocationMarker className="size-3.5 text-[#0C8BDD]" />
                       {job.location}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineBriefcase className="size-3.5 text-[#b76042]" />
+                      <HiOutlineBriefcase className="size-3.5 text-[#0C8BDD]" />
                       {job.workMode}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineClock className="size-3.5 text-[#b76042]" />
+                      <HiOutlineClock className="size-3.5 text-[#0C8BDD]" />
                       {job.employmentType}
                     </span>
                   </div>
@@ -122,14 +122,14 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                   <div className="mt-5 flex items-center gap-3">
                     <button
                       onClick={() => setSelected(job)}
-                      className="inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-foreground px-5 text-[13px] font-semibold text-background transition hover:bg-foreground/90"
+                      className="inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:bg-[#0C8BDD]"
                     >
                       Apply now
                       <HiOutlineArrowRight className="size-3.5" />
                     </button>
                     <button
                       onClick={() => setSelected(job)}
-                      className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-black/10 px-5 text-[13px] font-medium text-foreground transition hover:border-black/20 hover:bg-white/60"
+                      className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-black/10 px-5 text-sm font-medium text-foreground transition hover:border-black/20 hover:bg-white/60"
                     >
                       Details
                     </button>
@@ -142,7 +142,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
           {listings.length === 0 && (
             <div className="py-16 text-center">
               <HiOutlineBriefcase className="mx-auto size-10 text-black/20" />
-              <p className="mt-3 text-[14px] text-black/40">No positions available right now.</p>
+              <p className="mt-3 text-[15px] text-black/60">No positions available right now.</p>
             </div>
           )}
         </div>
@@ -165,7 +165,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
             >
               <button
                 onClick={closeModal}
-                className="absolute right-4 top-4 z-10 flex size-8 cursor-pointer items-center justify-center rounded-full bg-white/80 text-black/35 shadow-[0_2px_12px_rgba(0,0,0,0.08)] backdrop-blur-sm transition hover:bg-white hover:text-foreground"
+                className="absolute right-4 top-4 z-10 flex size-8 cursor-pointer items-center justify-center rounded-full bg-white/80 text-black/55 shadow-[0_2px_12px_rgba(0,0,0,0.08)] backdrop-blur-sm transition hover:bg-white hover:text-foreground"
                 aria-label="Close"
               >
                 <HiOutlineX className="size-4" />
@@ -179,112 +179,112 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                   <h3 className="mt-4 font-heading text-xl font-medium text-foreground">
                     Application submitted
                   </h3>
-                  <p className="mx-auto mt-2 max-w-xs text-[14px] leading-6 text-black/45">
+                  <p className="mx-auto mt-2 max-w-xs text-[15px] leading-7 text-black/65">
                     Thank you for applying to <strong>{selected.title}</strong>.
                     The team will review and get back to you.
                   </p>
                   <button
                     onClick={closeModal}
-                    className="mt-6 inline-flex h-10 cursor-pointer items-center justify-center rounded-full bg-foreground px-6 text-[13px] font-semibold text-background transition hover:bg-foreground/90"
+                    className="mt-6 inline-flex h-10 cursor-pointer items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:bg-[#0C8BDD]"
                   >
                     Done
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleApply}>
-                  <div className="bg-gradient-to-b from-[#fbf7f1] to-white px-6 pb-10 pt-8">
+                  <div className="bg-gradient-to-b from-[#F5FAFF] to-white px-6 pb-10 pt-8">
                     <h2 className="font-heading text-[22px] font-medium tracking-[-0.03em] text-foreground">
                       Apply for this position
                     </h2>
-                    <p className="mt-1.5 text-[13px] text-black/45">
+                    <p className="mt-1.5 text-sm text-black/65">
                       {selected.title} &middot; {selected.code} &middot; {selected.location}
                     </p>
                   </div>
 
                   <div className="space-y-5 px-6 pb-8">
                     {error && (
-                      <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-600">
+                      <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
                         {error}
                       </div>
                     )}
 
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
-                        <label className="block text-[13px] font-medium text-foreground">
-                          Full name <span className="text-[#b76042]">*</span>
+                        <label className="block text-sm font-medium text-foreground">
+                          Full name <span className="text-[#0C8BDD]">*</span>
                         </label>
                         <input
                           name="name"
                           required
                           placeholder="e.g. John Doe"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[14px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#e8734a]/30 focus:ring-3 focus:ring-[#e8734a]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
                         />
                       </div>
                       <div>
-                        <label className="block text-[13px] font-medium text-foreground">
-                          Email <span className="text-[#b76042]">*</span>
+                        <label className="block text-sm font-medium text-foreground">
+                          Email <span className="text-[#0C8BDD]">*</span>
                         </label>
                         <input
                           name="email"
                           required
                           type="email"
                           placeholder="e.g. john@example.com"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[14px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#e8734a]/30 focus:ring-3 focus:ring-[#e8734a]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
                         />
                       </div>
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
-                        <label className="block text-[13px] font-medium text-foreground">
-                          Phone / WhatsApp <span className="text-[#b76042]">*</span>
+                        <label className="block text-sm font-medium text-foreground">
+                          Phone / WhatsApp <span className="text-[#0C8BDD]">*</span>
                         </label>
                         <input
                           name="phone"
                           required
                           type="tel"
                           placeholder="e.g. +91 98765 43210"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[14px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#e8734a]/30 focus:ring-3 focus:ring-[#e8734a]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
                         />
                       </div>
                       <div>
-                        <label className="block text-[13px] font-medium text-foreground">
+                        <label className="block text-sm font-medium text-foreground">
                           Experience
                         </label>
                         <input
                           name="experience"
                           placeholder="e.g. 2 years"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 text-[14px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#e8734a]/30 focus:ring-3 focus:ring-[#e8734a]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-medium text-foreground">
+                      <label className="block text-sm font-medium text-foreground">
                         Why are you a good fit?
                       </label>
                       <textarea
                         name="message"
                         rows={3}
                         placeholder="Tell us about your experience and why you'd be a great addition…"
-                        className="mt-1.5 w-full resize-none rounded-xl border border-black/8 bg-[#fbf7f1] px-3.5 py-2.5 text-[14px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#e8734a]/30 focus:ring-3 focus:ring-[#e8734a]/8"
+                        className="mt-1.5 w-full resize-none rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 py-2.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
                       />
                     </div>
 
-                    <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[#fbf7f1]/50 px-4 py-3.5 text-[13px] text-black/40 transition hover:border-[#e8734a]/20 hover:bg-[#fbf7f1]">
-                      <HiOutlineUpload className="size-4 shrink-0 text-black/30" />
+                    <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[#F5FAFF]/50 px-4 py-3.5 text-sm text-black/60 transition hover:border-[#1D9BF0]/20 hover:bg-[#F5FAFF]">
+                      <HiOutlineUpload className="size-4 shrink-0 text-black/50" />
                       <span>Upload resume (PDF / DOC)</span>
                       <input
                         name="resume"
                         type="file"
                         accept=".pdf,.doc,.docx"
-                        className="ml-auto text-xs text-foreground file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-[#e8734a]/10 file:px-3 file:py-1 file:text-[11px] file:font-semibold file:text-[#b76042] file:transition file:hover:bg-[#e8734a]/20"
+                        className="ml-auto text-xs text-foreground file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-[#1D9BF0]/10 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-[#0C8BDD] file:transition file:hover:bg-[#1D9BF0]/20"
                       />
                     </div>
 
                     <button
                       disabled={loading}
-                      className="mt-2 inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground text-[14px] font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="mt-2 inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-[14px] font-semibold text-primary-foreground transition hover:bg-[#0C8BDD] disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       {loading ? "Submitting…" : "Submit application"}
                       {!loading && <HiOutlineArrowRight className="size-4" />}

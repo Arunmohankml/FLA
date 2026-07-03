@@ -30,8 +30,8 @@ function CertificationsMarquee() {
     <section className="bg-background pb-14 pt-4 lg:pb-20 lg:pt-6">
       <div className="page-shell">
         <div className="mb-8 max-w-2xl">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
-            <span className="size-1.5 rounded-full bg-[#e8734a]" />
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
+            <span className="size-1.5 rounded-full bg-[#1D9BF0]" />
             Recognition
           </span>
 
@@ -41,7 +41,7 @@ function CertificationsMarquee() {
             Partnerships
           </h2>
 
-          <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+          <p className="mt-4 max-w-xl text-base leading-7 text-[#334155]">
             Trusted certification-focused training, academic guidance, and
             globally relevant language preparation for students planning their
             next step.
@@ -199,8 +199,8 @@ export default function AboutPage() {
         <div className="pb-10 pt-8 lg:pb-12 lg:pt-12">
           <div className="page-shell grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#faf5f0] px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
-                <span className="size-1.5 rounded-full bg-[#e8734a]" />
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
+                <span className="size-1.5 rounded-full bg-[#1D9BF0]" />
                 About Us
               </span>
 
@@ -209,10 +209,10 @@ export default function AboutPage() {
                 <br />
                 language learning
                 <br />
-                <span className="text-muted-foreground">since 2007</span>
+                <span className="text-[#334155]">since 2007</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-muted-foreground">
+              <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-[#334155]">
                 Founded in 2007, Foreign Language Academy is now one of the largest and best-known
                 language schools in India and Germany. We offer over 100
                 courses yearly in 10+ languages with branches in Bangalore,
@@ -223,14 +223,14 @@ export default function AboutPage() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/courses"
-                  className="inline-flex h-14 items-center rounded-full bg-foreground px-8 text-base font-semibold text-background transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="inline-flex h-14 items-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD] hover:shadow-lg hover:shadow-[#1D9BF0]/20"
                 >
                   Our Courses →
                 </Link>
 
                 <Link
                   href="/contact"
-                  className="inline-flex h-14 items-center rounded-full border border-black/10 px-8 text-base font-medium text-foreground transition-all duration-300 hover:bg-black/5"
+                  className="inline-flex h-14 items-center rounded-full border border-[#1D9BF0]/30 bg-white px-8 text-base font-medium text-[#0C8BDD] transition-all duration-300 hover:bg-[#EAF4FF]"
                 >
                   Learn More
                 </Link>
@@ -253,12 +253,12 @@ export default function AboutPage() {
       <ApproachSection />
       <TrainersSection />
 
-      <section className="relative overflow-hidden bg-[#1a1a1a] py-16">
-        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
-        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#e8734a]/5 blur-[100px]" />
+      <section className="relative overflow-hidden bg-[#071D2E] py-16">
+        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
+        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
 
         <div className="relative page-shell max-w-3xl text-center">
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#e8734a]/10 bg-[#e8734a]/5 px-4 py-1.5 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e8734a]/50">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1D9BF0]/10 bg-[#1D9BF0]/5 px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#1D9BF0]/50">
             Get Started
           </span>
 
@@ -268,14 +268,14 @@ export default function AboutPage() {
             sentence in a new language with FLA?
           </h2>
 
-          <p className="mx-auto mt-4 max-w-md text-lg text-white/50">
+          <p className="mx-auto mt-4 max-w-md text-lg text-white/75">
             Book a free demo. No payment required. No obligation.
           </p>
 
           <div className="mt-8 flex items-center justify-center gap-3">
             <Link
               href="/register"
-              className="inline-flex h-14 items-center rounded-full bg-white px-8 text-base font-semibold text-[#1a1a1a] transition-all duration-300 hover:scale-105 hover:bg-white/90"
+              className="inline-flex h-14 items-center rounded-full bg-white px-8 text-base font-semibold text-[#071D2E] transition-all duration-300 hover:scale-105 hover:bg-white/90"
             >
               Book Free Demo →
             </Link>

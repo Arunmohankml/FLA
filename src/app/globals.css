@@ -49,29 +49,29 @@
 }
 
 :root {
-  --background: oklch(0.985 0.003 80);
-  --foreground: oklch(0.18 0.008 150);
-  --card: oklch(0.985 0.003 80);
-  --card-foreground: oklch(0.18 0.008 150);
-  --popover: oklch(0.985 0.003 80);
-  --popover-foreground: oklch(0.18 0.008 150);
-  --primary: oklch(0.62 0.18 40);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.92 0.005 80);
-  --secondary-foreground: oklch(0.18 0.008 150);
-  --muted: oklch(0.96 0.003 80);
-  --muted-foreground: oklch(0.55 0.01 150);
-  --accent: oklch(0.72 0.09 85);
-  --accent-foreground: oklch(0.18 0.008 150);
+  --background: #ffffff;
+  --foreground: #0f1419;
+  --card: #ffffff;
+  --card-foreground: #0f1419;
+  --popover: #ffffff;
+  --popover-foreground: #0f1419;
+  --primary: #1d9bf0;
+  --primary-foreground: #ffffff;
+  --secondary: #f5faff;
+  --secondary-foreground: #0f1419;
+  --muted: #f5faff;
+  --muted-foreground: #334155;
+  --accent: #eaf4ff;
+  --accent-foreground: #0f1419;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.005 80);
-  --input: oklch(0.88 0.005 80);
-  --ring: oklch(0.62 0.18 40);
-  --chart-1: oklch(0.62 0.18 40);
-  --chart-2: oklch(0.72 0.09 85);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --border: #dce8f5;
+  --input: #dce8f5;
+  --ring: #1d9bf0;
+  --chart-1: #1d9bf0;
+  --chart-2: #60a5fa;
+  --chart-3: #0f1419;
+  --chart-4: #536471;
+  --chart-5: #dce8f5;
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -81,8 +81,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --color-peach: #e8734a;
-  --color-warm: #faf5f0;
 }
 
 .dark {
@@ -120,7 +118,7 @@
 }
 
 .prose a:hover {
-  color: #666;
+  color: #0c8bdd;
 }
 
 @layer base {
@@ -130,6 +128,7 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    font-size: 16px;
   }
   html {
     @apply font-sans;
@@ -165,7 +164,7 @@
   }
 }
 .hero-grad {
-  background: linear-gradient(90deg, #fffdf0, #fef3c7, #fde68a);
+  background: linear-gradient(90deg, #ffffff, #eaf4ff, #1d9bf0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -178,7 +177,7 @@ html.lenis { scroll-behavior: auto; }
 /* Subtle scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(24, 24, 24, 0.22) transparent;
+  scrollbar-color: rgba(29, 155, 240, 0.35) transparent;
   -ms-overflow-style: auto;
 }
 
@@ -192,17 +191,17 @@ html.lenis { scroll-behavior: auto; }
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(24, 24, 24, 0.22);
+  background-color: rgba(29, 155, 240, 0.35);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(24, 24, 24, 0.34);
+  background-color: rgba(29, 155, 240, 0.5);
 }
 
 ::selection {
-  background-color: oklch(0.28 0.04 150 / 0.15);
-  color: oklch(0.18 0.008 150);
+  background-color: rgba(29, 155, 240, 0.18);
+  color: #0f1419;
 }
 
 /* Premium card system */
@@ -215,7 +214,7 @@ html.lenis { scroll-behavior: auto; }
 }
 .card-premium:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 40px rgba(29,155,240,0.12);
 }
 
 /* Letter Globe */
