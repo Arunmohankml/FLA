@@ -204,6 +204,130 @@ html.lenis { scroll-behavior: auto; }
   color: #0f1419;
 }
 
+/* Admin theme overrides: keep legacy admin utilities aligned with the blue brand. */
+.admin-theme {
+  color: #0f172a;
+}
+
+.admin-theme h1 {
+  color: #0f172a;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  line-height: 1.08;
+}
+
+.admin-theme h2,
+.admin-theme h3 {
+  color: #0f172a;
+}
+
+.admin-theme p,
+.admin-theme label,
+.admin-theme span,
+.admin-theme td,
+.admin-theme th,
+.admin-theme input,
+.admin-theme textarea,
+.admin-theme select,
+.admin-theme button,
+.admin-theme a {
+  font-size: max(1em, 15px);
+}
+
+.admin-theme [class*="text-xs"] {
+  font-size: 0.875rem !important;
+  line-height: 1.35rem !important;
+}
+
+.admin-theme [class*="text-sm"] {
+  font-size: 0.975rem !important;
+  line-height: 1.55rem !important;
+}
+
+.admin-theme [class*="text-black/30"],
+.admin-theme [class*="text-black/35"],
+.admin-theme [class*="text-black/40"],
+.admin-theme [class*="text-black/45"],
+.admin-theme [class*="text-black/50"],
+.admin-theme [class*="text-black/55"],
+.admin-theme [class*="text-black/60"],
+.admin-theme [class*="text-black/65"],
+.admin-theme [class*="text-black/70"],
+.admin-theme [class*="text-black/75"] {
+  color: #334155 !important;
+}
+
+.admin-theme [class*="text-foreground"] {
+  color: #0f172a !important;
+}
+
+.admin-theme [class*="placeholder:text-black/30"]::placeholder {
+  color: #64748b !important;
+}
+
+.admin-theme [class*="bg-[#faf5f0]"],
+.admin-theme [class*="bg-[#FBF3EA]"],
+.admin-theme [class*="bg-[#fffaf6]"],
+.admin-theme [class*="bg-[#f9e8dd]"] {
+  background-color: #f5faff !important;
+}
+
+.admin-theme [class*="bg-[#e8734a]"] {
+  background-color: #1d9bf0 !important;
+}
+
+.admin-theme [class*="bg-[#e8734a]/"],
+.admin-theme [class*="bg-[#c9573a]/"] {
+  background-color: rgba(29, 155, 240, 0.1) !important;
+}
+
+.admin-theme [class*="text-[#e8734a]"],
+.admin-theme [class*="text-[#c9573a]"] {
+  color: #0c8bdd !important;
+}
+
+.admin-theme [class*="border-[#eadfd6]"] {
+  border-color: #dce8f5 !important;
+}
+
+.admin-theme [class*="border-t-[#e8734a]"] {
+  border-top-color: #1d9bf0 !important;
+}
+
+.admin-theme [class*="hover:border-[#e8734a]"]:hover,
+.admin-theme [class*="hover:border-[#e8734a]/30"]:hover {
+  border-color: rgba(29, 155, 240, 0.55) !important;
+}
+
+.admin-theme [class*="focus:border-[#e8734a]"]:focus,
+.admin-theme [class*="focus:border-[#e8734a]/40"]:focus,
+.admin-theme [class*="focus:border-[#e8734a]/50"]:focus {
+  border-color: rgba(29, 155, 240, 0.55) !important;
+}
+
+.admin-theme [class*="focus:ring-[#e8734a]"]:focus,
+.admin-theme [class*="focus:ring-[#e8734a]/10"]:focus {
+  --tw-ring-color: rgba(29, 155, 240, 0.16) !important;
+}
+
+.admin-theme [class*="hover:bg-[#d65a30]"]:hover,
+.admin-theme [class*="hover:bg-[#e8734a]/15"]:hover {
+  background-color: #0c8bdd !important;
+}
+
+.admin-theme [class*="hover:bg-[#faf5f0]"]:hover {
+  background-color: #eaf4ff !important;
+}
+
+.admin-theme [class*="accent-[#e8734a]"] {
+  accent-color: #1d9bf0 !important;
+}
+
+.admin-theme input,
+.admin-theme textarea,
+.admin-theme select {
+  color: #0f172a;
+}
+
 /* Premium card system */
 .card-premium {
   background: white;

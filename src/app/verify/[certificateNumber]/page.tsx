@@ -6,7 +6,9 @@ import { VerifyClient } from "./VerifyClient";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Verify Certificate",
+  title: "Verify Foreign Language Academy Certificate",
+  description:
+    "Verify certificates issued by Foreign Language Academy for language courses and training programs.",
 };
 
 type CertRow = {

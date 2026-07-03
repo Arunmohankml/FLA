@@ -4,9 +4,9 @@ import { languages } from "@/lib/constants";
 import { CoursesClient } from "./CoursesClient";
 
 export const metadata: Metadata = {
-  title: "Courses",
+  title: "Foreign Language Academy Courses in Chennai",
   description:
-    "Explore our 9 language courses: German, French, Spanish, Japanese, Chinese, English, Russian, Korean, Italian. All levels A1–C2. Enroll now.",
+    "Explore Foreign Language Academy courses in Chennai: German, French, Spanish, Japanese, Chinese, English, Russian, Korean, and Italian from beginner to advanced levels.",
   alternates: {
     canonical: "https://foreignlanguageacademy.in/courses",
   },

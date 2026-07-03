@@ -6,7 +6,7 @@ import { HiOutlineCheckCircle, HiOutlineSparkles } from "react-icons/hi";
 
 const features = [
   "Consultative approach — we map your goals to our programs",
-  "Tailored recommendations across all 5 FLA streams",
+  "Tailored recommendations across Foreign Language Academy streams",
   "Explore global study, career, and immigration pathways",
   "No commitment required — just real, actionable guidance",
 ];
@@ -57,12 +57,12 @@ export function BookDemoClient() {
                   Book a demo
                 </span>
                 <h1 className="mt-5 font-heading text-[clamp(2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.06em] text-foreground">
-                  Discover your future with FLA
+                  Discover your future with Foreign Language Academy
                 </h1>
                 <p className="mt-3 max-w-md text-[15px] leading-6 text-black/70">
                   Not sure which programme fits your goals? Book a free demo
-                  session and we will walk you through everything FLA has to
-                  offer.
+                  session and we will walk you through everything Foreign
+                  Language Academy has to offer.
                 </p>
               </div>
             </div>
@@ -79,7 +79,7 @@ export function BookDemoClient() {
               <div className="relative h-56 lg:h-72">
                 <img
                   src="/image55.png"
-                  alt="FLA demo"
+                  alt="Foreign Language Academy demo counselling session"
                   className="size-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />

@@ -157,7 +157,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
                   {["🇩🇪", "🇫🇷", "🇯🇵"].map((f) => (
-                    <span key={f} className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-base">
+                    <span key={f} className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-base shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
                       {f}
                     </span>
                   ))}
@@ -181,13 +181,13 @@ export function CoursesClient({ languages }: CoursesClientProps) {
             className="mb-10"
           >
             <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
-              Explore Courses
+              Foreign Language Academy Courses
             </span>
             <h1 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
-              Find the Right Class for Your Journey
+              Find the Right Class at Foreign Language Academy
             </h1>
             <p className="mt-3 max-w-lg text-base text-[#334155]">
-              Discover beginner to advanced language programs for online
+              Discover beginner to advanced language programs with online
               classes, offline classroom training, and flexible hybrid batches.
             </p>
           </motion.div>

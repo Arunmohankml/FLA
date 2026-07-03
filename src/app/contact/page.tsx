@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Foreign Language Academy Chennai",
   description:
-    "Get in touch with Foreign Language Academy. Call +91 8129669247 or email aforeignlanguage@gmail.com. Located in Maruthi Nagar, Rajakilpakkam, Chennai.",
+    "Contact Foreign Language Academy in Chennai for course enquiries, demo classes, registrations, and language training support.",
   alternates: {
     canonical: "https://foreignlanguageacademy.in/contact",
   },

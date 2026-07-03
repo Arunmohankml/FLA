@@ -72,8 +72,8 @@ export function RegisterClient() {
               transition={{ duration: 0.5, delay: 0.15 }}
               className="mt-5 max-w-lg text-lg leading-[1.6] text-[#334155]"
             >
-              Fill in your details and we&apos;ll get you enrolled in the
-              perfect course. It only takes a few minutes.
+              Fill in your details and Foreign Language Academy will help you
+              enroll in the right course. It only takes a few minutes.
             </motion.p>
 
             {/* Steps */}

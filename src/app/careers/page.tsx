@@ -4,8 +4,9 @@ import { listCareerRows } from "@/lib/careerStore";
 import { CareersView } from "@/components/CareersView";
 
 export const metadata = {
-  title: "Careers | FLA",
-  description: "Explore career opportunities at Foreign Language Academy.",
+  title: "Careers at Foreign Language Academy",
+  description:
+    "Explore teaching, counselling, and student support careers at Foreign Language Academy in Chennai.",
 };
 
 export default async function CareersPage() {

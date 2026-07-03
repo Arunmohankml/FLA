@@ -77,7 +77,7 @@ export default function ContactClient() {
               transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
               className="font-heading text-5xl font-medium leading-[1.28] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-[72px]"
             >
-              Get in Touch
+              Contact Foreign Language Academy
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}

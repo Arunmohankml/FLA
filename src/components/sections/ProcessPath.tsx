@@ -1,8 +1,14 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -26,103 +32,167 @@ const steps = [
 ];
 
 export function ProcessPath() {
+  const lineRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imgRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const circleRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.85", "end 0.6"],
-  });
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const line = lineRef.current;
+      if (!line) return;
 
-  const desktopLineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+      gsap.set(line, { scaleX: 0, transformOrigin: "left center" });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      tl.to(line, { scaleX: 1, duration: 1.5, ease: "power2.inOut" });
+
+      circleRefs.current.forEach((circle, i) => {
+        if (!circle) return;
+        tl.from(circle, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: "back.out(2)",
+        }, 0.3 + (i / steps.length) * 1.2);
+      });
+
+      imgRefs.current.forEach((img, i) => {
+        if (!img) return;
+        const direction = i % 2 === 0 ? 1 : -1;
+        tl.from(img, {
+          scale: 0.85,
+          opacity: 0,
+          x: direction * 60,
+          duration: 0.6,
+          ease: "power3.out",
+        }, 0.5 + (i / steps.length) * 1.2);
+      });
+
+      cardRefs.current.forEach((card, i) => {
+        if (!card) return;
+        tl.from(card, {
+          y: 40,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        }, 0.5 + (i / steps.length) * 1.2);
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#F5FAFF] page-section py-16 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl">
-        {/* ── Header ──────────────────────────────────────── */}
+    <section className="relative overflow-hidden bg-[#F6FAFF] py-10 sm:py-12 lg:py-14">
+      <div
+        className="pointer-events-none absolute -bottom-80 left-1/2 h-[520px] w-[115vw] -translate-x-1/2 rounded-[50%] border border-[#B9D8FF]/55 bg-[#EAF4FF]/70"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute right-10 top-20 hidden size-40 opacity-55 lg:block"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #B8D8FF 1.8px, transparent 1.8px)",
+          backgroundSize: "18px 18px",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
+          className="mx-auto max-w-6xl text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
+          <span className="inline-flex rounded-full border border-[#B8D8FF] bg-[#F8FBFF] px-6 py-2 text-xs font-bold uppercase tracking-[0.24em] text-[#1D74E8] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
             How It Works
           </span>
-          <h2 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
+          <h2 className="mt-5 font-heading text-[clamp(2.35rem,4vw,3.85rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-[#111827] sm:whitespace-nowrap">
             Your Language Journey
           </h2>
         </motion.div>
 
-        {/* ── Steps ────────────────────────────────────── */}
-        <div className="relative grid gap-4 lg:grid-cols-3 lg:gap-10">
-          {/* Connecting line behind cards (desktop — horizontal, animated) */}
-          <div className="pointer-events-none absolute top-8 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] hidden lg:block">
-            <div className="h-px w-full bg-black/5">
-              <motion.div
-                style={{ scaleX: desktopLineScale, transformOrigin: "left center" }}
-                className="h-px w-full bg-[#1D9BF0]/30 will-change-transform"
-              />
-            </div>
+        <div ref={sectionRef} className="relative mt-10 lg:mt-12">
+          {/* Animated line */}
+          <div className="pointer-events-none absolute left-[15%] right-[15%] top-0 z-0 hidden lg:block">
+            <div
+              ref={lineRef}
+              className="h-px bg-[#83B8F6]"
+              style={{ width: "100%" }}
+            />
           </div>
 
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group relative text-center"
-            >
-              {/* Step number badge — desktop only */}
-              <motion.div
-                initial={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
-                whileInView={{
-                  boxShadow: [
-                    "0 2px 8px rgba(0,0,0,0.04)",
-                    "0 0 20px rgba(29,155,240,0.25), 0 0 40px rgba(29,155,240,0.1)",
-                    "0 2px 8px rgba(0,0,0,0.04)",
-                  ],
-                }}
-                viewport={{ once: false, amount: 0.8 }}
-                transition={{ duration: 1.2, delay: i * 0.2 }}
-                className="relative z-10 mx-auto mb-6 hidden size-16 items-center justify-center rounded-2xl border border-black/8 bg-white text-sm font-bold transition-all duration-300 group-hover:border-[#1D9BF0]/30 group-hover:bg-[#1D9BF0] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(29,155,240,0.15)] lg:flex"
+          {/* Static dots on the line */}
+          <div className="pointer-events-none absolute left-[15%] right-[15%] top-0 z-0 hidden h-px lg:block">
+            <span className="absolute left-1/4 top-1/2 size-3 -translate-y-1/2 rounded-full border-2 border-[#2582F2] bg-[#F6FAFF]" />
+            <span className="absolute left-3/4 top-1/2 size-3 -translate-y-1/2 rounded-full border-2 border-[#2582F2] bg-[#F6FAFF]" />
+          </div>
+
+          <div className="mx-auto grid max-w-[1160px] gap-5 lg:grid-cols-3 lg:gap-7">
+            {steps.map((step, i) => (
+              <div
+                key={step.num}
+                ref={(el) => { cardRefs.current[i] = el; }}
+                className="group relative z-10 pt-16 text-center lg:pt-20"
               >
-                <span className="transition-colors group-hover:text-white">{step.num}</span>
-              </motion.div>
+                {/* Number circle - centered on the line */}
+                <div
+                  ref={(el) => { circleRefs.current[i] = el; }}
+                  className="absolute left-1/2 top-0 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#DCEBFF] bg-white text-2xl font-bold tracking-[-0.04em] text-[#2179E8] shadow-[0_12px_26px_rgba(37,130,242,0.16)] lg:size-20 lg:text-[1.7rem]"
+                >
+                  {step.num}
+                </div>
 
-              {/* Image card */}
-              <div className="relative mx-auto mb-5 aspect-[4/3] w-full max-w-[320px] overflow-hidden rounded-[24px]">
-                <img
-                  src={step.image}
-                  alt={step.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="rounded-[26px] border border-[#DDEBFF] bg-white p-4 shadow-[0_16px_42px_rgba(29,116,232,0.11)] transition-transform duration-300 group-hover:-translate-y-1 sm:p-5 lg:rounded-[30px]">
+                  <div
+                    ref={(el) => { imgRefs.current[i] = el; }}
+                    className="relative aspect-[1.43] overflow-hidden rounded-[20px] bg-[#EAF4FF]"
+                  >
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 31vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+
+                  <h3 className="mt-5 font-heading text-xl font-semibold leading-tight tracking-[-0.03em] text-[#111827] lg:text-[1.45rem]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[#536174] lg:text-base">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
-
-              <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
-              <p className="mt-1.5 text-sm text-[#334155]">{step.desc}</p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* ── CTA ──────────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-12 text-center"
+          className="mt-8 text-center lg:mt-10"
         >
           <Link
-            href="/register"
-            className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
+            href="/book-demo"
+            className="inline-flex h-[52px] min-w-[230px] items-center justify-center gap-5 rounded-full bg-[#2179EE] px-8 text-base font-bold text-white shadow-[0_16px_34px_rgba(33,121,238,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2179EE]"
           >
-            Book Free Demo →
+            Book Free Demo
+            <ArrowRight className="size-5" aria-hidden="true" />
           </Link>
         </motion.div>
       </div>

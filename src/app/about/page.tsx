@@ -265,7 +265,7 @@ export default function AboutPage() {
           <h2 className="font-heading text-3xl font-medium leading-[1.33] tracking-[-0.02em] text-white sm:text-5xl">
             Ready to speak your first
             <br />
-            sentence in a new language with FLA?
+            sentence in a new language with Foreign Language Academy?
           </h2>
 
           <p className="mx-auto mt-4 max-w-md text-lg text-white/75">

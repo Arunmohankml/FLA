@@ -41,9 +41,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <div className="flex min-h-screen flex-col pt-16 lg:flex-row">
-      <aside className="hidden w-64 shrink-0 border-r border-black/5 bg-[#faf5f0] p-6 lg:block">
-        <h2 className="mb-6 text-[11px] font-bold uppercase tracking-[0.2em] text-black/40">
+    <div className="admin-theme flex min-h-screen flex-col bg-[#F5FAFF] pt-16 text-[#0F172A] lg:flex-row">
+      <aside className="hidden w-64 shrink-0 border-r border-[#DCE8F5] bg-white p-6 shadow-[8px_0_28px_rgba(29,155,240,0.06)] lg:block">
+        <h2 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#334155]">
           Admin Panel
         </h2>
         <nav className="flex flex-col gap-1">
@@ -56,10 +56,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
+                className={`rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-all ${
                   active
-                    ? "bg-[#e8734a]/10 text-[#e8734a] shadow-[0_1px_3px_rgba(232,115,74,0.08)]"
-                    : "text-black/50 hover:bg-white hover:text-black/80"
+                    ? "bg-[#EAF4FF] text-[#0C8BDD] shadow-[0_1px_8px_rgba(29,155,240,0.12)]"
+                    : "text-[#334155] hover:bg-[#F5FAFF] hover:text-[#0F172A]"
                 }`}
               >
                 {item.label}
@@ -70,14 +70,14 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
         <div className="mt-auto border-t border-black/5 pt-4">
           <div className="mb-3 px-4">
-            <p className="truncate text-xs text-black/40">{user?.email}</p>
-            <p className="text-xs font-medium text-black/70 capitalize">
+            <p className="truncate text-sm text-[#334155]">{user?.email}</p>
+            <p className="text-sm font-semibold text-[#0F172A] capitalize">
               {isOwner ? "Owner" : "Staff"}
             </p>
           </div>
           <button
             onClick={logout}
-            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-black/50 transition-all hover:bg-white hover:text-black/80"
+            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-[15px] font-semibold text-[#334155] transition-all hover:bg-[#F5FAFF] hover:text-[#0F172A]"
           >
             <HiOutlineLogout className="size-4" />
             Logout
@@ -85,7 +85,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <main className="flex-1 bg-white p-4 sm:p-6 lg:p-10">
+      <main className="flex-1 bg-[#F5FAFF] p-4 sm:p-6 lg:p-10">
         {children}
       </main>
 
@@ -101,22 +101,22 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               onClick={() => setMenuOpen(false)}
             />
             <motion.nav
-              className="fixed bottom-6 left-4 right-4 z-50 origin-bottom-left rounded-2xl border border-black/6 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.12)] lg:hidden"
+              className="fixed bottom-6 left-4 right-4 z-50 origin-bottom-left rounded-2xl border border-[#DCE8F5] bg-white shadow-[0_10px_40px_rgba(29,155,240,0.14)] lg:hidden"
               initial={{ opacity: 0, scale: 0.85, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 16 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center justify-between border-b border-black/6 px-5 py-3.5">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-black/40">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#334155]">
                   Admin Panel
                 </span>
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="flex size-7 items-center justify-center rounded-full hover:bg-black/5"
+                  className="flex size-8 items-center justify-center rounded-full hover:bg-[#F5FAFF]"
                   aria-label="Close menu"
                 >
-                  <HiOutlineX className="size-4 text-black/50" />
+                  <HiOutlineX className="size-4 text-[#334155]" />
                 </button>
               </div>
               <div className="max-h-[55vh] overflow-y-auto px-3 py-2">
@@ -131,10 +131,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className={`flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition-all ${
+                      className={`flex items-center gap-3 rounded-xl px-3 py-3 text-[15px] font-semibold transition-all ${
                         active
-                          ? "bg-[#e8734a]/10 text-[#e8734a]"
-                          : "text-black/50 hover:bg-[#faf5f0] hover:text-black/80"
+                          ? "bg-[#EAF4FF] text-[#0C8BDD]"
+                          : "text-[#334155] hover:bg-[#F5FAFF] hover:text-[#0F172A]"
                       }`}
                     >
                       <Icon className="size-5 shrink-0" />
@@ -146,10 +146,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <div className="border-t border-black/6 px-5 py-3.5">
                 <div className="mb-2.5 flex items-center justify-between">
                   <div className="min-w-0">
-                    <p className="truncate text-xs text-black/40">
+                    <p className="truncate text-sm text-[#334155]">
                       {user?.email}
                     </p>
-                    <p className="text-xs font-medium text-black/70 capitalize">
+                    <p className="text-sm font-semibold text-[#0F172A] capitalize">
                       {isOwner ? "Owner" : "Staff"}
                     </p>
                   </div>
@@ -158,7 +158,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                       logout();
                       setMenuOpen(false);
                     }}
-                    className="flex shrink-0 items-center gap-1.5 rounded-full border border-black/8 px-3 py-1.5 text-xs font-semibold text-black/50 transition-all hover:bg-red-50 hover:text-red-600"
+                    className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#DCE8F5] px-3 py-1.5 text-sm font-semibold text-[#334155] transition-all hover:bg-red-50 hover:text-red-600"
                   >
                     <HiOutlineLogout className="size-3.5" />
                     Logout
@@ -172,7 +172,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       <button
         onClick={() => setMenuOpen(true)}
-        className="fixed bottom-6 left-6 z-30 flex size-14 items-center justify-center rounded-2xl bg-foreground text-background shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform active:scale-95 lg:hidden"
+        className="fixed bottom-6 left-6 z-30 flex size-14 items-center justify-center rounded-2xl bg-[#1D9BF0] text-white shadow-[0_4px_16px_rgba(29,155,240,0.28)] transition-transform active:scale-95 lg:hidden"
         aria-label="Open admin menu"
       >
         <HiOutlineViewGrid className="size-6" />

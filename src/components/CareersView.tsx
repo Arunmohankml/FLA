@@ -60,7 +60,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
             <div className="relative px-6 py-10 text-center sm:px-10 sm:py-12">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-black/65 backdrop-blur-sm">
                 <HiOutlineSparkles className="size-3.5" />
-                Careers at FLA
+                Careers at Foreign Language Academy
               </span>
               <h1 className="mx-auto mt-5 max-w-[12ch] font-heading text-[clamp(2.2rem,4.5vw,4.2rem)] font-medium leading-[0.95] tracking-[-0.06em] text-foreground">
                 We&apos;re Hiring
