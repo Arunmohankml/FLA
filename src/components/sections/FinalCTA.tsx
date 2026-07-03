@@ -28,7 +28,11 @@ export function FinalCTA() {
             <br />
             first sentence in a
             <br />
+<<<<<<< HEAD
             <span className="text-white/80">new language with Foreign Language Academy?</span>
+=======
+            <span className="text-white/80">new language with FLA?</span>
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-lg text-white/75">
             Book a free demo class. No payment required. No obligation.

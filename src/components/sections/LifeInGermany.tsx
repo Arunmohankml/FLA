@@ -112,7 +112,11 @@ export function LifeInGermany() {
     <section className="bg-background">
       <div className="page-shell pt-3 lg:pt-4">
         <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
+<<<<<<< HEAD
           <div ref={textRef}>
+=======
+          <div>
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             <span className="mb-4 inline-flex w-fit rounded-full bg-[#6f4a36]/8 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#6f4a36]">
               Life in Europe
             </span>
@@ -148,7 +152,11 @@ export function LifeInGermany() {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div ref={imageRef} className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
+=======
+          <div className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             <img
               src="/euimage.png"
               alt="European study abroad and language learning"

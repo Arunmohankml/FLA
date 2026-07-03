@@ -17,7 +17,11 @@ export function Hero() {
           >
             Foreign Language Academy
             <br />
+<<<<<<< HEAD
             <span className="text-[#334155]">Your Gateway to Global Languages</span>
+=======
+            <span className="text-[#334155]">— Your Gateway to Global Languages</span>
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
           </motion.h1>
 
           <motion.p
@@ -90,6 +94,7 @@ export function Hero() {
           >
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
+<<<<<<< HEAD
                 <span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-[#1D9BF0] shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
                   <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 6 3 12 0v-5" /></svg>
                 </span>
@@ -97,6 +102,15 @@ export function Hero() {
                   <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
                 </span>
                 <span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-[#1D9BF0] shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+=======
+                <span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-[#1D9BF0]">
+                  <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 6 3 12 0v-5" /></svg>
+                </span>
+                <span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-[#1D9BF0]">
+                  <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                </span>
+                <span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-white text-[#1D9BF0]">
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
                   <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                 </span>
               </div>

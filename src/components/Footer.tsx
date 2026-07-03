@@ -11,9 +11,13 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-bold text-primary">{site.name}</h3>
             <p className="text-[15px] leading-7 text-[#334155]">
+<<<<<<< HEAD
               Foreign Language Academy helps learners in Chennai build
               exam-ready fluency through certified trainers, practical speaking
               practice, and flexible online or offline batches.
+=======
+              {site.tagline}
+>>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             </p>
           </div>
 
