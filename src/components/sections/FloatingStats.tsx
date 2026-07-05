@@ -30,8 +30,8 @@ export function FloatingStats() {
   const banner11 = useSiteMedia("group-discussion", mediaFallbacks["group-discussion"]);
 
   return (
-    <section className="py-16 lg:py-24">
-      <div className="page-shell">
+    <section className="blue-section py-16 lg:py-24">
+      <div className="page-shell relative z-10">
         {/* ── Asymmetric layout: image + testimonials ──────── */}
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — Image */}
@@ -40,7 +40,7 @@ export function FloatingStats() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black/10"
+            className="blue-card relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black/10"
           >
             <MediaImage
               src={banner11}
@@ -94,7 +94,7 @@ export function FloatingStats() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                  className="group rounded-2xl border border-black/5 bg-white p-6 shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1"
+                  className="blue-card blue-card-hover group rounded-2xl p-6"
                 >
                   <div className="flex items-start gap-4">
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F5FAFF] text-xl">

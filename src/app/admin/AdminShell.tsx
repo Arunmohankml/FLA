@@ -58,7 +58,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                 href={item.href}
                 className={`rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-all ${
                   active
-                    ? "bg-[#EAF4FF] text-[#0C8BDD] shadow-[0_1px_8px_rgba(29,155,240,0.12)]"
+                    ? "bg-[#EAF4FF] text-[#0c2847] shadow-[0_1px_8px_rgba(29,155,240,0.12)]"
                     : "text-[#334155] hover:bg-[#F5FAFF] hover:text-[#0F172A]"
                 }`}
               >
@@ -133,7 +133,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                       onClick={() => setMenuOpen(false)}
                       className={`flex items-center gap-3 rounded-xl px-3 py-3 text-[15px] font-semibold transition-all ${
                         active
-                          ? "bg-[#EAF4FF] text-[#0C8BDD]"
+                          ? "bg-[#EAF4FF] text-[#0c2847]"
                           : "text-[#334155] hover:bg-[#F5FAFF] hover:text-[#0F172A]"
                       }`}
                     >
@@ -172,7 +172,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       <button
         onClick={() => setMenuOpen(true)}
-        className="fixed bottom-6 left-6 z-30 flex size-14 items-center justify-center rounded-2xl bg-[#1D9BF0] text-white shadow-[0_4px_16px_rgba(29,155,240,0.28)] transition-transform active:scale-95 lg:hidden"
+        className="fixed bottom-6 left-6 z-30 flex size-14 items-center justify-center rounded-2xl bg-[#0c2847] text-white shadow-[0_4px_16px_rgba(29,155,240,0.28)] transition-transform active:scale-95 lg:hidden"
         aria-label="Open admin menu"
       >
         <HiOutlineViewGrid className="size-6" />

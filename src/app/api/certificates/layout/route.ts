@@ -23,7 +23,7 @@ export async function PUT(req: NextRequest) {
     const fileContent = `/**
  * Certificate layout.
  *
- * Coordinates are absolute pixels on public/certificate.png.
+ * Coordinates are absolute pixels on public/ourcert/Peter changes.pdf (A4).pdf.
  * The template is the final artwork; only these values are drawn onto it.
  */
 

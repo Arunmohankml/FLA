@@ -79,13 +79,12 @@ export function LifeInGermany() {
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: pinRef.current,
+          trigger: wrapperRef.current,
           start: "top top",
-          end: `+=${(cards.length - 1) * 100}%`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 0.35,
+          end: "bottom bottom",
+          scrub: 0.75,
           invalidateOnRefresh: true,
+          refreshPriority: -1,
         },
       });
 
@@ -100,7 +99,7 @@ export function LifeInGermany() {
             duration: 1,
             ease: "power2.out",
           },
-          i - 1
+          i - 1,
         );
       });
     }, wrapperRef);
@@ -109,6 +108,7 @@ export function LifeInGermany() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <section className="bg-background">
       <div className="page-shell pt-3 lg:pt-4">
         <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
@@ -118,14 +118,24 @@ export function LifeInGermany() {
           <div>
 >>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             <span className="mb-4 inline-flex w-fit rounded-full bg-[#6f4a36]/8 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#6f4a36]">
+=======
+    <section className="wave-pattern-bg blue-section !overflow-visible">
+      <div className="page-shell relative z-10 pt-8 lg:pt-10">
+        <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
+          <div
+            ref={textRef}
+            className="blue-dark-panel blue-orbit-bg rounded-[34px] p-6 shadow-[0_28px_90px_rgba(6,33,61,0.2)] sm:p-8 lg:p-10"
+          >
+            <span className="mb-4 inline-flex w-fit rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#B9E2FF]">
+>>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
               Life in Europe
             </span>
 
-            <h2 className="max-w-2xl font-heading text-[clamp(1.8rem,3.2vw,3rem)] font-medium leading-[1.02] tracking-[-0.04em] text-foreground">
+            <h2 className="max-w-2xl font-heading text-[clamp(1.8rem,3.2vw,3rem)] font-medium leading-[1.02] tracking-[-0.04em] text-white">
               Europe opens doors to healthcare success
             </h2>
 
-            <p className="mt-3 max-w-md text-[15px] leading-7 text-black/70">
+            <p className="mt-3 max-w-md text-[15px] leading-7 text-white/75">
               Master the language, earn globally recognised certifications, and
               prepare for international study, work, and career opportunities
               with expert guidance, practical learning, and personalized support
@@ -135,7 +145,7 @@ export function LifeInGermany() {
             <div className="mt-6 flex items-center gap-4">
               <Link
                 href="/courses"
-                className="inline-flex h-10 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD]"
+                className="inline-flex h-10 items-center rounded-full bg-white px-6 text-sm font-semibold text-[#0c2847] transition duration-300 hover:-translate-y-0.5 hover:bg-[#EAF4FF]"
               >
                 Explore Courses
                 <span className="ml-1.5" aria-hidden="true">
@@ -145,7 +155,7 @@ export function LifeInGermany() {
 
               <Link
                 href="/book-demo"
-                className="text-sm font-semibold text-foreground/80 underline decoration-black/15 underline-offset-4 transition-colors hover:text-foreground"
+                className="text-sm font-semibold text-white/80 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
               >
                 Book Free Demo
               </Link>
@@ -153,12 +163,19 @@ export function LifeInGermany() {
           </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           <div ref={imageRef} className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
 =======
           <div className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
 >>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
+=======
+          <div
+            ref={imageRef}
+            className="blue-card relative hidden overflow-hidden rounded-[28px] lg:block"
+          >
+>>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
             <img
-              src="/euimage.png"
+              src="/euimage.webp"
               alt="European study abroad and language learning"
               loading="lazy"
               decoding="async"
@@ -170,10 +187,14 @@ export function LifeInGermany() {
       </div>
 
       {/* Scroll-pinned stacking area */}
-      <div ref={wrapperRef} className="relative mt-10">
+      <div
+        ref={wrapperRef}
+        data-parallax-section="country-cards"
+        className="relative mt-10 h-[400vh]"
+      >
         <div
           ref={pinRef}
-          className="relative flex h-screen items-center justify-center overflow-hidden"
+          className="sticky top-0 flex h-screen items-center justify-center overflow-hidden"
         >
           <div className="page-shell relative flex h-[64vh] w-full items-center justify-center">
             {cards.map((card, index) => (
@@ -182,7 +203,7 @@ export function LifeInGermany() {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className="absolute inset-x-0 mx-auto h-full w-full max-w-[900px] overflow-hidden rounded-[28px] border border-black/5 shadow-[0_28px_80px_rgba(0,0,0,0.28)]"
+                className="absolute inset-x-0 mx-auto h-full w-full max-w-[1200px] overflow-hidden rounded-[28px] border border-black/5 shadow-[0_28px_80px_rgba(0,0,0,0.28)]"
                 style={{ zIndex: index + 1 }}
               >
                 <img

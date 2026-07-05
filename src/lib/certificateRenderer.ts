@@ -1,11 +1,13 @@
-import type { CanvasRenderingContext2D, Image } from "canvas";
-import QRCode from "qrcode";
-import { loadImage } from "canvas";
+import {
+  PDFDocument,
+  PDFFont,
+  PDFPage,
+  StandardFonts,
+  rgb,
+} from "pdf-lib";
 import { certificateLayout, CertificateLayout, LayoutField } from "@/lib/certificateLayout";
 
 export type CertificateValues = Record<string, string>;
-
-type RenderMode = "values" | "calibration";
 
 const FIELD_KEYS: Array<keyof Omit<CertificateLayout, "qr">> = [
   "studentName",
@@ -13,16 +15,10 @@ const FIELD_KEYS: Array<keyof Omit<CertificateLayout, "qr">> = [
   "language",
   "leftGrade",
   "monthYear",
-  "firstName",
-  "surname",
-  "dob",
-  "birthPlace",
-  "examDate",
-  "examPlace",
-  "reading",
   "listening",
-  "writing",
   "oral",
+  "reading",
+  "writing",
   "total",
   "resultGrade",
   "issuePlace",
@@ -35,13 +31,10 @@ const VALUE_MAP: Record<keyof Omit<CertificateLayout, "qr">, string | ((values: 
   level: "courseLevel",
   language: (values) => cleanLanguage(values.courseName),
   leftGrade: "grade",
-  monthYear: (values) => values.monthYear || formatMonthYear(values.dateOfExam) || formatMonthYear(values.issueDate),
-  firstName: "firstName",
-  surname: "surname",
-  dob: "dateOfBirth",
-  birthPlace: "placeOfBirth",
-  examDate: "dateOfExam",
-  examPlace: "placeOfExam",
+  monthYear: (values) =>
+    values.monthYear ||
+    formatMonthYear(values.dateOfExam) ||
+    formatMonthYear(values.issueDate),
   reading: "readingScore",
   listening: "listeningScore",
   writing: "writtenExpressionScore",
@@ -51,6 +44,31 @@ const VALUE_MAP: Record<keyof Omit<CertificateLayout, "qr">, string | ((values: 
   issuePlace: "issuePlace",
   issueDate: "issueDate",
   certificateNumber: "certificateNumber",
+};
+
+const SAMPLE_VALUES: CertificateValues = {
+  studentFullName: "Arun mohan k",
+  courseLevel: "A1",
+  courseName: "German Language",
+  grade: "Very good",
+  monthYear: "March 2025",
+  listeningScore: "32",
+  oralTestScore: "56",
+  readingScore: "76",
+  writtenExpressionScore: "33",
+  totalScore: "197",
+  issuePlace: "Chennai",
+  issueDate: "22/03/2025",
+  certificateNumber: "FLA-251-23913",
+};
+
+type FontSet = {
+  sans: PDFFont;
+  sansBold: PDFFont;
+  serif: PDFFont;
+  serifBold: PDFFont;
+  serifItalic: PDFFont;
+  serifBoldItalic: PDFFont;
 };
 
 function resolveValue(values: CertificateValues, key: keyof Omit<CertificateLayout, "qr">) {
@@ -92,107 +110,128 @@ function formatMonthYear(value = "") {
   return months[monthIndex] ? `${months[monthIndex]} ${year}` : trimmed;
 }
 
-function fontFor(field: LayoutField) {
-  const family = field.family === "serif" ? 'Georgia, "Times New Roman", serif' : "Arial, sans-serif";
-  const style = field.style ? `${field.style} ` : "";
-  const weight = field.weight ? `${field.weight} ` : "";
-  return `${style}${weight}${field.fontSize}px ${family}`;
+function colorToRgb(color = "#111111") {
+  const hex = color.replace("#", "");
+  const normalized = hex.length === 3
+    ? hex.split("").map((char) => `${char}${char}`).join("")
+    : hex;
+
+  const value = Number.parseInt(normalized, 16);
+  return rgb(
+    ((value >> 16) & 255) / 255,
+    ((value >> 8) & 255) / 255,
+    (value & 255) / 255
+  );
 }
 
-function shrinkToFit(ctx: CanvasRenderingContext2D, value: string, field: LayoutField) {
-  if (!field.maxWidth) return;
+function fontFor(field: LayoutField, fonts: FontSet) {
+  const numericWeight = Number(field.weight ?? "400");
+  const isBold = Number.isFinite(numericWeight)
+    ? numericWeight >= 700
+    : field.weight === "bold";
 
-  let size = field.fontSize;
-  while (size > 8) {
-    ctx.font = fontFor({ ...field, fontSize: size });
-    if (ctx.measureText(value).width <= field.maxWidth) break;
-    size -= 1;
+  if (field.family === "serif") {
+    if (field.style === "italic" && isBold) {
+      return fonts.serifBoldItalic;
+    }
+    return field.style === "italic" ? fonts.serifItalic : fonts.serif;
   }
+
+  return isBold ? fonts.sansBold : fonts.sans;
 }
 
-function drawValue(ctx: CanvasRenderingContext2D, field: LayoutField, value: string) {
+function fittedSize(font: PDFFont, value: string, field: LayoutField, scaleX: number) {
+  if (!field.maxWidth) return field.fontSize * scaleX;
+
+  let size = field.fontSize * scaleX;
+  const minSize = (field.minFontSize ?? 5) * scaleX;
+  const maxWidth = field.maxWidth * scaleX;
+
+  while (size > minSize && font.widthOfTextAtSize(value, size) > maxWidth) {
+    size -= 0.5;
+  }
+
+  return size;
+}
+
+function drawValue({
+  page,
+  fonts,
+  sourceWidth,
+  sourceHeight,
+  field,
+  value,
+}: {
+  page: PDFPage;
+  fonts: FontSet;
+  sourceWidth: number;
+  sourceHeight: number;
+  field: LayoutField;
+  value: string;
+}) {
   if (!value) return;
 
-  ctx.save();
-  ctx.fillStyle = field.color ?? "#111111";
-  ctx.textAlign = field.align ?? "left";
-  ctx.textBaseline = field.baseline ?? "alphabetic";
-  ctx.font = fontFor(field);
-  shrinkToFit(ctx, value, field);
-  ctx.fillText(value, field.x, field.y);
-  ctx.restore();
+  const { width, height } = page.getSize();
+  const scaleX = width / sourceWidth;
+  const scaleY = height / sourceHeight;
+  const font = fontFor(field, fonts);
+  const size = fittedSize(font, value, field, scaleX);
+  const textWidth = font.widthOfTextAtSize(value, size);
+
+  let x = field.x * scaleX;
+  if (field.align === "center") x -= textWidth / 2;
+  if (field.align === "right") x -= textWidth;
+
+  const y = height - field.y * scaleY;
+
+  page.drawText(value, {
+    x,
+    y,
+    size,
+    font,
+    color: colorToRgb(field.color),
+  });
 }
 
-function drawCalibrationMark(ctx: CanvasRenderingContext2D, name: string, x: number, y: number) {
-  ctx.save();
-  ctx.fillStyle = "#dc2626";
-  ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(x, y, 5, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
+async function embedFonts(pdfDoc: PDFDocument): Promise<FontSet> {
+  const [sans, sansBold, serif, serifBold, serifItalic, serifBoldItalic] =
+    await Promise.all([
+      pdfDoc.embedFont(StandardFonts.Helvetica),
+      pdfDoc.embedFont(StandardFonts.HelveticaBold),
+      pdfDoc.embedFont(StandardFonts.TimesRoman),
+      pdfDoc.embedFont(StandardFonts.TimesRomanBold),
+      pdfDoc.embedFont(StandardFonts.TimesRomanItalic),
+      pdfDoc.embedFont(StandardFonts.TimesRomanBoldItalic),
+    ]);
 
-  ctx.font = "700 14px Arial, sans-serif";
-  ctx.textAlign = "left";
-  ctx.textBaseline = "middle";
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = "#ffffff";
-  ctx.strokeText(name, x + 9, y);
-  ctx.fillText(name, x + 9, y);
-  ctx.restore();
+  return { sans, sansBold, serif, serifBold, serifItalic, serifBoldItalic };
 }
 
-export async function drawCertificate({
-  ctx,
-  template,
-  values,
-  verifyUrl,
-  mode = "values",
-}: {
-  ctx: CanvasRenderingContext2D;
-  template: Image;
-  values: CertificateValues;
-  verifyUrl: string;
-  mode?: RenderMode;
-}) {
-  ctx.clearRect(0, 0, template.width, template.height);
-  ctx.drawImage(template, 0, 0, template.width, template.height);
+export async function renderCertificatePdf(
+  templatePdf: ArrayBuffer | Uint8Array,
+  values: CertificateValues
+) {
+  const pdfDoc = await PDFDocument.load(templatePdf);
+  const page = pdfDoc.getPage(0);
+  const fonts = await embedFonts(pdfDoc);
 
-  if (mode === "calibration") {
-    for (const key of FIELD_KEYS) {
-      const field = certificateLayout[key];
-      drawCalibrationMark(ctx, key, field.x, field.y);
-    }
-    drawCalibrationMark(ctx, "qr", certificateLayout.qr.x, certificateLayout.qr.y);
-    ctx.save();
-    ctx.strokeStyle = "#dc2626";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(
-      certificateLayout.qr.x,
-      certificateLayout.qr.y,
-      certificateLayout.qr.size,
-      certificateLayout.qr.size
-    );
-    ctx.restore();
-    return;
-  }
+  const sourceWidth = 794;
+  const sourceHeight = 1123;
 
   for (const key of FIELD_KEYS) {
-    drawValue(ctx, certificateLayout[key], resolveValue(values, key));
+    drawValue({
+      page,
+      fonts,
+      sourceWidth,
+      sourceHeight,
+      field: certificateLayout[key],
+      value: resolveValue(values, key),
+    });
   }
 
-  const qrDataUrl = await QRCode.toDataURL(verifyUrl, {
-    width: certificateLayout.qr.size * 2,
-    margin: 1,
-    color: { dark: "#111111", light: "#ffffff" },
-  });
-  const qrImg = await loadImage(qrDataUrl);
-  ctx.drawImage(
-    qrImg,
-    certificateLayout.qr.x,
-    certificateLayout.qr.y,
-    certificateLayout.qr.size,
-    certificateLayout.qr.size
-  );
+  return pdfDoc.save();
+}
+
+export async function renderSampleCertificatePdf(templatePdf: ArrayBuffer | Uint8Array) {
+  return renderCertificatePdf(templatePdf, SAMPLE_VALUES);
 }

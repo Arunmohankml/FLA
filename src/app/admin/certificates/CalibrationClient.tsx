@@ -34,12 +34,6 @@ interface CertificateLayout {
   language: LayoutField;
   leftGrade: LayoutField;
   monthYear: LayoutField;
-  firstName: LayoutField;
-  surname: LayoutField;
-  dob: LayoutField;
-  birthPlace: LayoutField;
-  examDate: LayoutField;
-  examPlace: LayoutField;
   reading: LayoutField;
   listening: LayoutField;
   writing: LayoutField;
@@ -58,12 +52,6 @@ const FIELD_LABELS: Record<string, string> = {
   language: "Language",
   leftGrade: "Left Grade",
   monthYear: "Month / Year",
-  firstName: "First Name",
-  surname: "Surname",
-  dob: "Date of Birth",
-  birthPlace: "Place of Birth",
-  examDate: "Date of Exam",
-  examPlace: "Place of Exam",
   reading: "Reading",
   listening: "Listening",
   writing: "Writing",
@@ -345,7 +333,7 @@ export function CalibrationClient() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={imgRef}
-          src="/certificate.png"
+          src="/ourcert/Peter%20changes.pdf%20(A4).svg"
           alt="Certificate template"
           onLoad={handleImgLoad}
           className="w-full rounded-xl border border-black/10"

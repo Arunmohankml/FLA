@@ -22,7 +22,7 @@ const stagger = {
 };
 
 export function CourseClient({ course, otherCourses }: CourseClientProps) {
-  const heroImg = langImages[course.slug] || "/image37.png";
+  const heroImg = langImages[course.slug] || "/image37.webp";
 
   return (
     <>
@@ -40,7 +40,7 @@ export function CourseClient({ course, otherCourses }: CourseClientProps) {
 
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
-                <span className="size-1.5 rounded-full bg-[#1D9BF0] animate-pulse" />
+                <span className="size-1.5 rounded-full bg-[#0c2847] animate-pulse" />
                 Language Course
               </span>
               <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
@@ -64,7 +64,7 @@ export function CourseClient({ course, otherCourses }: CourseClientProps) {
                 </div>
                 <Link
                   href="/register"
-                  className="ml-auto hidden items-center rounded-full bg-[#1D9BF0] px-6 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0C8BDD] sm:inline-flex"
+                  className="ml-auto hidden items-center rounded-full bg-[#0c2847] px-6 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0c2847] sm:inline-flex"
                 >
                   Register Now →
                 </Link>
@@ -153,7 +153,7 @@ export function CourseClient({ course, otherCourses }: CourseClientProps) {
                   <span className="text-xs font-bold uppercase tracking-[2px] text-[#334155]">
                     {level.level}
                   </span>
-                  <span className="rounded-full bg-[#1D9BF0] px-3 py-1 text-xs font-semibold text-white">
+                  <span className="rounded-full bg-[#0c2847] px-3 py-1 text-xs font-semibold text-white">
                     {level.title}
                   </span>
                 </div>
@@ -344,7 +344,7 @@ export function CourseClient({ course, otherCourses }: CourseClientProps) {
           <div className="mt-8 flex items-center justify-center gap-4">
             <Link
               href="/register"
-              className="inline-flex h-14 items-center rounded-full bg-[#1D9BF0] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#0C8BDD]"
+              className="inline-flex h-14 items-center rounded-full bg-[#0c2847] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#0c2847]"
             >
               Book Free Demo →
             </Link>

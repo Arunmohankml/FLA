@@ -27,12 +27,16 @@ export function Navbar() {
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
       animate={{
-        backgroundColor: showWhite ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0)",
+        backgroundColor: showWhite ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0)",
         boxShadow: showWhite
-          ? "0 4px 24px rgba(15,20,25,0.06)"
+          ? "0 14px 45px rgba(0,0,0,0.10)"
           : "0 2px 12px rgba(0,0,0,0.1)",
       }}
       transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
+      style={{
+        borderBottom: showWhite ? "1px solid rgba(185,226,255,0.55)" : "1px solid transparent",
+        backdropFilter: showWhite ? "blur(18px)" : undefined,
+      }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-12">
         <Link
@@ -58,11 +62,11 @@ export function Navbar() {
               <motion.span
                 animate={{
                   color: pathname === item.href
-                    ? showWhite ? "#1D9BF0" : "#ffffff"
+                    ? showWhite ? "#0c2847" : "#ffffff"
                     : showWhite ? "#536471" : "rgba(255,255,255,0.7)",
                 }}
                 whileHover={{
-                  color: showWhite ? "#1D9BF0" : "#ffffff",
+                  color: showWhite ? "#0c2847" : "#ffffff",
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -92,8 +96,8 @@ export function Navbar() {
           <motion.div
             animate={{
               backgroundColor: showWhite ? "#EAF4FF" : "rgba(29,155,240,0.18)",
-              borderColor: "rgba(29,155,240,0.24)",
-              color: "#0C8BDD",
+              borderColor: "rgba(12,40,71,0.24)",
+              color: "#0c2847",
             }}
             whileHover={{
               backgroundColor: showWhite ? "#DCEEFF" : "rgba(29,155,240,0.28)",
@@ -105,12 +109,13 @@ export function Navbar() {
           </motion.div>
           <motion.div
             animate={{
-              backgroundColor: showWhite ? "#1D9BF0" : "rgba(255,255,255,0.1)",
+              backgroundColor: showWhite ? "#0c2847" : "rgba(255,255,255,0.1)",
               borderColor: showWhite ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.2)",
               color: showWhite ? "#ffffff" : "#ffffff",
             }}
             whileHover={{
-              backgroundColor: showWhite ? "#0C8BDD" : "rgba(255,255,255,0.2)",
+              backgroundColor: showWhite ? "#1a4a7a" : "rgba(255,255,255,0.2)",
+              boxShadow: showWhite ? "0 14px 34px rgba(12,40,71,0.28)" : "none",
             }}
             transition={{ duration: 0.3 }}
             className="rounded-full px-5 py-2 text-sm font-medium"
@@ -166,9 +171,9 @@ export function Navbar() {
                   >
                     <motion.span
                       animate={{
-                        color: pathname === item.href ? "#1D9BF0" : "#536471",
+                        color: pathname === item.href ? "#0c2847" : "#536471",
                       }}
-                      whileHover={{ color: "#1D9BF0" }}
+                      whileHover={{ color: "#0c2847" }}
                     >
                       {item.label}
                     </motion.span>
@@ -214,7 +219,7 @@ export function Navbar() {
               >
                 <Link
                   href="/book-demo"
-                  className="mt-2 inline-block rounded-full border border-[#1D9BF0]/20 bg-[#EAF4FF] px-5 py-2 text-center text-sm font-semibold text-[#0C8BDD] transition-colors hover:bg-[#DCEEFF]"
+                  className="mt-2 inline-block rounded-full border border-[#0c2847]/20 bg-[#EAF4FF] px-5 py-2 text-center text-sm font-semibold text-[#0c2847] transition-colors hover:bg-[#DCEEFF]"
                   onClick={() => setOpen(false)}
                 >
                   Book a Demo
@@ -227,7 +232,7 @@ export function Navbar() {
               >
                 <Link
                   href="/register"
-                  className="mt-2 inline-block rounded-full bg-[#1D9BF0] px-5 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[#0C8BDD]"
+                  className="mt-2 inline-block rounded-full bg-[#0c2847] px-5 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[#1a4a7a]"
                 >
                   Register
                 </Link>

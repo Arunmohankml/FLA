@@ -66,8 +66,8 @@ export default function ContactClient() {
   }
 
   return (
-    <section className="px-6 pt-20 pb-16 lg:px-12 lg:pt-28 lg:pb-24">
-      <div className="mx-auto max-w-7xl">
+    <section className="blue-section px-6 pt-20 pb-16 lg:px-12 lg:pt-28 lg:pb-24">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left — Heading + description + contact cards */}
           <div>
@@ -98,7 +98,7 @@ export default function ContactClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-[24px] border border-black/5 bg-white p-6 shadow-[0_1px_4px_rgba(0,0,0,0.03)]"
+                  className="blue-card rounded-[24px] p-6"
                 >
                   <div className="mb-4 flex size-12 items-center justify-center rounded-full border border-black/5 bg-white text-black/60 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
                     <PhoneIcon />
@@ -114,7 +114,7 @@ export default function ContactClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.08 }}
-                  className="rounded-[24px] border border-black/5 bg-white p-6 shadow-[0_1px_4px_rgba(0,0,0,0.03)]"
+                  className="blue-card rounded-[24px] p-6"
                 >
                   <div className="mb-4 flex size-12 items-center justify-center rounded-full border border-black/5 bg-white text-black/60 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
                     <EmailIcon />
@@ -132,7 +132,7 @@ export default function ContactClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.16 }}
-                className="rounded-[24px] border border-black/5 bg-white p-8 shadow-[0_1px_4px_rgba(0,0,0,0.03)]"
+                className="blue-card rounded-[24px] p-8"
               >
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
                   <div className="flex-1">
@@ -167,10 +167,10 @@ export default function ContactClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="relative rounded-[28px] border border-black/5 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] lg:p-12">
+            <div className="blue-dark-panel contact-form-pattern relative rounded-[28px] p-8 lg:p-12">
               {/* Decorative arc behind form */}
-              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-[#1D9BF0]/10 opacity-60" />
-              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-[#1D9BF0]/8 opacity-40" />
+              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-white/10 opacity-60" />
+              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-white/8 opacity-40" />
 
                 {formSubmitted ? (
                   <motion.div
@@ -178,22 +178,22 @@ export default function ContactClient() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center py-16 text-center"
                   >
-                    <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-black/[0.04] text-black/60">
+                    <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-white/10 text-white/70">
                       <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
                     </div>
-                    <p className="font-heading text-xl font-medium text-foreground">Thanks!</p>
-                    <p className="mt-1 text-sm text-[#334155]">We&apos;ll be in touch soon.</p>
+                    <p className="font-heading text-xl font-medium text-white">Thanks!</p>
+                    <p className="mt-1 text-sm text-white/70">We&apos;ll be in touch soon.</p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit}>
                     <div className="mb-8 text-center">
-                      <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full border border-black/5 bg-white text-black/60 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
+                      <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/70">
                         <MailIcon />
                       </div>
-                      <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-foreground">
+                      <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-white">
                         Send Us a Message
                       </h2>
                     </div>
@@ -203,32 +203,32 @@ export default function ContactClient() {
                         name="name"
                         required
                         placeholder="Full Name*"
-                        className="flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10"
+                        className="flex h-12 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white transition-all duration-200 placeholder:text-white/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10"
                       />
                       <input
                         name="email"
                         type="email"
                         required
                         placeholder="Email Address*"
-                        className="flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10"
+                        className="flex h-12 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white transition-all duration-200 placeholder:text-white/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10"
                       />
                       <input
                         name="phone"
                         type="tel"
                         placeholder="Phone Number"
-                        className="flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10"
+                        className="flex h-12 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white transition-all duration-200 placeholder:text-white/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10"
                       />
                       <textarea
                         name="message"
                         rows={7}
                         required
                         placeholder="Message*"
-                        className="flex w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 py-3 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10"
+                        className="flex w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white transition-all duration-200 placeholder:text-white/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10"
                       />
                     </div>
 
                     {formError && (
-                      <p className="mt-4 rounded-xl bg-red-50 p-3 text-center text-sm text-red-600">{formError}</p>
+                      <p className="mt-4 rounded-xl bg-red-500/20 p-3 text-center text-sm text-red-300">{formError}</p>
                     )}
 
                     <motion.button
@@ -236,7 +236,7 @@ export default function ContactClient() {
                       disabled={formLoading}
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}
-                      className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0C8BDD] disabled:opacity-50"
+                      className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-white px-7 text-sm font-semibold text-[#0c2847] transition-all duration-300 hover:bg-white/90 disabled:opacity-50"
                     >
                       {formLoading ? "Sending..." : "Send Message"}
                     </motion.button>

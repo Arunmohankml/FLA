@@ -58,7 +58,7 @@ const rhythms = [
     label: "Morning",
     time: "6 AM – 12 PM",
     desc: "Perfect for early learners",
-    image: "/image29.png",
+    image: "/image29.webp",
     note: "Start fresh with focused lessons before the day gets busy.",
   },
   {
@@ -66,7 +66,7 @@ const rhythms = [
     label: "Afternoon",
     time: "12 PM – 5 PM",
     desc: "Convenient midday learning",
-    image: "/image30.png",
+    image: "/image30.webp",
     note: "A flexible slot for students, professionals, and hybrid learners.",
   },
   {
@@ -74,7 +74,7 @@ const rhythms = [
     label: "Evening",
     time: "5 PM – 10 PM",
     desc: "After-work learning",
-    image: "/image31.png",
+    image: "/image31.webp",
     note: "Learn comfortably after college, work, or daily responsibilities.",
   },
 ];
@@ -171,15 +171,12 @@ export function LearningRhythm() {
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: pinRef.current,
+          trigger: sectionRef.current,
           start: () => `top top+=${PIN_OFFSET}`,
-          end: () =>
-            `+=${window.innerHeight * (window.innerWidth < 640 ? 2.35 : 3.35)}`,
-          scrub: prefersReduced ? true : 1.1,
-          pin: pinRef.current,
-          pinSpacing: true,
-          anticipatePin: 1,
+          end: "bottom bottom",
+          scrub: prefersReduced ? true : 0.85,
           invalidateOnRefresh: true,
+          refreshPriority: -1,
 
           onUpdate: (self) => {
             const progress = self.progress;
@@ -249,8 +246,20 @@ export function LearningRhythm() {
   };
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-background py-4 lg:overflow-visible lg:py-6">
-      <div ref={pinRef} className="relative bg-background">
+    <section
+      ref={sectionRef}
+      data-parallax-section="learning-rhythm"
+      className="relative h-[310vh] overflow-visible"
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(240)'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='1' stop-color='%23FCFFFD'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='300' height='250' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.02'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E")`,
+        backgroundSize: "cover",
+      }}
+    >
+      <div
+        ref={pinRef}
+        className="sticky top-0 flex min-h-screen flex-col justify-center bg-transparent py-4 lg:py-6"
+      >
         <div ref={headingRef} className="page-shell pt-0">
           <div className="mb-2 lg:mb-3">
             <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
@@ -270,7 +279,7 @@ export function LearningRhythm() {
 
         <div ref={contentRef} className="page-shell pt-0 will-change-transform">
           <div ref={stageRef} className="grid w-full min-w-0 gap-4 sm:gap-5 lg:grid-cols-5 lg:items-stretch lg:gap-6">
-            <div className="relative overflow-hidden rounded-[28px] lg:col-span-3 lg:rounded-[32px]">
+            <div className="blue-card relative overflow-hidden rounded-[28px] lg:col-span-3 lg:rounded-[32px]">
               <div className="relative h-[250px] overflow-hidden rounded-[24px] sm:h-[360px] sm:rounded-[28px] lg:h-[430px] lg:rounded-[32px]">
                 {rhythms.map((rhythm, index) => (
                   <img
@@ -319,7 +328,7 @@ export function LearningRhythm() {
               <div className="relative hidden w-1 shrink-0 overflow-hidden rounded-full bg-black/5 lg:block">
                 <div
                   ref={progressRef}
-                  className="absolute inset-x-0 top-0 h-full rounded-full bg-[#1D9BF0]/45"
+                  className="absolute inset-x-0 top-0 h-full rounded-full bg-[#0c2847]/45"
                 />
               </div>
 
@@ -334,7 +343,7 @@ export function LearningRhythm() {
                     className={[
                       "flex size-12 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
                       active === index
-                        ? "border-[#1D9BF0]/35 bg-[#F5FAFF] text-[#1D9BF0] shadow-[0_10px_26px_rgba(29,155,240,0.16)]"
+                        ? "border-[#0c2847]/35 bg-[#F5FAFF] text-[#0c2847] shadow-[0_10px_26px_rgba(29,155,240,0.16)]"
                         : "border-black/6 bg-white text-black/55",
                     ].join(" ")}
                   >
@@ -353,7 +362,7 @@ export function LearningRhythm() {
                     className={[
                       "group relative min-w-full max-w-full snap-start overflow-hidden rounded-[22px] border p-4 text-left transition-all duration-500 sm:min-w-[270px] sm:max-w-none sm:p-5 lg:min-w-0 lg:rounded-[26px]",
                       active === index
-                        ? "border-[#1D9BF0]/18 bg-[#F5FAFF] shadow-[0_18px_55px_rgba(0,0,0,0.055)]"
+                        ? "border-[#0c2847] bg-[#0c2847] text-white shadow-[0_18px_55px_rgba(6,33,61,0.18)]"
                         : "border-black/5 bg-white hover:border-black/10 hover:bg-[#F5FAFF]/45",
                     ].join(" ")}
                   >
@@ -361,7 +370,7 @@ export function LearningRhythm() {
                       className={[
                         "absolute inset-y-0 left-0 w-1 rounded-full transition-all duration-500",
                         active === index
-                          ? "bg-[#1D9BF0]/70 opacity-100"
+                          ? "bg-[#0c2847]/70 opacity-100"
                           : "bg-transparent opacity-0",
                       ].join(" ")}
                     />
@@ -371,7 +380,7 @@ export function LearningRhythm() {
                         className={[
                           "flex size-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 sm:size-12",
                           active === index
-                            ? "bg-white text-[#1D9BF0] shadow-[0_10px_30px_rgba(29,155,240,0.12)]"
+                            ? "bg-white/12 text-white shadow-[0_10px_30px_rgba(0,0,0,0.16)]"
                             : "bg-[#F5FAFF] text-black/55",
                         ].join(" ")}
                       >
@@ -379,11 +388,11 @@ export function LearningRhythm() {
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-heading text-base font-medium tracking-[-0.02em] text-foreground sm:text-lg">
+                        <h4 className={["font-heading text-base font-medium tracking-[-0.02em] sm:text-lg", active === index ? "text-white" : "text-foreground"].join(" ")}>
                           {rhythm.label}
                         </h4>
 
-                        <p className="mt-1 text-sm text-[#334155]">
+                        <p className={["mt-1 text-sm", active === index ? "text-white/70" : "text-[#334155]"].join(" ")}>
                           {rhythm.time}
                         </p>
                       </div>
@@ -392,7 +401,7 @@ export function LearningRhythm() {
                         className={[
                           "hidden max-w-[150px] text-right text-xs font-semibold leading-5 transition-colors duration-500 sm:block",
                           active === index
-                            ? "text-foreground"
+                            ? "text-white/82"
                             : "text-[#334155]",
                         ].join(" ")}
                       >
@@ -400,10 +409,11 @@ export function LearningRhythm() {
                       </span>
                     </div>
 
-                    <div className="mt-4 h-1 overflow-hidden rounded-full bg-black/[0.04]">
+                    <div className={["mt-4 h-1 overflow-hidden rounded-full", active === index ? "bg-white/12" : "bg-black/[0.04]"].join(" ")}>
                       <div
                         className={[
-                          "h-full rounded-full bg-[#1D9BF0]/70 transition-all duration-700",
+                          "h-full rounded-full transition-all duration-700",
+                           active === index ? "bg-gradient-to-r from-[#0c2847] to-[#1a6fba]" : "bg-[#0c2847]/70",
                           active === index ? "w-full" : "w-0",
                         ].join(" ")}
                       />

@@ -1,7 +1,7 @@
 /**
  * Certificate layout.
  *
- * Coordinates are absolute pixels on public/certificate.png.
+ * Coordinates are absolute pixels on public/ourcert/Peter changes.pdf (A4).pdf.
  * The template is the final artwork; only these values are drawn onto it.
  */
 
@@ -20,6 +20,7 @@ export interface LayoutField {
   weight?: string;
   style?: string;
   maxWidth?: number;
+  minFontSize?: number;
 }
 
 export interface LayoutQR {
@@ -34,12 +35,6 @@ export interface CertificateLayout {
   language: LayoutField;
   leftGrade: LayoutField;
   monthYear: LayoutField;
-  firstName: LayoutField;
-  surname: LayoutField;
-  dob: LayoutField;
-  birthPlace: LayoutField;
-  examDate: LayoutField;
-  examPlace: LayoutField;
   reading: LayoutField;
   listening: LayoutField;
   writing: LayoutField;
@@ -52,49 +47,165 @@ export interface CertificateLayout {
   qr: LayoutQR;
 }
 
-const mainValue = {
-  fontSize: 28,
-  align: "center" as const,
-  family: "serif" as const,
-  style: "italic",
-  weight: "700",
-  color: "#111111",
-};
-
-const rightValue = {
-  fontSize: 13,
-  align: "center" as const,
-  color: "#111111",
-  maxWidth: 170,
-};
-
-const scoreValue = {
-  fontSize: 14,
-  align: "center" as const,
-  color: "#111111",
-  maxWidth: 70,
-};
-
 export const certificateLayout: CertificateLayout = {
-  studentName: { ...mainValue, x: 646, y: 446, maxWidth: 350 },
-  level: { ...mainValue, x: 657, y: 512, maxWidth: 90 },
-  language: { ...mainValue, x: 262, y: 576, maxWidth: 210 },
-  leftGrade: { ...mainValue, x: 792, y: 576, maxWidth: 105 },
-  monthYear: { ...mainValue, x: 649, y: 640, maxWidth: 280 },
-  firstName: { ...rightValue, x: 1361, y: 332 },
-  surname: { ...rightValue, x: 1361, y: 365 },
-  dob: { ...rightValue, x: 1361, y: 396 },
-  birthPlace: { ...rightValue, x: 1361, y: 429 },
-  examDate: { ...rightValue, x: 1361, y: 462 },
-  examPlace: { ...rightValue, x: 1361, y: 496 },
-  reading: { ...scoreValue, x: 1397, y: 630 },
-  listening: { ...scoreValue, x: 1397, y: 656 },
-  writing: { ...scoreValue, x: 1397, y: 684 },
-  oral: { ...scoreValue, x: 1397, y: 711 },
-  total: { ...scoreValue, x: 1238, y: 765, maxWidth: 85 },
-  resultGrade: { ...rightValue, x: 1298, y: 798, maxWidth: 150 },
-  issuePlace: { x: 1074, y: 846, fontSize: 14, align: "center", weight: "700", maxWidth: 115 },
-  issueDate: { x: 1197, y: 846, fontSize: 14, align: "center", weight: "700", maxWidth: 120 },
-  certificateNumber: { x: 1373, y: 846, fontSize: 14, align: "center", weight: "700", maxWidth: 130 },
-  qr: { x: 1414, y: 928, size: 86 },
+  "studentName": {
+    "fontSize": 27,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 397,
+    "y": 354,
+    "maxWidth": 325,
+    "minFontSize": 7
+  },
+  "level": {
+    "fontSize": 27,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 545,
+    "y": 388,
+    "maxWidth": 54,
+    "minFontSize": 8
+  },
+  "language": {
+    "fontSize": 27,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#009ab8",
+    "x": 176,
+    "y": 426,
+    "maxWidth": 154,
+    "minFontSize": 7
+  },
+  "leftGrade": {
+    "fontSize": 26,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 666,
+    "y": 426,
+    "maxWidth": 72,
+    "minFontSize": 7
+  },
+  "monthYear": {
+    "fontSize": 26,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 536,
+    "y": 464,
+    "maxWidth": 165,
+    "minFontSize": 7
+  },
+  "listening": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 120,
+    "x": 260,
+    "y": 626
+  },
+  "oral": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 120,
+    "x": 260,
+    "y": 655
+  },
+  "reading": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 120,
+    "x": 260,
+    "y": 685
+  },
+  "writing": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 120,
+    "x": 260,
+    "y": 714
+  },
+  "total": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 120,
+    "x": 260,
+    "y": 742
+  },
+  "resultGrade": {
+    "fontSize": 17,
+    "align": "left",
+    "color": "#14264b",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 150,
+    "x": 260,
+    "y": 771,
+    "minFontSize": 9
+  },
+  "issuePlace": {
+    "fontSize": 23,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 181,
+    "y": 893,
+    "maxWidth": 110,
+    "minFontSize": 7
+  },
+  "issueDate": {
+    "fontSize": 19,
+    "align": "center",
+    "family": "serif",
+    "style": "italic",
+    "weight": "500",
+    "color": "#050505",
+    "x": 649,
+    "y": 893,
+    "maxWidth": 95,
+    "minFontSize": 7
+  },
+  "certificateNumber": {
+    "x": 707,
+    "y": 1073,
+    "fontSize": 9,
+    "align": "right",
+    "color": "#ffffff",
+    "family": "sans",
+    "weight": "700",
+    "maxWidth": 140
+  },
+  "qr": {
+    "x": 389,
+    "y": 954,
+    "size": 0
+  }
 };

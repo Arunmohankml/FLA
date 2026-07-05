@@ -5,8 +5,9 @@ import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-ic
 export function Footer() {
 
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+    <footer className="relative overflow-hidden border-t border-[#B9E2FF]/60 bg-[#EEF7FF]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(29,155,240,0.12),transparent_30%),linear-gradient(180deg,#F4FAFF_0%,#EEF7FF_100%)]" />
+      <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-12">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="mb-4 text-lg font-bold text-primary">{site.name}</h3>
@@ -78,7 +79,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-center border-t border-border pt-8 text-center text-xs text-[#334155]">
+        <div className="mt-12 flex items-center justify-center border-t border-[#B9E2FF]/70 pt-8 text-center text-xs text-[#334155]">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
         </div>
       </div>

@@ -93,11 +93,10 @@ export function VerifyClient({
 
           {/* Certificate preview */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <iframe
               src={imageUrl}
-              alt={`Certificate ${certificateNumber}`}
-              className="w-full"
+              title={`Certificate ${certificateNumber}`}
+              className="h-[76vh] w-full"
             />
           </div>
 

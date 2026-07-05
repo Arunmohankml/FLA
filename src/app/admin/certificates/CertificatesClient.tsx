@@ -27,12 +27,6 @@ interface Certificate {
 
 const emptyForm = {
   studentFullName: "",
-  surname: "",
-  firstName: "",
-  dateOfBirth: "",
-  placeOfBirth: "",
-  dateOfExam: "",
-  placeOfExam: "",
   courseLevel: "",
   courseName: "",
   grade: "",
@@ -171,7 +165,7 @@ export function CertificatesClient({
   const handleDownload = (c: Certificate) => {
     const a = document.createElement("a");
     a.href = c.imageUrl;
-    a.download = `${c.certificateNumber}.png`;
+    a.download = `${c.certificateNumber}.pdf`;
     a.click();
   };
 
@@ -202,7 +196,7 @@ export function CertificatesClient({
         )}
       </AnimatePresence>
 
-      {/* Preview Modal — image only */}
+      {/* Preview Modal */}
       <AnimatePresence>
         {preview && (
           <motion.div
@@ -234,11 +228,10 @@ export function CertificatesClient({
                   <HiOutlineX className="size-4" />
                 </button>
               </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <iframe
                 src={preview.imageUrl}
-                alt={`Certificate ${preview.certificateNumber}`}
-                className="w-full"
+                title={`Certificate ${preview.certificateNumber}`}
+                className="h-[86vh] w-[min(92vw,760px)]"
               />
             </motion.div>
           </motion.div>
@@ -263,12 +256,6 @@ export function CertificatesClient({
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Field label="Full Name" value={form.studentFullName} onChange={set("studentFullName")} required placeholder="e.g. John Smith" />
-          <Field label="Surname" value={form.surname} onChange={set("surname")} />
-          <Field label="First Name" value={form.firstName} onChange={set("firstName")} />
-          <Field label="Date of Birth" value={form.dateOfBirth} onChange={set("dateOfBirth")} placeholder="DD/MM/YYYY" />
-          <Field label="Place of Birth" value={form.placeOfBirth} onChange={set("placeOfBirth")} />
-          <Field label="Date of Exam" value={form.dateOfExam} onChange={set("dateOfExam")} placeholder="DD/MM/YYYY" />
-          <Field label="Place of Exam" value={form.placeOfExam} onChange={set("placeOfExam")} />
           <Field label="Course Level" value={form.courseLevel} onChange={set("courseLevel")} placeholder="e.g. B1" />
           <Field label="Course Name" value={form.courseName} onChange={set("courseName")} placeholder="e.g. French Language" />
           <Field label="Grade" value={form.grade} onChange={set("grade")} placeholder="e.g. Good" />

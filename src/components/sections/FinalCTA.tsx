@@ -8,12 +8,12 @@ const MotionLink = motion.create(Link);
 
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-[#071D2E] px-6 py-24 lg:px-12 lg:py-36">
+    <section className="blue-dark-panel blue-grid-bg px-6 py-24 lg:px-12 lg:py-36">
       {/* Background decorative elements */}
-      <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
-      <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
+      <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#0c2847]/5 blur-[100px]" />
+      <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#0c2847]/5 blur-[100px]" />
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

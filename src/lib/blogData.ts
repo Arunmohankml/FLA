@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
       "German is one of the most valuable languages for Indian professionals. Discover why Chennai is the best place to start your German language journey.",
     date: "2026-06-15",
     author: "Foreign Language Academy",
-    image: "/image28.png",
+    image: "/bloghero.webp",
     tags: ["German", "Career", "Chennai"],
     content: `
 # Why Learn German in Chennai? 10 Compelling Reasons
@@ -205,7 +205,7 @@ Chennai is an ideal city to begin — with available exam centres, active German
       "Everything you need to know about German A1 — CEFR level, Goethe exam format, vocabulary, grammar topics, and a structured 3-month study plan.",
     date: "2026-06-14",
     author: "Foreign Language Academy",
-    image: "/image27.png",
+    image: "/bloghero.webp",
     tags: ["German", "A1", "Goethe", "Beginners"],
     content: `
 # German A1 Complete Guide: Syllabus, Exam, and Study Plan
@@ -481,7 +481,7 @@ At Foreign Language Academy in Chennai, our A1 German batches are structured aro
       "German B1 is the threshold level for permanent residency in Germany and a key career milestone. Complete guide to syllabus, Goethe B1 exam, and preparation strategy.",
     date: "2026-06-13",
     author: "Foreign Language Academy",
-    image: "/image26.png",
+    image: "/bloghero.webp",
     tags: ["German", "B1", "Immigration", "Career"],
     content: `
 # German B1 Complete Guide: Exam, Syllabus, and Career Benefits
@@ -714,7 +714,7 @@ With structured classes, consistent practice, and focused exam preparation, B1 i
       "Indian nurses can build exceptional careers in Germany with German language proficiency. Complete guide to language requirements, qualification recognition, salary, and how to get started.",
     date: "2026-06-12",
     author: "Foreign Language Academy",
-    image: "/image25.png",
+    image: "/bloghero.webp",
     tags: ["German", "Nursing", "Germany", "Healthcare", "Career"],
     content: `
 # German for Nurses: Complete Career Guide to Nursing in Germany
@@ -969,7 +969,7 @@ The most important step is beginning German immediately. Every month you delay i
       "Germany offers near-free public university education for Indian students. Complete guide to university applications, language requirements, DAAD scholarships, student visa, and life in Germany.",
     date: "2026-06-11",
     author: "Foreign Language Academy",
-    image: "/image24.png",
+    image: "/bloghero.webp",
     tags: ["German", "Study Abroad", "Germany", "DAAD", "University"],
     content: `
 # Study in Germany: Complete Guide for Indian Students
@@ -1242,7 +1242,7 @@ The primary investment is time spent learning German. Students who begin German 
       "Germany's Opportunity Card allows skilled professionals to enter Germany on a job-seeking visa without a prior job offer. Complete guide to eligibility, language requirements, and application.",
     date: "2026-06-10",
     author: "Foreign Language Academy",
-    image: "/image23.png",
+    image: "/bloghero.webp",
     tags: ["German", "Germany", "Immigration", "Opportunity Card", "Visa"],
     content: `
 # Germany Opportunity Card (Chancenkarte): Complete Guide for Indian Professionals
@@ -1466,7 +1466,7 @@ The key lesson for Chennai professionals: start learning German now. The A1 requ
       "Learn how French proficiency can boost your Express Entry CRS score by up to 50 points. Everything you need to know about TEF, TCF Canada, and DELF exams.",
     date: "2026-06-09",
     author: "Foreign Language Academy",
-    image: "/image22.png",
+    image: "/bloghero.webp",
     tags: ["French", "Immigration", "Canada"],
     content: `
 # French for Canadian Immigration: Complete Guide
@@ -1695,7 +1695,7 @@ The timeline — 18–22 months from zero to B2 — is significant but entirely 
       "A comprehensive guide to learning French in Chennai — DELF/DALF exams, career opportunities, immigration benefits, and why French is one of the world's most valuable languages.",
     date: "2026-06-08",
     author: "Foreign Language Academy",
-    image: "/image21.png",
+    image: "/bloghero.webp",
     tags: ["French", "Chennai", "DELF", "Career", "Immigration"],
     content: `
 # Learn French in Chennai: Complete Guide to French Language Courses
@@ -1919,7 +1919,7 @@ The learning journey from A1 to B2 takes approximately 15–20 months with dedic
       "Everything you need to know about JLPT N5–N1: exam format, preparation tips, scoring, and how to register from Chennai.",
     date: "2026-06-07",
     author: "Foreign Language Academy",
-    image: "/image20.png",
+    image: "/bloghero.webp",
     tags: ["Japanese", "JLPT", "Exams", "Japan", "Career"],
     content: `
 # JLPT 2026: Complete Guide to the Japanese Language Proficiency Test
@@ -2198,7 +2198,7 @@ The JLPT is the most important certification in Japanese language learning. N5 m
       "Japan offers world-class education, generous scholarships, and a unique cultural experience. Complete guide for Indian students on university admission, MEXT scholarship, student visa, and life in Japan.",
     date: "2026-06-06",
     author: "Foreign Language Academy",
-    image: "/image19.png",
+    image: "/bloghero.webp",
     tags: ["Japanese", "Japan", "Study Abroad", "MEXT", "University"],
     content: `
 # Study in Japan: Complete Guide for Indian Students
@@ -2436,7 +2436,7 @@ The gateway is Japanese language proficiency. Students who begin Japanese early 
       "Everything Indian learners need to know about TOPIK I and TOPIK II — levels, exam format, study materials, and how Korean proficiency opens doors to jobs, scholarships, and immigration.",
     date: "2026-06-05",
     author: "Foreign Language Academy",
-    image: "/image18.png",
+    image: "/bloghero.webp",
     tags: ["Korean", "TOPIK", "Exams", "Korea", "Career"],
     content: `
 # TOPIK Complete Guide: Levels, Exam Format, and Preparation Strategy
@@ -2686,7 +2686,7 @@ For Indian learners in Chennai, the combination of K-wave cultural interest and 
       "K-pop, K-dramas, and Korean cinema have created unprecedented interest in the Korean language. Discover why Indians are learning Korean and how it translates to real career opportunities.",
     date: "2026-05-28",
     author: "Foreign Language Academy",
-    image: "/image17.png",
+    image: "/bloghero.webp",
     tags: ["Korean", "K-culture", "Career", "Trends"],
     content: `
 # How K-Culture Is Driving Korean Language Learning in India
@@ -2815,7 +2815,7 @@ Korean language learning in India has grown from a niche fan interest to a mains
       "Spanish connects you to 21 countries and 580 million speakers. Learn why Spanish is valuable for Indian professionals and how to get started with DELE certification.",
     date: "2026-05-25",
     author: "Foreign Language Academy",
-    image: "/image16.png",
+    image: "/bloghero.webp",
     tags: ["Spanish", "Business", "Career", "DELE"],
     content: `
 # Spanish for Business: Complete Guide to Spanish as a Career Language
@@ -2993,7 +2993,7 @@ Spanish is the world's second most spoken language and a gateway to Latin Americ
       "Complete guide to IELTS Academic and General Training — band scores, exam format, preparation strategy, and how to achieve Band 7 or higher for study, work, and immigration.",
     date: "2026-05-22",
     author: "Foreign Language Academy",
-    image: "/image15.png",
+    image: "/bloghero.webp",
     tags: ["IELTS", "English", "Immigration", "Study Abroad", "Exams"],
     content: `
 # IELTS Complete Guide 2026: Everything You Need to Band 7+
@@ -3330,7 +3330,7 @@ The four skills — Listening, Reading, Writing, and Speaking — each require s
       "German, French, Japanese, Spanish, Korean, Chinese, or Italian? A practical, honest guide to choosing the right foreign language based on your career goals, target country, and timeline.",
     date: "2026-05-20",
     author: "Foreign Language Academy",
-    image: "/image14.png",
+    image: "/bloghero.webp",
     tags: ["General", "Career", "Language Comparison", "Guide"],
     content: `
 # Which Foreign Language Should I Learn? A Practical Guide for Indians
@@ -3589,7 +3589,7 @@ There is no universally best foreign language to learn. The right language is th
       "Which foreign language pays the most in India? An honest breakdown of salary potential, job demand, and career growth for German, Japanese, French, Korean, Spanish, and more.",
     date: "2026-05-18",
     author: "Foreign Language Academy",
-    image: "/image13.png",
+    image: "/bloghero.webp",
     tags: ["Career", "Salary", "Language", "General", "German", "Japanese"],
     content: `
 # Highest Paying Foreign Languages for Indians in 2026
@@ -3818,7 +3818,7 @@ The key variable is reaching genuine proficiency (B2 or above) and pairing it wi
       "From cognitive improvements to career advancement, discover how learning a new language transforms your brain and your future.",
     date: "2026-05-15",
     author: "Foreign Language Academy",
-    image: "/image12.png",
+    image: "/bloghero.webp",
     tags: ["General", "Career", "Lifestyle"],
     content: `
 # 10 Surprising Benefits of Learning a Second Language
@@ -3995,7 +3995,7 @@ The practical starting point for most Indian learners is to identify the right l
       "The Goethe-Institut's German language certifications are globally recognised. Complete guide to all Goethe exam levels — A1 to C2 — format, scoring, and preparation.",
     date: "2026-05-12",
     author: "Foreign Language Academy",
-    image: "/image11.png",
+    image: "/bloghero.webp",
     tags: ["German", "Goethe", "Exam", "Certification"],
     content: `
 # Goethe-Zertifikat Complete Guide: Levels, Format, and Preparation
@@ -4245,7 +4245,7 @@ The Goethe-Zertifikat is the most authoritative and universally recognised Germa
       "Honest timelines for reaching A1, B1, and B2 in German, French, Japanese, Korean, and Spanish — and the factors that determine how fast you actually learn.",
     date: "2026-05-10",
     author: "Foreign Language Academy",
-    image: "/image10.png",
+    image: "/bloghero.webp",
     tags: ["General", "Language Learning", "Guide"],
     content: `
 # How Long Does It Take to Learn a Language? A Realistic Guide
@@ -4425,7 +4425,7 @@ The most important variable is consistency. Start, maintain the habit, and the l
       "What to look for when choosing a foreign language institute in Chennai. A practical guide to evaluating trainers, curriculum, exam preparation, and getting real value from your language investment.",
     date: "2026-05-08",
     author: "Foreign Language Academy",
-    image: "/image9.png",
+    image: "/bloghero.webp",
     tags: ["Chennai", "General", "Guide", "Institute"],
     content: `
 # Best Foreign Language Institute in Chennai: How to Choose
@@ -4653,7 +4653,7 @@ Evaluate trainers' qualifications, curriculum alignment, examination preparation
       "Engineers with German language skills access Germany's automotive, manufacturing, and technology sectors. Complete guide to German for engineering professionals.",
     date: "2026-05-05",
     author: "Foreign Language Academy",
-    image: "/image8.png",
+    image: "/bloghero.webp",
     tags: ["German", "Engineering", "Career", "Germany"],
     content: `
 # German for Engineers: Career Opportunities in Germany and India
@@ -4870,7 +4870,7 @@ The path from A1 to B1 takes approximately 14–18 months for a working engineer
       "Strong spoken English and business communication skills are critical for Indian professionals. Complete guide to improving professional English, interview skills, and business communication.",
     date: "2026-05-02",
     author: "Foreign Language Academy",
-    image: "/image7.png",
+    image: "/bloghero.webp",
     tags: ["English", "Business", "Soft Skills", "Career", "Communication"],
     content: `
 # Business English and Spoken English: Complete Guide for Indian Professionals
@@ -5086,7 +5086,7 @@ Yes. Foreign Language Academy offers Spoken English and Business Communication t
       "Can you really learn German, French, or Japanese to fluency over a screen? An honest look at how online language learning compares to a physical classroom — and how to make it work.",
     date: "2026-06-21",
     author: "Foreign Language Academy",
-    image: "/image6.png",
+    image: "/bloghero.webp",
     tags: ["Online Learning", "General", "Guide"],
     content: `
 # Online Foreign Language Classes: Do They Actually Work?
@@ -5271,7 +5271,7 @@ Online language learning isn't a compromise version of "real" classes — when i
       "The bridge between absolute beginner and real independence in German. Complete guide to the A2 syllabus, the Goethe-Zertifikat A2 exam, and a realistic study roadmap.",
     date: "2026-06-20",
     author: "Foreign Language Academy",
-    image: "/image5.png",
+    image: "/bloghero.webp",
     tags: ["German", "A2", "Goethe", "Beginners"],
     content: `
 # German A2 Complete Guide: Syllabus, Exam, and Study Plan
@@ -5483,7 +5483,7 @@ A2 is where German starts to feel genuinely usable — past tense, dative case, 
       "TestDaF and the Goethe-Zertifikat both certify German proficiency, but they serve different purposes and use completely different scoring systems. Complete comparison and guide.",
     date: "2026-06-19",
     author: "Foreign Language Academy",
-    image: "/image4.png",
+    image: "/bloghero.webp",
     tags: ["German", "TestDaF", "Goethe", "Exam", "University"],
     content: `
 # TestDaF vs Goethe-Zertifikat: Which German Exam Should You Take?
@@ -5646,7 +5646,7 @@ TestDaF and the Goethe-Zertifikat aren't rivals — they're tools built for diff
       "PTE Academic has grown rapidly as an IELTS alternative for university admission and immigration. Complete comparison of format, scoring, turnaround time, and which exam fits your situation.",
     date: "2026-06-18",
     author: "Foreign Language Academy",
-    image: "/image3.png",
+    image: "/bloghero.webp",
     tags: ["PTE", "IELTS", "English", "Exams", "Immigration"],
     content: `
 # PTE Academic vs IELTS: Which English Exam Should You Choose?
@@ -5807,7 +5807,7 @@ PTE Academic and IELTS test the same underlying English proficiency through genu
       "Italian opens doors in fashion, design, culinary arts, and Italy itself. Complete guide to learning Italian — proficiency levels, CILS and CELI exams, career paths, and a realistic study timeline.",
     date: "2026-06-17",
     author: "Foreign Language Academy",
-    image: "/image2.png",
+    image: "/bloghero.webp",
     tags: ["Italian", "Chennai", "Career", "CILS", "CELI"],
     content: `
 # Learn Italian: Complete Guide to Language, Exams, and Careers
@@ -5993,7 +5993,7 @@ Italian is one of the more accessible European languages to learn, especially if
       "China's HSK exam is undergoing its biggest overhaul in over a decade, moving from 6 levels to 9 in 2026. Complete guide to HSK 3.0, what's changing, and how to start learning Mandarin from Chennai.",
     date: "2026-06-16",
     author: "Foreign Language Academy",
-    image: "/image1.png",
+    image: "/bloghero.webp",
     tags: ["Chinese", "Mandarin", "HSK", "Exams", "Career"],
     content: `
 # Mandarin Chinese and HSK 2026: Complete Guide to the New HSK 3.0 Exam

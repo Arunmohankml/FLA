@@ -18,8 +18,8 @@ export function AcademyPreview() {
   const imgY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section ref={sectionRef} className="pt-16 pb-4 lg:pt-24 lg:pb-6">
-      <div className="page-shell">
+    <section ref={sectionRef} className="blue-section pt-16 pb-4 lg:pt-24 lg:pb-6">
+      <div className="page-shell relative z-10">
         {/* ── Asymmetric layout: image left, text right ──────── */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — Large image with parallax */}
@@ -32,7 +32,7 @@ export function AcademyPreview() {
           >
             <motion.div
               style={{ y: imgY }}
-            className="relative aspect-[4/3] overflow-hidden rounded-[32px]"
+            className="blue-card relative aspect-[4/3] overflow-hidden rounded-[32px]"
             >
               <MediaImage
                 src={academyImg}
@@ -47,7 +47,7 @@ export function AcademyPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute -bottom-6 -right-4 rounded-[20px] border border-black/5 bg-white px-6 py-4 shadow-[0_8px_40px_rgba(0,0,0,0.1)] lg:-right-8"
+              className="blue-card absolute -bottom-6 -right-4 rounded-[20px] px-6 py-4 lg:-right-8"
             >
               <p className="text-3xl font-black tracking-tight">
                 <Counter end={1900} suffix="+" />
@@ -88,7 +88,7 @@ export function AcademyPreview() {
             </p>
             <Link
               href="/about"
-              className="mt-8 inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
+              className="blue-cta mt-8 inline-flex h-12 items-center rounded-full px-6 text-sm font-semibold transition-all duration-300 hover:scale-105"
             >
               Learn More About Us →
             </Link>

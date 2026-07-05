@@ -43,29 +43,29 @@ export function CoursesShowcase() {
   const shouldAnimateMarquee = isInView && !prefersReducedMotion;
 
   return (
-    <section ref={sectionRef} className="bg-[#F5FAFF] py-16 lg:py-24">
-      <div className="page-shell">
+    <section ref={sectionRef} className="blue-dark-panel blue-grid-bg py-16 lg:py-24">
+      <div className="page-shell relative z-10">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.45fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="max-w-xl"
+              className="max-w-xl"
           >
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-black/60">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1D9BF0]" />
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/75 backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0c2847]" />
               Our Courses
             </span>
 
-            <h2 className="font-heading text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
+            <h2 className="font-heading text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
               Discover the Right Course for{" "}
-              <span className="text-[#1D9BF0]">Your Path</span>
+              <span className="text-[#83C9FF]">Your Path</span>
             </h2>
 
-            <div className="mt-5 h-px w-28 bg-[#1D9BF0]/60" />
+            <div className="mt-5 h-px w-28 bg-white/40" />
 
-            <p className="mt-7 max-w-md text-base leading-7 text-[#334155]">
+            <p className="mt-7 max-w-md text-base leading-7 text-white/90">
               From beginners to advanced learners, our structured and immersive
               courses help you grow through online, offline, and hybrid learning.
             </p>
@@ -95,9 +95,9 @@ export function CoursesShowcase() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: 0.1 + index * 0.08 }}
-                    className="group flex cursor-default gap-4 rounded-3xl p-2 transition-all duration-500 ease-out hover:scale-[1.04] hover:bg-white/55 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)]"
+                    className="group flex cursor-default gap-4 rounded-3xl p-2 transition-all duration-500 ease-out hover:scale-[1.04] hover:bg-white/10 hover:shadow-[0_18px_45px_rgba(0,0,0,0.16)]"
                   >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/8 bg-white text-foreground shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-[#EAF4FF]">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-white/18">
                       {item.icon === "GraduationCap" ? (
                         <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -118,10 +118,10 @@ export function CoursesShowcase() {
                     </span>
 
                     <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">
-                      <span className="block text-base font-semibold text-foreground">
+                      <span className="block text-base font-semibold text-white">
                         {item.title}
                       </span>
-                      <span className="mt-1 block max-w-xs text-[15px] leading-7 text-[#334155]">
+                      <span className="mt-1 block max-w-xs text-[15px] leading-7 text-white/85">
                         {item.text}
                       </span>
                     </span>
@@ -132,7 +132,7 @@ export function CoursesShowcase() {
 
             <Link
               href="/courses"
-              className="mt-9 inline-flex h-12 items-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD] hover:shadow-[0_12px_30px_rgba(29,155,240,0.18)]"
+              className="mt-9 inline-flex h-12 items-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
             >
               View All Courses
               <span className="ml-2" aria-hidden="true">
@@ -237,8 +237,8 @@ export function CoursesShowcase() {
           transition={{ duration: 0.55, delay: 0.25 }}
           className="relative mt-10 overflow-hidden"
         >
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#F5FAFF] to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#F5FAFF] to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-[#124a7a] via-[#124a7a]/60 to-transparent sm:w-64" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#1a6fba] via-[#1a6fba]/80 to-transparent sm:w-48" />
 
           <motion.div
             animate={shouldAnimateMarquee ? { x: ["0%", "-50%"] } : { x: "0%" }}
@@ -247,17 +247,17 @@ export function CoursesShowcase() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="flex w-max gap-3 will-change-transform"
+            className="flex w-max gap-2 sm:gap-3 will-change-transform"
           >
             {[...pillCourses, ...pillCourses].map((lang, index) => (
               <Link key={`${lang.slug}-${index}`} href={`/courses/${lang.slug}`}>
                 <motion.div
                   whileHover={{ y: -3, scale: 1.03 }}
-                  className="flex min-w-[152px] items-center gap-3 rounded-full border border-black/8 bg-white px-5 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.05)]"
+                  className="flex min-w-[110px] items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 hover:bg-white/25 sm:min-w-[152px] sm:gap-3 sm:px-5 sm:py-3"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5FAFF]">
+                  <span className="flex size-7 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm sm:size-10">
                     {lang.slug === "soft-skills" ? (
-                      <GraduationCap className="h-5 w-5 text-[#1D9BF0]" />
+                      <GraduationCap className="h-3.5 w-3.5 text-[#0c2847] sm:h-5 sm:w-5" />
                     ) : (
                       <img
                         src={`https://api.iconify.design/circle-flags:${langFlags[lang.slug]}.svg`}
@@ -265,16 +265,16 @@ export function CoursesShowcase() {
                         width={32}
                         height={32}
                         loading="lazy"
-                        className="h-8 w-8"
+                        className="h-5 w-5 sm:h-8 sm:w-8"
                       />
                     )}
                   </span>
 
                   <span>
-                    <span className="block text-sm font-semibold text-foreground">
+                    <span className="block text-xs font-semibold text-white sm:text-sm">
                       {lang.name}
                     </span>
-                    <span className="block text-xs text-[#334155]">
+                    <span className="block text-[10px] text-white/70 sm:text-xs">
                       {lang.duration}
                     </span>
                   </span>

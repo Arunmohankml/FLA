@@ -9,17 +9,17 @@
 };
 
 export const mediaFallbacks = {
-  hero: "/image36.png",
-  "courses-hero": "/image37.png",
-  "about-hero": "/image38.png",
-  "banner-10": "/image39.png",
-  "banner-11": "/image40.png",
+  hero: "/image36.webp",
+  "courses-hero": "/image37.webp",
+  "about-hero": "/image38.webp",
+  "banner-10": "/image36.webp",
+  "banner-11": "/image37.webp",
   "online-class": "/image41.webp",
   "offline-class": "/image42.webp",
   "hybrid-learning": "/image43.webp",
   "certification-prep": "/image44.webp",
   "study-abroad": "/image45.webp",
-  "group-discussion": "/image55.png",
+  "group-discussion": "/image55.webp",
 } as const;
 
 export const stats = [

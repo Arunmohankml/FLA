@@ -95,8 +95,8 @@ function LogoBadge({ logoSrc, logoAlt, logoClassName }: Pick<ExamCard, "logoSrc"
 
 export function ExamPreparation() {
   return (
-    <section className="pb-12 pt-8 lg:pb-16 lg:pt-12">
-      <div className="page-shell">
+    <section className="blue-section pb-12 pt-8 lg:pb-16 lg:pt-12">
+      <div className="page-shell relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export function ExamPreparation() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl"
         >
-          <span className="inline-flex rounded-full bg-[#f6efe3] px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#b89249]">
+          <span className="inline-flex rounded-full border border-[#0c2847]/20 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0c2847]">
             Certifications
           </span>
           <h2 className="mt-4 font-heading text-[clamp(2.5rem,4.4vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.05em] text-foreground">
@@ -123,7 +123,7 @@ export function ExamPreparation() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: index * 0.04 }}
-              className="group relative overflow-hidden rounded-[32px] border border-black/[0.04] bg-white/95 px-6 pb-5 pt-5 shadow-[0_24px_70px_rgba(15,23,42,0.10)] backdrop-blur-[2px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(15,23,42,0.14)]"
+              className="blue-card group relative overflow-hidden rounded-[32px] bg-white/95 px-6 pb-5 pt-5 backdrop-blur-[2px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(29,155,240,0.18)]"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(29,155,240,0.05),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7))]" />
 

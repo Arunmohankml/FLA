@@ -152,13 +152,12 @@ export function WhyChooseUs() {
 
           const tl = gsap.timeline({
             scrollTrigger: {
-              trigger: pinRef.current,
+              trigger: sectionRef.current,
               start: "top top",
-              end: "+=1200%",
-              scrub: 1.6,
-              pin: true,
-              anticipatePin: 0.35,
+              end: "bottom bottom",
+              scrub: 1,
               invalidateOnRefresh: true,
+              refreshPriority: -1,
             },
           });
 
@@ -286,13 +285,12 @@ export function WhyChooseUs() {
 
           const tlMobile = gsap.timeline({
             scrollTrigger: {
-              trigger: pinRef.current,
+              trigger: sectionRef.current,
               start: "top top",
-              end: "+=380%",
-              scrub: 1,
-              pin: true,
-              anticipatePin: 0.35,
+              end: "bottom bottom",
+              scrub: 0.85,
               invalidateOnRefresh: true,
+              refreshPriority: -1,
             },
           });
 
@@ -385,14 +383,18 @@ export function WhyChooseUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-white">
-      <div ref={pinRef} className="relative h-screen overflow-hidden bg-white">
+    <section
+      ref={sectionRef}
+      data-parallax-section="journey-start"
+      className="relative h-[480vh] bg-white md:h-[1300vh]"
+    >
+      <div ref={pinRef} className="sticky top-0 h-screen overflow-hidden bg-white">
         {/* Intro text */}
         <div
           ref={introRef}
           className="absolute inset-x-0 top-[18vh] z-20 mx-auto flex max-w-[1200px] flex-col items-center px-6 text-center"
         >
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#0c2847]/20 bg-white/80 px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#0c2847]">
             Why Choose Us
           </span>
 
@@ -439,17 +441,17 @@ export function WhyChooseUs() {
               cardRefs.current[index] = el;
             }}
             data-side={feature.side}
-            className={`absolute z-40 hidden w-[335px] rounded-[30px] border border-white/70 bg-white/88 p-7 text-foreground shadow-[0_28px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl will-change-transform md:block ${feature.position}`}
+            className={`absolute z-40 hidden w-[335px] rounded-[30px] border border-white/15 bg-[#0c2847]/92 p-7 text-white shadow-[0_28px_90px_rgba(6,33,61,0.28)] backdrop-blur-xl will-change-transform md:block ${feature.position}`}
           >
-            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-black/[0.04] text-black/65">
+            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white/75">
               {feature.icon}
             </div>
 
-            <h3 className="font-heading text-2xl font-medium leading-[1.15] tracking-[-0.03em]">
+            <h3 className="font-heading text-2xl font-medium leading-[1.15] tracking-[-0.03em] text-white">
               {feature.title}
             </h3>
 
-            <p className="mt-4 text-[15px] leading-7 text-black/58">
+            <p className="mt-4 text-[15px] leading-7 text-white/68">
               {feature.desc}
             </p>
           </div>
@@ -463,12 +465,12 @@ export function WhyChooseUs() {
               ref={(el) => {
                 mobileCardRefs.current[index] = el;
               }}
-              className="rounded-[22px] border border-white/70 bg-white/88 p-5 shadow-xl backdrop-blur-xl will-change-transform"
+              className="rounded-[22px] border border-white/15 bg-[#0c2847]/92 p-5 text-white shadow-xl backdrop-blur-xl will-change-transform"
             >
-              <h3 className="font-heading text-lg font-medium text-foreground">
+              <h3 className="font-heading text-lg font-medium text-white">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-[15px] leading-7 text-black/75">
+              <p className="mt-2 text-[15px] leading-7 text-white/70">
                 {feature.desc}
               </p>
             </div>

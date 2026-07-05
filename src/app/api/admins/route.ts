@@ -68,6 +68,8 @@ export async function DELETE(req: Request) {
       .eq("id", id)
       .single();
 
+    if (findError) throw findError;
+
     if (!target) {
       return NextResponse.json({ error: "Admin not found" }, { status: 404 });
     }

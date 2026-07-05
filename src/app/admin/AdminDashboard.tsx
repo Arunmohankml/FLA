@@ -8,9 +8,6 @@ import {
   HiOutlineMail,
   HiOutlineChevronDown,
   HiOutlineChevronUp,
-  HiOutlinePhone,
-  HiOutlineClipboardCheck,
-  HiOutlineCheck,
   HiOutlineAcademicCap,
   HiOutlineCalendar,
 } from "react-icons/hi";
@@ -40,47 +37,6 @@ interface DashboardProps {
     message: string;
     createdAt: string;
   }[];
-}
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <button
-      onClick={handleCopy}
-      className="inline-flex items-center gap-1.5 rounded-full bg-[#e8734a]/8 px-3 py-1 text-xs font-medium text-[#c9573a] transition-colors hover:bg-[#e8734a]/15"
-    >
-      {copied ? (
-        <>
-          <HiOutlineCheck className="size-3.5" />
-          Copied
-        </>
-      ) : (
-        <>
-          <HiOutlineClipboardCheck className="size-3.5" />
-          {text}
-        </>
-      )}
-    </button>
-  );
-}
-
-function CallButton({ phone }: { phone: string }) {
-  return (
-    <a
-      href={`tel:${phone}`}
-      className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-600 transition-colors hover:bg-emerald-500/15"
-    >
-      <HiOutlinePhone className="size-3.5" />
-      {phone}
-    </a>
-  );
 }
 
 function BubbleCard({

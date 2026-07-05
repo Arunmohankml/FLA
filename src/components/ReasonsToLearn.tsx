@@ -74,7 +74,7 @@ const rightReasons = [
 
 function BenefitCard({ icon, title, desc }: { icon: ReactNode; title: string; desc: string }) {
   return (
-    <div className="rounded-[22px] border border-white/30 bg-white/40 p-5 text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl">
+    <div className="blue-card rounded-[22px] p-5 text-foreground backdrop-blur-xl">
       <div className="mb-4 flex size-11 items-center justify-center rounded-[14px] bg-white/60 text-black/60 ring-1 ring-white/40">
         {icon}
       </div>
@@ -108,8 +108,8 @@ export function ReasonsToLearn() {
   const { ref: gridRef, visible } = useInView(0.15);
 
   return (
-    <section className="py-6 lg:py-10">
-      <div className="page-shell">
+    <section className="blue-section py-6 lg:py-10">
+      <div className="page-shell relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -144,14 +144,14 @@ export function ReasonsToLearn() {
           </div>
 
           <div
-            className={`relative min-h-[520px] overflow-hidden rounded-[28px] border border-white/30 bg-white/30 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-600 ease-out ${
+            className={`blue-card relative min-h-[520px] overflow-hidden rounded-[28px] bg-white/50 backdrop-blur-xl transition-all duration-600 ease-out ${
               visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
             style={{ transitionDelay: "50ms" }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/80" />
             <Image
-              src="/busmeet.png"
+              src="/busmeet.webp"
               alt="Students meeting in a language learning setting"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"

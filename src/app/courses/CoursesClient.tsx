@@ -47,7 +47,7 @@ const CourseCard = memo(function CourseCard({
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
-      className="group relative overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 will-change-transform hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
+      className="blue-card blue-card-hover group relative overflow-hidden rounded-[32px] will-change-transform"
     >
       <Link href={`/courses/${lang.slug}`} className="block">
         {/* Card image */}
@@ -62,7 +62,7 @@ const CourseCard = memo(function CourseCard({
 
           {/* Level badge */}
           <div className="absolute left-4 top-4 z-10">
-            <span className="inline-flex rounded-full bg-white/20 px-3 py-1 font-heading text-xs font-semibold text-white backdrop-blur-sm">
+            <span className="inline-flex rounded-full border border-white/25 bg-[#0c2847]/80 px-3 py-1 font-heading text-xs font-semibold text-white backdrop-blur-sm">
               {lang.levels}
             </span>
           </div>
@@ -84,7 +84,7 @@ const CourseCard = memo(function CourseCard({
             Master one of the world&apos;s most in-demand languages.
           </p>
 
-          <div className="my-4 h-px bg-black/5" />
+          <div className="my-4 h-px bg-[#B9E2FF]/70" />
 
           <div className="flex justify-between">
             <div>
@@ -107,7 +107,7 @@ const CourseCard = memo(function CourseCard({
         <Link
           href="/register"
           onClick={(e) => e.stopPropagation()}
-          className="flex h-12 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0C8BDD]"
+          className="blue-cta flex h-12 w-full items-center justify-center rounded-full text-sm font-semibold transition-all duration-300"
         >
           Register →
         </Link>
@@ -122,9 +122,9 @@ export function CoursesClient({ languages }: CoursesClientProps) {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-background">
-        <div className="page-shell pt-24 lg:pt-32">
-          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-[32px] lg:aspect-[23/8]">
+      <section className="blue-section">
+        <div className="page-shell relative z-10 pt-24 lg:pt-32">
+          <div className="blue-card relative aspect-[16/7] w-full overflow-hidden rounded-[32px] lg:aspect-[23/8]">
             <MediaImage
               src={coursesHero}
               alt="Foreign Language Academy online and offline courses"
@@ -142,7 +142,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
               className="absolute left-6 top-6 lg:left-10 lg:top-10"
             >
               <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 font-heading text-xs font-semibold text-white backdrop-blur-md">
-                <span className="size-1.5 rounded-full bg-[#1D9BF0] animate-pulse" />
+                <span className="size-1.5 rounded-full bg-[#0c2847] animate-pulse" />
                 9 LANGUAGES AVAILABLE
               </span>
             </motion.div>
@@ -170,8 +170,8 @@ export function CoursesClient({ languages }: CoursesClientProps) {
       </section>
 
       {/* ── Course Grid ── */}
-      <section id="courses-grid" className="pb-12 pt-4">
-        <div className="page-shell">
+      <section id="courses-grid" className="blue-section pb-12 pt-10">
+        <div className="page-shell relative z-10">
           {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -218,11 +218,11 @@ export function CoursesClient({ languages }: CoursesClientProps) {
       <ReasonsToLearn />
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-[#071D2E] py-16">
-        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
-        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#1D9BF0]/5 blur-[100px]" />
+      <section className="blue-dark-panel blue-grid-bg py-16">
+        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#0c2847]/5 blur-[100px]" />
+        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-[#0c2847]/5 blur-[100px]" />
 
-        <div className="relative page-shell max-w-3xl text-center">
+        <div className="relative z-10 page-shell max-w-3xl text-center">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +263,7 @@ export function CoursesClient({ languages }: CoursesClientProps) {
           >
             <Link
               href="/register"
-              className="inline-flex h-14 items-center rounded-full bg-[#1D9BF0] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#0C8BDD]"
+              className="inline-flex h-14 items-center rounded-full bg-[#0c2847] px-8 text-base font-semibold text-white transition-all duration-300 hover:bg-[#0c2847]"
             >
               Book Free Demo →
             </Link>

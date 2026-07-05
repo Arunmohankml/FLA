@@ -1,24 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createCanvas, loadImage } from "canvas";
 import { supabaseAdmin } from "@/lib/supabase";
-import { drawCertificate } from "@/lib/certificateRenderer";
+import { renderCertificatePdf } from "@/lib/certificateRenderer";
 
 const BUCKET = "certificates";
+const CERTIFICATE_TEMPLATE_PATH = "/ourcert/Peter%20changes.pdf%20(A4).pdf";
 
 async function loadTemplate(origin: string) {
-  const templateRes = await fetch(`${origin}/certificate.png`);
+  const templateRes = await fetch(`${origin}${CERTIFICATE_TEMPLATE_PATH}`);
   if (!templateRes.ok) {
     throw new Error("Template not found");
   }
 
-  const templateBuf = Buffer.from(await templateRes.arrayBuffer());
-  return loadImage(templateBuf);
-}
-
-function getVerifyUrl(req: NextRequest, certificateNumber: string) {
-  const domain = req.headers.get("host") || "localhost:3000";
-  const protocol = req.headers.get("x-forwarded-proto") || "https";
-  return `${protocol}://${domain}/verify/${certificateNumber}`;
+  return templateRes.arrayBuffer();
 }
 
 export async function POST(req: NextRequest) {
@@ -27,40 +20,16 @@ export async function POST(req: NextRequest) {
     const values: Record<string, string> = {};
     for (const [key, value] of form.entries()) values[key] = String(value);
 
-    const calibration = req.nextUrl.searchParams.get("calibration") === "1";
-
-    if (!calibration && (!values.certificateNumber || !values.studentFullName)) {
+    if (!values.certificateNumber || !values.studentFullName) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const template = await loadTemplate(req.nextUrl.origin);
-    const canvas = createCanvas(template.width, template.height);
-    const ctx = canvas.getContext("2d");
-
-    await drawCertificate({
-      ctx,
-      template,
-      values,
-      verifyUrl: getVerifyUrl(req, values.certificateNumber || "CALIBRATION"),
-      mode: calibration ? "calibration" : "values",
-    });
-
-    const pngBuf = canvas.toBuffer("image/png");
-
-    if (calibration) {
-      return new NextResponse(new Uint8Array(pngBuf), {
-        headers: {
-          "Content-Type": "image/png",
-          "Cache-Control": "no-store",
-          "Content-Disposition": 'inline; filename="certificate-calibration.png"',
-        },
-      });
-    }
-
-    const filePath = `certificates/${values.certificateNumber}.png`;
+    const templatePdf = await loadTemplate(req.nextUrl.origin);
+    const pdfBuf = Buffer.from(await renderCertificatePdf(templatePdf, values));
+    const filePath = `certificates/${values.certificateNumber}.pdf`;
     const { error: uploadErr } = await supabaseAdmin.storage
       .from(BUCKET)
-      .upload(filePath, pngBuf, { contentType: "image/png", upsert: true });
+      .upload(filePath, pdfBuf, { contentType: "application/pdf", upsert: true });
 
     if (uploadErr) {
       return NextResponse.json({ error: `Upload failed: ${uploadErr.message}` }, { status: 500 });
@@ -92,6 +61,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       ok: true,
       imageUrl,
+      pdfUrl: imageUrl,
       certificateNumber: values.certificateNumber,
     });
   } catch (err: unknown) {

@@ -45,12 +45,16 @@ CREATE POLICY "Allow admin update certificates"
 -- Bucket name: certificates
 -- Public: yes
 -- File size limit: 5MB
--- Allowed MIME types: image/png
+-- Allowed MIME types: application/pdf
 
 -- OR run this SQL to create the bucket:
 INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-VALUES ('certificates', 'certificates', true, 5242880, ARRAY['image/png'])
+VALUES ('certificates', 'certificates', true, 5242880, ARRAY['application/pdf'])
 ON CONFLICT (id) DO NOTHING;
+
+UPDATE storage.buckets
+SET allowed_mime_types = ARRAY['application/pdf']
+WHERE id = 'certificates';
 
 -- 6. Storage policy: allow authenticated uploads
 CREATE POLICY "Allow admin upload certificates"

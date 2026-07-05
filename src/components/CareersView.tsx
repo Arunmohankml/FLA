@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -48,24 +49,26 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
   }
 
   return (
-    <section className="min-h-dvh bg-background pt-28 pb-20 lg:pt-32 lg:pb-28">
-      <div className="page-shell">
+    <section className="blue-section min-h-dvh pt-28 pb-20 lg:pt-32 lg:pb-28">
+      <div className="page-shell relative z-10">
         <div className="mx-auto max-w-[1100px]">
-          <div className="relative overflow-hidden rounded-[40px]">
-            <img
-              src="/bg.png"
+          <div className="blue-dark-panel blue-grid-bg relative overflow-hidden rounded-[40px] shadow-[0_28px_90px_rgba(29,155,240,0.22)]">
+            <Image
+              src="/bg.webp"
               alt=""
-              className="absolute inset-0 size-full object-cover opacity-[0.22]"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1100px"
+              className="absolute inset-0 size-full object-cover opacity-[0.12]"
             />
             <div className="relative px-6 py-10 text-center sm:px-10 sm:py-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-black/65 backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white/78 backdrop-blur-sm">
                 <HiOutlineSparkles className="size-3.5" />
                 Careers at Foreign Language Academy
               </span>
-              <h1 className="mx-auto mt-5 max-w-[12ch] font-heading text-[clamp(2.2rem,4.5vw,4.2rem)] font-medium leading-[0.95] tracking-[-0.06em] text-foreground">
+              <h1 className="mx-auto mt-5 max-w-[12ch] font-heading text-[clamp(2.2rem,4.5vw,4.2rem)] font-medium leading-[0.95] tracking-[-0.06em] text-white">
                 We&apos;re Hiring
               </h1>
-              <p className="mx-auto mt-3 max-w-lg text-[15px] leading-6 text-black/70">
+              <p className="mx-auto mt-3 max-w-lg text-[15px] leading-6 text-white/75">
                 Join Foreign Language Academy and build a rewarding career in
                 education and student support. Explore our current openings and
                 become part of our growing team.
@@ -81,7 +84,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group rounded-[22px] border border-white/25 bg-white/45 shadow-[0_4px_28px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-400 hover:border-white/40 hover:bg-white/70 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)]"
+                className="blue-card blue-card-hover group rounded-[22px] bg-white/90 backdrop-blur-xl"
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-3">
@@ -91,9 +94,9 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                     <span
                       className="shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold"
                       style={{
-                        borderColor: (job.accent || "#1D9BF0") + "35",
-                        color: job.accent || "#1D9BF0",
-                        backgroundColor: (job.accent || "#1D9BF0") + "10",
+                        borderColor: (job.accent || "#0c2847") + "35",
+                        color: job.accent || "#0c2847",
+                        backgroundColor: (job.accent || "#0c2847") + "10",
                       }}
                     >
                       ID:{job.code}
@@ -106,15 +109,15 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
 
                   <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-black/60">
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineLocationMarker className="size-3.5 text-[#0C8BDD]" />
+                      <HiOutlineLocationMarker className="size-3.5 text-[#0c2847]" />
                       {job.location}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineBriefcase className="size-3.5 text-[#0C8BDD]" />
+                      <HiOutlineBriefcase className="size-3.5 text-[#0c2847]" />
                       {job.workMode}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-md border border-black/5 bg-white/60 px-2.5 py-1">
-                      <HiOutlineClock className="size-3.5 text-[#0C8BDD]" />
+                      <HiOutlineClock className="size-3.5 text-[#0c2847]" />
                       {job.employmentType}
                     </span>
                   </div>
@@ -122,14 +125,14 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                   <div className="mt-5 flex items-center gap-3">
                     <button
                       onClick={() => setSelected(job)}
-                      className="inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:bg-[#0C8BDD]"
+                      className="blue-cta inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold transition"
                     >
                       Apply now
                       <HiOutlineArrowRight className="size-3.5" />
                     </button>
                     <button
                       onClick={() => setSelected(job)}
-                      className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-black/10 px-5 text-sm font-medium text-foreground transition hover:border-black/20 hover:bg-white/60"
+                      className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-[#0c2847]/22 bg-[#F4FAFF] px-5 text-sm font-medium text-[#0c2847] transition hover:border-[#0c2847]/35 hover:bg-[#EAF4FF]"
                     >
                       Details
                     </button>
@@ -185,7 +188,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                   </p>
                   <button
                     onClick={closeModal}
-                    className="mt-6 inline-flex h-10 cursor-pointer items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:bg-[#0C8BDD]"
+                    className="blue-cta mt-6 inline-flex h-10 cursor-pointer items-center justify-center rounded-full px-6 text-sm font-semibold transition"
                   >
                     Done
                   </button>
@@ -211,25 +214,25 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
                         <label className="block text-sm font-medium text-foreground">
-                          Full name <span className="text-[#0C8BDD]">*</span>
+                          Full name <span className="text-[#0c2847]">*</span>
                         </label>
                         <input
                           name="name"
                           required
                           placeholder="e.g. John Doe"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-foreground">
-                          Email <span className="text-[#0C8BDD]">*</span>
+                          Email <span className="text-[#0c2847]">*</span>
                         </label>
                         <input
                           name="email"
                           required
                           type="email"
                           placeholder="e.g. john@example.com"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
                         />
                       </div>
                     </div>
@@ -237,14 +240,14 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
                         <label className="block text-sm font-medium text-foreground">
-                          Phone / WhatsApp <span className="text-[#0C8BDD]">*</span>
+                          Phone / WhatsApp <span className="text-[#0c2847]">*</span>
                         </label>
                         <input
                           name="phone"
                           required
                           type="tel"
                           placeholder="e.g. +91 98765 43210"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
                         />
                       </div>
                       <div>
@@ -254,7 +257,7 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                         <input
                           name="experience"
                           placeholder="e.g. 2 years"
-                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
+                          className="mt-1.5 h-11 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
                         />
                       </div>
                     </div>
@@ -267,24 +270,24 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                         name="message"
                         rows={3}
                         placeholder="Tell us about your experience and why you'd be a great addition…"
-                        className="mt-1.5 w-full resize-none rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 py-2.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#1D9BF0]/30 focus:ring-3 focus:ring-[#1D9BF0]/8"
+                        className="mt-1.5 w-full resize-none rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 py-2.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
                       />
                     </div>
 
-                    <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[#F5FAFF]/50 px-4 py-3.5 text-sm text-black/60 transition hover:border-[#1D9BF0]/20 hover:bg-[#F5FAFF]">
+                    <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[#F5FAFF]/50 px-4 py-3.5 text-sm text-black/60 transition hover:border-[#0c2847]/20 hover:bg-[#F5FAFF]">
                       <HiOutlineUpload className="size-4 shrink-0 text-black/50" />
                       <span>Upload resume (PDF / DOC)</span>
                       <input
                         name="resume"
                         type="file"
                         accept=".pdf,.doc,.docx"
-                        className="ml-auto text-xs text-foreground file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-[#1D9BF0]/10 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-[#0C8BDD] file:transition file:hover:bg-[#1D9BF0]/20"
+                        className="ml-auto text-xs text-foreground file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-[#0c2847]/10 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-[#0c2847] file:transition file:hover:bg-[#0c2847]/20"
                       />
                     </div>
 
                     <button
                       disabled={loading}
-                      className="mt-2 inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-[14px] font-semibold text-primary-foreground transition hover:bg-[#0C8BDD] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="blue-cta mt-2 inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full text-[14px] font-semibold transition disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       {loading ? "Submitting…" : "Submit application"}
                       {!loading && <HiOutlineArrowRight className="size-4" />}

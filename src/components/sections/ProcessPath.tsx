@@ -93,9 +93,25 @@ export function ProcessPath() {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <section className="relative overflow-hidden bg-[#F6FAFF] py-10 sm:py-12 lg:py-14">
+=======
+    <section className="wave-overlay blue-dot-bg relative overflow-hidden bg-[#EEF7FF] py-10 sm:py-12 lg:py-14">
+>>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
       <div
         className="pointer-events-none absolute -bottom-80 left-1/2 h-[520px] w-[115vw] -translate-x-1/2 rounded-[50%] border border-[#B9D8FF]/55 bg-[#EAF4FF]/70"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 lg:block"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle, #93C5FD 1.5px, transparent 1.5px),
+            radial-gradient(circle, #BFDBFE 1px, transparent 1px)
+          `,
+          backgroundSize: "32px 32px, 16px 16px",
+          backgroundPosition: "0 0, 8px 8px",
+        }}
         aria-hidden="true"
       />
       <div
@@ -201,7 +217,7 @@ export function ProcessPath() {
                   {step.num}
                 </div>
 
-                <div className="rounded-[26px] border border-[#DDEBFF] bg-white p-4 shadow-[0_16px_42px_rgba(29,116,232,0.11)] transition-transform duration-300 group-hover:-translate-y-1 sm:p-5 lg:rounded-[30px]">
+                <div className="blue-card rounded-[26px] p-4 transition-transform duration-300 group-hover:-translate-y-1 sm:p-5 lg:rounded-[30px]">
                   <div
                     ref={(el) => { imgRefs.current[i] = el; }}
                     className="relative aspect-[1.43] overflow-hidden rounded-[20px] bg-[#EAF4FF]"
@@ -245,11 +261,15 @@ export function ProcessPath() {
           <Link
 <<<<<<< HEAD
             href="/book-demo"
+<<<<<<< HEAD
             className="inline-flex h-[52px] min-w-[230px] items-center justify-center gap-5 rounded-full bg-[#2179EE] px-8 text-base font-bold text-white shadow-[0_16px_34px_rgba(33,121,238,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2179EE]"
 =======
             href="/register"
             className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
 >>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
+=======
+            className="inline-flex h-[52px] min-w-[230px] items-center justify-center gap-5 rounded-full bg-[#0c2847] px-8 text-base font-bold text-white shadow-[0_16px_34px_rgba(33,121,238,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0c2847] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0c2847]"
+>>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
           >
             Book Free Demo
             <ArrowRight className="size-5" aria-hidden="true" />

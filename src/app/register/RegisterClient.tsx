@@ -44,8 +44,8 @@ export function RegisterClient() {
     }
   }
 
-  const inputClass = "flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10";
-  const selectClass = "flex h-12 w-full appearance-none rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 focus:border-[#1D9BF0]/40 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/10";
+  const inputClass = "flex h-12 w-full rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 placeholder:text-[#334155]/80 focus:border-[#0c2847]/40 focus:outline-none focus:ring-2 focus:ring-[#0c2847]/10";
+  const selectClass = "flex h-12 w-full appearance-none rounded-xl border border-black/8 bg-[#F5FAFF] px-4 text-sm text-foreground transition-all duration-200 focus:border-[#0c2847]/40 focus:outline-none focus:ring-2 focus:ring-[#0c2847]/10";
 
   return (
     <section className="px-6 pt-20 pb-16 lg:px-12 lg:pt-28 lg:pb-24">
@@ -108,8 +108,8 @@ export function RegisterClient() {
           >
             <div className="relative rounded-[28px] border border-black/5 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] lg:p-10">
               {/* Decorative arcs */}
-              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-[#1D9BF0]/10 opacity-60" />
-              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-[#1D9BF0]/8 opacity-40" />
+              <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full border border-[#0c2847]/10 opacity-60" />
+              <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full border border-[#0c2847]/8 opacity-40" />
 
               {submitted ? (
                 <motion.div
@@ -209,7 +209,7 @@ export function RegisterClient() {
                     disabled={loading}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0C8BDD] disabled:opacity-50"
+                    className="mt-6 flex h-13 w-full items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-[#0c2847] disabled:opacity-50"
                   >
                     {loading ? "Submitting..." : "Submit Registration"}
                   </motion.button>
