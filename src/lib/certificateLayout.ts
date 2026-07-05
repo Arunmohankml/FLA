@@ -56,7 +56,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 397,
-    "y": 354,
+    "y": 351,
     "maxWidth": 325,
     "minFontSize": 7
   },
@@ -115,7 +115,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 260,
+    "x": 327,
     "y": 626
   },
   "oral": {
@@ -125,7 +125,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 260,
+    "x": 327,
     "y": 655
   },
   "reading": {
@@ -135,7 +135,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 260,
+    "x": 327,
     "y": 685
   },
   "writing": {
@@ -145,7 +145,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 260,
+    "x": 327,
     "y": 714
   },
   "total": {
@@ -155,8 +155,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 260,
-    "y": 742
+    "x": 327,
+    "y": 755
   },
   "resultGrade": {
     "fontSize": 17,
@@ -165,32 +165,32 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 150,
-    "x": 260,
-    "y": 771,
+    "x": 327,
+    "y": 798,
     "minFontSize": 9
   },
   "issuePlace": {
-    "fontSize": 23,
+    "fontSize": 17,
     "align": "center",
     "family": "serif",
     "style": "italic",
     "weight": "500",
     "color": "#050505",
-    "x": 181,
-    "y": 893,
-    "maxWidth": 110,
+    "x": 178,
+    "y": 885,
+    "maxWidth": 78,
     "minFontSize": 7
   },
   "issueDate": {
-    "fontSize": 19,
+    "fontSize": 17,
     "align": "center",
     "family": "serif",
     "style": "italic",
     "weight": "500",
     "color": "#050505",
-    "x": 649,
-    "y": 893,
-    "maxWidth": 95,
+    "x": 655,
+    "y": 885,
+    "maxWidth": 78,
     "minFontSize": 7
   },
   "certificateNumber": {
@@ -204,8 +204,8 @@ export const certificateLayout: CertificateLayout = {
     "maxWidth": 140
   },
   "qr": {
-    "x": 389,
-    "y": 954,
-    "size": 0
+    "x": 363,
+    "y": 850,
+    "size": 68
   }
 };

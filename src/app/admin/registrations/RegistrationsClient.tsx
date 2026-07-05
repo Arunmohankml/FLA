@@ -172,7 +172,7 @@ function RegistrationBubble({ r }: { r: Registration }) {
                 {r.address && (
                   <div className="sm:col-span-2">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-black/35">
-                      Address
+                      Class Mode
                     </p>
                     <p className="mt-0.5">{r.address}</p>
                   </div>
@@ -258,7 +258,7 @@ export function RegistrationsClient({
       "Level",
       "Time Slot",
       "Purpose",
-      "Address",
+      "Class Mode",
       "Date",
     ];
     const rows = filtered.map((r) => [

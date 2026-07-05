@@ -11,14 +11,16 @@ const languages = [
 const levels = ["A1", "A2", "B1", "B2", "C1", "C2", "N5", "N4", "N3", "N2", "N1", "IELTS"];
 
 const timeSlots = [
-  "6-8 AM", "8-10 AM", "10-12 PM", "1-3 PM", "2-4 PM",
-  "3-5 PM", "4-6 PM", "5-7 PM", "6-8 PM", "7-9 PM", "8-10 PM",
+  "6-8 AM", "8-10 AM", "10-12 AM", "1-3 PM", "2-4 PM",
+  "3-5 PM", "4-6 PM", "5-7 PM", "6-8 PM", "7-9 PM", "8-10 PM", "9-11 PM",
 ];
+
+const classModes = ["Online", "Offline"];
 
 const steps = [
   { num: "01", title: "Fill Your Details", desc: "Tell us about yourself and your learning goals" },
   { num: "02", title: "Choose Your Course", desc: "Pick a language, level, and convenient time slot" },
-  { num: "03", title: "Start Learning", desc: "We'll confirm your enrollment and you're ready to go" },
+  { num: "03", title: "Start Learning", desc: "Our counsellor will confirm your enrollment immediately" },
 ];
 
 export function RegisterClient() {
@@ -140,7 +142,7 @@ export function RegisterClient() {
                       </svg>
                     </div>
                     <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-foreground">
-                      Student Registration
+                      Registration
                     </h2>
                   </div>
 
@@ -162,9 +164,9 @@ export function RegisterClient() {
                         <input name="phone" type="tel" required placeholder="+91 98765 43210" className={inputClass} />
                       </div>
                       <div>
-                        <label className="mb-1.5 block text-sm font-medium text-foreground">Language *</label>
+                        <label className="mb-1.5 block text-sm font-medium text-foreground">Course *</label>
                         <select name="language" required className={selectClass}>
-                          <option value="">Select language</option>
+                          <option value="">Select course</option>
                           {languages.map((l) => (
                             <option key={l} value={l}>{l}</option>
                           ))}
@@ -194,13 +196,18 @@ export function RegisterClient() {
                     </div>
 
                     <div>
-                      <label className="mb-1.5 block text-sm font-medium text-foreground">Address *</label>
-                      <textarea name="address" rows={3} required placeholder="Your full address" className={inputClass + " py-3"} />
+                      <label className="mb-1.5 block text-sm font-medium text-foreground">Class Mode *</label>
+                      <select name="address" required className={selectClass}>
+                        <option value="">Select class mode</option>
+                        {classModes.map((mode) => (
+                          <option key={mode} value={mode}>{mode}</option>
+                        ))}
+                      </select>
                     </div>
 
                     <div>
                       <label className="mb-1.5 block text-sm font-medium text-foreground">Purpose of Learning *</label>
-                      <textarea name="purpose" rows={3} required placeholder="Why do you want to learn this language?" className={inputClass + " py-3"} />
+                      <textarea name="purpose" rows={3} required placeholder="Why do you want to learn this course?" className={inputClass + " py-3"} />
                     </div>
                   </div>
 

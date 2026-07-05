@@ -41,14 +41,16 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-12">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight"
+          className="inline-flex items-center"
+          aria-label="Foreign Language Academy home"
         >
-          <motion.span
-            animate={{ color: showWhite ? "#1B1B1B" : "#ffffff" }}
+          <motion.img
+            src="/FLA-logo.png"
+            alt="FLA logo"
+            className="h-7 w-auto"
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-          >
-            FLA
-          </motion.span>
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

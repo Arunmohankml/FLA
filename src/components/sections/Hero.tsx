@@ -64,7 +64,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 max-w-lg text-lg leading-[1.5] text-[#334155]"
           >
-            Live online classes and in-person classroom training for students,
+            Live online classes and classroom training for students,
             professionals, and study-abroad aspirants across beginner to
             advanced levels.
           </motion.p>

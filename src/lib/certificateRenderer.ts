@@ -5,6 +5,7 @@ import {
   StandardFonts,
   rgb,
 } from "pdf-lib";
+import QRCode from "qrcode";
 import { certificateLayout, CertificateLayout, LayoutField } from "@/lib/certificateLayout";
 
 export type CertificateValues = Record<string, string>;
@@ -60,6 +61,7 @@ const SAMPLE_VALUES: CertificateValues = {
   issuePlace: "Chennai",
   issueDate: "22/03/2025",
   certificateNumber: "FLA-251-23913",
+  qrUrl: "https://foreignlanguageacademy.in",
 };
 
 type FontSet = {
@@ -193,6 +195,45 @@ function drawValue({
   });
 }
 
+async function drawQrCode({
+  page,
+  pdfDoc,
+  sourceWidth,
+  sourceHeight,
+  value,
+}: {
+  page: PDFPage;
+  pdfDoc: PDFDocument;
+  sourceWidth: number;
+  sourceHeight: number;
+  value?: string;
+}) {
+  if (!value || certificateLayout.qr.size <= 0) return;
+
+  const pngDataUrl = await QRCode.toDataURL(value, {
+    errorCorrectionLevel: "M",
+    margin: 1,
+    scale: 8,
+    color: {
+      dark: "#0c2847",
+      light: "#ffffff",
+    },
+  });
+  const pngBytes = Buffer.from(pngDataUrl.split(",")[1], "base64");
+  const qrImage = await pdfDoc.embedPng(pngBytes);
+  const { width, height } = page.getSize();
+  const scaleX = width / sourceWidth;
+  const scaleY = height / sourceHeight;
+  const size = certificateLayout.qr.size * scaleX;
+
+  page.drawImage(qrImage, {
+    x: certificateLayout.qr.x * scaleX,
+    y: height - (certificateLayout.qr.y * scaleY) - size,
+    width: size,
+    height: certificateLayout.qr.size * scaleY,
+  });
+}
+
 async function embedFonts(pdfDoc: PDFDocument): Promise<FontSet> {
   const [sans, sansBold, serif, serifBold, serifItalic, serifBoldItalic] =
     await Promise.all([
@@ -228,6 +269,14 @@ export async function renderCertificatePdf(
       value: resolveValue(values, key),
     });
   }
+
+  await drawQrCode({
+    page,
+    pdfDoc,
+    sourceWidth,
+    sourceHeight,
+    value: values.qrUrl,
+  });
 
   return pdfDoc.save();
 }

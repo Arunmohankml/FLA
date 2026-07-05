@@ -25,20 +25,51 @@ interface Certificate {
   createdAt: string;
 }
 
-const emptyForm = {
-  studentFullName: "",
-  courseLevel: "",
-  courseName: "",
-  grade: "",
-  readingScore: "",
-  listeningScore: "",
-  writtenExpressionScore: "",
-  oralTestScore: "",
-  totalScore: "",
-  certificateNumber: "",
-  issueDate: "",
-  issuePlace: "",
-};
+const scoreKeys = [
+  "listeningScore",
+  "oralTestScore",
+  "readingScore",
+  "writtenExpressionScore",
+] as const;
+
+function todayDate() {
+  const date = new Date();
+  return [
+    String(date.getDate()).padStart(2, "0"),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    date.getFullYear(),
+  ].join("/");
+}
+
+function certificatePrefix() {
+  return `FLA-${new Date().getFullYear()}-`;
+}
+
+function createEmptyForm() {
+  return {
+    studentFullName: "",
+    courseLevel: "",
+    courseName: "",
+    grade: "",
+    readingScore: "",
+    listeningScore: "",
+    writtenExpressionScore: "",
+    oralTestScore: "",
+    totalScore: "",
+    certificateNumber: "",
+    issueDate: todayDate(),
+    issuePlace: "",
+  };
+}
+
+type CertificateForm = ReturnType<typeof createEmptyForm>;
+
+function calculateTotal(form: CertificateForm) {
+  const values = scoreKeys.map((key) => Number(form[key]));
+  if (values.some((value) => !Number.isFinite(value))) return "";
+
+  return String(values.reduce((sum, value) => sum + value, 0));
+}
 
 function Field({
   label,
@@ -46,12 +77,14 @@ function Field({
   onChange,
   required,
   placeholder,
+  readOnly,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   required?: boolean;
   placeholder?: string;
+  readOnly?: boolean;
 }) {
   return (
     <div>
@@ -62,9 +95,41 @@ function Field({
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        readOnly={readOnly}
         placeholder={placeholder || label}
-        className="w-full rounded-xl border border-black/8 bg-white px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-black/30 focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10"
+        className={[
+          "w-full rounded-xl border border-black/8 px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-black/30 focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10",
+          readOnly ? "cursor-not-allowed bg-black/[0.03] text-black/60" : "bg-white",
+        ].join(" ")}
       />
+    </div>
+  );
+}
+
+function CertificateNumberField({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div>
+      <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-black/50">
+        Certificate Number <span className="text-[#e8734a]">*</span>
+      </label>
+      <div className="flex overflow-hidden rounded-xl border border-black/8 bg-white focus-within:border-[#e8734a]/40 focus-within:ring-2 focus-within:ring-[#e8734a]/10">
+        <span className="inline-flex shrink-0 items-center border-r border-black/8 bg-black/[0.03] px-4 text-sm font-semibold text-black/60">
+          {certificatePrefix()}
+        </span>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="001"
+          className="min-w-0 flex-1 bg-white px-4 py-2.5 text-sm text-foreground outline-none placeholder:text-black/30"
+        />
+      </div>
     </div>
   );
 }
@@ -74,13 +139,19 @@ export function CertificatesClient({
 }: {
   certificates: Certificate[];
 }) {
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState(createEmptyForm);
   const [generating, setGenerating] = useState(false);
   const [toast, setToast] = useState<{ type: "ok" | "err"; msg: string } | null>(null);
   const [preview, setPreview] = useState<Certificate | null>(null);
   const [list, setList] = useState(certificates);
 
-  const set = (key: string) => (v: string) => setForm((f) => ({ ...f, [key]: v }));
+  const set = (key: keyof CertificateForm) => (v: string) =>
+    setForm((current) => {
+      const next = { ...current, [key]: v };
+      return scoreKeys.includes(key as (typeof scoreKeys)[number])
+        ? { ...next, totalScore: calculateTotal(next) }
+        : next;
+    });
 
   const showToast = (type: "ok" | "err", msg: string) => {
     setToast({ type, msg });
@@ -88,7 +159,7 @@ export function CertificatesClient({
   };
 
   const handleGenerate = async () => {
-    if (!form.studentFullName || !form.certificateNumber) {
+    if (!form.studentFullName || !form.certificateNumber.trim()) {
       showToast("err", "Student name and certificate number are required");
       return;
     }
@@ -110,7 +181,7 @@ export function CertificatesClient({
 
       setList((prev) => [
         {
-          id: Date.now().toString(),
+          id: data.id || Date.now().toString(),
           certificateNumber: data.certificateNumber,
           studentName: form.studentFullName,
           courseLevel: form.courseLevel,
@@ -118,13 +189,13 @@ export function CertificatesClient({
           grade: form.grade,
           totalScore: form.totalScore,
           imageUrl: data.imageUrl,
-          formData: { ...form },
+          formData: data.formData || { ...form, certificateNumber: data.certificateNumber },
           createdAt: new Date().toISOString(),
         },
         ...prev,
       ]);
 
-      setForm(emptyForm);
+      setForm(createEmptyForm());
     } catch {
       showToast("err", "Network error");
     } finally {
@@ -258,19 +329,22 @@ export function CertificatesClient({
           <Field label="Full Name" value={form.studentFullName} onChange={set("studentFullName")} required placeholder="e.g. John Smith" />
           <Field label="Course Level" value={form.courseLevel} onChange={set("courseLevel")} placeholder="e.g. B1" />
           <Field label="Course Name" value={form.courseName} onChange={set("courseName")} placeholder="e.g. French Language" />
-          <Field label="Grade" value={form.grade} onChange={set("grade")} placeholder="e.g. Good" />
         </div>
 
         <h2 className="mb-4 mt-6 text-[11px] font-bold uppercase tracking-[0.15em] text-black/40">
           Scores
         </h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Field label="Reading Score" value={form.readingScore} onChange={set("readingScore")} placeholder="e.g. 85" />
-          <Field label="Listening Score" value={form.listeningScore} onChange={set("listeningScore")} placeholder="e.g. 90" />
-          <Field label="Written Expression" value={form.writtenExpressionScore} onChange={set("writtenExpressionScore")} placeholder="e.g. 80" />
-          <Field label="Oral Test Score" value={form.oralTestScore} onChange={set("oralTestScore")} placeholder="e.g. 88" />
-          <Field label="Total Score" value={form.totalScore} onChange={set("totalScore")} placeholder="e.g. 343" />
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Field label="Listening" value={form.listeningScore} onChange={set("listeningScore")} placeholder="90" />
+          <Field label="Speaking" value={form.oralTestScore} onChange={set("oralTestScore")} placeholder="88" />
+          <Field label="Reading" value={form.readingScore} onChange={set("readingScore")} placeholder="85" />
+          <Field label="Writing" value={form.writtenExpressionScore} onChange={set("writtenExpressionScore")} placeholder="80" />
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Field label="Total" value={form.totalScore} onChange={set("totalScore")} readOnly placeholder="Auto" />
+          <Field label="Grade" value={form.grade} onChange={set("grade")} placeholder="Good" />
         </div>
 
         <h2 className="mb-4 mt-6 text-[11px] font-bold uppercase tracking-[0.15em] text-black/40">
@@ -278,7 +352,7 @@ export function CertificatesClient({
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Field label="Certificate Number" value={form.certificateNumber} onChange={set("certificateNumber")} required placeholder="e.g. FLA-2026-001" />
+          <CertificateNumberField value={form.certificateNumber} onChange={set("certificateNumber")} />
           <Field label="Issue Date" value={form.issueDate} onChange={set("issueDate")} placeholder="DD/MM/YYYY" />
           <Field label="Issue Place" value={form.issuePlace} onChange={set("issuePlace")} placeholder="e.g. Chennai" />
         </div>

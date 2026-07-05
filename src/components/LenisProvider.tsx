@@ -17,6 +17,10 @@ export function LenisProvider({ children }: { children: ReactNode }) {
       anchors: true,
       lerp: 0.08,
       smoothWheel: true,
+      syncTouch: true,
+      syncTouchLerp: 0.08,
+      touchInertiaExponent: 1.45,
+      touchMultiplier: 1,
       wheelMultiplier: 0.9,
       prevent: (node) => Boolean(node.closest("[data-lenis-prevent]")),
     });

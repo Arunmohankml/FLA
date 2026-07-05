@@ -13,10 +13,18 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, phone, address, language, level, timeSlot, purpose } = body;
+    const allowedModes = new Set(["Online", "Offline"]);
 
     if (!name || !email || !phone || !address || !language || !level || !timeSlot || !purpose) {
       return NextResponse.json(
         { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    if (typeof address !== "string" || !allowedModes.has(address)) {
+      return NextResponse.json(
+        { error: "Invalid class mode" },
         { status: 400 }
       );
     }

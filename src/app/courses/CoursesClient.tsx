@@ -68,7 +68,7 @@ const CourseCard = memo(function CourseCard({
           </div>
 
           {/* Language code + name on image */}
-          <div className="absolute left-4 bottom-4 z-10">
+          <div className="hidden">
             <p className="font-heading text-sm font-semibold tracking-wider text-white/80">{lang.slug.toUpperCase()}</p>
             <p className="font-heading text-3xl font-medium leading-tight text-white">{lang.name}</p>
             <p className="mt-1 text-xs text-white/85">Duration: {lang.duration} · Hybrid Mode</p>
@@ -81,7 +81,7 @@ const CourseCard = memo(function CourseCard({
             {lang.name}
           </h3>
           <p className="mt-1.5 text-[15px] leading-6 text-[#334155]">
-            Master one of the world&apos;s most in-demand languages.
+            Master every level
           </p>
 
           <div className="my-4 h-px bg-[#B9E2FF]/70" />

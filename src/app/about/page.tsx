@@ -220,7 +220,7 @@ export default function AboutPage() {
                   <span className="text-[#0c2847]">since 2007</span>
                 </h1>
 
-                <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-[#0c2847]/70">
+                <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-[#0c2847]">
                   Founded in 2007, Foreign Language Academy is now one of the
                   largest and best-known language schools in India and Germany.
                   We offer over 100 courses yearly in 10+ languages with
