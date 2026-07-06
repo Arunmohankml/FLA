@@ -73,13 +73,8 @@ export function AcademyPreview() {
               learning since 2007
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-[#334155]">
-<<<<<<< HEAD
               Foreign Language Academy is one of Chennai&apos;s trusted language
               academies, with 18+ years of structured teaching excellence.
-=======
-              One of the best Language Academies - SUPER STAR among the
-              world&apos;s best language academies with 18+ years of excellence.
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             </p>
             <p className="mt-4 max-w-md text-base leading-relaxed text-[#334155]">
               What started with two languages and a handful of students has grown

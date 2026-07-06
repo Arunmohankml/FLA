@@ -92,12 +92,7 @@ export function ProcessPath() {
   }, []);
 
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <section className="relative overflow-hidden bg-[#F6FAFF] py-10 sm:py-12 lg:py-14">
-=======
     <section className="wave-overlay blue-dot-bg relative overflow-hidden bg-[#EEF7FF] py-10 sm:py-12 lg:py-14">
->>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
       <div
         className="pointer-events-none absolute -bottom-80 left-1/2 h-[520px] w-[115vw] -translate-x-1/2 rounded-[50%] border border-[#B9D8FF]/55 bg-[#EAF4FF]/70"
         aria-hidden="true"
@@ -125,11 +120,6 @@ export function ProcessPath() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
-=======
-    <section ref={sectionRef} className="bg-[#F5FAFF] page-section py-16 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl">
-        {/* ── Header ──────────────────────────────────────── */}
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -137,11 +127,7 @@ export function ProcessPath() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-6xl text-center"
         >
-<<<<<<< HEAD
           <span className="inline-flex rounded-full border border-[#B8D8FF] bg-[#F8FBFF] px-6 py-2 text-xs font-bold uppercase tracking-[0.24em] text-[#1D74E8] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
-=======
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             How It Works
           </span>
           <h2 className="mt-5 font-heading text-[clamp(2.35rem,4vw,3.85rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-[#111827] sm:whitespace-nowrap">
@@ -149,7 +135,6 @@ export function ProcessPath() {
           </h2>
         </motion.div>
 
-<<<<<<< HEAD
         <div ref={sectionRef} className="relative mt-10 lg:mt-12">
           {/* Animated line */}
           <div className="pointer-events-none absolute left-[15%] right-[15%] top-0 z-0 hidden lg:block">
@@ -172,42 +157,6 @@ export function ProcessPath() {
                 key={step.num}
                 ref={(el) => { cardRefs.current[i] = el; }}
                 className="group relative z-10 pt-16 text-center lg:pt-20"
-=======
-        {/* ── Steps ────────────────────────────────────── */}
-        <div className="relative grid gap-4 lg:grid-cols-3 lg:gap-10">
-          {/* Connecting line behind cards (desktop — horizontal, animated) */}
-          <div className="pointer-events-none absolute top-8 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] hidden lg:block">
-            <div className="h-px w-full bg-black/5">
-              <motion.div
-                style={{ scaleX: desktopLineScale, transformOrigin: "left center" }}
-                className="h-px w-full bg-[#1D9BF0]/30 will-change-transform"
-              />
-            </div>
-          </div>
-
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group relative text-center"
-            >
-              {/* Step number badge — desktop only */}
-              <motion.div
-                initial={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
-                whileInView={{
-                  boxShadow: [
-                    "0 2px 8px rgba(0,0,0,0.04)",
-                    "0 0 20px rgba(29,155,240,0.25), 0 0 40px rgba(29,155,240,0.1)",
-                    "0 2px 8px rgba(0,0,0,0.04)",
-                  ],
-                }}
-                viewport={{ once: false, amount: 0.8 }}
-                transition={{ duration: 1.2, delay: i * 0.2 }}
-                className="relative z-10 mx-auto mb-6 hidden size-16 items-center justify-center rounded-2xl border border-black/8 bg-white text-sm font-bold transition-all duration-300 group-hover:border-[#1D9BF0]/30 group-hover:bg-[#1D9BF0] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(29,155,240,0.15)] lg:flex"
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
               >
                 {/* Number circle - centered on the line */}
                 <div
@@ -239,16 +188,8 @@ export function ProcessPath() {
                   </p>
                 </div>
               </div>
-<<<<<<< HEAD
             ))}
           </div>
-=======
-
-              <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
-              <p className="mt-1.5 text-sm text-[#334155]">{step.desc}</p>
-            </motion.div>
-          ))}
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
         </div>
 
         <motion.div
@@ -259,17 +200,8 @@ export function ProcessPath() {
           className="mt-8 text-center lg:mt-10"
         >
           <Link
-<<<<<<< HEAD
             href="/book-demo"
-<<<<<<< HEAD
-            className="inline-flex h-[52px] min-w-[230px] items-center justify-center gap-5 rounded-full bg-[#2179EE] px-8 text-base font-bold text-white shadow-[0_16px_34px_rgba(33,121,238,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0C8BDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2179EE]"
-=======
-            href="/register"
-            className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
-=======
             className="inline-flex h-[52px] min-w-[230px] items-center justify-center gap-5 rounded-full bg-[#0c2847] px-8 text-base font-bold text-white shadow-[0_16px_34px_rgba(33,121,238,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0c2847] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0c2847]"
->>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
           >
             Book Free Demo
             <ArrowRight className="size-5" aria-hidden="true" />

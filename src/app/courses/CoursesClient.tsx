@@ -181,21 +181,13 @@ export function CoursesClient({ languages }: CoursesClientProps) {
             className="mb-10"
           >
             <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#F5FAFF] px-4 py-1.5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-black/70">
-<<<<<<< HEAD
               Foreign Language Academy Courses
-=======
-              Explore Courses
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
             </span>
             <h1 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
               Find the Right Class at Foreign Language Academy
             </h1>
             <p className="mt-3 max-w-lg text-base text-[#334155]">
-<<<<<<< HEAD
               Discover beginner to advanced language programs with online
-=======
-              Discover beginner to advanced language programs for online
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
               classes, offline classroom training, and flexible hybrid batches.
             </p>
           </motion.div>

@@ -47,7 +47,6 @@ export function PrivateCoaching() {
               href="/contact"
               className="mt-6 inline-flex h-12 items-center rounded-full bg-white px-7 text-sm font-semibold text-[#0c2847] transition-all duration-300 hover:scale-105 hover:bg-white/90"
             >
-<<<<<<< HEAD
               Book Consultation →
             </Link>
           </motion.div>
@@ -76,53 +75,6 @@ export function PrivateCoaching() {
                 </div>
               </motion.div>
             ))}
-=======
-              <span className="inline-flex rounded-full border border-white/40 bg-white/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-black/70 backdrop-blur-sm">
-                One-on-One
-              </span>
-              <h2 className="mt-4 font-heading text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.06em] text-foreground">
-                Private Language
-                <br />
-                Coaching
-              </h2>
-              <p className="mt-3 max-w-md text-[15px] leading-6 text-black/70">
-                One instructor. One student. One personalized roadmap built around
-                your goals, pace, and schedule.
-              </p>
-              <Link
-                href="/contact"
-                className="mt-6 inline-flex h-12 items-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-[#0C8BDD]"
-              >
-                Book Consultation →
-              </Link>
-            </motion.div>
-
-            {/* Feature grid */}
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {features.map((f, i) => (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.05 }}
-                  className="group flex gap-4 overflow-hidden rounded-[22px] border border-white/30 bg-white/40 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-500 hover:bg-white/55"
-                >
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-[12px] bg-white/60 text-xs font-semibold text-black/70 ring-1 ring-white/40">
-                    {f.n}
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-base font-medium text-foreground">
-                      {f.title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-6 text-black/75">
-                      {f.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
           </div>
         </div>
       </div>

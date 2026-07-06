@@ -108,17 +108,6 @@ export function LifeInGermany() {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <section className="bg-background">
-      <div className="page-shell pt-3 lg:pt-4">
-        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
-<<<<<<< HEAD
-          <div ref={textRef}>
-=======
-          <div>
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
-            <span className="mb-4 inline-flex w-fit rounded-full bg-[#6f4a36]/8 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#6f4a36]">
-=======
     <section className="wave-pattern-bg blue-section !overflow-visible">
       <div className="page-shell relative z-10 pt-8 lg:pt-10">
         <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.75fr)]">
@@ -127,7 +116,6 @@ export function LifeInGermany() {
             className="blue-dark-panel blue-orbit-bg rounded-[34px] p-6 shadow-[0_28px_90px_rgba(6,33,61,0.2)] sm:p-8 lg:p-10"
           >
             <span className="mb-4 inline-flex w-fit rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#B9E2FF]">
->>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
               Life in Europe
             </span>
 
@@ -162,18 +150,10 @@ export function LifeInGermany() {
             </div>
           </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <div ref={imageRef} className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
-=======
-          <div className="relative hidden h-[300px] overflow-hidden rounded-[28px] border border-black/5 bg-[#F5FAFF] shadow-[0_24px_70px_rgba(0,0,0,0.08)] lg:block">
->>>>>>> b97b215 (Redesign: section gap halving, hero heading update, UI polish across all pages)
-=======
           <div
             ref={imageRef}
             className="blue-card relative hidden overflow-hidden rounded-[28px] lg:block"
           >
->>>>>>> 3aff9dc (UI redesign: dark blue theme, wave patterns, glassmorphism, blog hero, marquee fixes)
             <img
               src="/euimage.webp"
               alt="European study abroad and language learning"
