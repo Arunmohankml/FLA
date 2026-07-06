@@ -1,7 +1,7 @@
 /**
  * Certificate layout.
  *
- * Coordinates are absolute pixels on public/ourcert/Peter changes.pdf (A4).pdf.
+ * Coordinates are absolute pixels on public/ourcert/fla-certificate.pdf.
  * The template is the final artwork; only these values are drawn onto it.
  */
 
@@ -56,7 +56,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 397,
-    "y": 351,
+    "y": 361,
     "maxWidth": 325,
     "minFontSize": 7
   },
@@ -68,7 +68,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 545,
-    "y": 388,
+    "y": 399,
     "maxWidth": 54,
     "minFontSize": 8
   },
@@ -80,7 +80,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#009ab8",
     "x": 176,
-    "y": 426,
+    "y": 437,
     "maxWidth": 154,
     "minFontSize": 7
   },
@@ -92,7 +92,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 666,
-    "y": 426,
+    "y": 437,
     "maxWidth": 72,
     "minFontSize": 7
   },
@@ -104,7 +104,7 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 536,
-    "y": 464,
+    "y": 475,
     "maxWidth": 165,
     "minFontSize": 7
   },
@@ -115,8 +115,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 327,
-    "y": 626
+    "x": 410,
+    "y": 610
   },
   "oral": {
     "fontSize": 17,
@@ -125,8 +125,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 327,
-    "y": 655
+    "x": 410,
+    "y": 647
   },
   "reading": {
     "fontSize": 17,
@@ -135,7 +135,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 327,
+    "x": 410,
     "y": 685
   },
   "writing": {
@@ -145,8 +145,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 327,
-    "y": 714
+    "x": 410,
+    "y": 721
   },
   "total": {
     "fontSize": 17,
@@ -155,8 +155,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 120,
-    "x": 327,
-    "y": 755
+    "x": 410,
+    "y": 759
   },
   "resultGrade": {
     "fontSize": 17,
@@ -165,8 +165,8 @@ export const certificateLayout: CertificateLayout = {
     "family": "sans",
     "weight": "700",
     "maxWidth": 150,
-    "x": 327,
-    "y": 798,
+    "x": 410,
+    "y": 795,
     "minFontSize": 9
   },
   "issuePlace": {
@@ -176,8 +176,8 @@ export const certificateLayout: CertificateLayout = {
     "style": "italic",
     "weight": "500",
     "color": "#050505",
-    "x": 178,
-    "y": 885,
+    "x": 179,
+    "y": 888,
     "maxWidth": 78,
     "minFontSize": 7
   },
@@ -189,13 +189,13 @@ export const certificateLayout: CertificateLayout = {
     "weight": "500",
     "color": "#050505",
     "x": 655,
-    "y": 885,
+    "y": 888,
     "maxWidth": 78,
     "minFontSize": 7
   },
   "certificateNumber": {
-    "x": 707,
-    "y": 1073,
+    "x": 767,
+    "y": 1100,
     "fontSize": 9,
     "align": "right",
     "color": "#ffffff",
@@ -204,8 +204,8 @@ export const certificateLayout: CertificateLayout = {
     "maxWidth": 140
   },
   "qr": {
-    "x": 363,
-    "y": 850,
-    "size": 68
+    "x": 709,
+    "y": 1034,
+    "size": 56
   }
 };

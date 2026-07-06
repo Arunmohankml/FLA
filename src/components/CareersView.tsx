@@ -10,7 +10,6 @@ import {
   HiOutlineLocationMarker,
   HiOutlineMail,
   HiOutlineSparkles,
-  HiOutlineUpload,
   HiOutlineX,
 } from "react-icons/hi";
 import { CareerListing } from "@/lib/careers";
@@ -271,17 +270,6 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                         rows={3}
                         placeholder="Tell us about your experience and why you'd be a great addition…"
                         className="mt-1.5 w-full resize-none rounded-xl border border-black/8 bg-[#F5FAFF] px-3.5 py-2.5 text-[15px] text-foreground placeholder:text-black/25 outline-none transition focus:border-[#0c2847]/30 focus:ring-3 focus:ring-[#0c2847]/8"
-                      />
-                    </div>
-
-                    <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[#F5FAFF]/50 px-4 py-3.5 text-sm text-black/60 transition hover:border-[#0c2847]/20 hover:bg-[#F5FAFF]">
-                      <HiOutlineUpload className="size-4 shrink-0 text-black/50" />
-                      <span>Upload resume (PDF / DOC)</span>
-                      <input
-                        name="resume"
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        className="ml-auto text-xs text-foreground file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-[#0c2847]/10 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-[#0c2847] file:transition file:hover:bg-[#0c2847]/20"
                       />
                     </div>
 

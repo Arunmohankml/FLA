@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HiOutlineDownload, HiOutlineMail, HiOutlinePhone, HiOutlineSearch } from "react-icons/hi";
+import { HiOutlineMail, HiOutlinePhone, HiOutlineSearch } from "react-icons/hi";
 
 interface Application {
   id: string;
@@ -81,12 +81,6 @@ export function JobApplicationsClient({ applications }: { applications: Applicat
                     <HiOutlineMail className="size-4" />
                     Email
                   </a>
-                  {item.resumeUrl && (
-                    <a href={item.resumeUrl} target="_blank" className="inline-flex h-10 items-center gap-2 rounded-full border border-black/10 px-4 text-sm font-semibold">
-                      <HiOutlineDownload className="size-4" />
-                      Resume
-                    </a>
-                  )}
                 </div>
               </div>
             </article>

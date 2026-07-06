@@ -23,7 +23,7 @@ export async function PUT(req: NextRequest) {
     const fileContent = `/**
  * Certificate layout.
  *
- * Coordinates are absolute pixels on public/ourcert/Peter changes.pdf (A4).pdf.
+ * Coordinates are absolute pixels on public/ourcert/fla-certificate.pdf.
  * The template is the final artwork; only these values are drawn onto it.
  */
 
@@ -42,6 +42,7 @@ export interface LayoutField {
   weight?: string;
   style?: string;
   maxWidth?: number;
+  minFontSize?: number;
 }
 
 export interface LayoutQR {
@@ -56,12 +57,6 @@ export interface CertificateLayout {
   language: LayoutField;
   leftGrade: LayoutField;
   monthYear: LayoutField;
-  firstName: LayoutField;
-  surname: LayoutField;
-  dob: LayoutField;
-  birthPlace: LayoutField;
-  examDate: LayoutField;
-  examPlace: LayoutField;
   reading: LayoutField;
   listening: LayoutField;
   writing: LayoutField;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   HiOutlineCheck,
@@ -8,6 +9,7 @@ import {
   HiOutlineEye,
   HiOutlineDownload,
   HiOutlinePlus,
+  HiOutlineTrash,
   HiOutlineX,
 } from "react-icons/hi";
 import { HiOutlineArrowPath } from "react-icons/hi2";
@@ -144,6 +146,7 @@ export function CertificatesClient({
   const [toast, setToast] = useState<{ type: "ok" | "err"; msg: string } | null>(null);
   const [preview, setPreview] = useState<Certificate | null>(null);
   const [list, setList] = useState(certificates);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const set = (key: keyof CertificateForm) => (v: string) =>
     setForm((current) => {
@@ -207,10 +210,19 @@ export function CertificatesClient({
     const fd = c.formData || {};
     setGenerating(true);
     try {
+      const deleteRes = await fetch(`/api/certificates?id=${encodeURIComponent(c.id)}`, {
+        method: "DELETE",
+      });
+      const deleteData = await deleteRes.json();
+
+      if (!deleteRes.ok) {
+        showToast("err", deleteData.error || "Could not delete old certificate");
+        return;
+      }
+
       const body = new FormData();
-      body.append("id", c.id);
-      // Send saved form data so coordinates re-align with the same values
       for (const [k, v] of Object.entries(fd)) body.append(k, v);
+      body.set("certificateNumber", fd.certificateNumber || c.certificateNumber);
 
       const res = await fetch("/api/certificates/generate", { method: "POST", body });
       const data = await res.json();
@@ -220,10 +232,19 @@ export function CertificatesClient({
         return;
       }
 
-      showToast("ok", `Certificate ${c.certificateNumber} regenerated`);
+      showToast("ok", `Certificate ${data.certificateNumber} regenerated`);
       setList((prev) =>
         prev.map((item) =>
-          item.id === c.id ? { ...item, imageUrl: data.imageUrl } : item
+          item.id === c.id
+            ? {
+                ...item,
+                id: data.id || item.id,
+                certificateNumber: data.certificateNumber,
+                imageUrl: data.imageUrl,
+                formData: data.formData || fd,
+                createdAt: new Date().toISOString(),
+              }
+            : item
         )
       );
     } catch {
@@ -238,6 +259,34 @@ export function CertificatesClient({
     a.href = c.imageUrl;
     a.download = `${c.certificateNumber}.pdf`;
     a.click();
+  };
+
+  const handleDelete = async (c: Certificate) => {
+    const confirmed = window.confirm(
+      `Delete certificate ${c.certificateNumber}? This removes the PDF and database record.`
+    );
+    if (!confirmed) return;
+
+    setDeletingId(c.id);
+    try {
+      const res = await fetch(`/api/certificates?id=${encodeURIComponent(c.id)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        showToast("err", data.error || "Delete failed");
+        return;
+      }
+
+      setList((prev) => prev.filter((item) => item.id !== c.id));
+      if (preview?.id === c.id) setPreview(null);
+      showToast("ok", `Certificate ${c.certificateNumber} deleted`);
+    } catch {
+      showToast("err", "Network error");
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   return (
@@ -310,13 +359,21 @@ export function CertificatesClient({
       </AnimatePresence>
 
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-foreground">
-          Certificate Generator
-        </h1>
-        <p className="mt-1 text-sm text-black/50">
-          Generate and manage student certificates
-        </p>
+      <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-foreground">
+            Certificate Generator
+          </h1>
+          <p className="mt-1 text-sm text-black/50">
+            Generate and manage student certificates
+          </p>
+        </div>
+        <Link
+          href="/admin/certificates/calibration"
+          className="inline-flex items-center gap-2 rounded-xl bg-[#0c2847] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#143b65]"
+        >
+          Manual Calibration
+        </Link>
       </div>
 
       {/* Form */}
@@ -429,6 +486,18 @@ export function CertificatesClient({
                   >
                     <HiOutlineDownload className="size-3.5" />
                     Download
+                  </button>
+                  <button
+                    onClick={() => handleDelete(c)}
+                    disabled={deletingId === c.id || generating}
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-red-50 px-3 py-1.5 text-xs font-medium text-red-600 transition-colors hover:bg-red-100 disabled:opacity-40"
+                  >
+                    {deletingId === c.id ? (
+                      <span className="size-3.5 animate-spin rounded-full border-2 border-red-200 border-t-red-600" />
+                    ) : (
+                      <HiOutlineTrash className="size-3.5" />
+                    )}
+                    Delete
                   </button>
                 </div>
               </div>

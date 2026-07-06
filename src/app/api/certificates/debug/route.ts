@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { renderSampleCertificatePdf } from "@/lib/certificateRenderer";
 
 export const dynamic = "force-dynamic";
-const CERTIFICATE_TEMPLATE_PATH = "/ourcert/Peter%20changes.pdf%20(A4).pdf";
+const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
 
 export async function GET(req: NextRequest) {
   const templateRes = await fetch(`${req.nextUrl.origin}${CERTIFICATE_TEMPLATE_PATH}`);

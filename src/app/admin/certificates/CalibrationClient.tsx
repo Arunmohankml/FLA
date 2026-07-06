@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  HiOutlineCheck,
+  HiOutlineArrowDown,
   HiOutlineArrowLeft,
   HiOutlineArrowRight,
   HiOutlineArrowUp,
-  HiOutlineArrowDown,
+  HiOutlineCheck,
 } from "react-icons/hi";
 
 interface LayoutField {
@@ -20,6 +20,7 @@ interface LayoutField {
   weight?: string;
   style?: string;
   maxWidth?: number;
+  minFontSize?: number;
 }
 
 interface LayoutQR {
@@ -46,35 +47,73 @@ interface CertificateLayout {
   qr: LayoutQR;
 }
 
-const FIELD_LABELS: Record<string, string> = {
-  studentName: "Student Name",
+const FIELD_LABELS: Record<keyof CertificateLayout, string> = {
+  studentName: "Name",
   level: "Level",
-  language: "Language",
-  leftGrade: "Left Grade",
+  language: "Course",
+  leftGrade: "Line Grade",
   monthYear: "Month / Year",
-  reading: "Reading",
   listening: "Listening",
+  oral: "Speaking",
+  reading: "Reading",
   writing: "Writing",
-  oral: "Oral",
   total: "Total",
   resultGrade: "Result Grade",
-  issueDate: "Issue Date",
-  issuePlace: "Issue Place",
-  certificateNumber: "Certificate Number",
+  issuePlace: "Place",
+  issueDate: "Date",
+  certificateNumber: "Certificate No.",
   qr: "QR",
 };
 
+const SAMPLE_TEXT: Record<keyof Omit<CertificateLayout, "qr">, string> = {
+  studentName: "Arun mohan k",
+  level: "B1",
+  language: "French",
+  leftGrade: "Good",
+  monthYear: "February 2026",
+  listening: "44",
+  oral: "234",
+  reading: "86",
+  writing: "44",
+  total: "408",
+  resultGrade: "Good",
+  issuePlace: "Valasaravakkam",
+  issueDate: "24/2/2026",
+  certificateNumber: "FLA-2026-001",
+};
+
+const TEXT_KEYS = Object.keys(SAMPLE_TEXT) as Array<keyof Omit<CertificateLayout, "qr">>;
+const ALL_KEYS = [...TEXT_KEYS, "qr"] as Array<keyof CertificateLayout>;
+
+function fontFamily(field: LayoutField) {
+  return field.family === "serif" ? '"Times New Roman", Times, serif' : "Arial, Helvetica, sans-serif";
+}
+
+function fontWeight(field: LayoutField) {
+  const numeric = Number(field.weight ?? "400");
+  return Number.isFinite(numeric) ? numeric : field.weight ?? "400";
+}
+
+function anchorTransform(field: LayoutField) {
+  if (field.align === "center") return "translateX(-50%)";
+  if (field.align === "right") return "translateX(-100%)";
+  return "none";
+}
+
+function numberValue(value: string, fallback: number) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 export function CalibrationClient() {
   const [layout, setLayout] = useState<CertificateLayout | null>(null);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<keyof CertificateLayout>("studentName");
   const [toast, setToast] = useState<{ type: "ok" | "err"; msg: string } | null>(null);
   const [saving, setSaving] = useState(false);
-  const [templateSize, setTemplateSize] = useState({ w: 0, h: 0 });
+  const [templateSize, setTemplateSize] = useState({ w: 794, h: 1123 });
   const [displaySize, setDisplaySize] = useState({ w: 0, h: 0 });
   const imgRef = useRef<HTMLImageElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load layout from API
   useEffect(() => {
     fetch("/api/certificates/layout")
       .then((r) => r.json())
@@ -86,80 +125,56 @@ export function CalibrationClient() {
     setTimeout(() => setToast(null), 3000);
   };
 
-  // When image loads, capture its natural size for coordinate mapping
-  const handleImgLoad = () => {
+  const updateDisplaySize = useCallback(() => {
     const img = imgRef.current;
-    if (img) {
-      setTemplateSize({ w: img.naturalWidth, h: img.naturalHeight });
-      setDisplaySize({ w: img.clientWidth, h: img.clientHeight });
-    }
-  };
+    if (!img) return;
+    setTemplateSize({ w: img.naturalWidth || 794, h: img.naturalHeight || 1123 });
+    setDisplaySize({ w: img.clientWidth, h: img.clientHeight });
+  }, []);
 
   useEffect(() => {
-    const updateDisplaySize = () => {
-      const img = imgRef.current;
-      if (img) setDisplaySize({ w: img.clientWidth, h: img.clientHeight });
-    };
-
     updateDisplaySize();
     window.addEventListener("resize", updateDisplaySize);
     return () => window.removeEventListener("resize", updateDisplaySize);
-  }, []);
+  }, [updateDisplaySize]);
 
-  // Convert template coords to screen coords
-  const toScreen = useCallback(
-    (x: number, y: number) => {
-      if (!templateSize.w || !displaySize.w) return { sx: 0, sy: 0 };
-      const scaleX = displaySize.w / templateSize.w;
-      const scaleY = displaySize.h / templateSize.h;
-      return { sx: x * scaleX, sy: y * scaleY };
-    },
-    [displaySize, templateSize]
-  );
+  const scaleX = displaySize.w / templateSize.w || 1;
+  const scaleY = displaySize.h / templateSize.h || 1;
 
-  // Move a field by delta in template coords
-  const moveField = useCallback(
-    (key: string, dx: number, dy: number) => {
+  const updateField = (key: keyof CertificateLayout, patch: Partial<LayoutField & LayoutQR>) => {
+    setLayout((current) => {
+      if (!current) return current;
+      return {
+        ...current,
+        [key]: { ...current[key], ...patch },
+      };
+    });
+  };
+
+  const moveSelected = useCallback(
+    (dx: number, dy: number) => {
       if (!layout) return;
-      const field = layout[key as keyof CertificateLayout] as LayoutField;
-      if (!field) return;
-      setLayout((prev) => ({
-        ...prev!,
-        [key]: { ...field, x: field.x + dx, y: field.y + dy },
-      }));
+      const field = layout[selected];
+      updateField(selected, { x: field.x + dx, y: field.y + dy });
     },
-    [layout]
+    [layout, selected]
   );
 
-  // Keyboard arrow handling
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (!selected) return;
-      const step = e.shiftKey ? 10 : 1;
-      switch (e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          moveField(selected, -step, 0);
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          moveField(selected, step, 0);
-          break;
-        case "ArrowUp":
-          e.preventDefault();
-          moveField(selected, 0, -step);
-          break;
-        case "ArrowDown":
-          e.preventDefault();
-          moveField(selected, 0, step);
-          break;
-      }
+    const handler = (event: KeyboardEvent) => {
+      if ((event.target as HTMLElement | null)?.tagName === "INPUT") return;
+      const step = event.shiftKey ? 10 : event.altKey ? 0.5 : 1;
+      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key === "ArrowLeft") moveSelected(-step, 0);
+      if (event.key === "ArrowRight") moveSelected(step, 0);
+      if (event.key === "ArrowUp") moveSelected(0, -step);
+      if (event.key === "ArrowDown") moveSelected(0, step);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [selected, moveField]);
+  }, [moveSelected]);
 
-  // Save layout
   const handleSave = async () => {
     if (!layout) return;
     setSaving(true);
@@ -174,7 +189,7 @@ export function CalibrationClient() {
         showToast("err", data.error || "Save failed");
         return;
       }
-      showToast("ok", "Layout saved — restart dev server to apply");
+      showToast("ok", "Layout saved");
     } catch {
       showToast("err", "Network error");
     } finally {
@@ -190,96 +205,34 @@ export function CalibrationClient() {
     );
   }
 
-  const fieldKeys = Object.keys(FIELD_LABELS);
-  const textFieldKeys = fieldKeys.filter((key) => key !== "qr");
+  const selectedField = layout[selected];
+  const isQrSelected = selected === "qr";
 
   return (
     <div>
-      {/* Toast */}
       {toast && (
         <div
           className={`fixed left-1/2 top-20 z-50 -translate-x-1/2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg ${
             toast.type === "ok"
-              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-              : "bg-red-50 text-red-700 border border-red-200"
+              ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+              : "border border-red-200 bg-red-50 text-red-700"
           }`}
         >
-          {toast.type === "ok" ? "✓ " : "⚠ "}
+          {toast.type === "ok" ? "Saved: " : "Error: "}
           {toast.msg}
         </div>
       )}
 
-      {/* Toolbar */}
       <div className="mb-6 rounded-2xl border border-black/5 bg-[#faf5f0] p-4">
         <div className="flex flex-wrap items-center gap-4">
-          <h2 className="text-[11px] font-bold uppercase tracking-[0.15em] text-black/40">
-            Calibration Mode
-          </h2>
-
-          {/* Selected field controls */}
-          {selected && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-foreground">
-                {FIELD_LABELS[selected] || selected}
-              </span>
-              <span className="text-xs text-black/40">
-                ({layout[selected as keyof CertificateLayout]?.x}, {layout[selected as keyof CertificateLayout]?.y})
-              </span>
-
-              {/* Arrow buttons */}
-              <div className="flex gap-1">
-                <button
-                  onClick={() => moveField(selected, -1, 0)}
-                  className="rounded-lg bg-black/5 p-1.5 text-black/60 transition-colors hover:bg-black/10"
-                  title="Left 1px (Shift=10px)"
-                >
-                  <HiOutlineArrowLeft className="size-3.5" />
-                </button>
-                <button
-                  onClick={() => moveField(selected, 1, 0)}
-                  className="rounded-lg bg-black/5 p-1.5 text-black/60 transition-colors hover:bg-black/10"
-                  title="Right 1px"
-                >
-                  <HiOutlineArrowRight className="size-3.5" />
-                </button>
-                <button
-                  onClick={() => moveField(selected, 0, -1)}
-                  className="rounded-lg bg-black/5 p-1.5 text-black/60 transition-colors hover:bg-black/10"
-                  title="Up 1px"
-                >
-                  <HiOutlineArrowUp className="size-3.5" />
-                </button>
-                <button
-                  onClick={() => moveField(selected, 0, 1)}
-                  className="rounded-lg bg-black/5 p-1.5 text-black/60 transition-colors hover:bg-black/10"
-                  title="Down 1px"
-                >
-                  <HiOutlineArrowDown className="size-3.5" />
-                </button>
-              </div>
-
-              {/* Font size control */}
-              {selected !== "qr" && (
-                <div className="flex items-center gap-1">
-                  <span className="text-xs text-black/40">Size:</span>
-                  <input
-                    type="number"
-                    value={(layout[selected as keyof CertificateLayout] as LayoutField)?.fontSize || 14}
-                    onChange={(e) => {
-                      const val = Number(e.target.value);
-                      setLayout((prev) => ({
-                        ...prev!,
-                        [selected]: { ...(prev![selected as keyof CertificateLayout] as LayoutField), fontSize: val },
-                      }));
-                    }}
-                    className="w-14 rounded-lg border border-black/8 bg-white px-2 py-1 text-xs outline-none focus:border-[#e8734a]/40"
-                  />
-                </div>
-              )}
-
-              <span className="text-xs text-black/30">Arrow=1px · Shift+Arrow=10px</span>
-            </div>
-          )}
+          <div>
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.15em] text-black/40">
+              Manual Certificate Calibration
+            </h2>
+            <p className="mt-1 text-xs text-black/45">
+              Preview text uses the same sample values, font sizes, colors, and alignment used by PDF generation.
+            </p>
+          </div>
 
           <div className="ml-auto flex gap-2">
             <a
@@ -288,7 +241,7 @@ export function CalibrationClient() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-black/5 px-5 py-2 text-sm font-semibold text-black/60 transition-all hover:bg-black/10"
             >
-              Calibration PNG
+              Open PDF Preview
             </a>
             <button
               onClick={handleSave}
@@ -310,112 +263,157 @@ export function CalibrationClient() {
           </div>
         </div>
 
-        {/* Field selector pills */}
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          {fieldKeys.map((key) => (
-            <button
-              key={key}
-              onClick={() => setSelected(selected === key ? null : key)}
-              className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
-                selected === key
-                  ? "bg-[#e8734a] text-white"
-                  : "bg-black/5 text-black/50 hover:bg-black/10"
-              }`}
-            >
-              {FIELD_LABELS[key]}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Certificate image with calibration dots */}
-      <div ref={containerRef} className="relative inline-block w-full max-w-5xl">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          ref={imgRef}
-          src="/ourcert/Peter%20changes.pdf%20(A4).svg"
-          alt="Certificate template"
-          onLoad={handleImgLoad}
-          className="w-full rounded-xl border border-black/10"
-        />
-
-        {/* Calibration dots overlay */}
-        {templateSize.w > 0 &&
-          textFieldKeys.map((key) => {
-            const field = layout[key as keyof CertificateLayout] as LayoutField;
-            if (!field) return null;
-            const { sx, sy } = toScreen(field.x, field.y);
-            const isSelected = selected === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setSelected(isSelected ? null : key)}
-                className={`absolute z-10 flex items-center gap-1 transition-transform ${
-                  isSelected ? "scale-125" : "hover:scale-110"
-                }`}
-                style={{
-                  left: `${sx}px`,
-                  top: `${sy}px`,
-                  transform: "translate(-50%, -50%)",
-                }}
-                title={`${FIELD_LABELS[key]} (${field.x}, ${field.y})`}
-              >
-                <span
-                  className={`block size-3 rounded-full border-2 ${
-                    isSelected
-                      ? "border-white bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.6)]"
-                      : "border-red-500 bg-red-400"
-                  }`}
-                />
-                <span
-                  className={`whitespace-nowrap rounded px-1 py-0.5 text-[10px] font-bold leading-none ${
-                    isSelected
-                      ? "bg-red-600 text-white"
-                      : "bg-white/90 text-red-600 shadow-sm"
+        <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_360px]">
+          <div>
+            <div className="flex flex-wrap gap-1.5">
+              {ALL_KEYS.map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setSelected(key)}
+                  className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
+                    selected === key
+                      ? "bg-[#e8734a] text-white"
+                      : "bg-black/5 text-black/50 hover:bg-black/10"
                   }`}
                 >
                   {FIELD_LABELS[key]}
-                </span>
-              </button>
-            );
-          })}
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* QR dot */}
-        {templateSize.w > 0 && (() => {
-          const { sx, sy } = toScreen(layout.qr.x, layout.qr.y);
-          const isSelected = selected === "qr";
+          <div className="rounded-xl border border-black/5 bg-white p-3">
+            <div className="mb-3 flex items-center justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/45">
+                  {FIELD_LABELS[selected]}
+                </p>
+                <p className="text-xs text-black/35">
+                  Arrow = 1px, Shift = 10px, Alt = 0.5px
+                </p>
+              </div>
+              <div className="flex gap-1">
+                <button className="rounded-lg bg-black/5 p-1.5 text-black/60 hover:bg-black/10" onClick={() => moveSelected(-1, 0)}>
+                  <HiOutlineArrowLeft className="size-3.5" />
+                </button>
+                <button className="rounded-lg bg-black/5 p-1.5 text-black/60 hover:bg-black/10" onClick={() => moveSelected(1, 0)}>
+                  <HiOutlineArrowRight className="size-3.5" />
+                </button>
+                <button className="rounded-lg bg-black/5 p-1.5 text-black/60 hover:bg-black/10" onClick={() => moveSelected(0, -1)}>
+                  <HiOutlineArrowUp className="size-3.5" />
+                </button>
+                <button className="rounded-lg bg-black/5 p-1.5 text-black/60 hover:bg-black/10" onClick={() => moveSelected(0, 1)}>
+                  <HiOutlineArrowDown className="size-3.5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2">
+              <label className="text-[11px] font-semibold uppercase tracking-[0.1em] text-black/45">
+                X
+                <input
+                  type="number"
+                  step="0.5"
+                  value={selectedField.x}
+                  onChange={(e) => updateField(selected, { x: numberValue(e.target.value, selectedField.x) })}
+                  className="mt-1 w-full rounded-lg border border-black/8 px-2 py-1.5 text-sm text-black outline-none focus:border-[#e8734a]/40"
+                />
+              </label>
+              <label className="text-[11px] font-semibold uppercase tracking-[0.1em] text-black/45">
+                Y
+                <input
+                  type="number"
+                  step="0.5"
+                  value={selectedField.y}
+                  onChange={(e) => updateField(selected, { y: numberValue(e.target.value, selectedField.y) })}
+                  className="mt-1 w-full rounded-lg border border-black/8 px-2 py-1.5 text-sm text-black outline-none focus:border-[#e8734a]/40"
+                />
+              </label>
+              {isQrSelected ? (
+                <label className="text-[11px] font-semibold uppercase tracking-[0.1em] text-black/45">
+                  Size
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={(selectedField as LayoutQR).size}
+                    onChange={(e) => updateField(selected, { size: numberValue(e.target.value, (selectedField as LayoutQR).size) })}
+                    className="mt-1 w-full rounded-lg border border-black/8 px-2 py-1.5 text-sm text-black outline-none focus:border-[#e8734a]/40"
+                  />
+                </label>
+              ) : (
+                <label className="text-[11px] font-semibold uppercase tracking-[0.1em] text-black/45">
+                  Font
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={(selectedField as LayoutField).fontSize}
+                    onChange={(e) => updateField(selected, { fontSize: numberValue(e.target.value, (selectedField as LayoutField).fontSize) })}
+                    className="mt-1 w-full rounded-lg border border-black/8 px-2 py-1.5 text-sm text-black outline-none focus:border-[#e8734a]/40"
+                  />
+                </label>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative inline-block w-full max-w-5xl">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          ref={imgRef}
+          src="/ourcert/fla-certificate.svg"
+          alt="Certificate template"
+          onLoad={updateDisplaySize}
+          className="w-full rounded-xl border border-black/10"
+        />
+
+        {TEXT_KEYS.map((key) => {
+          const field = layout[key];
+          const active = selected === key;
           return (
             <button
-              onClick={() => setSelected(isSelected ? null : "qr")}
-              className={`absolute z-10 flex items-center gap-1 transition-transform ${
-                isSelected ? "scale-125" : "hover:scale-110"
+              key={key}
+              onClick={() => setSelected(key)}
+              className={`absolute z-10 whitespace-nowrap bg-transparent p-0 text-left leading-none transition-[filter] ${
+                active ? "drop-shadow-[0_0_4px_rgba(232,115,74,0.65)]" : ""
               }`}
               style={{
-                left: `${sx}px`,
-                top: `${sy}px`,
-                transform: "translate(-50%, -50%)",
+                left: field.x * scaleX,
+                top: field.y * scaleY,
+                transform: anchorTransform(field),
+                color: field.color || "#111111",
+                fontFamily: fontFamily(field),
+                fontSize: field.fontSize * scaleX,
+                fontStyle: field.style || "normal",
+                fontWeight: fontWeight(field),
+                maxWidth: field.maxWidth ? field.maxWidth * scaleX : undefined,
               }}
-              title={`QR Code (${layout.qr.x}, ${layout.qr.y})`}
+              title={`${FIELD_LABELS[key]}: ${SAMPLE_TEXT[key]}`}
             >
-              <span
-                className={`block size-3 rounded-full border-2 ${
-                  isSelected
-                    ? "border-white bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]"
-                    : "border-blue-500 bg-blue-400"
-                }`}
-              />
-              <span
-                className={`whitespace-nowrap rounded px-1 py-0.5 text-[10px] font-bold leading-none ${
-                  isSelected
-                    ? "bg-blue-600 text-white"
-                    : "bg-white/90 text-blue-600 shadow-sm"
-                }`}
-              >
-                QR Code
+              <span className={active ? "rounded-sm outline outline-2 outline-[#e8734a]" : ""}>
+                {SAMPLE_TEXT[key]}
               </span>
             </button>
           );
-        })()}
+        })}
+
+        <button
+          onClick={() => setSelected("qr")}
+          className={`absolute z-10 border-2 bg-white/80 ${
+            selected === "qr" ? "border-[#e8734a]" : "border-[#0c2847]"
+          }`}
+          style={{
+            left: layout.qr.x * scaleX,
+            top: layout.qr.y * scaleY,
+            width: layout.qr.size * scaleX,
+            height: layout.qr.size * scaleY,
+          }}
+          title="QR preview"
+        >
+          <span className="flex h-full w-full items-center justify-center text-[10px] font-bold text-[#0c2847]">
+            QR
+          </span>
+        </button>
       </div>
     </div>
   );

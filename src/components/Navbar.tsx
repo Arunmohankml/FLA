@@ -38,7 +38,7 @@ export function Navbar() {
         backdropFilter: showWhite ? "blur(18px)" : undefined,
       }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
         <Link
           href="/"
           className="inline-flex items-center"
@@ -47,7 +47,7 @@ export function Navbar() {
           <motion.img
             src="/FLA-logo.png"
             alt="FLA logo"
-            className="h-7 w-auto"
+            className="h-12 w-auto sm:h-14"
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           />

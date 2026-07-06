@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { renderCertificatePdf } from "@/lib/certificateRenderer";
 
 const BUCKET = "certificates";
-const CERTIFICATE_TEMPLATE_PATH = "/ourcert/Peter%20changes.pdf%20(A4).pdf";
+const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
 
 async function loadTemplate(origin: string) {
   const templateRes = await fetch(`${origin}${CERTIFICATE_TEMPLATE_PATH}`);
