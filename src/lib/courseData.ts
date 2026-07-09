@@ -73,9 +73,9 @@ const german: CourseData = {
     "Progress tracking with monthly assessments and personalised feedback.",
   ],
   exams: [
-    { name: "Goethe-Zertifikat A1–C2", description: "The most widely recognised German exam worldwide, conducted by Goethe-Institut. Required for university admission, work visas, and citizenship." },
+    { name: "Goethe-Zertifikat", description: "The most widely recognised German exam worldwide, conducted by Goethe-Institut. Required for university admission, work visas, and citizenship." },
     { name: "TestDaF", description: "Required for university admission in Germany. Accepted by all German universities." },
-    { name: "OSD", description: "Austrian German diploma recognised in Austria and Germany." },
+    { name: "ÖSD", description: "Austrian German diploma recognised in all over the world." },
     { name: "Telc", description: "European language certificate accepted by employers and institutions across Europe." },
   ],
   careers: [

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { mediaFallbacks } from "@/lib/constants";
-import { ApproachSection, TrainersSection } from "@/components/AboutSections";
+import {
+  ApproachSectionDeferred,
+  TrainersSectionDeferred,
+} from "@/components/AboutSectionsDeferred";
+
+export const revalidate = 86400;
 
 export const metadata = {
   title: "About | Foreign Language Academy",
@@ -195,10 +200,12 @@ export default function AboutPage() {
             <Image
               src={mediaFallbacks["about-hero"]}
               alt="FLA Campus"
-              fill
+              width={2033}
+              height={773}
               priority
+              fetchPriority="high"
               sizes="100vw"
-              className="object-cover"
+              className="size-full object-cover"
             />
           </div>
         </div>
@@ -223,6 +230,8 @@ export default function AboutPage() {
                 <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-[#0c2847]">
                   Founded in 2007, Foreign Language Academy is now one of the
                   largest and best-known language schools in India and Germany.
+                </p>
+                <p className="mt-2 max-w-2xl text-lg leading-[1.6] text-[#0c2847]">
                   We offer over 100 courses yearly in 10+ languages with
                   branches in Bangalore, Chennai, Pune, Delhi, Berlin,
                   Australia, New Zealand, and Canada.
@@ -231,6 +240,7 @@ export default function AboutPage() {
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
                     href="/courses"
+                    prefetch={false}
                     className="inline-flex h-14 items-center rounded-full bg-[#0c2847] px-8 text-base font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#103560]"
                   >
                     Our Courses →
@@ -238,9 +248,11 @@ export default function AboutPage() {
 
                   <Link
                     href="/contact"
+                    prefetch={false}
+                    aria-label="Learn more about Foreign Language Academy contact options"
                     className="inline-flex h-14 items-center rounded-full border border-[#0c2847]/18 bg-[#0c2847]/5 px-8 text-base font-medium text-[#0c2847] transition-all duration-300 hover:bg-[#0c2847]/10"
                   >
-                    Learn More
+                    Contact Us
                   </Link>
                 </div>
               </div>
@@ -249,9 +261,10 @@ export default function AboutPage() {
                 <Image
                   src="/aboutimage.webp"
                   alt="Students learning at Foreign Language Academy"
-                  fill
+                  width={1448}
+                  height={1086}
                   sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="object-cover"
+                  className="size-full object-cover"
                 />
               </div>
             </div>
@@ -261,8 +274,8 @@ export default function AboutPage() {
 
       <CertificationsMarquee />
 
-      <ApproachSection />
-      <TrainersSection />
+      <ApproachSectionDeferred />
+      <TrainersSectionDeferred />
 
       <section className="blue-dark-panel blue-grid-bg py-16">
         <div className="absolute -right-32 -top-32 size-96 rounded-full bg-[#0c2847]/5 blur-[100px]" />
@@ -286,6 +299,7 @@ export default function AboutPage() {
           <div className="mt-8 flex items-center justify-center gap-3">
             <Link
               href="/register"
+              prefetch={false}
               className="inline-flex h-14 items-center rounded-full bg-white px-8 text-base font-semibold text-[#071D2E] transition-all duration-300 hover:scale-105 hover:bg-white/90"
             >
               Book Free Demo →
@@ -293,6 +307,7 @@ export default function AboutPage() {
 
             <Link
               href="/courses"
+              prefetch={false}
               className="inline-flex h-14 items-center rounded-full border border-white/15 bg-white/5 px-8 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               View Courses

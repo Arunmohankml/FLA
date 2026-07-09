@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useState, useEffect, ReactNode } from "react";
+import { useCallback, useState, useEffect, ReactNode } from "react";
 import {
   onAuthStateChanged,
   signInWithPopup,
@@ -8,30 +8,9 @@ import {
   User,
 } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebase";
+import { AuthContext } from "@/components/AuthContext";
 
 const OWNER_EMAIL = "t19796146@gmail.com";
-
-interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-  isAdmin: boolean;
-  isOwner: boolean;
-  signInWithGoogle: () => Promise<void>;
-  logout: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  loading: true,
-  isAdmin: false,
-  isOwner: false,
-  signInWithGoogle: async () => {},
-  logout: async () => {},
-});
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);

@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
 const BUCKET = "site-media";
+const mediaCacheHeaders = {
+  "Cache-Control": "public, max-age=60, s-maxage=300, stale-while-revalidate=86400",
+};
 
 export async function GET() {
   try {
@@ -27,9 +30,9 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json(config);
+    return NextResponse.json(config, { headers: mediaCacheHeaders });
   } catch {
-    return NextResponse.json({});
+    return NextResponse.json({}, { headers: mediaCacheHeaders });
   }
 }
 

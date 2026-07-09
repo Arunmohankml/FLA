@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,36 +18,48 @@ const approachCards = [
     title: "Student-Centered Learning",
     desc: "Every student. Every goal. Personalized learning paths.",
     image: "/approachcards-girl-teaching-opt.webp",
+    width: 640,
+    height: 427,
   },
   {
     n: "02",
     title: "Global Certification",
     desc: "Structured guidance for internationally recognised exams.",
     image: "/approachcards-globe-opt.webp",
+    width: 640,
+    height: 960,
   },
   {
     n: "03",
     title: "Conversation-First Method",
     desc: "Practical speaking confidence from day one.",
     image: "/approachcards-conversation-opt.webp",
+    width: 640,
+    height: 427,
   },
   {
     n: "04",
     title: "Online & Offline Support",
     desc: "Learn from classroom sessions or live online batches.",
     image: "/approachcards-sir-opt.webp",
+    width: 640,
+    height: 427,
   },
   {
     n: "05",
     title: "Certification Focus",
     desc: "Exam-focused preparation with regular practice.",
     image: "/approachcards-certificate-opt.webp",
+    width: 640,
+    height: 427,
   },
   {
     n: "06",
     title: "Modern Methods",
     desc: "Interactive, structured, and easy to stay consistent with.",
     image: "/approachcards-microphone-opt.webp",
+    width: 467,
+    height: 350,
   },
 ];
 
@@ -163,6 +176,8 @@ export function ApproachSection() {
               <motion.img
                 src="/approachhero1-opt.webp"
                 alt="Student learning language"
+                width={900}
+                height={491}
                 loading="lazy"
                 decoding="async"
                 animate={shouldAnimate ? { y: [0, -14, 0], rotate: [-2, 2, -2] } : { y: 0, rotate: -2 }}
@@ -176,6 +191,8 @@ export function ApproachSection() {
               <motion.img
                 src="/approachhero2-opt.webp"
                 alt="Online language learning"
+                width={560}
+                height={540}
                 loading="lazy"
                 decoding="async"
                 animate={shouldAnimate ? { y: [0, -10, 0], rotate: [3, 1, 3] } : { y: 0, rotate: 3 }}
@@ -189,6 +206,8 @@ export function ApproachSection() {
               <motion.img
                 src="/approachhero3-opt.webp"
                 alt="Language practice session"
+                width={640}
+                height={427}
                 loading="lazy"
                 decoding="async"
                 animate={shouldAnimate ? { y: [0, 12, 0], rotate: [-3, -1, -3] } : { y: 0, rotate: -3 }}
@@ -243,9 +262,11 @@ export function ApproachSection() {
                 className="group w-[260px] shrink-0 overflow-hidden rounded-[28px] border border-white/10 bg-white/8 p-4 backdrop-blur-xl transition-all duration-500 hover:bg-white/15"
                 >
                   <div className="relative mb-5 h-36 overflow-hidden rounded-[22px] bg-white/10">
-                    <img
+                    <Image
                       src={card.image}
                       alt={card.title}
+                      width={card.width}
+                      height={card.height}
                       loading="lazy"
                       decoding="async"
                       className="size-full object-cover transition-transform duration-700 group-hover:scale-105"

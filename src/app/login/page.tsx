@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "@/components/AuthProvider";
+import { AuthProvider } from "@/components/AuthProvider";
+import { useAuth } from "@/components/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Suspense } from "react";
@@ -111,14 +112,16 @@ function LoginContent() {
 
 export default function LoginPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex min-h-screen items-center justify-center">
-          <div className="size-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-        </div>
-      }
-    >
-      <LoginContent />
-    </Suspense>
+    <AuthProvider>
+      <Suspense
+        fallback={
+          <div className="flex min-h-screen items-center justify-center">
+            <div className="size-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          </div>
+        }
+      >
+        <LoginContent />
+      </Suspense>
+    </AuthProvider>
   );
 }

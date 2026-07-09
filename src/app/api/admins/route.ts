@@ -2,12 +2,22 @@ import { NextResponse } from "next/server";
 import { getAdmins } from "@/lib/data";
 import { supabaseAdmin } from "@/lib/supabase";
 
+const adminCacheHeaders = {
+  "Cache-Control": "private, max-age=60",
+};
+
 export async function GET() {
   try {
     const admins = await getAdmins();
-    return NextResponse.json({ admins: admins ?? [] });
+    return NextResponse.json(
+      { admins: admins ?? [] },
+      { headers: adminCacheHeaders },
+    );
   } catch {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Server error" },
+      { status: 500, headers: adminCacheHeaders },
+    );
   }
 }
 

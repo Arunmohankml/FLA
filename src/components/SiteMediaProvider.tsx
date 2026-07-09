@@ -20,12 +20,17 @@ export function SiteMediaProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    fetchConfig();
+    const runWhenIdle =
+      window.requestIdleCallback ??
+      ((cb: IdleRequestCallback) => window.setTimeout(() => cb({} as IdleDeadline), 1200));
+    const cancelIdle = window.cancelIdleCallback ?? window.clearTimeout;
+    const idleId = runWhenIdle(() => fetchConfig());
 
     const onFocus = () => fetchConfig();
     document.addEventListener("visibilitychange", onFocus);
     window.addEventListener("focus", onFocus);
     return () => {
+      cancelIdle(idleId);
       document.removeEventListener("visibilitychange", onFocus);
       window.removeEventListener("focus", onFocus);
     };

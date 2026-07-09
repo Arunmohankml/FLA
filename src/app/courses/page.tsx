@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CourseJsonLd } from "@/components/CourseJsonLd";
 import { languages } from "@/lib/constants";
+import { SiteMediaProvider } from "@/components/SiteMediaProvider";
 import { CoursesClient } from "./CoursesClient";
 
 export const metadata: Metadata = {
@@ -16,7 +17,9 @@ export default function CoursesPage() {
   return (
     <>
       <CourseJsonLd />
-      <CoursesClient languages={languages} />
+      <SiteMediaProvider>
+        <CoursesClient languages={languages} />
+      </SiteMediaProvider>
     </>
   );
 }

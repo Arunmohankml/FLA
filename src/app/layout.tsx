@@ -4,8 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
-import { AuthProvider } from "@/components/AuthProvider";
-import { SiteMediaProvider } from "@/components/SiteMediaProvider";
 import { LenisProvider } from "@/components/LenisProvider";
 
 const instrumentSans = Instrument_Sans({
@@ -69,25 +67,13 @@ export default function RootLayout({
         lang="en"
         className={`${instrumentSans.variable} ${epilogue.variable} antialiased`}
       >
-        <head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Noto+Sans+Tamil:wght@700&family=Noto+Sans+Malayalam:wght@700&family=Noto+Sans+Devanagari:wght@700&family=Noto+Sans+Arabic:wght@700&family=Noto+Sans+Hebrew:wght@700&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&family=Noto+Sans+Thai:wght@700&display=swap"
-          />
-        </head>
       <body className="min-h-screen bg-background font-sans text-foreground">
         <OrganizationJsonLd />
-        <AuthProvider>
-          <SiteMediaProvider>
-            <LenisProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </LenisProvider>
-          </SiteMediaProvider>
-        </AuthProvider>
+        <LenisProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );

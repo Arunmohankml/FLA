@@ -1,11 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HiOutlineMenuAlt3, HiX, HiOutlineCog, HiOutlineLogout } from "react-icons/hi";
-import { useAuth } from "@/components/AuthProvider";
+import { useAuth } from "@/components/AuthContext";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -16,6 +15,35 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
+function MenuIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg className="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  ) : (
+    <svg className="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7h16M8 12h12M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CogIcon() {
+  return (
+    <svg className="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06a1.7 1.7 0 0 0-1.02-1.56 1.7 1.7 0 0 0-1.89.34l-.04.04a2 2 0 1 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04a1.7 1.7 0 0 0 1.88.34H9a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.06a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 1 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88V9c.22.62.82 1 1.56 1H21a2 2 0 0 1 0 4h-.06c-.74 0-1.34.38-1.56 1Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function LogoutIcon() {
+  return (
+    <svg className="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M15 17l5-5-5-5M20 12H9M11 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const { user, isAdmin, loading, logout } = useAuth();
@@ -24,16 +52,13 @@ export function Navbar() {
   const showWhite = true;
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50"
-      animate={{
+    <header
+      className="fixed left-0 right-0 top-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300"
+      style={{
         backgroundColor: showWhite ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0)",
         boxShadow: showWhite
           ? "0 14px 45px rgba(0,0,0,0.10)"
           : "0 2px 12px rgba(0,0,0,0.1)",
-      }}
-      transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
-      style={{
         borderBottom: showWhite ? "1px solid rgba(185,226,255,0.55)" : "1px solid transparent",
         backdropFilter: showWhite ? "blur(18px)" : undefined,
       }}
@@ -41,16 +66,20 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
         <Link
           href="/"
+          prefetch={false}
           className="inline-flex items-center"
           aria-label="Foreign Language Academy home"
         >
-          <motion.img
-            src="/FLA-logo.png"
-            alt="FLA logo"
-            className="h-12 w-auto sm:h-14"
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
+          <div className="relative h-12 w-[72px] sm:h-14 sm:w-[84px]">
+            <Image
+              src="/FLA-logo.webp"
+              alt="FLA logo"
+              width={300}
+              height={200}
+              sizes="(max-width: 640px) 72px, 84px"
+              className="size-full object-contain"
+            />
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -58,191 +87,133 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              prefetch={false}
               onClick={() => setOpen(false)}
               className="text-base font-medium transition-colors duration-200"
+              style={{
+                color: pathname === item.href
+                  ? showWhite ? "#0c2847" : "#ffffff"
+                  : showWhite ? "#536471" : "rgba(255,255,255,0.7)",
+              }}
             >
-              <motion.span
-                animate={{
-                  color: pathname === item.href
-                    ? showWhite ? "#0c2847" : "#ffffff"
-                    : showWhite ? "#536471" : "rgba(255,255,255,0.7)",
-                }}
-                whileHover={{
-                  color: showWhite ? "#0c2847" : "#ffffff",
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                {item.label}
-              </motion.span>
+              {item.label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
           {!loading && user && isAdmin && (
-            <Link href="/admin">
-              <motion.div
-                animate={{
+            <Link href="/admin" prefetch={false}>
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300"
+                style={{
                   backgroundColor: showWhite ? "rgba(27,27,27,0.06)" : "rgba(255,255,255,0.1)",
                   borderColor: showWhite ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.2)",
                   color: showWhite ? "#1B1B1B" : "#ffffff",
                 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
               >
-                <HiOutlineCog className="size-4" />
+                <CogIcon />
                 Admin
-              </motion.div>
+              </div>
             </Link>
           )}
-          <motion.div
-            animate={{
+          <div
+            className="rounded-full border px-5 py-2 text-sm font-semibold transition-colors duration-300 hover:bg-[#DCEEFF]"
+            style={{
               backgroundColor: showWhite ? "#EAF4FF" : "rgba(29,155,240,0.18)",
               borderColor: "rgba(12,40,71,0.24)",
               color: "#0c2847",
             }}
-            whileHover={{
-              backgroundColor: showWhite ? "#DCEEFF" : "rgba(29,155,240,0.28)",
-            }}
-            transition={{ duration: 0.3 }}
-            className="rounded-full border px-5 py-2 text-sm font-semibold"
           >
-            <Link href="/book-demo">Book a Demo</Link>
-          </motion.div>
-          <motion.div
-            animate={{
+            <Link href="/book-demo" prefetch={false}>Book a Demo</Link>
+          </div>
+          <div
+            className="rounded-full px-5 py-2 text-sm font-medium text-white transition-[background-color,box-shadow] duration-300 hover:bg-[#1a4a7a] hover:shadow-[0_14px_34px_rgba(12,40,71,0.28)]"
+            style={{
               backgroundColor: showWhite ? "#0c2847" : "rgba(255,255,255,0.1)",
               borderColor: showWhite ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.2)",
-              color: showWhite ? "#ffffff" : "#ffffff",
             }}
-            whileHover={{
-              backgroundColor: showWhite ? "#1a4a7a" : "rgba(255,255,255,0.2)",
-              boxShadow: showWhite ? "0 14px 34px rgba(12,40,71,0.28)" : "none",
-            }}
-            transition={{ duration: 0.3 }}
-            className="rounded-full px-5 py-2 text-sm font-medium"
           >
-            <Link href="/register">Register</Link>
-          </motion.div>
+            <Link href="/register" prefetch={false}>Register</Link>
+          </div>
         </div>
 
-        <motion.button
-          className="flex size-10 items-center justify-center rounded-full border md:hidden"
-          animate={{
+        <button
+          className="flex size-10 items-center justify-center rounded-full border transition-transform duration-150 active:scale-95 md:hidden"
+          style={{
             borderColor: showWhite ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
             backgroundColor: showWhite ? "rgba(0,0,0,0.04)" : "rgba(0,0,0,0.2)",
             color: showWhite ? "#1B1B1B" : "#ffffff",
           }}
-          whileHover={{
-            backgroundColor: showWhite ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.3 }}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          {open ? (
-            <HiX className="size-6" />
-          ) : (
-            <HiOutlineMenuAlt3 className="size-6" />
-          )}
-        </motion.button>
+          <MenuIcon open={open} />
+        </button>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
-            className="overflow-hidden md:hidden"
-          >
+      {open && (
+          <div className="overflow-hidden md:hidden">
             <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
-              {navItems.map((item, i) => (
-                <motion.div
+              {navItems.map((item) => (
+                <div
                   key={item.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
                 >
                   <Link
                     href={item.href}
+                    prefetch={false}
                     onClick={() => setOpen(false)}
-                    className="text-sm font-medium"
+                    className="text-sm font-medium text-[#536471] transition-colors hover:text-[#0c2847]"
                   >
-                    <motion.span
-                      animate={{
-                        color: pathname === item.href ? "#0c2847" : "#536471",
-                      }}
-                      whileHover={{ color: "#0c2847" }}
-                    >
-                      {item.label}
-                    </motion.span>
+                    {item.label}
                   </Link>
-                </motion.div>
+                </div>
               ))}
               {!loading && user && isAdmin && (
-                <motion.div
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-                >
+                <div>
                   <Link
                     href="/admin"
+                    prefetch={false}
                     className="inline-flex items-center gap-2 text-sm font-medium"
                   >
-                    <HiOutlineCog className="size-4" />
-                    <motion.span animate={{ color: "#1B1B1B" }}>
-                      Admin Panel
-                    </motion.span>
+                    <CogIcon />
+                    <span className="text-[#1B1B1B]">Admin Panel</span>
                   </Link>
-                </motion.div>
+                </div>
               )}
               {!loading && user && isAdmin && (
-                <motion.div
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (navItems.length + 1) * 0.05, duration: 0.3 }}
-                >
+                <div>
                   <button
                     onClick={logout}
                     className="inline-flex items-center gap-2 text-sm font-medium text-[#334155]"
                   >
-                    <HiOutlineLogout className="size-4" />
+                    <LogoutIcon />
                     Logout
                   </button>
-                </motion.div>
+                </div>
               )}
-              <motion.div
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navItems.length + 2) * 0.05, duration: 0.3 }}
-              >
+              <div>
                 <Link
                   href="/book-demo"
+                  prefetch={false}
                   className="mt-2 inline-block rounded-full border border-[#0c2847]/20 bg-[#EAF4FF] px-5 py-2 text-center text-sm font-semibold text-[#0c2847] transition-colors hover:bg-[#DCEEFF]"
                   onClick={() => setOpen(false)}
                 >
                   Book a Demo
                 </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navItems.length + 3) * 0.05, duration: 0.3 }}
-              >
+              </div>
+              <div>
                 <Link
                   href="/register"
+                  prefetch={false}
                   className="mt-2 inline-block rounded-full bg-[#0c2847] px-5 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[#1a4a7a]"
                 >
                   Register
                 </Link>
-              </motion.div>
+              </div>
             </nav>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
