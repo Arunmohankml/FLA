@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   HiOutlineArrowRight,
@@ -19,6 +19,15 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (selected) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [selected]);
 
   async function handleApply(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -128,12 +137,6 @@ export function CareersView({ listings }: { listings: CareerListing[] }) {
                     >
                       Apply now
                       <HiOutlineArrowRight className="size-3.5" />
-                    </button>
-                    <button
-                      onClick={() => setSelected(job)}
-                      className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-[#0c2847]/22 bg-[#F4FAFF] px-5 text-sm font-medium text-[#0c2847] transition hover:border-[#0c2847]/35 hover:bg-[#EAF4FF]"
-                    >
-                      Details
                     </button>
                   </div>
                 </div>
