@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getCertificateLayout } from "@/lib/certificateLayoutStore";
 import { renderCertificatePdf } from "@/lib/certificateRenderer";
+import { uploadCertificatePdfToCloudinary } from "@/lib/cloudinary";
 
-const BUCKET = "certificates";
 const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://foreignlanguageacademy.in";
+export const runtime = "nodejs";
 
 async function loadTemplate(origin: string) {
   const templateRes = await fetch(`${origin}${CERTIFICATE_TEMPLATE_PATH}`);
@@ -32,13 +34,8 @@ function normalizeCertificateNumber(input?: string) {
   return `${prefix}${cleanSuffix}`;
 }
 
-function getCertificatePdfPath(certificateNumber: string) {
-  return `certificates/${certificateNumber}.pdf`;
-}
-
-function getPublicCertificatePdfUrl(filePath: string) {
-  const { data } = supabaseAdmin.storage.from(BUCKET).getPublicUrl(filePath);
-  return data.publicUrl;
+function getCertificateDetailsUrl(certificateNumber: string) {
+  return `${SITE_URL.replace(/\/$/, "")}/certificates/${encodeURIComponent(certificateNumber)}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -90,20 +87,16 @@ export async function POST(req: NextRequest) {
       values.certificateNumber = certificateNumber;
     }
 
-    const filePath = getCertificatePdfPath(values.certificateNumber);
-    const pdfUrl = getPublicCertificatePdfUrl(filePath);
-    values.qrUrl = pdfUrl;
+    const qrUrl = getCertificateDetailsUrl(values.certificateNumber);
+    values.qrUrl = qrUrl;
 
     const templatePdf = await loadTemplate(req.nextUrl.origin);
     const layout = await getCertificateLayout();
     const pdfBuf = Buffer.from(await renderCertificatePdf(templatePdf, values, layout));
-    const { error: uploadErr } = await supabaseAdmin.storage
-      .from(BUCKET)
-      .upload(filePath, pdfBuf, { contentType: "application/pdf", upsert: true });
 
-    if (uploadErr) {
-      return NextResponse.json({ error: `Upload failed: ${uploadErr.message}` }, { status: 500 });
-    }
+    const upload = await uploadCertificatePdfToCloudinary(values.certificateNumber, pdfBuf);
+    const pdfUrl = upload.url;
+    if (!pdfUrl) throw new Error("Cloudinary upload did not return a PDF URL");
 
     const record = {
       certificate_number: values.certificateNumber,
@@ -113,7 +106,7 @@ export async function POST(req: NextRequest) {
       grade: values.grade,
       total_score: values.totalScore,
       image_url: pdfUrl,
-      form_data: { ...values, qrUrl: pdfUrl },
+      form_data: { ...values, qrUrl },
     };
 
     const { data: savedCertificate, error: dbErr } = existingId
@@ -138,7 +131,7 @@ export async function POST(req: NextRequest) {
       id: savedCertificate?.id,
       imageUrl: pdfUrl,
       pdfUrl,
-      qrUrl: pdfUrl,
+      qrUrl,
       certificateNumber: values.certificateNumber,
       formData: savedCertificate?.form_data || values,
     });

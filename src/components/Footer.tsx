@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site, languages, footerQuickLinks } from "@/lib/constants";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
 
@@ -10,7 +11,20 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-12">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-lg font-bold text-primary">{site.name}</h3>
+            <Link
+              href="/"
+              className="mb-4 inline-flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d9bf0]"
+              aria-label="Foreign Language Academy home"
+            >
+              <Image
+                src="/FLA-logo.webp"
+                alt="Foreign Language Academy logo"
+                width={72}
+                height={48}
+                className="h-12 w-auto object-contain"
+              />
+              <span className="text-lg font-bold text-primary">{site.name}</span>
+            </Link>
             <p className="text-[15px] leading-7 text-[#334155]">
               Foreign Language Academy helps learners to master
               every course through certified trainers and flexible online or offline batches.

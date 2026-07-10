@@ -44,8 +44,8 @@ export const languages = [
 
 export const whyChooseUs = [
   {
-    title: "Native Trainers",
-    description: "Learn from certified native speakers with years of teaching experience.",
+    title: "Expert Trainers",
+    description: "Learn from certified expert speakers with years of teaching experience.",
   },
   {
     title: "International Certifications",
@@ -65,6 +65,8 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Courses", href: "/courses" },
+  { label: "Online Courses", href: "/online-language-courses" },
+  { label: "Study Abroad", href: "/study-abroad-language-courses" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -74,9 +76,13 @@ export const footerQuickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Courses", href: "/courses" },
+  { label: "Online Courses", href: "/online-language-courses" },
+  { label: "Study Abroad", href: "/study-abroad-language-courses" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-conditions" },
 ];
 
 export const adminNav = [

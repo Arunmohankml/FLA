@@ -164,7 +164,7 @@ Foreign Language Academy offers German courses across all CEFR levels — A1 thr
 - **Weekday morning and evening batches** for students and job seekers
 - **Online classes** for candidates outside Chennai
 - **Intensive crash courses** for exam preparation
-- **Native and near-native certified trainers**
+- **Certified expert trainers**
 
 Our German programme follows the Goethe-Institut curriculum, ensuring that every student is fully prepared for official certification exams.
 
@@ -2180,7 +2180,7 @@ Chennai has been a regular JLPT exam centre. Confirm the current exam city list 
 No. You can register for any level without proving you passed the level below. However, taking exams in order gives you meaningful benchmarks and helps calibrate your preparation.
 
 **Does Foreign Language Academy prepare students for JLPT?**
-Yes. Foreign Language Academy Chennai offers Japanese courses from beginner through N2-level, with native Japanese trainers and structured JLPT exam preparation.
+Yes. Foreign Language Academy Chennai offers Japanese courses from beginner through N2-level, with expert Japanese trainers and structured JLPT exam preparation.
 
 ---
 
@@ -2666,7 +2666,7 @@ Absolutely. TOPIK is open to any learner regardless of field of study or profess
 The fee varies and is set by the organising body in India. Check the Korean Cultural Center India website for current fees.
 
 **Does Foreign Language Academy Chennai offer TOPIK preparation?**
-Yes. Foreign Language Academy offers Korean language courses from beginner through TOPIK 4 level, with native Korean trainers and structured exam preparation.
+Yes. Foreign Language Academy offers Korean language courses from beginner through TOPIK 4 level, with expert Korean trainers and structured exam preparation.
 
 ---
 
@@ -2676,7 +2676,7 @@ TOPIK is the gateway credential for Korean language learners seeking career, sch
 
 For Indian learners in Chennai, the combination of K-wave cultural interest and Korea's active corporate presence in India makes Korean one of the most strategically relevant languages to learn today.
 
-**Foreign Language Academy in Chennai** offers complete Korean language training from beginner through TOPIK 4, with experienced native trainers. Contact us to join our next Korean batch.
+**Foreign Language Academy in Chennai** offers complete Korean language training from beginner through TOPIK 4, with experienced expert trainers. Contact us to join our next Korean batch.
     `.trim(),
   },
   {
@@ -2805,7 +2805,7 @@ This is one of the most common questions from Chennai learners. Korean and Tamil
 
 Korean language learning in India has grown from a niche fan interest to a mainstream career investment. The combination of K-culture motivation (which drives initial engagement and keeps learners interested) with genuine professional opportunity (Korean corporations, scholarships, immigration pathways) makes Korean one of the most valuable language investments an Indian learner can make.
 
-**Foreign Language Academy in Chennai** offers Korean language courses from beginner through TOPIK 4 level, with native Korean trainers and structured exam preparation. Contact us to join our next Korean batch and begin your journey.
+**Foreign Language Academy in Chennai** offers Korean language courses from beginner through TOPIK 4 level, with expert Korean trainers and structured exam preparation. Contact us to join our next Korean batch and begin your journey.
     `.trim(),
   },
   {
@@ -6163,3 +6163,4 @@ Mandarin remains one of the more demanding languages to learn well, but it's als
 ];
 
 export const allBlogSlugs = blogPosts.map((post) => post.slug);
+

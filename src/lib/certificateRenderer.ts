@@ -61,7 +61,6 @@ const SAMPLE_VALUES: CertificateValues = {
   issuePlace: "Chennai",
   issueDate: "22/03/2025",
   certificateNumber: "FLA-251-23913",
-  qrUrl: "https://foreignlanguageacademy.in",
 };
 
 type FontSet = {
@@ -110,6 +109,28 @@ function formatMonthYear(value = "") {
   ];
 
   return months[monthIndex] ? `${months[monthIndex]} ${year}` : trimmed;
+}
+
+export function buildCertificateQrText(values: CertificateValues) {
+  const lines = [
+    "Certificate Details",
+    `Name: ${values.studentFullName || ""}`,
+    `Language: ${cleanLanguage(values.courseName)}`,
+    `Level: ${values.courseLevel || ""}`,
+    `Certificate No: ${values.certificateNumber || ""}`,
+    `Date of Exam: ${values.dateOfExam || ""}`,
+    `Issue Date: ${values.issueDate || ""}`,
+    `Issue Place: ${values.issuePlace || ""}`,
+    `Listening Marks: ${values.listeningScore || ""}`,
+    `Oral Marks: ${values.oralTestScore || ""}`,
+    `Reading Marks: ${values.readingScore || ""}`,
+    `Writing Marks: ${values.writtenExpressionScore || ""}`,
+    `Total Marks: ${values.totalScore || ""}`,
+    `Grade: ${values.grade || ""}`,
+    "Issued By: Foreign Language Academy",
+  ];
+
+  return lines.join("\n");
 }
 
 function colorToRgb(color = "#111111") {
@@ -278,7 +299,7 @@ export async function renderCertificatePdf(
     pdfDoc,
     sourceWidth,
     sourceHeight,
-    value: values.qrUrl,
+    value: values.qrUrl || buildCertificateQrText(values),
     layout,
   });
 

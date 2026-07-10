@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const features = [
   { n: "01", title: "Flexible timings", desc: "Schedule sessions that fit your routine." },
-  { n: "02", title: "Certified teachers", desc: "Learn from qualified native speakers." },
+  { n: "02", title: "Certified teachers", desc: "Learn from qualified expert speakers." },
   { n: "03", title: "Online & Offline", desc: "Choose how you want to learn." },
   { n: "04", title: "Tailored curriculum", desc: "Customized lessons for your goals." },
   { n: "05", title: "Discount on 12 sessions", desc: "Save more when you commit." },

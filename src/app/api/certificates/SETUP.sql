@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS certificates (
   course_name TEXT,
   grade TEXT,
   total_score TEXT,
-  image_url TEXT,
+  image_url TEXT, -- Cloudinary PDF URL
   form_data JSONB,
   created_at TIMESTAMPTZ DEFAULT now()
 );
@@ -50,27 +50,8 @@ CREATE POLICY "Allow admin update certificates"
   ON certificates FOR UPDATE
   USING (true);
 
--- 5. Create storage bucket (run via Supabase Dashboard > Storage > New Bucket)
--- Bucket name: certificates
--- Public: yes
--- File size limit: 5MB
--- Allowed MIME types: application/pdf
-
--- OR run this SQL to create the bucket:
-INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-VALUES ('certificates', 'certificates', true, 5242880, ARRAY['application/pdf'])
-ON CONFLICT (id) DO NOTHING;
-
-UPDATE storage.buckets
-SET allowed_mime_types = ARRAY['application/pdf']
-WHERE id = 'certificates';
-
--- 6. Storage policy: allow authenticated uploads
-CREATE POLICY "Allow admin upload certificates"
-  ON storage.objects FOR INSERT
-  WITH CHECK (bucket_id = 'certificates');
-
--- 7. Storage policy: allow public reads
-CREATE POLICY "Allow public read certificates"
-  ON storage.objects FOR SELECT
-  USING (bucket_id = 'certificates');
+-- 5. Certificate PDFs are uploaded to Cloudinary.
+-- Add these server-only environment variables in local/deployment config:
+-- CLOUDINARY_CLOUD_NAME
+-- CLOUDINARY_API_KEY
+-- CLOUDINARY_API_SECRET

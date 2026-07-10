@@ -35,9 +35,9 @@ const german: CourseData = {
   flag: "🇩🇪",
   levels: "A1–C2",
   duration: "3 months per level",
-  heroSummary: "Germany's economic strength makes German one of the most valuable languages for engineers, healthcare professionals, and students. Learn from certified native trainers in Chennai.",
+  heroSummary: "Germany's economic strength makes German one of the most valuable languages for engineers, healthcare professionals, and students. Learn from certified expert trainers in Chennai.",
   metaTitle: "German Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn German in Chennai with certified native trainers. Goethe-Institut exam preparation. A1-C2 levels. German classes for study abroad, work visas & career growth.",
+  metaDescription: "Learn German in Chennai with certified expert trainers. Goethe-Institut exam preparation. A1-C2 levels. German classes for study abroad, work visas & career growth.",
   metaKeywords: ["German course Chennai", "Learn German", "German classes Chennai", "Goethe Institut", "German language training"],
   whyLearn: [
     "Germany is the largest economy in Europe and the fourth-largest in the world, creating constant demand for German speakers.",
@@ -64,7 +64,7 @@ const german: CourseData = {
     { level: "C2", title: "Mastery", description: "Understand virtually everything heard or read. Summarise information from different sources coherently.", skills: ["Reading classical and modern literature", "Debating abstract and specialised topics", "Writing at a near-native level", "Understanding all forms of spoken German"] },
   ],
   teachingMethod: [
-    "Classes conducted by certified native-level German trainers with 5+ years of teaching experience.",
+    "Classes conducted by certified expert German trainers with 5+ years of teaching experience.",
     "Communicative approach with emphasis on speaking from day one.",
     "Small batch sizes (8–12 students) for personalised attention.",
     "Blended learning: live classroom sessions + online practice materials.",
@@ -107,7 +107,7 @@ const french: CourseData = {
   duration: "3 months per level",
   heroSummary: "Spoken on five continents, French is the language of diplomacy, fashion, and fine dining. Open doors to France, Canada, Switzerland, and Belgium.",
   metaTitle: "French Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn French in Chennai with native trainers. DELF/DALF exam preparation. A1-C2 levels. French classes for Canadian immigration, study abroad & careers.",
+  metaDescription: "Learn French in Chennai with certified expert trainers. DELF/DALF exam preparation. A1-C2 levels. French classes for Canadian immigration, study abroad & careers.",
   metaKeywords: ["French course Chennai", "Learn French", "French classes Chennai", "DELF preparation", "French language training"],
   whyLearn: [
     "French is spoken by over 300 million people across 5 continents, making it a truly global language.",
@@ -134,7 +134,7 @@ const french: CourseData = {
     { level: "C2", title: "Mastery", description: "Understand virtually everything heard or read with ease.", skills: ["Reading specialised texts", "Expressing yourself spontaneously", "Debating abstract concepts", "Near-native fluency"] },
   ],
   teachingMethod: [
-    "Native-level French trainers with C1–C2 certification and teaching experience.",
+    "Expert French trainers with C1–C2 certification and teaching experience.",
     "Action-oriented approach focusing on real-life communication scenarios.",
     "Small groups with individual attention and regular speaking practice.",
     "DELF/DALF exam preparation with mock tests and personalised feedback.",
@@ -177,7 +177,7 @@ const japanese: CourseData = {
   duration: "4 months per level",
   heroSummary: "Japan's technology, pop culture, and economy make Japanese a high-value language. Learn from trainers who have studied and worked in Japan.",
   metaTitle: "Japanese Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Japanese in Chennai with native trainers. JLPT N5-N1 preparation. Japanese classes for study in Japan, IT careers & anime enthusiasts.",
+  metaDescription: "Learn Japanese in Chennai with certified expert trainers. JLPT N5-N1 preparation. Japanese classes for study in Japan, IT careers & anime enthusiasts.",
   metaKeywords: ["Japanese course Chennai", "Learn Japanese", "Japanese classes Chennai", "JLPT preparation", "Japanese language training"],
   whyLearn: [
     "Japan is the third-largest economy in the world, with strong trade and investment ties to India.",
@@ -203,7 +203,7 @@ const japanese: CourseData = {
     { level: "N1", title: "Advanced", description: "Understand sophisticated Japanese across diverse contexts, including academic and professional.", skills: ["Fluent reading and comprehension", "Sophisticated writing", "Understanding nuanced speech", "Professional proficiency"] },
   ],
   teachingMethod: [
-    "Certified native Japanese trainers with JLPT N1–N2 qualification and teaching experience in India and Japan.",
+    "Certified expert Japanese trainers with JLPT N1–N2 qualification and teaching experience in India and Japan.",
     "Systematic kanji learning with mnemonics and spaced repetition.",
     "Speaking-focused approach with role-play and conversation practice.",
     "JLPT exam preparation with mock tests and detailed performance analysis.",
@@ -230,7 +230,7 @@ const japanese: CourseData = {
     { question: "Do you offer weekend batches?", answer: "Yes, we offer weekend batches for students and working professionals." },
     { question: "Is kanji taught from the beginning?", answer: "Yes, kanji is introduced from N5 level gradually, with systematic learning methods including mnemonics and stroke order practice." },
     { question: "What career opportunities exist?", answer: "IT, automotive, translation, education, and tourism sectors actively hire Japanese speakers with competitive salaries." },
-    { question: "Can I learn Japanese online?", answer: "Yes, live online classes with the same curriculum and native trainers are available." },
+    { question: "Can I learn Japanese online?", answer: "Yes, live online classes with the same curriculum and expert trainers are available." },
   ],
 };
 
@@ -242,7 +242,7 @@ const spanish: CourseData = {
   duration: "3 months per level",
   heroSummary: "Spanish connects you to 21 countries and 580 million speakers. It is the second most spoken native language in the world.",
   metaTitle: "Spanish Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Spanish in Chennai with native trainers. DELE/SIELE exam preparation. A1-C2 levels. Spanish classes for travel, business & study abroad.",
+  metaDescription: "Learn Spanish in Chennai with certified expert trainers. DELE/SIELE exam preparation. A1-C2 levels. Spanish classes for travel, business & study abroad.",
   metaKeywords: ["Spanish course Chennai", "Learn Spanish", "Spanish classes Chennai", "DELE preparation", "Spanish language training"],
   whyLearn: [
     "Spanish is the official language of 21 countries and spoken by over 580 million people worldwide.",
@@ -269,7 +269,7 @@ const spanish: CourseData = {
     { level: "C2", title: "Mastery", description: "Understand virtually everything heard or read with ease.", skills: ["Near-native fluency", "Reading specialised texts", "Debating abstract concepts", "Mastering idiomatic expressions"] },
   ],
   teachingMethod: [
-    "Native-level Spanish trainers with DELE certification and extensive teaching experience.",
+    "Expert Spanish trainers with DELE certification and extensive teaching experience.",
     "Communicative approach focusing on spoken Spanish from day one.",
     "DELE and SIELE exam preparation with mock tests.",
     "Cultural exposure through Latin American films, music, and literature.",
@@ -291,7 +291,7 @@ const spanish: CourseData = {
     { question: "Is Spanish easy to learn?", answer: "Spanish is one of the easiest languages for English speakers. It uses the Latin alphabet and has consistent pronunciation rules." },
     { question: "What is DELE?", answer: "DELE is the official Spanish proficiency diploma issued by Instituto Cervantes on behalf of Spain's Ministry of Education." },
     { question: "Can I study in Spain after learning Spanish?", answer: "Yes. Spanish universities require B2 level. DELE B2 is accepted for university admission across Spain and Latin America." },
-    { question: "Do you offer online classes?", answer: "Yes, live online classes with native trainers and the same curriculum as offline batches." },
+    { question: "Do you offer online classes?", answer: "Yes, live online classes with expert trainers and the same curriculum as offline batches." },
     { question: "What career opportunities exist?", answer: "International trade, healthcare, education, translation, and tourism sectors actively hire Spanish speakers." },
   ],
 };
@@ -304,7 +304,7 @@ const chinese: CourseData = {
   duration: "4 months per level",
   heroSummary: "China is India's largest trading partner. Mandarin opens doors in business, diplomacy, and global supply chains.",
   metaTitle: "Chinese Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Chinese (Mandarin) in Chennai with native trainers. HSK 1-6 preparation. Chinese classes for business, trade & study in China.",
+  metaDescription: "Learn Chinese (Mandarin) in Chennai with certified expert trainers. HSK 1-6 preparation. Chinese classes for business, trade & study in China.",
   metaKeywords: ["Chinese course Chennai", "Learn Mandarin", "Chinese classes Chennai", "HSK preparation", "Chinese language training"],
   whyLearn: [
     "China is India's largest trading partner with bilateral trade exceeding $100 billion annually.",
@@ -331,7 +331,7 @@ const chinese: CourseData = {
     { level: "HSK 6", title: "Mastery", description: "Understand and produce Chinese with ease on any topic.", skills: ["Near-native fluency", "Reading specialised texts", "Professional translation", "Mastering idiomatic expressions"] },
   ],
   teachingMethod: [
-    "Native Mandarin-speaking trainers with HSK 6 certification and teaching experience.",
+    "Expert Mandarin-speaking trainers with HSK 6 certification and teaching experience.",
     "Systematic tone training with phonetic exercises and一对一 correction.",
     "Character writing practice from lesson one with stroke order guidance.",
     "HSK exam preparation with mock tests and vocabulary building.",
@@ -356,7 +356,7 @@ const chinese: CourseData = {
     { question: "What is HSK?", answer: "HSK is the official Chinese proficiency test with 6 levels. HSK 4 is sufficient for Chinese university admission." },
     { question: "Can I study in China after learning Chinese?", answer: "Yes. Chinese universities offer CSC scholarships covering tuition and living expenses. HSK 4 is typically required." },
     { question: "Are tones really important?", answer: "Yes, tones distinguish word meanings in Chinese. We provide extensive tone practice from day one." },
-    { question: "Can I learn Chinese online?", answer: "Yes, we offer live online classes with native trainers and interactive character practice tools." },
+    { question: "Can I learn Chinese online?", answer: "Yes, we offer live online classes with expert trainers and interactive character practice tools." },
   ],
 };
 
@@ -432,7 +432,7 @@ const russian: CourseData = {
   duration: "3 months per level",
   heroSummary: "Russia is a global power in energy, space, and defence. Russian speakers are in demand across engineering, medicine, and international business.",
   metaTitle: "Russian Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Russian in Chennai with native trainers. TORFL preparation. A1-C2 levels. Russian classes for engineering, energy sector & study in Russia.",
+  metaDescription: "Learn Russian in Chennai with certified expert trainers. TORFL preparation. A1-C2 levels. Russian classes for engineering, energy sector & study in Russia.",
   metaKeywords: ["Russian course Chennai", "Learn Russian", "Russian classes Chennai", "TORFL preparation", "Russian language training"],
   whyLearn: [
     "Russia is the largest country in the world and a major player in energy, defence, and space exploration.",
@@ -459,7 +459,7 @@ const russian: CourseData = {
     { level: "C2", title: "Mastery", description: "Near-native fluency in all contexts.", skills: ["Reading specialised texts", "Debating abstract concepts", "Mastering idiomatic expressions", "Translation skills"] },
   ],
   teachingMethod: [
-    "Native Russian-speaking trainers with teaching certification and experience.",
+    "Expert Russian-speaking trainers with teaching certification and experience.",
     "Cyrillic alphabet mastery from the first class.",
     "Communicative approach with focus on practical speaking skills.",
     "Preparation for TORFL (Test of Russian as a Foreign Language).",
@@ -480,7 +480,7 @@ const russian: CourseData = {
     { question: "How long does it take to learn Russian?", answer: "Each level takes 3 months. B1 (conversational fluency) takes about 9–12 months with regular classes." },
     { question: "What is TORFL?", answer: "TORFL is the official Russian proficiency test with 6 levels (A1–C2). Required for university admission and employment in Russia." },
     { question: "Can I study in Russia after learning Russian?", answer: "Yes. Russian universities offer scholarships covering tuition and living expenses. B1 level Russian is typically required." },
-    { question: "Do you offer online classes?", answer: "Yes, live online classes with native Russian trainers are available." },
+    { question: "Do you offer online classes?", answer: "Yes, live online classes with expert Russian trainers are available." },
     { question: "What career opportunities exist?", answer: "Energy, defence, aerospace, international trade, and education sectors actively hire Russian speakers." },
   ],
 };
@@ -493,7 +493,7 @@ const korean: CourseData = {
   duration: "4 months per level",
   heroSummary: "Korea's global cultural influence and economic power make Korean one of the most exciting languages to learn. K-pop, K-dramas, and Korean technology drive demand.",
   metaTitle: "Korean Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Korean in Chennai with native trainers. TOPIK 1-6 preparation. Korean classes for K-pop fans, IT careers & study in South Korea.",
+  metaDescription: "Learn Korean in Chennai with certified expert trainers. TOPIK 1-6 preparation. Korean classes for K-pop fans, IT careers & study in South Korea.",
   metaKeywords: ["Korean course Chennai", "Learn Korean", "Korean classes Chennai", "TOPIK preparation", "Korean language training"],
   whyLearn: [
     "South Korea is the 12th-largest economy in the world, home to global giants like Samsung, Hyundai, LG, and SK Group.",
@@ -520,7 +520,7 @@ const korean: CourseData = {
     { level: "TOPIK 6", title: "Mastery", description: "Near-native fluency in all contexts.", skills: ["Research and academic work", "Professional translation", "Mastering idiomatic expressions", "Teaching Korean"] },
   ],
   teachingMethod: [
-    "Native Korean-speaking trainers with TOPIK certification and teaching experience in India.",
+    "Expert Korean-speaking trainers with TOPIK certification and teaching experience in India.",
     "Hangeul mastery from the first class — the Korean alphabet can be learned in a few hours.",
     "K-pop and K-drama based learning materials for engaging lessons.",
     "TOPIK exam preparation with mock tests and scoring strategies.",
@@ -556,7 +556,7 @@ const italian: CourseData = {
   duration: "3 months per level",
   heroSummary: "Italian is the language of art, music, design, and cuisine. Italy's economy and cultural influence make it a rewarding language to learn.",
   metaTitle: "Italian Language Course in Chennai | Foreign Language Academy",
-  metaDescription: "Learn Italian in Chennai with native trainers. CELI/CILS preparation. A1-C2 levels. Italian classes for fashion, design, cuisine & study in Italy.",
+  metaDescription: "Learn Italian in Chennai with certified expert trainers. CELI/CILS preparation. A1-C2 levels. Italian classes for fashion, design, cuisine & study in Italy.",
   metaKeywords: ["Italian course Chennai", "Learn Italian", "Italian classes Chennai", "CELI preparation", "Italian language training"],
   whyLearn: [
     "Italy is the third-largest economy in the Eurozone and a global leader in fashion, design, and luxury goods.",
@@ -583,12 +583,12 @@ const italian: CourseData = {
     { level: "C2", title: "Mastery", description: "Near-native fluency in all contexts.", skills: ["Reading specialised texts", "Debating abstract concepts", "Mastering idiomatic expressions", "Translation skills"] },
   ],
   teachingMethod: [
-    "Native Italian-speaking trainers with CELI/CILS certification and teaching experience.",
+    "Expert Italian-speaking trainers with CELI/CILS certification and teaching experience.",
     "Communicative approach with focus on spoken fluency.",
     "Italian culture immersion through art, music, film, and cuisine.",
     "CELI and CILS exam preparation with mock tests.",
     "Small batch sizes for personalised pronunciation and grammar guidance.",
-    "Regular conversation practice with native Italian speakers.",
+    "Regular conversation practice with fluent Italian speakers.",
   ],
   exams: [
     { name: "CELI A1–C2", description: "Certificato di Conoscenza della Lingua Italiana — official Italian proficiency exam issued by the University for Foreigners of Perugia." },
@@ -607,7 +607,7 @@ const italian: CourseData = {
     { question: "How long does it take to learn Italian?", answer: "Each level takes 3 months. B1 (conversational fluency) takes about 9 months with regular classes." },
     { question: "What is CELI?", answer: "CELI is the official Italian proficiency exam issued by the University for Foreigners of Perugia, recognised by Italian employers and universities." },
     { question: "Can I study in Italy after learning Italian?", answer: "Yes. Italian universities offer scholarships and B2 level Italian is typically required for university admission." },
-    { question: "Do you offer online classes?", answer: "Yes, live online classes with native Italian trainers are available." },
+    { question: "Do you offer online classes?", answer: "Yes, live online classes with expert Italian trainers are available." },
     { question: "What career opportunities exist?", answer: "Fashion, design, luxury goods, food and wine, art and culture, and international trade actively hire Italian speakers." },
   ],
 };
@@ -681,3 +681,4 @@ export const courseDataMap: Record<string, CourseData> = {
 };
 
 export const allSlugs = Object.keys(courseDataMap);
+

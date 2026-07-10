@@ -79,7 +79,7 @@ export function AcademyPreview() {
             <p className="mt-4 max-w-md text-base leading-relaxed text-[#334155]">
               What started with two languages and a handful of students has grown
               into a complete institute offering 9 languages taught by certified
-              native trainers.
+              expert trainers.
             </p>
             <Link
               href="/about"

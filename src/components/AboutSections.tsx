@@ -69,7 +69,7 @@ const faculty = [
     code: "DE",
     cert: "Goethe Institut Certified",
     blurb: "Precision-built lessons for exam-ready fluency.",
-    points: ["Native German Speakers", "10+ Years Teaching", "Goethe Certified Experts"],
+    points: ["Expert German Speakers", "10+ Years Teaching", "Goethe Certified Experts"],
     coord: "52.5° N",
   },
   {
@@ -77,7 +77,7 @@ const faculty = [
     code: "FR",
     cert: "DELF-DALF Experts",
     blurb: "Melodic French with real conversation from lesson one.",
-    points: ["Native French Speakers", "8+ Years of Experience", "DELF-DALF Certified"],
+    points: ["Expert French Speakers", "8+ Years of Experience", "DELF-DALF Certified"],
     coord: "48.8° N",
   },
   {
@@ -85,7 +85,7 @@ const faculty = [
     code: "JA",
     cert: "JLPT N1 Experts",
     blurb: "Structured toward JLPT, taught with real cultural context.",
-    points: ["Native Japanese Speakers", "JLPT N1 Experts", "Cultural Immersion Focus"],
+    points: ["Expert Japanese Speakers", "JLPT N1 Experts", "Cultural Immersion Focus"],
     coord: "35.6° N",
   },
   {
@@ -93,7 +93,7 @@ const faculty = [
     code: "ES",
     cert: "DELE Certified",
     blurb: "Confident conversational Spanish, DELE-ready.",
-    points: ["Native Spanish Speakers", "8+ Years of Teaching", "DELE Certified Experts"],
+    points: ["Expert Spanish Speakers", "8+ Years of Teaching", "DELE Certified Experts"],
     coord: "40.4° N",
   },
   {
@@ -101,15 +101,15 @@ const faculty = [
     code: "KO",
     cert: "TOPIK Certified",
     blurb: "Fluency built for real conversations, TOPIK-tested.",
-    points: ["Native Korean Speakers", "TOPIK Level 6 Experts", "Conversation Specialists"],
+    points: ["Expert Korean Speakers", "TOPIK Level 6 Experts", "Conversation Specialists"],
     coord: "37.5° N",
   },
   {
     lang: "English",
     code: "EN",
     cert: "CELTA / TEFL Certified",
-    blurb: "Business-ready English from CELTA-trained natives.",
-    points: ["Native English Speakers", "CELTA / TEFL Certified", "Business English Experts"],
+    blurb: "Business-ready English from CELTA-trained experts.",
+    points: ["Expert English Speakers", "CELTA / TEFL Certified", "Business English Experts"],
     coord: "51.5° N",
   },
 ];
@@ -408,7 +408,7 @@ function TrainersDesktop() {
                 What They Teach
               </h2>
               <p className="mt-3 max-w-md text-[15px] leading-6 text-white/72">
-                Six languages, six homelands. Scroll to meet the certified native trainers behind every lesson.
+                Six languages, six pathways. Scroll to meet the certified expert trainers behind every lesson.
               </p>
             </div>
 
@@ -536,7 +536,7 @@ function TrainersMobile() {
             What They Teach
           </h2>
           <p className="mt-3 max-w-lg text-[15px] leading-6 text-black/70">
-            Six languages, six homelands. Meet the certified native trainers behind every lesson.
+            Six languages, six pathways. Meet the certified expert trainers behind every lesson.
           </p>
         </div>
 

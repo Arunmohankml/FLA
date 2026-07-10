@@ -161,6 +161,9 @@ export function CertificatesClient({
     setTimeout(() => setToast(null), 4000);
   };
 
+  const certificatePdfUrl = (certificateNumber: string, download = false) =>
+    `/api/certificates/pdf/${encodeURIComponent(certificateNumber)}${download ? "?download=1" : ""}`;
+
   const handleGenerate = async () => {
     if (!form.studentFullName || !form.certificateNumber.trim()) {
       showToast("err", "Student name and certificate number are required");
@@ -256,9 +259,11 @@ export function CertificatesClient({
 
   const handleDownload = (c: Certificate) => {
     const a = document.createElement("a");
-    a.href = c.imageUrl;
+    a.href = certificatePdfUrl(c.certificateNumber, true);
     a.download = `${c.certificateNumber}.pdf`;
+    document.body.appendChild(a);
     a.click();
+    a.remove();
   };
 
   const handleDelete = async (c: Certificate) => {
@@ -349,7 +354,7 @@ export function CertificatesClient({
                 </button>
               </div>
               <iframe
-                src={preview.imageUrl}
+                src={certificatePdfUrl(preview.certificateNumber)}
                 title={`Certificate ${preview.certificateNumber}`}
                 className="h-[86vh] w-[min(92vw,760px)]"
               />

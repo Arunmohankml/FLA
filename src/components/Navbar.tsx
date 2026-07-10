@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="relative h-12 w-[72px] sm:h-14 sm:w-[84px]">
             <Image
               src="/FLA-logo.webp"
-              alt="FLA logo"
+              alt="Foreign Language Academy logo"
               width={300}
               height={200}
               sizes="(max-width: 640px) 72px, 84px"

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { deleteCertificatePdfFromCloudinary } from "@/lib/cloudinary";
 
 export const dynamic = "force-dynamic";
-const BUCKET = "certificates";
+export const runtime = "nodejs";
 
 export async function GET() {
   try {
@@ -40,9 +41,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "Certificate not found" }, { status: 404 });
     }
 
-    await supabaseAdmin.storage
-      .from(BUCKET)
-      .remove([`certificates/${certificate.certificate_number}.pdf`]);
+    await deleteCertificatePdfFromCloudinary(certificate.certificate_number);
 
     const { error: deleteErr } = await supabaseAdmin
       .from("certificates")

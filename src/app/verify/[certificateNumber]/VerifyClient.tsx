@@ -22,9 +22,10 @@ export function VerifyClient({
   courseName,
   grade,
   totalScore,
-  imageUrl,
   createdAt,
 }: VerifyProps) {
+  const certificatePdfUrl = `/api/certificates/pdf/${encodeURIComponent(certificateNumber)}`;
+
   return (
     <div className="min-h-screen bg-[#F5FAFF]">
       <div className="mx-auto max-w-2xl px-6 py-16">
@@ -94,7 +95,7 @@ export function VerifyClient({
           {/* Certificate preview */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
             <iframe
-              src={imageUrl}
+              src={certificatePdfUrl}
               title={`Certificate ${certificateNumber}`}
               className="h-[76vh] w-full"
             />

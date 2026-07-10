@@ -20,7 +20,7 @@ const RocketIcon = () => (
 
 const steps = [
   { icon: <EnrollIcon />, title: "Enroll", desc: "Choose your language and batch" },
-  { icon: <LearnIcon />, title: "Learn", desc: "Structured curriculum with native trainers" },
+  { icon: <LearnIcon />, title: "Learn", desc: "Structured curriculum with expert trainers" },
   { icon: <PracticeIcon />, title: "Practice", desc: "Real conversations from day one" },
   { icon: <CertifyIcon />, title: "Certify", desc: "Earn internationally recognised credentials" },
   { icon: <RocketIcon />, title: "Get Placed", desc: "Career guidance and opportunities" },
