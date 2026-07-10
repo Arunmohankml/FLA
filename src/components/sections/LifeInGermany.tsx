@@ -32,6 +32,12 @@ const cards = [
     value: "Schengen",
     body: "An affordable European study destination providing access to quality education, work opportunities, and travel across Europe.",
   },
+  {
+    country: "Australia",
+    image: "/australia-study-opt.webp",
+    value: "600,000+",
+    body: "One of the world's most popular study destinations, offering globally ranked universities, excellent post-study work opportunities, and a high quality of life in a safe, multicultural environment.",
+  },
 ];
 
 export function LifeInGermany() {
@@ -116,11 +122,11 @@ export function LifeInGermany() {
             className="blue-dark-panel blue-orbit-bg rounded-[34px] p-6 shadow-[0_28px_90px_rgba(6,33,61,0.2)] sm:p-8 lg:p-10"
           >
             <span className="mb-4 inline-flex w-fit rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#B9E2FF]">
-              Life in Europe
+              Study abroad
             </span>
 
             <h2 className="max-w-2xl font-heading text-[clamp(1.8rem,3.2vw,3rem)] font-medium leading-[1.02] tracking-[-0.04em] text-white">
-              Europe opens doors to healthcare success
+              Global destinations open doors to career success
             </h2>
 
             <p className="mt-3 max-w-md text-[15px] leading-7 text-white/75">
