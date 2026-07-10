@@ -122,7 +122,7 @@ export function buildCertificateQrText(values: CertificateValues) {
     `Issue Date: ${values.issueDate || ""}`,
     `Issue Place: ${values.issuePlace || ""}`,
     `Listening Marks: ${values.listeningScore || ""}`,
-    `Oral Marks: ${values.oralTestScore || ""}`,
+    `Speaking Marks: ${values.oralTestScore || ""}`,
     `Reading Marks: ${values.readingScore || ""}`,
     `Writing Marks: ${values.writtenExpressionScore || ""}`,
     `Total Marks: ${values.totalScore || ""}`,
@@ -184,6 +184,7 @@ function drawValue({
   sourceHeight,
   field,
   value,
+  forceAlign,
 }: {
   page: PDFPage;
   fonts: FontSet;
@@ -191,6 +192,7 @@ function drawValue({
   sourceHeight: number;
   field: LayoutField;
   value: string;
+  forceAlign?: LayoutField["align"];
 }) {
   if (!value) return;
 
@@ -200,10 +202,11 @@ function drawValue({
   const font = fontFor(field, fonts);
   const size = fittedSize(font, value, field, scaleX);
   const textWidth = font.widthOfTextAtSize(value, size);
+  const align = forceAlign ?? field.align;
 
   let x = field.x * scaleX;
-  if (field.align === "center") x -= textWidth / 2;
-  if (field.align === "right") x -= textWidth;
+  if (align === "center") x -= textWidth / 2;
+  if (align === "right") x -= textWidth;
 
   const y = height - field.y * scaleY;
 
@@ -291,6 +294,7 @@ export async function renderCertificatePdf(
       sourceHeight,
       field: layout[key],
       value: resolveValue(values, key),
+      forceAlign: key === "certificateNumber" ? "center" : undefined,
     });
   }
 

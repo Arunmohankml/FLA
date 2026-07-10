@@ -257,13 +257,31 @@ export function CertificatesClient({
     }
   };
 
-  const handleDownload = (c: Certificate) => {
-    const a = document.createElement("a");
-    a.href = certificatePdfUrl(c.certificateNumber, true);
-    a.download = `${c.certificateNumber}.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+  const handleDownload = async (c: Certificate) => {
+    try {
+      const res = await fetch(certificatePdfUrl(c.certificateNumber, true));
+      if (!res.ok) {
+        showToast("err", "Certificate PDF could not be prepared");
+        return;
+      }
+
+      const blob = await res.blob();
+      if (blob.type !== "application/pdf" && blob.size < 1000) {
+        showToast("err", "Certificate PDF response was invalid");
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${c.certificateNumber}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      showToast("err", "Download failed");
+    }
   };
 
   const handleDelete = async (c: Certificate) => {

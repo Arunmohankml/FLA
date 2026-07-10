@@ -1,3 +1,4 @@
+import { NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { buildCertificateQrText, CertificateValues } from "@/lib/certificateRenderer";
 
@@ -25,11 +26,16 @@ function valuesFromCertificate(row: CertificateRow): CertificateValues {
   };
 }
 
+function normalizeCertificateNumber(value: string) {
+  return decodeURIComponent(value).trim().replace(/\s+/g, "-").toUpperCase();
+}
+
 export async function GET(
-  _req: Request,
+  req: NextRequest,
   { params }: { params: Promise<{ certificateNumber: string }> }
 ) {
-  const { certificateNumber } = await params;
+  const { certificateNumber: rawCertificateNumber } = await params;
+  const certificateNumber = normalizeCertificateNumber(rawCertificateNumber);
   const { data } = await supabaseAdmin
     .from("certificates")
     .select(
@@ -43,6 +49,10 @@ export async function GET(
       status: 404,
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
+  }
+
+  if (rawCertificateNumber !== certificateNumber) {
+    return Response.redirect(new URL(`/certificates/${encodeURIComponent(certificateNumber)}`, req.url), 308);
   }
 
   return new Response(buildCertificateQrText(valuesFromCertificate(data as CertificateRow)), {

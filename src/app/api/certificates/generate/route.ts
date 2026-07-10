@@ -5,7 +5,6 @@ import { renderCertificatePdf } from "@/lib/certificateRenderer";
 import { uploadCertificatePdfToCloudinary } from "@/lib/cloudinary";
 
 const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://foreignlanguageacademy.in";
 export const runtime = "nodejs";
 
 async function loadTemplate(origin: string) {
@@ -34,8 +33,21 @@ function normalizeCertificateNumber(input?: string) {
   return `${prefix}${cleanSuffix}`;
 }
 
-function getCertificateDetailsUrl(certificateNumber: string) {
-  return `${SITE_URL.replace(/\/$/, "")}/certificates/${encodeURIComponent(certificateNumber)}`;
+function getRequestOrigin(req: NextRequest) {
+  const forwardedHost = req.headers.get("x-forwarded-host");
+  const forwardedProto = req.headers.get("x-forwarded-proto");
+  const host = forwardedHost || req.headers.get("host");
+
+  if (host) {
+    const proto = forwardedProto || (host.startsWith("localhost") || host.startsWith("127.") ? "http" : "https");
+    return `${proto}://${host}`;
+  }
+
+  return req.nextUrl.origin;
+}
+
+function getCertificateDetailsUrl(req: NextRequest, certificateNumber: string) {
+  return `${getRequestOrigin(req).replace(/\/$/, "")}/certificates/${encodeURIComponent(certificateNumber)}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -87,7 +99,7 @@ export async function POST(req: NextRequest) {
       values.certificateNumber = certificateNumber;
     }
 
-    const qrUrl = getCertificateDetailsUrl(values.certificateNumber);
+    const qrUrl = getCertificateDetailsUrl(req, values.certificateNumber);
     values.qrUrl = qrUrl;
 
     const templatePdf = await loadTemplate(req.nextUrl.origin);

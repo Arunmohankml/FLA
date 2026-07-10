@@ -94,9 +94,10 @@ function fontWeight(field: LayoutField) {
   return Number.isFinite(numeric) ? numeric : field.weight ?? "400";
 }
 
-function anchorTransform(field: LayoutField) {
-  if (field.align === "center") return "translateX(-50%)";
-  if (field.align === "right") return "translateX(-100%)";
+function anchorTransform(field: LayoutField, key?: keyof CertificateLayout) {
+  const align = key === "certificateNumber" ? "center" : field.align;
+  if (align === "center") return "translateX(-50%)";
+  if (align === "right") return "translateX(-100%)";
   return "none";
 }
 
@@ -380,7 +381,7 @@ export function CalibrationClient() {
               style={{
                 left: field.x * scaleX,
                 top: field.y * scaleY,
-                transform: anchorTransform(field),
+                transform: anchorTransform(field, key),
                 color: field.color || "#111111",
                 fontFamily: fontFamily(field),
                 fontSize: field.fontSize * scaleX,
