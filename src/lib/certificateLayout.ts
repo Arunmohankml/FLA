@@ -198,7 +198,7 @@ export const certificateLayout: CertificateLayout = {
     "y": 1100,
     "fontSize": 9,
     "align": "right",
-    "color": "#ffffff",
+    "color": "#000000",
     "family": "sans",
     "weight": "700",
     "maxWidth": 140

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getCertificateLayout } from "@/lib/certificateLayoutStore";
 import { renderSampleCertificatePdf } from "@/lib/certificateRenderer";
 
 export const dynamic = "force-dynamic";
@@ -10,7 +11,8 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Template not found", { status: 500 });
   }
 
-  const pdfBuf = await renderSampleCertificatePdf(await templateRes.arrayBuffer());
+  const layout = await getCertificateLayout();
+  const pdfBuf = await renderSampleCertificatePdf(await templateRes.arrayBuffer(), layout);
   return new NextResponse(new Uint8Array(pdfBuf), {
     headers: {
       "Content-Type": "application/pdf",

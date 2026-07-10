@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { getCertificateLayout } from "@/lib/certificateLayoutStore";
 import { renderCertificatePdf } from "@/lib/certificateRenderer";
 
 const BUCKET = "certificates";
@@ -29,6 +30,15 @@ function normalizeCertificateNumber(input?: string) {
   }
 
   return `${prefix}${cleanSuffix}`;
+}
+
+function getCertificatePdfPath(certificateNumber: string) {
+  return `certificates/${certificateNumber}.pdf`;
+}
+
+function getPublicCertificatePdfUrl(filePath: string) {
+  const { data } = supabaseAdmin.storage.from(BUCKET).getPublicUrl(filePath);
+  return data.publicUrl;
 }
 
 export async function POST(req: NextRequest) {
@@ -80,13 +90,13 @@ export async function POST(req: NextRequest) {
       values.certificateNumber = certificateNumber;
     }
 
-    const filePath = `certificates/${values.certificateNumber}.pdf`;
-    const { data: urlData } = supabaseAdmin.storage.from(BUCKET).getPublicUrl(filePath);
-    const imageUrl = urlData.publicUrl;
-    values.qrUrl = imageUrl;
+    const filePath = getCertificatePdfPath(values.certificateNumber);
+    const pdfUrl = getPublicCertificatePdfUrl(filePath);
+    values.qrUrl = pdfUrl;
 
     const templatePdf = await loadTemplate(req.nextUrl.origin);
-    const pdfBuf = Buffer.from(await renderCertificatePdf(templatePdf, values));
+    const layout = await getCertificateLayout();
+    const pdfBuf = Buffer.from(await renderCertificatePdf(templatePdf, values, layout));
     const { error: uploadErr } = await supabaseAdmin.storage
       .from(BUCKET)
       .upload(filePath, pdfBuf, { contentType: "application/pdf", upsert: true });
@@ -102,8 +112,8 @@ export async function POST(req: NextRequest) {
       course_name: values.courseName,
       grade: values.grade,
       total_score: values.totalScore,
-      image_url: imageUrl,
-      form_data: values,
+      image_url: pdfUrl,
+      form_data: { ...values, qrUrl: pdfUrl },
     };
 
     const { data: savedCertificate, error: dbErr } = existingId
@@ -126,8 +136,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       ok: true,
       id: savedCertificate?.id,
-      imageUrl,
-      pdfUrl: imageUrl,
+      imageUrl: pdfUrl,
+      pdfUrl,
+      qrUrl: pdfUrl,
       certificateNumber: values.certificateNumber,
       formData: savedCertificate?.form_data || values,
     });

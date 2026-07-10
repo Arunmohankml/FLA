@@ -201,14 +201,16 @@ async function drawQrCode({
   sourceWidth,
   sourceHeight,
   value,
+  layout,
 }: {
   page: PDFPage;
   pdfDoc: PDFDocument;
   sourceWidth: number;
   sourceHeight: number;
   value?: string;
+  layout: CertificateLayout;
 }) {
-  if (!value || certificateLayout.qr.size <= 0) return;
+  if (!value || layout.qr.size <= 0) return;
 
   const pngDataUrl = await QRCode.toDataURL(value, {
     errorCorrectionLevel: "M",
@@ -224,13 +226,13 @@ async function drawQrCode({
   const { width, height } = page.getSize();
   const scaleX = width / sourceWidth;
   const scaleY = height / sourceHeight;
-  const size = certificateLayout.qr.size * scaleX;
+  const size = layout.qr.size * scaleX;
 
   page.drawImage(qrImage, {
-    x: certificateLayout.qr.x * scaleX,
-    y: height - (certificateLayout.qr.y * scaleY) - size,
+    x: layout.qr.x * scaleX,
+    y: height - (layout.qr.y * scaleY) - size,
     width: size,
-    height: certificateLayout.qr.size * scaleY,
+    height: layout.qr.size * scaleY,
   });
 }
 
@@ -250,7 +252,8 @@ async function embedFonts(pdfDoc: PDFDocument): Promise<FontSet> {
 
 export async function renderCertificatePdf(
   templatePdf: ArrayBuffer | Uint8Array,
-  values: CertificateValues
+  values: CertificateValues,
+  layout: CertificateLayout = certificateLayout,
 ) {
   const pdfDoc = await PDFDocument.load(templatePdf);
   const page = pdfDoc.getPage(0);
@@ -265,7 +268,7 @@ export async function renderCertificatePdf(
       fonts,
       sourceWidth,
       sourceHeight,
-      field: certificateLayout[key],
+      field: layout[key],
       value: resolveValue(values, key),
     });
   }
@@ -276,11 +279,15 @@ export async function renderCertificatePdf(
     sourceWidth,
     sourceHeight,
     value: values.qrUrl,
+    layout,
   });
 
   return pdfDoc.save();
 }
 
-export async function renderSampleCertificatePdf(templatePdf: ArrayBuffer | Uint8Array) {
-  return renderCertificatePdf(templatePdf, SAMPLE_VALUES);
+export async function renderSampleCertificatePdf(
+  templatePdf: ArrayBuffer | Uint8Array,
+  layout: CertificateLayout = certificateLayout,
+) {
+  return renderCertificatePdf(templatePdf, SAMPLE_VALUES, layout);
 }

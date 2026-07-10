@@ -23,6 +23,15 @@ DO $$ BEGIN
 EXCEPTION WHEN duplicate_column THEN NULL;
 END $$;
 
+-- 1c. Store admin-configurable certificate layout.
+-- Used by /api/certificates/layout. Serverless deployments cannot write
+-- calibration changes back into src/lib/certificateLayout.ts.
+CREATE TABLE IF NOT EXISTS site_settings (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- 2. Enable RLS (optional, but recommended)
 ALTER TABLE certificates ENABLE ROW LEVEL SECURITY;
 
