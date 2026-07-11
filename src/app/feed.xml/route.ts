@@ -5,7 +5,7 @@ function escapeXml(s: string) {
 }
 
 export async function GET() {
-  const baseUrl = "https://foreignlanguageacademy.in";
+  const baseUrl = "https://foreignlanguageacademy.co.in";
   const blogPosts = await getMergedBlogPosts();
   const items = blogPosts.map(
     (post) => `

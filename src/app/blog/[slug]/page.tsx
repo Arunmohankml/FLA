@@ -24,11 +24,11 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Foreign Language Academy`,
     description: post.description,
-    alternates: { canonical: `https://foreignlanguageacademy.in/blog/${slug}` },
+    alternates: { canonical: `https://foreignlanguageacademy.co.in/blog/${slug}` },
     openGraph: {
       title: `${post.title} | Foreign Language Academy`,
       description: post.description,
-      url: `https://foreignlanguageacademy.in/blog/${slug}`,
+      url: `https://foreignlanguageacademy.co.in/blog/${slug}`,
       siteName: "Foreign Language Academy",
       locale: "en_IN",
       type: "article",

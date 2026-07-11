@@ -20,11 +20,11 @@ export async function generateMetadata({
     title: course.metaTitle,
     description: course.metaDescription,
     keywords: course.metaKeywords,
-    alternates: { canonical: `https://foreignlanguageacademy.in/courses/${slug}` },
+    alternates: { canonical: `https://foreignlanguageacademy.co.in/courses/${slug}` },
     openGraph: {
       title: course.metaTitle,
       description: course.metaDescription,
-      url: `https://foreignlanguageacademy.in/courses/${slug}`,
+      url: `https://foreignlanguageacademy.co.in/courses/${slug}`,
       siteName: "Foreign Language Academy",
       locale: "en_IN",
       type: "website",
@@ -43,7 +43,7 @@ export default async function CoursePage({
 
   const otherCourses = languages.filter((l) => l.slug !== slug);
 
-  const baseUrl = "https://foreignlanguageacademy.in";
+  const baseUrl = "https://foreignlanguageacademy.co.in";
 
   const courseSchema = {
     "@context": "https://schema.org",

@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     "Study in Germany Language Course",
     "Language Course for Abroad Studies",
   ],
-  metadataBase: new URL("https://foreignlanguageacademy.in"),
+  metadataBase: new URL("https://foreignlanguageacademy.co.in"),
   applicationName: "Foreign Language Academy",
-  authors: [{ name: "Foreign Language Academy", url: "https://foreignlanguageacademy.in" }],
+  authors: [{ name: "Foreign Language Academy", url: "https://foreignlanguageacademy.co.in" }],
   creator: "Foreign Language Academy",
   publisher: "Foreign Language Academy",
   icons: {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Foreign Language Academy Chennai | Learn Languages Online and Offline",
     description:
       "German, French, Japanese, Korean, Spanish, Chinese, English, Russian, Italian, IELTS, soft skills, and study abroad language training.",
-    url: "https://foreignlanguageacademy.in",
+    url: "https://foreignlanguageacademy.co.in",
     images: [
       {
         url: "/brand/og-image.png",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://foreignlanguageacademy.in",
+    canonical: "https://foreignlanguageacademy.co.in",
   },
 };
 

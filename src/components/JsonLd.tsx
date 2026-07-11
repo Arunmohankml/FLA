@@ -6,9 +6,9 @@ export function OrganizationJsonLd() {
     "@type": "EducationalOrganization",
     name: site.name,
     description: site.tagline,
-    url: "https://foreignlanguageacademy.in",
-    logo: "https://foreignlanguageacademy.in/brand/icon-512.png",
-    image: "https://foreignlanguageacademy.in/brand/og-image.png",
+    url: "https://foreignlanguageacademy.co.in",
+    logo: "https://foreignlanguageacademy.co.in/brand/icon-512.png",
+    image: "https://foreignlanguageacademy.co.in/brand/og-image.png",
     telephone: site.phone,
     email: site.email,
     address: {
@@ -70,7 +70,7 @@ export function OrganizationJsonLd() {
           provider: {
             "@type": "EducationalOrganization",
             name: site.name,
-            url: "https://foreignlanguageacademy.in",
+            url: "https://foreignlanguageacademy.co.in",
           },
         },
       })),

@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     "Software jobs Germany language training",
   ],
   alternates: {
-    canonical: "https://foreignlanguageacademy.in/nursing-it-jobs",
+    canonical: "https://foreignlanguageacademy.co.in/nursing-it-jobs",
   },
   openGraph: {
     title: "Nursing & IT Jobs Abroad | Foreign Language Academy",
     description:
       "Language training up to B2 level, career preparation, guidance, and 100% placement assistance for eligible nursing and IT students.",
-    url: "https://foreignlanguageacademy.in/nursing-it-jobs",
+    url: "https://foreignlanguageacademy.co.in/nursing-it-jobs",
     siteName: "Foreign Language Academy",
     images: [
       {
@@ -53,13 +53,13 @@ export default function NursingItJobsPage() {
     provider: {
       "@type": "EducationalOrganization",
       name: "Foreign Language Academy",
-      url: "https://foreignlanguageacademy.in",
+      url: "https://foreignlanguageacademy.co.in",
     },
     areaServed: ["India", "Germany", "United Kingdom", "Ireland", "Australia", "Canada", "Japan", "Singapore"],
     serviceType: "Language training, career preparation, and placement assistance",
     description:
       "Foreign Language Academy provides language training up to B2 level, exam preparation, interview coaching, documentation guidance, and 100% placement assistance for eligible nursing and IT students planning careers abroad.",
-    url: "https://foreignlanguageacademy.in/nursing-it-jobs",
+    url: "https://foreignlanguageacademy.co.in/nursing-it-jobs",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Career pathways",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Explore Foreign Language Academy courses in Chennai: German, French, Spanish, Japanese, Chinese, English, Russian, Korean, and Italian from beginner to advanced levels.",
   alternates: {
-    canonical: "https://foreignlanguageacademy.in/courses",
+    canonical: "https://foreignlanguageacademy.co.in/courses",
   },
 };
 

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/"],
       },
     ],
-    sitemap: "https://foreignlanguageacademy.in/sitemap.xml",
+    sitemap: "https://foreignlanguageacademy.co.in/sitemap.xml",
   };
 }

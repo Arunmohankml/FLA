@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Blog | Foreign Language Academy",
   description:
     "Language learning tips, exam guides, career advice, and cultural insights. Stay updated with the latest from Foreign Language Academy in Chennai.",
-  alternates: { canonical: "https://foreignlanguageacademy.in/blog" },
+  alternates: { canonical: "https://foreignlanguageacademy.co.in/blog" },
   openGraph: {
     title: "Blog | Foreign Language Academy",
     description:
       "Language learning tips, exam guides, career advice, and cultural insights from Foreign Language Academy in Chennai.",
-    url: "https://foreignlanguageacademy.in/blog",
+    url: "https://foreignlanguageacademy.co.in/blog",
     siteName: "Foreign Language Academy",
     locale: "en_IN",
     type: "website",

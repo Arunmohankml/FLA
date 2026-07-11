@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Contact Foreign Language Academy in Chennai for course enquiries, demo classes, registrations, and language training support.",
   alternates: {
-    canonical: "https://foreignlanguageacademy.in/contact",
+    canonical: "https://foreignlanguageacademy.co.in/contact",
   },
 };
 

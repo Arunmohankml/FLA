@@ -9,7 +9,7 @@ export function CourseJsonLd() {
     provider: {
       "@type": "EducationalOrganization",
       name: "Foreign Language Academy",
-      url: "https://foreignlanguageacademy.in",
+      url: "https://foreignlanguageacademy.co.in",
     },
     offers: {
       "@type": "Offer",

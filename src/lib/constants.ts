@@ -1,8 +1,8 @@
-﻿export const site = {
+export const site = {
   name: "Foreign Language Academy",
   tagline: "Online, offline, and hybrid foreign language learning since 2010.",
   phone: "+91 8129669247",
-  email: "aforeignlanguage@gmail.com",
+  email: "info@foreignlanguageacademy.co.in",
   address: "Maruthi Nagar, Rajakilpakkam-73, Chennai, India",
   hours: "Monday to Sunday, 8:00 AM – 10:00 PM",
   googleRating: "4.6",

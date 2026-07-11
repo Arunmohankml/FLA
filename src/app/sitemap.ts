@@ -3,7 +3,7 @@ import { allSlugs as allCourseSlugs } from "@/lib/courseData";
 import { getMergedBlogPosts } from "@/lib/blogStore";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://foreignlanguageacademy.in";
+  const baseUrl = "https://foreignlanguageacademy.co.in";
   const blogPosts = await getMergedBlogPosts();
 
   const coursePages = allCourseSlugs.map((slug) => ({
