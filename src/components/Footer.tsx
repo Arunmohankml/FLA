@@ -46,7 +46,18 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <HiOutlineLocationMarker className="mt-0.5 size-4 shrink-0" />
-                <span>{site.address}</span>
+                <div className="space-y-2">
+                  <address className="not-italic">
+                    <span className="font-semibold text-[#0c2847]">Chennai: </span>
+                    {site.address}
+                  </address>
+                  {footerLocations.map((branch) => (
+                    <address key={branch.location} className="not-italic">
+                      <span className="font-semibold text-[#0c2847]">{branch.location}: </span>
+                      {branch.address}
+                    </address>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>
@@ -85,30 +96,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-[#B9E2FF]/70 pt-8">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-            Locations
-          </h4>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {footerLocations.map((branch) => (
-              <address
-                key={branch.location}
-                className="not-italic rounded-2xl border border-[#B9E2FF]/70 bg-white/55 p-4 text-sm leading-6 text-[#334155]"
-              >
-                <p className="font-semibold text-[#0c2847]">{branch.location}</p>
-                <p className="mt-2 font-medium text-foreground">{branch.legalName}</p>
-                <p className="mt-1">{branch.address}</p>
-                <a
-                  href={`tel:${branch.phone.replace(/\s/g, "")}`}
-                  className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-[#0c2847] transition-colors hover:text-[#1d9bf0]"
-                >
-                  {branch.phone}
-                </a>
-              </address>
-            ))}
           </div>
         </div>
 
