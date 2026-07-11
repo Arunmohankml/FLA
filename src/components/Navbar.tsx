@@ -10,6 +10,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Courses", href: "/courses" },
+  { label: "Nursing & IT Jobs", href: "/nursing-it-jobs" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -82,14 +83,14 @@ export function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-7">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               prefetch={false}
               onClick={() => setOpen(false)}
-              className="text-base font-medium transition-colors duration-200"
+              className="text-sm font-medium transition-colors duration-200 lg:text-base"
               style={{
                 color: pathname === item.href
                   ? showWhite ? "#0c2847" : "#ffffff"

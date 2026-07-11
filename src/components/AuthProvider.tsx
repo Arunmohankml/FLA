@@ -12,7 +12,7 @@ import { AuthContext } from "@/components/AuthContext";
 
 const OWNER_EMAIL = "t19796146@gmail.com";
 
-export function AuthProvider({ children }: { children: ReactNode }) {
+export default function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [authLoaded, setAuthLoaded] = useState(false);
   const [adminEmails, setAdminEmails] = useState<string[]>([]);

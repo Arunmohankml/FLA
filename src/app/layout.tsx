@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Epilogue } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
-import { LenisProvider } from "@/components/LenisProvider";
+import AppShell from "@/components/AppShell";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
@@ -107,11 +105,7 @@ export default function RootLayout({
       >
       <body className="min-h-screen bg-background font-sans text-foreground">
         <OrganizationJsonLd />
-        <LenisProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LenisProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

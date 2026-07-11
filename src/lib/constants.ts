@@ -1,6 +1,6 @@
 ﻿export const site = {
   name: "Foreign Language Academy",
-  tagline: "Online, offline, and hybrid foreign language learning since 2007.",
+  tagline: "Online, offline, and hybrid foreign language learning since 2010.",
   phone: "+91 8129669247",
   email: "aforeignlanguage@gmail.com",
   address: "Maruthi Nagar, Rajakilpakkam-73, Chennai, India",
@@ -26,7 +26,7 @@ export const stats = [
   { label: "Students", value: 1900, suffix: "+", description: "Learning with us", icon: "users" as const },
   { label: "Courses", value: 455, suffix: "+", description: "Available to explore", icon: "book" as const },
   { label: "Google Rating", value: 4.6, prefix: "", suffix: " ★", description: "From 200+ reviews", icon: "star" as const },
-  { label: "Since", value: 2007, suffix: "", description: "Trusted education", icon: "calendar" as const },
+  { label: "Since", value: 2010, suffix: "", description: "Trusted education", icon: "calendar" as const },
 ];
 
 export const languages = [
@@ -67,6 +67,7 @@ export const navigation = [
   { label: "Courses", href: "/courses" },
   { label: "Online Courses", href: "/online-language-courses" },
   { label: "Study Abroad", href: "/study-abroad-language-courses" },
+  { label: "Nursing & IT Jobs", href: "/nursing-it-jobs" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -78,6 +79,7 @@ export const footerQuickLinks = [
   { label: "Courses", href: "/courses" },
   { label: "Online Courses", href: "/online-language-courses" },
   { label: "Study Abroad", href: "/study-abroad-language-courses" },
+  { label: "Nursing & IT Jobs", href: "/nursing-it-jobs" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },

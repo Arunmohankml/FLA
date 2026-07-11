@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AuthProvider } from "@/components/AuthProvider";
+import AuthProvider from "@/components/AuthProvider";
 import { useAuth } from "@/components/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineExclamationCircle } from "react-icons/hi";

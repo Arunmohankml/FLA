@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthProvider } from "@/components/AuthProvider";
+import AuthProvider from "@/components/AuthProvider";
 import { AuthGuard } from "@/components/AuthGuard";
 import { AdminShell } from "./AdminShell";
 
