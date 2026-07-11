@@ -50,8 +50,12 @@ CREATE POLICY "Allow admin update certificates"
   ON certificates FOR UPDATE
   USING (true);
 
--- 5. Certificate PDFs are uploaded to Cloudinary.
--- Add these server-only environment variables in local/deployment config:
+-- 5. Certificate PDFs are uploaded to Cloudinary when configured.
+-- Add these server-only environment variables in local/deployment config if
+-- you want Cloudinary storage:
 -- CLOUDINARY_CLOUD_NAME
 -- CLOUDINARY_API_KEY
 -- CLOUDINARY_API_SECRET
+--
+-- If all three Cloudinary variables are missing, the app falls back to a
+-- public Supabase Storage bucket named "certificates".

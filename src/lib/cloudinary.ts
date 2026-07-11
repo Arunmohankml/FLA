@@ -1,6 +1,8 @@
 import { createHash } from "crypto";
+import { supabaseAdmin } from "@/lib/supabase";
 
 const DEFAULT_UPLOAD_FOLDER = "certificates";
+const SUPABASE_CERTIFICATE_BUCKET = "certificates";
 
 type UploadResult = {
   secure_url?: string;
@@ -13,11 +15,16 @@ function getCloudinaryConfig() {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME?.trim();
   const apiKey = process.env.CLOUDINARY_API_KEY;
   const apiSecret = process.env.CLOUDINARY_API_SECRET;
+  const hasAnyCloudinaryValue = Boolean(cloudName || apiKey || apiSecret);
 
   if (!cloudName || !apiKey || !apiSecret) {
-    throw new Error(
-      "Cloudinary is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET."
-    );
+    if (hasAnyCloudinaryValue) {
+      throw new Error(
+        "Cloudinary is partially configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET, or remove all three to use Supabase certificate storage."
+      );
+    }
+
+    return null;
   }
 
   if (cloudName === "certificates" || cloudName.startsWith("REPLACE_WITH_")) {
@@ -43,11 +50,56 @@ export function getCertificateCloudinaryPublicId(certificateNumber: string) {
   return `${folder.replace(/^\/|\/$/g, "")}/${certificateNumber}`;
 }
 
+function getCertificateStoragePath(certificateNumber: string) {
+  return `${getCertificateCloudinaryPublicId(certificateNumber)}.pdf`;
+}
+
+async function ensureCertificateBucket() {
+  const { error } = await supabaseAdmin.storage.createBucket(SUPABASE_CERTIFICATE_BUCKET, {
+    public: true,
+    allowedMimeTypes: ["application/pdf"],
+    fileSizeLimit: "10MB",
+  });
+
+  if (error && !/already exists/i.test(error.message)) {
+    throw error;
+  }
+}
+
+async function uploadCertificatePdfToSupabase(certificateNumber: string, pdfBuffer: Buffer) {
+  await ensureCertificateBucket();
+
+  const path = getCertificateStoragePath(certificateNumber);
+  const { error } = await supabaseAdmin.storage
+    .from(SUPABASE_CERTIFICATE_BUCKET)
+    .upload(path, pdfBuffer, {
+      cacheControl: "3600",
+      contentType: "application/pdf",
+      upsert: true,
+    });
+
+  if (error) {
+    throw new Error(`Supabase certificate upload failed: ${error.message}`);
+  }
+
+  const { data } = supabaseAdmin.storage.from(SUPABASE_CERTIFICATE_BUCKET).getPublicUrl(path);
+
+  return {
+    publicId: path,
+    url: data.publicUrl,
+  };
+}
+
 export async function uploadCertificatePdfToCloudinary(
   certificateNumber: string,
   pdfBuffer: Buffer
 ) {
-  const { cloudName, apiKey, apiSecret } = getCloudinaryConfig();
+  const config = getCloudinaryConfig();
+  if (!config) {
+    return uploadCertificatePdfToSupabase(certificateNumber, pdfBuffer);
+  }
+
+  const { cloudName, apiKey, apiSecret } = config;
   const timestamp = Math.floor(Date.now() / 1000).toString();
   const publicId = getCertificateCloudinaryPublicId(certificateNumber);
   const paramsToSign = {
@@ -82,7 +134,15 @@ export async function uploadCertificatePdfToCloudinary(
 }
 
 export async function deleteCertificatePdfFromCloudinary(certificateNumber: string) {
-  const { cloudName, apiKey, apiSecret } = getCloudinaryConfig();
+  const config = getCloudinaryConfig();
+  if (!config) {
+    await supabaseAdmin.storage
+      .from(SUPABASE_CERTIFICATE_BUCKET)
+      .remove([getCertificateStoragePath(certificateNumber)]);
+    return;
+  }
+
+  const { cloudName, apiKey, apiSecret } = config;
   const timestamp = Math.floor(Date.now() / 1000).toString();
   const publicId = getCertificateCloudinaryPublicId(certificateNumber);
   const paramsToSign = {
