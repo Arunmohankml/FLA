@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { allSlugs as allCourseSlugs } from "@/lib/courseData";
-import { blogPosts } from "@/lib/blogData";
+import { getMergedBlogPosts } from "@/lib/blogStore";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://foreignlanguageacademy.in";
+  const blogPosts = await getMergedBlogPosts();
 
   const coursePages = allCourseSlugs.map((slug) => ({
     url: `${baseUrl}/courses/${slug}`,
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/courses`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/online-language-courses`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/study-abroad-language-courses`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/nursing-it-jobs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.86 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
     { url: `${baseUrl}/terms-conditions`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },

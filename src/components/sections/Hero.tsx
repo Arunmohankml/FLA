@@ -108,7 +108,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md">
               <span className="size-1.5 rounded-full bg-[#0c2847] animate-pulse" />
-              EST. 2007 — CHENNAI
+              EST. 2010 — CHENNAI
             </span>
           </motion.div>
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Foreign Language Academy",
     description:
-      "Flexible online, offline, and hybrid foreign language learning since 2007.",
+      "Flexible online, offline, and hybrid foreign language learning since 2010.",
     url: "https://foreignlanguageacademy.in/about",
     siteName: "Foreign Language Academy",
     locale: "en_IN",

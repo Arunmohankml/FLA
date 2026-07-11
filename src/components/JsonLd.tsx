@@ -25,7 +25,7 @@ export function OrganizationJsonLd() {
       reviewCount: "1900",
       bestRating: "5",
     },
-    foundingDate: "2007",
+    foundingDate: "2010",
     areaServed: [
       "Chennai",
       "India",

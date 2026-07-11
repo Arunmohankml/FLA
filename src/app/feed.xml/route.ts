@@ -1,4 +1,4 @@
-import { blogPosts } from "@/lib/blogData";
+import { getMergedBlogPosts } from "@/lib/blogStore";
 
 function escapeXml(s: string) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -6,6 +6,7 @@ function escapeXml(s: string) {
 
 export async function GET() {
   const baseUrl = "https://foreignlanguageacademy.in";
+  const blogPosts = await getMergedBlogPosts();
   const items = blogPosts.map(
     (post) => `
     <item>

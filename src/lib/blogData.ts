@@ -642,7 +642,7 @@ Assuming you have completed A2, reaching B1 typically takes:
 - **Intensive classes (10–15 hours/week):** 8–12 weeks
 - **Self-study only:** Highly variable; not recommended as the primary method
 
-**Total time from zero (A1 start) to B1 certification:** 12–18 months with consistent effort.
+**Total time from zero (A1 start) to B1 certification:** 10-12 months with consistent effort.
 
 ---
 

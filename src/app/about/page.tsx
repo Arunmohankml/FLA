@@ -11,7 +11,7 @@ export const revalidate = 86400;
 export const metadata = {
   title: "About | Foreign Language Academy",
   description:
-    "Excel in language learning since 2007. Expert courses in German, French, Spanish, Japanese, Chinese, English, Russian, Korean & Italian in Chennai.",
+    "Excel in language learning since 2010. Expert courses in German, French, Spanish, Japanese, Chinese, English, Russian, Korean & Italian in Chennai.",
 };
 
 const certImages = [
@@ -224,11 +224,11 @@ export default function AboutPage() {
                   <br />
                   language learning
                   <br />
-                  <span className="text-[#0c2847]">since 2007</span>
+                  <span className="text-[#0c2847]">since 2010</span>
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-[#0c2847]">
-                  Founded in 2007, Foreign Language Academy is now one of the
+                  Founded in 2010, Foreign Language Academy is now one of the
                   largest and best-known language schools in India and Germany.
                 </p>
                 <p className="mt-2 max-w-2xl text-lg leading-[1.6] text-[#0c2847]">

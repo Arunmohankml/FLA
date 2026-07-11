@@ -70,7 +70,7 @@ export function AcademyPreview() {
             <h2 className="font-heading text-4xl font-medium leading-[1.33] tracking-[-0.02em] text-foreground sm:text-5xl">
               Excellence in language
               <br />
-              learning since 2007
+              learning since 2010
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-[#334155]">
               Foreign Language Academy is one of Chennai&apos;s trusted language

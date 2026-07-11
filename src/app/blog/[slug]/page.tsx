@@ -3,7 +3,11 @@ import remarkGfm from "remark-gfm";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts, allBlogSlugs } from "@/lib/blogData";
+import { BlogAdminEditButton } from "@/components/blog/BlogAdminEditButton";
+import { allBlogSlugs } from "@/lib/blogData";
+import { getMergedBlogPost } from "@/lib/blogStore";
+
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return allBlogSlugs.map((slug) => ({ slug }));
@@ -15,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getMergedBlogPost(slug);
   if (!post) return {};
   return {
     title: `${post.title} | Foreign Language Academy`,
@@ -40,7 +44,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getMergedBlogPost(slug);
   if (!post) notFound();
 
   const articleSchema = {
@@ -73,6 +77,9 @@ export default async function BlogPostPage({
             </svg>
             Back to Blog
           </Link>
+          <div className="mb-5">
+            <BlogAdminEditButton post={post} compact />
+          </div>
 
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
@@ -284,7 +291,7 @@ export default async function BlogPostPage({
               </div>
               <div>
                 <p className="font-heading text-base font-medium text-foreground">{post.author}</p>
-                <p className="text-sm text-[#334155]">Expert language education since 2007</p>
+                <p className="text-sm text-[#334155]">Expert language education since 2010</p>
               </div>
             </div>
           </div>

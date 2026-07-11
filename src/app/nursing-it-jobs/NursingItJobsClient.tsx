@@ -108,11 +108,11 @@ const itDestinations = [
 
 const process = [
   "Profile counselling and destination fitment",
-  "Language training from foundation to B2 level",
-  "Exam preparation for Goethe, IELTS, OET, DELF, JLPT, or relevant pathway",
-  "International CV, LinkedIn, and document checklist guidance",
-  "Mock interviews, workplace vocabulary, and career communication practice",
-  "100% placement assistance for eligible students through suitable opportunity mapping",
+  "Language training from foundation from A1 - C2 level",
+  "Exam preparation for Goethe, IELTS, OET, DELF, JLPT, OSD, Telc, DaF or relevant pathway",
+  "International CV, Translation, Certificate recognition and document checklist guidance",
+  "Career interviews, and offer letter",
+  "100% Placement and a Free Flight Ticket",
 ];
 
 const benefits = [
@@ -126,8 +126,8 @@ const benefits = [
 
 const eligibility = [
   "Nursing diploma, BSc Nursing, GNM, or relevant healthcare experience for nursing pathways",
-  "BTech, BCA, MCA, diploma, portfolio projects, or IT work experience for technology roles",
-  "Willingness to complete language levels up to B2 where the destination requires it",
+  "BTech/BE, BCA, MCA, portfolio projects, or IT work experience for technology roles",
+  "Willingness to complete language levels up to B1 - B2 where the destination requires it",
   "Basic computer skills, documentation readiness, and professional communication discipline",
   "Employer, visa, licensing, and country-specific criteria must be met by the candidate",
 ];
@@ -303,13 +303,13 @@ export function NursingItJobsClient() {
               variants={reveal}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             >
-              <SectionLabel>Nursing opportunities first</SectionLabel>
+              <SectionLabel>Nursing jobs</SectionLabel>
               <h1 className="mt-5 max-w-4xl font-heading text-[clamp(2.25rem,12vw,3.35rem)] font-medium leading-[1.02] text-[#0c2847] sm:mt-6 sm:text-[clamp(2.45rem,6vw,5.4rem)] sm:leading-[0.98]">
-                Nursing & IT Jobs Abroad
+                Nursing & IT Jobs
               </h1>
               <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#334155] sm:mt-6 sm:text-lg sm:leading-8">
                 Foreign Language Academy prepares eligible students for nursing
-                and technology careers abroad with language training up to B2
+                and IT careers abroad with language training up to B2 OR B2
                 level, career preparation, interview guidance, documentation
                 support, and 100% placement assistance.
               </p>
@@ -338,7 +338,7 @@ export function NursingItJobsClient() {
 
               <div className="mt-6 grid max-w-xl grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
                 {[
-                  ["B2", "language target"],
+                  ["B1/B2", "language target"],
                   ["100%", "placement assistance"],
                   ["2010", "trusted since"],
                 ].map(([value, label]) => (
@@ -416,15 +416,15 @@ export function NursingItJobsClient() {
         <div className="page-shell">
           <div className="grid gap-8 lg:grid-cols-[0.42fr_0.58fr]">
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <SectionLabel>Nursing careers abroad</SectionLabel>
+              <SectionLabel>Nursing jobs abroad</SectionLabel>
               <h2 className="mt-5 font-heading text-4xl font-medium leading-tight text-[#0c2847] sm:text-5xl">
-                Build the language confidence healthcare employers expect.
+                Nursing jobs in health-care system.
               </h2>
               <p className="mt-5 text-[16px] leading-8 text-[#334155]">
-                Nurses need more than grammar. Foreign Language Academy trains
+                Foreign Language Academy trains
                 students for patient conversations, shift handovers, hospital
                 vocabulary, documentation language, and interview confidence up
-                to B2 level where required.
+                to B1/B2 level where required.
               </p>
               <div className="mt-8 overflow-hidden rounded-[28px] [mask-image:linear-gradient(90deg,transparent,black_14%,black_86%,transparent)]">
                 <Image
@@ -466,78 +466,6 @@ export function NursingItJobsClient() {
         </div>
       </section>
 
-      <section className="relative bg-[#F5FAFF] py-16 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(185,226,255,0.45)_1px,transparent_1px),linear-gradient(180deg,rgba(185,226,255,0.35)_1px,transparent_1px)] bg-[size:54px_54px] opacity-45" />
-        <div className="page-shell relative">
-          <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
-              <SectionLabel>Why B2 matters</SectionLabel>
-              <h2 className="mt-5 font-heading text-4xl font-medium leading-tight text-[#0c2847] sm:text-5xl">
-                B2 is where language becomes workplace-ready.
-              </h2>
-              <p className="mt-5 text-[16px] leading-8 text-[#334155]">
-                For many nursing and regulated career routes, B2 is the level
-                where candidates can explain symptoms, discuss procedures,
-                understand instructions, write formal messages, and respond
-                professionally under pressure.
-              </p>
-            </div>
-
-            {/* Level ladder — treated as a connected progress track rather than
-                four identical fade-up cards, since it's a sequence, not a list. */}
-            <div className="relative">
-              <div className="pointer-events-none absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-[#B9E2FF]/70 sm:block" />
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                style={{ transformOrigin: "0% 50%" }}
-                className="pointer-events-none absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-[#1d9bf0] to-[#0c2847] sm:block"
-              />
-              <div className="grid gap-3 sm:grid-cols-4" style={{ perspective: 900 }}>
-                {["A1 Foundation", "A2 Daily use", "B1 Independence", "B2 Career ready"].map((level, index) => (
-                  <motion.div
-                    key={level}
-                    initial={{ opacity: 0, y: 26, rotateX: -14, scale: 0.94 }}
-                    whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.5, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
-                    className={`relative rounded-[22px] border p-5 ${
-                      index === 3
-                        ? "border-[#0c2847] bg-[#0c2847] text-white shadow-[0_24px_70px_rgba(12,40,71,0.26)]"
-                        : "border-[#B9E2FF]/80 bg-white text-[#0c2847]"
-                    }`}
-                  >
-                    <motion.span
-                      initial={{ scale: 0, rotate: -60 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, margin: "-60px" }}
-                      transition={{
-                        delay: index * 0.09 + 0.22,
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 16,
-                      }}
-                      className={`absolute -top-2.5 -right-2.5 flex size-7 items-center justify-center rounded-full text-[11px] font-bold ${
-                        index === 3 ? "bg-white text-[#0c2847]" : "bg-[#1d9bf0] text-white"
-                      }`}
-                    >
-                      {index + 1}
-                    </motion.span>
-                    <p className="font-heading text-3xl font-medium">{level.split(" ")[0]}</p>
-                    <p className={`mt-10 text-sm font-semibold ${index === 3 ? "text-white/78" : "text-[#536471]"}`}>
-                      {level.replace(level.split(" ")[0] + " ", "")}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section
         ref={itWrapperRef}
         data-parallax-section="it-destination-cards"
@@ -553,12 +481,12 @@ export function NursingItJobsClient() {
               <div ref={itIntroRef}>
               <SectionLabel>IT jobs and career opportunities</SectionLabel>
               <h2 className="mt-3 font-heading text-[1.8rem] font-medium leading-[1.04] text-[#0c2847] sm:mt-5 sm:text-5xl sm:leading-tight">
-                Tech careers abroad need more than a good resume.
+                IT careers in abroad.
               </h2>
               <p className="mt-4 hidden text-[16px] leading-8 text-[#334155] sm:mt-5 sm:block">
                 Foreign Language Academy turns technical profiles into
                 interview-ready global candidates with language goals,
-                workplace communication, project storytelling, international CV
+                workplace communication, project explaination, international CV
                 shaping, and destination-specific preparation.
               </p>
               <div className="mt-4 hidden grid-cols-3 gap-2 sm:mt-8 sm:grid sm:gap-3">
@@ -734,7 +662,7 @@ export function NursingItJobsClient() {
                   Start with the right language level, then prepare for the right opportunity.
                 </h2>
                 <p className="mt-5 max-w-2xl text-[16px] leading-8 text-white/76">
-                  Speak with Foreign Language Academy about B2 training,
+                  Speak with Foreign Language Academy about language,
                   destination selection, career preparation, and placement
                   assistance for eligible nursing and IT students.
                 </p>
