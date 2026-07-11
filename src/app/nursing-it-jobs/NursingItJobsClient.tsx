@@ -66,42 +66,42 @@ const itDestinations = [
     market: "Germany",
     roles: "Software developer, cloud engineer, SAP consultant, QA automation, embedded systems",
     edge: "German B1-B2 improves interviews, workplace integration, and client communication.",
-    image: "/nimage7.png",
+    image: "/nimage7.webp",
     accent: "SAP, cloud, automotive IT",
   },
   {
     market: "Canada",
     roles: "Full-stack developer, data analyst, cybersecurity analyst, IT support specialist",
     edge: "English communication plus French basics can help in bilingual teams and provinces.",
-    image: "/nimage8.png",
+    image: "/nimage8.webp",
     accent: "Data, support, cyber",
   },
   {
     market: "Australia",
     roles: "DevOps engineer, business analyst, network engineer, product support, QA tester",
     edge: "Professional English, resume positioning, and scenario-based interview practice matter.",
-    image: "/nimage9.png",
+    image: "/nimage9.webp",
     accent: "DevOps, QA, analysis",
   },
   {
     market: "Japan",
     roles: "Java developer, automotive IT, embedded engineer, testing engineer, support engineer",
     edge: "Japanese N4-N2 training supports daily work, documentation, and team collaboration.",
-    image: "/nimage10.png",
+    image: "/nimage10.webp",
     accent: "Embedded, Java, testing",
   },
   {
     market: "Netherlands",
     roles: "Frontend engineer, backend developer, data engineer, cloud operations",
     edge: "English is common, but workplace cultural communication is still a hiring advantage.",
-    image: "/nimage11.png",
+    image: "/nimage11.webp",
     accent: "Frontend, backend, data",
   },
   {
     market: "Singapore",
     roles: "IT support, cybersecurity, fintech developer, cloud administrator, data operations",
     edge: "Business English and interview clarity help candidates stand out in fast hiring cycles.",
-    image: "/nimage12.png",
+    image: "/nimage12.webp",
     accent: "Fintech, cloud, support",
   },
 ];
@@ -294,9 +294,9 @@ export function NursingItJobsClient() {
 
   return (
     <main className="bg-white">
-      <section className="wave-pattern-bg wave-pattern-bg-hero relative overflow-hidden pt-28 lg:pt-32">
-        <div className="page-shell relative z-10 pb-14 lg:pb-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+      <section className="wave-pattern-bg wave-pattern-bg-hero relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
+        <div className="page-shell relative z-10 pb-10 sm:pb-14 lg:pb-20">
+          <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[0.92fr_1.08fr]">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -304,59 +304,59 @@ export function NursingItJobsClient() {
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             >
               <SectionLabel>Nursing opportunities first</SectionLabel>
-              <h1 className="mt-6 max-w-4xl font-heading text-[clamp(2.45rem,6vw,5.4rem)] font-medium leading-[0.98] text-[#0c2847]">
+              <h1 className="mt-5 max-w-4xl font-heading text-[clamp(2.25rem,12vw,3.35rem)] font-medium leading-[1.02] text-[#0c2847] sm:mt-6 sm:text-[clamp(2.45rem,6vw,5.4rem)] sm:leading-[0.98]">
                 Nursing & IT Jobs Abroad
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#334155]">
+              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#334155] sm:mt-6 sm:text-lg sm:leading-8">
                 Foreign Language Academy prepares eligible students for nursing
                 and technology careers abroad with language training up to B2
                 level, career preparation, interview guidance, documentation
                 support, and 100% placement assistance.
               </p>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#536471]">
+              <p className="mt-3 hidden max-w-2xl text-sm leading-6 text-[#536471] sm:block">
                 Placement assistance means guided opportunity support for
                 eligible students. Final selection depends on qualification,
                 language level, licensing, visa rules, employer criteria, and
                 interview performance.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/book-demo"
-                  className="blue-cta inline-flex min-h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold transition-transform duration-300 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d9bf0]"
+                  className="blue-cta inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-transform duration-300 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d9bf0]"
                 >
                   Enquire for career guidance
                   <HiOutlineArrowRight className="size-4" />
                 </Link>
                 <Link
                   href="/courses"
-                  className="inline-flex min-h-12 items-center rounded-full border border-[#0c2847]/20 bg-white px-6 text-sm font-semibold text-[#0c2847] transition-colors hover:bg-[#EAF4FF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d9bf0]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#0c2847]/20 bg-white px-6 text-sm font-semibold text-[#0c2847] transition-colors hover:bg-[#EAF4FF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d9bf0]"
                 >
                   View language courses
                 </Link>
               </div>
 
-              <div className="mt-8 grid max-w-xl grid-cols-3 gap-3">
+              <div className="mt-6 grid max-w-xl grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
                 {[
                   ["B2", "language target"],
                   ["100%", "placement assistance"],
                   ["2010", "trusted since"],
                 ].map(([value, label]) => (
-                  <div key={label} className="blue-card rounded-2xl bg-white/90 p-4 text-center">
-                    <p className="font-heading text-2xl font-semibold text-[#0c2847]">{value}</p>
-                    <p className="mt-1 text-xs font-medium text-[#536471]">{label}</p>
+                  <div key={label} className="blue-card rounded-2xl bg-white/90 p-3 text-center sm:p-4">
+                    <p className="font-heading text-xl font-semibold text-[#0c2847] sm:text-2xl">{value}</p>
+                    <p className="mt-1 text-[11px] font-medium leading-4 text-[#536471] sm:text-xs">{label}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            <div className="relative min-h-[540px] lg:min-h-[660px]">
+            <div className="relative min-h-[365px] sm:min-h-[540px] lg:min-h-[660px]">
               <motion.div
                 style={{ y: heroY }}
-                className="blue-card absolute left-0 top-8 aspect-[4/5] w-[62%] overflow-hidden rounded-[34px]"
+                className="blue-card absolute left-0 top-6 aspect-[4/5] w-[58%] overflow-hidden rounded-[26px] sm:top-8 sm:w-[62%] sm:rounded-[34px]"
               >
                 <Image
-                  src="/nimage1.png"
+                  src="/nimage1.webp"
                   alt="Foreign Language Academy nursing opportunities abroad placeholder"
                   width={1200}
                   height={800}
@@ -370,10 +370,10 @@ export function NursingItJobsClient() {
                 initial={{ opacity: 0, x: 28, rotate: 2 }}
                 animate={{ opacity: 1, x: 0, rotate: 0 }}
                 transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="blue-card absolute right-0 top-0 aspect-[5/4] w-[58%] overflow-hidden rounded-[34px]"
+                className="blue-card absolute right-0 top-0 aspect-[5/4] w-[56%] overflow-hidden rounded-[26px] sm:w-[58%] sm:rounded-[34px]"
               >
                 <Image
-                  src="/nimage2.png"
+                  src="/nimage2.webp"
                   alt="B2 language training for nurses and IT professionals"
                   width={1200}
                   height={800}
@@ -383,12 +383,12 @@ export function NursingItJobsClient() {
               </motion.div>
               <motion.div
                 style={{ y: panelY }}
-                className="blue-dark-panel blue-grid-bg absolute bottom-6 right-4 w-[78%] rounded-[30px] p-5 shadow-[0_28px_90px_rgba(12,40,71,0.28)] sm:p-6"
+                className="blue-dark-panel blue-grid-bg absolute bottom-2 right-0 w-[86%] rounded-[24px] p-4 shadow-[0_28px_90px_rgba(12,40,71,0.28)] sm:bottom-6 sm:right-4 sm:w-[78%] sm:rounded-[30px] sm:p-6"
               >
-                <div className="grid gap-4 sm:grid-cols-[0.8fr_1.2fr]">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <div className="grid gap-3 sm:gap-4 sm:grid-cols-[0.8fr_1.2fr]">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl">
                     <Image
-                      src="/nimage3.png"
+                      src="/nimage3.webp"
                       alt="Hospital placement assistance and career preparation"
                       fill
                       sizes="(max-width: 768px) 45vw, 220px"
@@ -397,10 +397,10 @@ export function NursingItJobsClient() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase text-white/70">Career track</p>
-                    <h2 className="mt-2 font-heading text-2xl font-medium leading-tight text-white">
+                    <h2 className="mt-2 font-heading text-lg font-medium leading-tight text-white sm:text-2xl">
                       Language + career preparation + guided opportunity mapping
                     </h2>
-                    <p className="mt-3 text-sm leading-6 text-white/76">
+                    <p className="mt-2 hidden text-sm leading-6 text-white/76 sm:mt-3 sm:block">
                       Built for students who want a serious pathway abroad
                       without weak promises or confusing shortcuts.
                     </p>
@@ -428,7 +428,7 @@ export function NursingItJobsClient() {
               </p>
               <div className="mt-8 overflow-hidden rounded-[28px] [mask-image:linear-gradient(90deg,transparent,black_14%,black_86%,transparent)]">
                 <Image
-                  src="/nimage4.png"
+                  src="/nimage4.webp"
                   alt="International healthcare and IT career preparation"
                   width={1200}
                   height={800}
@@ -541,48 +541,48 @@ export function NursingItJobsClient() {
       <section
         ref={itWrapperRef}
         data-parallax-section="it-destination-cards"
-        className="relative h-[560vh] overflow-visible bg-white"
+        className="relative h-[480vh] overflow-visible bg-white sm:h-[560vh]"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(29,155,240,0.1),transparent_28%),linear-gradient(90deg,rgba(185,226,255,0.36)_1px,transparent_1px),linear-gradient(180deg,rgba(185,226,255,0.26)_1px,transparent_1px)] bg-[size:100%_100%,70px_70px,70px_70px]" />
         <div
           ref={itPinRef}
-          className="sticky top-0 flex min-h-screen items-start overflow-hidden pb-12 pt-20 sm:pb-14 sm:pt-20 lg:pb-16 lg:pt-24"
+          className="sticky top-0 flex min-h-screen items-start overflow-hidden pb-8 pt-14 sm:pb-14 sm:pt-20 lg:pb-16 lg:pt-24"
         >
           <div className="page-shell relative w-full">
-            <div className="grid w-full gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-center">
+            <div className="grid w-full gap-3 sm:gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-center">
               <div ref={itIntroRef}>
               <SectionLabel>IT jobs and career opportunities</SectionLabel>
-              <h2 className="mt-5 font-heading text-4xl font-medium leading-tight text-[#0c2847] sm:text-5xl">
+              <h2 className="mt-3 font-heading text-[1.8rem] font-medium leading-[1.04] text-[#0c2847] sm:mt-5 sm:text-5xl sm:leading-tight">
                 Tech careers abroad need more than a good resume.
               </h2>
-              <p className="mt-5 text-[16px] leading-8 text-[#334155]">
+              <p className="mt-4 hidden text-[16px] leading-8 text-[#334155] sm:mt-5 sm:block">
                 Foreign Language Academy turns technical profiles into
                 interview-ready global candidates with language goals,
                 workplace communication, project storytelling, international CV
                 shaping, and destination-specific preparation.
               </p>
-              <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="mt-4 hidden grid-cols-3 gap-2 sm:mt-8 sm:grid sm:gap-3">
                 {["Cloud", "Data", "Cyber"].map((skill) => (
-                  <div key={skill} className="rounded-2xl border border-[#B9E2FF]/70 bg-white/90 p-4 text-center shadow-[0_12px_38px_rgba(29,155,240,0.08)]">
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#1d9bf0]">Track</p>
-                    <p className="mt-2 font-heading text-lg font-semibold text-[#0c2847]">{skill}</p>
+                  <div key={skill} className="rounded-2xl border border-[#B9E2FF]/70 bg-white/90 p-3 text-center shadow-[0_12px_38px_rgba(29,155,240,0.08)] sm:p-4">
+                    <p className="hidden text-xs font-bold uppercase tracking-[0.16em] text-[#1d9bf0] sm:block">Track</p>
+                    <p className="font-heading text-sm font-semibold text-[#0c2847] sm:mt-2 sm:text-lg">{skill}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-              <div className="relative flex h-[62vh] w-full max-w-[700px] items-center justify-center sm:h-[66vh] lg:h-[70vh]">
+              <div className="relative flex h-[57vh] w-full max-w-[700px] items-center justify-center sm:h-[66vh] lg:h-[70vh]">
                   {itDestinations.map((item, index) => (
                     <div
                       key={item.market}
                       ref={(el) => {
                         itCardsRef.current[index] = el;
                       }}
-                      className="blue-card absolute inset-x-0 mx-auto h-full w-full overflow-hidden rounded-[30px] bg-white shadow-[0_28px_90px_rgba(29,155,240,0.16)]"
+                      className="blue-card absolute inset-x-0 mx-auto h-full w-full overflow-hidden rounded-[24px] bg-white shadow-[0_28px_90px_rgba(29,155,240,0.16)] sm:rounded-[30px]"
                       style={{ zIndex: index + 1 }}
                     >
-                      <div className="grid h-full sm:grid-cols-[0.92fr_1.08fr]">
-                        <div className="relative min-h-[200px] overflow-hidden bg-[#0c2847] sm:min-h-full">
+                      <div className="grid h-full grid-rows-[42%_58%] sm:grid-cols-[0.92fr_1.08fr] sm:grid-rows-none">
+                        <div className="relative min-h-0 overflow-hidden bg-[#0c2847] sm:min-h-full">
                           <Image
                             src={item.image}
                             alt={`${item.market} IT career opportunities with Foreign Language Academy`}
@@ -592,18 +592,18 @@ export function NursingItJobsClient() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-tr from-[#0c2847]/78 via-[#0c2847]/18 to-transparent" />
                         </div>
-                        <div className="flex flex-col justify-center p-6 sm:p-8">
+                        <div className="flex min-h-0 flex-col justify-center p-4 sm:p-8">
                           <div>
-                            <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-[#EAF4FF] text-[#0c2847]">
+                            <div className="hidden size-12 items-center justify-center rounded-2xl bg-[#EAF4FF] text-[#0c2847] sm:inline-flex">
                               <HiOutlineBriefcase className="size-6" />
                             </div>
-                            <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#1d9bf0]">
+                            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#1d9bf0] sm:mt-6 sm:text-xs sm:tracking-[0.16em]">
                               {item.accent}
                             </p>
-                            <h4 className="mt-3 font-heading text-2xl font-medium leading-tight text-[#0c2847] sm:text-3xl">
+                            <h4 className="mt-2 font-heading text-[1.3rem] font-medium leading-[1.12] text-[#0c2847] sm:mt-3 sm:text-3xl sm:leading-tight">
                               {item.roles}
                             </h4>
-                            <p className="mt-5 text-[15px] leading-7 text-[#334155]">
+                            <p className="mt-3 text-[13px] leading-5 text-[#334155] sm:mt-5 sm:text-[15px] sm:leading-7">
                               {item.edge}
                             </p>
                           </div>
@@ -681,7 +681,7 @@ export function NursingItJobsClient() {
             <div className="blue-card rounded-[30px] bg-white p-6 sm:p-8">
               <div className="relative mb-7 aspect-[16/8] overflow-hidden rounded-[24px]">
                 <Image
-                  src="/nimage5.png"
+                  src="/nimage5.webp"
                   alt="Foreign Language Academy career preparation benefits"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
@@ -701,7 +701,7 @@ export function NursingItJobsClient() {
             <div className="blue-card rounded-[30px] bg-white p-6 sm:p-8">
               <div className="relative mb-7 aspect-[16/8] overflow-hidden rounded-[24px]">
                 <Image
-                  src="/nimage6.png"
+                  src="/nimage6.webp"
                   alt="Eligibility and required skills for nursing and IT jobs abroad"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
