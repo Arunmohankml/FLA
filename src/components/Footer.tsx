@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { site, languages, footerQuickLinks } from "@/lib/constants";
+import { site, languages, footerLocations, footerQuickLinks } from "@/lib/constants";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
 
 export function Footer() {
@@ -85,6 +85,30 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-[#B9E2FF]/70 pt-8">
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+            Locations
+          </h4>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {footerLocations.map((branch) => (
+              <address
+                key={branch.location}
+                className="not-italic rounded-2xl border border-[#B9E2FF]/70 bg-white/55 p-4 text-sm leading-6 text-[#334155]"
+              >
+                <p className="font-semibold text-[#0c2847]">{branch.location}</p>
+                <p className="mt-2 font-medium text-foreground">{branch.legalName}</p>
+                <p className="mt-1">{branch.address}</p>
+                <a
+                  href={`tel:${branch.phone.replace(/\s/g, "")}`}
+                  className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-[#0c2847] transition-colors hover:text-[#1d9bf0]"
+                >
+                  {branch.phone}
+                </a>
+              </address>
+            ))}
           </div>
         </div>
 

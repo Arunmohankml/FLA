@@ -8,6 +8,33 @@
   googleRating: "4.6",
 };
 
+export const footerLocations = [
+  {
+    location: "Bangalore",
+    legalName: "Foreign Language Academy",
+    address: "Chandra Layout, Vijayanagara, Bengaluru, Karnataka 40, India",
+    phone: "+91 8129 669 247",
+  },
+  {
+    location: "Saudi Arabia",
+    legalName: "Foreign Language Academy",
+    address: "First Floor, Al Rajhi Bank, King Saudi Road, AlShifa Shaqra, Kingdom of Saudi Arabia.",
+    phone: "+91 8129 669 247",
+  },
+  {
+    location: "Kerala",
+    legalName: "Foreign Language Academy",
+    address: "Lobster House, Beach Road, Kovalam, Trivandrum- 27.",
+    phone: "+91 8129 669 247",
+  },
+  {
+    location: "Berlin, Germany",
+    legalName: "Foreign Language Academy",
+    address: "Kastanienallee 82/c/o, 10435 Berlin.",
+    phone: "+91 8129 669 247",
+  },
+];
+
 export const mediaFallbacks = {
   hero: "/image36.webp",
   "courses-hero": "/image37.webp",
