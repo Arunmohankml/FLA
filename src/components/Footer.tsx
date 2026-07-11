@@ -27,7 +27,7 @@ export function Footer() {
             </Link>
             <p className="text-[15px] leading-7 text-[#334155]">
               Foreign Language Academy helps learners to master
-              every course through certified trainers and flexible online or offline batches.
+              every course through certified trainers in flexible online or offline batches.
             </p>
           </div>
 
