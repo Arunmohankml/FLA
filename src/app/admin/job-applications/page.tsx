@@ -1,6 +1,8 @@
 import { supabaseAdmin } from "@/lib/supabase";
 import { JobApplicationsClient } from "./JobApplicationsClient";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export const metadata = { title: "Job Applications | Admin" };
 
 interface ApplicationRow {
@@ -18,7 +20,7 @@ interface ApplicationRow {
 }
 
 export default async function JobApplicationsPage() {
-  const { data } = await supabaseAdmin
+  const { data, error } = await supabaseAdmin
     .from("career_applications")
     .select("*")
     .order("created_at", { ascending: false });
@@ -37,5 +39,10 @@ export default async function JobApplicationsPage() {
     createdAt: item.created_at ?? "",
   }));
 
-  return <JobApplicationsClient applications={applications} />;
+  return (
+    <JobApplicationsClient
+      applications={applications}
+      error={error?.message ?? ""}
+    />
+  );
 }
