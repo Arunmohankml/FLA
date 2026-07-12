@@ -6,7 +6,9 @@ import {
   HiOutlineMail,
   HiOutlinePhone,
   HiOutlineSearch,
+  HiOutlineTrash,
 } from "react-icons/hi";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 interface Application {
   id: string;
@@ -33,17 +35,39 @@ export function JobApplicationsClient({
   applications: Application[];
   error?: string;
 }) {
+  const [items, setItems] = useState(applications);
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<"all" | string | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
-    return applications.filter((item) =>
+    return items.filter((item) =>
       [item.name, item.email, item.phone, item.jobTitle, item.jobCode, item.status]
         .join(" ")
         .toLowerCase()
         .includes(q)
     );
-  }, [applications, search]);
+  }, [items, search]);
+
+  async function deleteApplications(target: "all" | string) {
+    setDeleting(true);
+    try {
+      const response = await fetch("/api/career-applications", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(target === "all" ? { all: true } : { id: target }),
+      });
+
+      if (response.ok) {
+        setItems((current) => target === "all" ? [] : current.filter((item) => item.id !== target));
+        if (expandedId === target || target === "all") setExpandedId(null);
+        setDeleteTarget(null);
+      }
+    } finally {
+      setDeleting(false);
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -53,7 +77,7 @@ export function JobApplicationsClient({
           <p className="mt-1 text-sm text-black/50">Applications submitted from the Careers page.</p>
         </div>
         <span className="rounded-full bg-[#faf5f0] px-4 py-2 text-sm font-medium text-black/50">
-          {applications.length} applications
+          {items.length} applications
         </span>
       </div>
 
@@ -64,7 +88,8 @@ export function JobApplicationsClient({
       )}
 
       <div className="rounded-2xl border border-black/6 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.035)]">
-        <div className="relative">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="relative flex-1">
           <HiOutlineSearch className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-black/30" />
           <input
             value={search}
@@ -72,6 +97,16 @@ export function JobApplicationsClient({
             placeholder="Search applications..."
             className="h-11 w-full rounded-full border border-black/8 bg-[#faf5f0] pl-10 pr-4 text-sm outline-none focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10"
           />
+          </div>
+          <button
+            type="button"
+            onClick={() => setDeleteTarget("all")}
+            disabled={items.length === 0}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-red-50 px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <HiOutlineTrash className="size-4" />
+            Clear all
+          </button>
         </div>
 
         <div className="mt-5 divide-y divide-black/6">
@@ -176,6 +211,14 @@ export function JobApplicationsClient({
                         <HiOutlineMail className="size-4" />
                         Email
                       </a>
+                      <button
+                        type="button"
+                        onClick={() => setDeleteTarget(item.id)}
+                        className="inline-flex h-10 items-center gap-2 rounded-full bg-red-50 px-4 text-sm font-semibold text-red-600 transition-colors hover:bg-red-100"
+                      >
+                        <HiOutlineTrash className="size-4" />
+                        Delete
+                      </button>
                     </div>
                   </div>
                 )}
@@ -184,6 +227,21 @@ export function JobApplicationsClient({
           })}
         </div>
       </div>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        title={deleteTarget === "all" ? "Clear all job applications" : "Delete job application"}
+        message={
+          deleteTarget === "all"
+            ? "Are you sure you want to delete every job application? This action cannot be undone."
+            : "Are you sure you want to delete this job application? This action cannot be undone."
+        }
+        confirmLabel={deleting ? "Deleting..." : deleteTarget === "all" ? "Clear all" : "Delete"}
+        cancelLabel="Cancel"
+        variant="danger"
+        onConfirm={() => deleteTarget && deleteApplications(deleteTarget)}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }

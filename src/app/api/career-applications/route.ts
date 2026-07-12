@@ -50,3 +50,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const body = await request.json().catch(() => ({}));
+    const id = typeof body.id === "string" ? body.id.trim() : "";
+
+    if (!body.all && !id) {
+      return NextResponse.json({ error: "Missing job application id" }, { status: 400 });
+    }
+
+    const { error } = body.all === true
+      ? await supabaseAdmin.from("career_applications").delete().neq("id", "")
+      : await supabaseAdmin.from("career_applications").delete().eq("id", id);
+
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
+  }
+}

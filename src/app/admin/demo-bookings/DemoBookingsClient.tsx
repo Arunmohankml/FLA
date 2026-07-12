@@ -10,7 +10,9 @@ import {
   HiOutlineCheck,
   HiOutlineSearch,
   HiOutlineDownload,
+  HiOutlineTrash,
 } from "react-icons/hi";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 interface Booking {
   id: string;
@@ -83,7 +85,13 @@ function CallButton({ phone }: { phone: string }) {
   );
 }
 
-function BookingCard({ item }: { item: Booking }) {
+function BookingCard({
+  item,
+  onDelete,
+}: {
+  item: Booking;
+  onDelete: (id: string) => void;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -139,6 +147,14 @@ function BookingCard({ item }: { item: Booking }) {
               <div className="flex flex-wrap items-center gap-2 pb-3">
                 <CopyButton text={item.email} />
                 <CallButton phone={item.phone} />
+                <button
+                  type="button"
+                  onClick={() => onDelete(item.id)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-100"
+                >
+                  <HiOutlineTrash className="size-3.5" />
+                  Delete
+                </button>
               </div>
               <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
                 <div>
@@ -191,11 +207,14 @@ export function DemoBookingsClient({
   bookings: Booking[];
   error?: string;
 }) {
+  const [items, setItems] = useState(bookings);
   const [search, setSearch] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState<"all" | string | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
-    return bookings.filter(
+    return items.filter(
       (item) =>
         item.name.toLowerCase().includes(q) ||
         item.email.toLowerCase().includes(q) ||
@@ -203,7 +222,7 @@ export function DemoBookingsClient({
         item.preferred_date.toLowerCase().includes(q) ||
         item.status.toLowerCase().includes(q)
     );
-  }, [bookings, search]);
+  }, [items, search]);
 
   const handleExport = () => {
     const headers = ["Name", "Email", "Phone", "Preferred Date", "Message", "Status", "Created At"];
@@ -231,6 +250,24 @@ export function DemoBookingsClient({
     URL.revokeObjectURL(url);
   };
 
+  async function deleteBookings(target: "all" | string) {
+    setDeleting(true);
+    try {
+      const response = await fetch("/api/demo-bookings", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(target === "all" ? { all: true } : { id: target }),
+      });
+
+      if (response.ok) {
+        setItems((current) => target === "all" ? [] : current.filter((item) => item.id !== target));
+        setDeleteTarget(null);
+      }
+    } finally {
+      setDeleting(false);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -238,7 +275,7 @@ export function DemoBookingsClient({
           Demo Bookings
         </h1>
         <p className="mt-1 text-sm text-black/50">
-          {bookings.length} total requests
+          {items.length} total requests
         </p>
       </div>
 
@@ -265,6 +302,14 @@ export function DemoBookingsClient({
           <HiOutlineDownload className="size-4" />
           Export
         </button>
+        <button
+          onClick={() => setDeleteTarget("all")}
+          disabled={items.length === 0}
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-red-50 px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <HiOutlineTrash className="size-4" />
+          Clear all
+        </button>
       </div>
 
       <div className="space-y-3">
@@ -274,13 +319,28 @@ export function DemoBookingsClient({
           </p>
         )}
         {filtered.map((item) => (
-          <BookingCard key={item.id} item={item} />
+          <BookingCard key={item.id} item={item} onDelete={setDeleteTarget} />
         ))}
       </div>
 
       <p className="text-xs text-black/40">
-        Showing {filtered.length} of {bookings.length} entries
+        Showing {filtered.length} of {items.length} entries
       </p>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        title={deleteTarget === "all" ? "Clear all demo bookings" : "Delete demo booking"}
+        message={
+          deleteTarget === "all"
+            ? "Are you sure you want to delete every demo booking request? This action cannot be undone."
+            : "Are you sure you want to delete this demo booking request? This action cannot be undone."
+        }
+        confirmLabel={deleting ? "Deleting..." : deleteTarget === "all" ? "Clear all" : "Delete"}
+        cancelLabel="Cancel"
+        variant="danger"
+        onConfirm={() => deleteTarget && deleteBookings(deleteTarget)}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }

@@ -12,7 +12,9 @@ import {
   HiOutlineDownload,
   HiOutlineAdjustments,
   HiOutlineX,
+  HiOutlineTrash,
 } from "react-icons/hi";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 const ALL_LANGUAGES = [
   "German",
@@ -86,7 +88,13 @@ function CallButton({ phone }: { phone: string }) {
   );
 }
 
-function RegistrationBubble({ r }: { r: Registration }) {
+function RegistrationBubble({
+  r,
+  onDelete,
+}: {
+  r: Registration;
+  onDelete: (id: string) => void;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -131,6 +139,14 @@ function RegistrationBubble({ r }: { r: Registration }) {
               <div className="flex flex-wrap items-center gap-2 pb-3">
                 <CopyButton text={r.email} />
                 <CallButton phone={r.phone} />
+                <button
+                  type="button"
+                  onClick={() => onDelete(r.id)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-100"
+                >
+                  <HiOutlineTrash className="size-3.5" />
+                  Delete
+                </button>
               </div>
               <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
                 <div>
@@ -212,16 +228,19 @@ export function RegistrationsClient({
 }: {
   registrations: Registration[];
 }) {
+  const [items, setItems] = useState(registrations);
   const [search, setSearch] = useState("");
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [timePeriod, setTimePeriod] = useState<TimePeriod>("all");
   const [filterOpen, setFilterOpen] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState<"all" | string | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   const activeFilterCount =
     selectedLanguages.length + (timePeriod !== "all" ? 1 : 0);
 
   const filtered = useMemo(() => {
-    return registrations.filter((r) => {
+    return items.filter((r) => {
       const matchesSearch =
         r.name.toLowerCase().includes(search.toLowerCase()) ||
         r.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -236,7 +255,7 @@ export function RegistrationsClient({
 
       return matchesSearch && matchesLanguage && matchesPeriod;
     });
-  }, [registrations, search, selectedLanguages, timePeriod]);
+  }, [items, search, selectedLanguages, timePeriod]);
 
   const toggleLanguage = (lang: string) => {
     setSelectedLanguages((prev) =>
@@ -289,6 +308,24 @@ export function RegistrationsClient({
     URL.revokeObjectURL(url);
   };
 
+  async function deleteRegistrations(target: "all" | string) {
+    setDeleting(true);
+    try {
+      const response = await fetch("/api/registration", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(target === "all" ? { all: true } : { id: target }),
+      });
+
+      if (response.ok) {
+        setItems((current) => target === "all" ? [] : current.filter((item) => item.id !== target));
+        setDeleteTarget(null);
+      }
+    } finally {
+      setDeleting(false);
+    }
+  }
+
   const timeOptions: { label: string; value: TimePeriod }[] = [
     { label: "All Time", value: "all" },
     { label: "Today", value: "today" },
@@ -303,7 +340,7 @@ export function RegistrationsClient({
           Registrations
         </h1>
         <p className="mt-1 text-sm text-black/50">
-          {registrations.length} total registrations
+          {items.length} total registrations
         </p>
       </div>
 
@@ -408,6 +445,14 @@ export function RegistrationsClient({
           <HiOutlineDownload className="size-4" />
           Export
         </button>
+        <button
+          onClick={() => setDeleteTarget("all")}
+          disabled={items.length === 0}
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-red-50 px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <HiOutlineTrash className="size-4" />
+          Clear all
+        </button>
       </div>
 
       {activeFilterCount > 0 && (
@@ -441,13 +486,28 @@ export function RegistrationsClient({
           </p>
         )}
         {filtered.map((r) => (
-          <RegistrationBubble key={r.id} r={r} />
+          <RegistrationBubble key={r.id} r={r} onDelete={setDeleteTarget} />
         ))}
       </div>
 
       <p className="text-xs text-black/40">
-        Showing {filtered.length} of {registrations.length} entries
+        Showing {filtered.length} of {items.length} entries
       </p>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        title={deleteTarget === "all" ? "Clear all registrations" : "Delete registration"}
+        message={
+          deleteTarget === "all"
+            ? "Are you sure you want to delete every registration? This action cannot be undone."
+            : "Are you sure you want to delete this registration? This action cannot be undone."
+        }
+        confirmLabel={deleting ? "Deleting..." : deleteTarget === "all" ? "Clear all" : "Delete"}
+        cancelLabel="Cancel"
+        variant="danger"
+        onConfirm={() => deleteTarget && deleteRegistrations(deleteTarget)}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }
