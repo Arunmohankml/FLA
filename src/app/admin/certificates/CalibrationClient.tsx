@@ -8,6 +8,7 @@ import {
   HiOutlineArrowUp,
   HiOutlineCheck,
 } from "react-icons/hi";
+import { CERTIFICATE_TEMPLATE_PREVIEW_PATH } from "@/lib/certificateTemplate";
 
 interface LayoutField {
   x: number;
@@ -362,7 +363,7 @@ export function CalibrationClient() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={imgRef}
-          src="/ourcert/fla-certificate.svg"
+          src={CERTIFICATE_TEMPLATE_PREVIEW_PATH}
           alt="Certificate template"
           onLoad={updateDisplaySize}
           className="w-full rounded-xl border border-black/10"

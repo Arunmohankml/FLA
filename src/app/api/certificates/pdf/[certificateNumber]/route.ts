@@ -2,11 +2,10 @@ import { NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getCertificateLayout } from "@/lib/certificateLayoutStore";
 import { renderCertificatePdf } from "@/lib/certificateRenderer";
+import { loadCertificateTemplatePdf } from "@/lib/certificateTemplate.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
 
 type CertificatePdfRow = {
   certificate_number: string;
@@ -15,20 +14,8 @@ type CertificatePdfRow = {
   course_name: string | null;
   grade: string | null;
   total_score: string | null;
-  image_url: string | null;
   form_data: Record<string, unknown> | null;
 };
-
-async function loadTemplate(origin: string) {
-  const templateRes = await fetch(`${origin}${CERTIFICATE_TEMPLATE_PATH}`, {
-    cache: "force-cache",
-  });
-  if (!templateRes.ok) {
-    throw new Error("Certificate template not found");
-  }
-
-  return templateRes.arrayBuffer();
-}
 
 function normalizeFormData(row: CertificatePdfRow): Record<string, string> {
   const values: Record<string, string> = {};
@@ -48,23 +35,10 @@ function normalizeFormData(row: CertificatePdfRow): Record<string, string> {
   };
 }
 
-async function fetchStoredPdf(url: string) {
-  try {
-    const pdfRes = await fetch(url, { cache: "no-store" });
-    if (!pdfRes.ok) return null;
-
-    const pdf = await pdfRes.arrayBuffer();
-    const signature = Buffer.from(pdf.slice(0, 4)).toString("utf8");
-    return signature === "%PDF" ? pdf : null;
-  } catch {
-    return null;
-  }
-}
-
-async function renderPdfFromRecord(req: NextRequest, row: CertificatePdfRow) {
+async function renderPdfFromRecord(row: CertificatePdfRow) {
   const values = normalizeFormData(row);
   const [templatePdf, layout] = await Promise.all([
-    loadTemplate(req.nextUrl.origin),
+    loadCertificateTemplatePdf(),
     getCertificateLayout(),
   ]);
 
@@ -87,7 +61,7 @@ export async function GET(
   const download = req.nextUrl.searchParams.get("download") === "1";
   const { data, error } = await supabaseAdmin
     .from("certificates")
-    .select("certificate_number, student_name, course_level, course_name, grade, total_score, image_url, form_data")
+    .select("certificate_number, student_name, course_level, course_name, grade, total_score, form_data")
     .eq("certificate_number", certificateNumber)
     .single();
 
@@ -96,8 +70,7 @@ export async function GET(
   }
 
   const row = data as CertificatePdfRow;
-  const pdf = row.image_url ? await fetchStoredPdf(row.image_url) : null;
-  const pdfBytes = toArrayBuffer(pdf ?? await renderPdfFromRecord(req, row));
+  const pdfBytes = toArrayBuffer(await renderPdfFromRecord(row));
 
   const filename = `${certificateNumber}.pdf`;
   return new Response(pdfBytes, {

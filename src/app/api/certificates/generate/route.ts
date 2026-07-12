@@ -3,18 +3,9 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { getCertificateLayout } from "@/lib/certificateLayoutStore";
 import { renderCertificatePdf } from "@/lib/certificateRenderer";
 import { uploadCertificatePdfToCloudinary } from "@/lib/cloudinary";
+import { loadCertificateTemplatePdf } from "@/lib/certificateTemplate.server";
 
-const CERTIFICATE_TEMPLATE_PATH = "/ourcert/fla-certificate.pdf";
 export const runtime = "nodejs";
-
-async function loadTemplate(origin: string) {
-  const templateRes = await fetch(`${origin}${CERTIFICATE_TEMPLATE_PATH}`);
-  if (!templateRes.ok) {
-    throw new Error("Template not found");
-  }
-
-  return templateRes.arrayBuffer();
-}
 
 function certificatePrefix() {
   return `FLA-${new Date().getFullYear()}-`;
@@ -102,7 +93,7 @@ export async function POST(req: NextRequest) {
     const qrUrl = getCertificateDetailsUrl(req, values.certificateNumber);
     values.qrUrl = qrUrl;
 
-    const templatePdf = await loadTemplate(req.nextUrl.origin);
+    const templatePdf = await loadCertificateTemplatePdf();
     const layout = await getCertificateLayout();
     const pdfBuf = Buffer.from(await renderCertificatePdf(templatePdf, values, layout));
 
