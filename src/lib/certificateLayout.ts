@@ -21,6 +21,7 @@ export interface LayoutField {
   style?: string;
   maxWidth?: number;
   minFontSize?: number;
+  autoFit?: boolean;
 }
 
 export interface LayoutQR {
@@ -110,7 +111,8 @@ export const certificateLayout: CertificateLayout = {
     "x": 666,
     "y": 437,
     "maxWidth": 72,
-    "minFontSize": 7
+    "minFontSize": 7,
+    "autoFit": false
   },
   "monthYear": {
     "fontSize": 26,
@@ -183,7 +185,8 @@ export const certificateLayout: CertificateLayout = {
     "maxWidth": 150,
     "x": 410,
     "y": 795,
-    "minFontSize": 9
+    "minFontSize": 9,
+    "autoFit": false
   },
   "issuePlace": {
     "fontSize": 17,

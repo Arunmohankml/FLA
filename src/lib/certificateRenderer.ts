@@ -186,6 +186,10 @@ function hasFixedSize(fieldKey: keyof Omit<CertificateLayout, "qr">) {
   return (CERTIFICATE_FIXED_SIZE_FIELDS as ReadonlyArray<keyof Omit<CertificateLayout, "qr">>).includes(fieldKey);
 }
 
+function shouldUseFixedSize(fieldKey: keyof Omit<CertificateLayout, "qr">, field: LayoutField) {
+  return field.autoFit === false || hasFixedSize(fieldKey);
+}
+
 function drawValue({
   page,
   fonts,
@@ -211,7 +215,7 @@ function drawValue({
   const scaleX = width / sourceWidth;
   const scaleY = height / sourceHeight;
   const font = fontFor(field, fonts);
-  const size = hasFixedSize(fieldKey)
+  const size = shouldUseFixedSize(fieldKey, field)
     ? field.fontSize * scaleX
     : fittedSize(font, value, field, scaleX);
   const textWidth = font.widthOfTextAtSize(value, size);
