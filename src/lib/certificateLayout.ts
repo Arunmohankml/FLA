@@ -47,6 +47,17 @@ export interface CertificateLayout {
   qr: LayoutQR;
 }
 
+export const CERTIFICATE_PRIMARY_TEXT_COLOR = "#172c55";
+
+export const CERTIFICATE_PRIMARY_TEXT_FIELDS = [
+  "studentName",
+  "level",
+  "language",
+  "leftGrade",
+  "monthYear",
+  "resultGrade",
+] as const satisfies ReadonlyArray<keyof Omit<CertificateLayout, "qr">>;
+
 export const certificateLayout: CertificateLayout = {
   "studentName": {
     "fontSize": 27,
@@ -54,7 +65,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "serif",
     "style": "italic",
     "weight": "500",
-    "color": "#050505",
+    "color": "#172c55",
     "x": 397,
     "y": 361,
     "maxWidth": 325,
@@ -66,7 +77,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "serif",
     "style": "italic",
     "weight": "500",
-    "color": "#050505",
+    "color": "#172c55",
     "x": 545,
     "y": 399,
     "maxWidth": 54,
@@ -78,7 +89,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "serif",
     "style": "italic",
     "weight": "500",
-    "color": "#009ab8",
+    "color": "#172c55",
     "x": 176,
     "y": 437,
     "maxWidth": 154,
@@ -90,7 +101,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "serif",
     "style": "italic",
     "weight": "500",
-    "color": "#050505",
+    "color": "#172c55",
     "x": 666,
     "y": 437,
     "maxWidth": 72,
@@ -102,7 +113,7 @@ export const certificateLayout: CertificateLayout = {
     "family": "serif",
     "style": "italic",
     "weight": "500",
-    "color": "#050505",
+    "color": "#172c55",
     "x": 536,
     "y": 475,
     "maxWidth": 165,
@@ -161,7 +172,7 @@ export const certificateLayout: CertificateLayout = {
   "resultGrade": {
     "fontSize": 17,
     "align": "left",
-    "color": "#14264b",
+    "color": "#172c55",
     "family": "sans",
     "weight": "700",
     "maxWidth": 150,

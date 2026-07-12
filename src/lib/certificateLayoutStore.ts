@@ -1,4 +1,9 @@
-import { certificateLayout, type CertificateLayout } from "@/lib/certificateLayout";
+import {
+  CERTIFICATE_PRIMARY_TEXT_COLOR,
+  CERTIFICATE_PRIMARY_TEXT_FIELDS,
+  certificateLayout,
+  type CertificateLayout,
+} from "@/lib/certificateLayout";
 import { supabaseAdmin } from "@/lib/supabase";
 
 const CERTIFICATE_LAYOUT_KEY = "certificate-layout";
@@ -28,6 +33,14 @@ export function validateCertificateLayout(layout: CertificateLayout) {
   return null;
 }
 
+function applyLockedCertificateColors(layout: CertificateLayout) {
+  for (const field of CERTIFICATE_PRIMARY_TEXT_FIELDS) {
+    layout[field].color = CERTIFICATE_PRIMARY_TEXT_COLOR;
+  }
+  layout.certificateNumber.color = "#000000";
+  return layout;
+}
+
 export async function getCertificateLayout() {
   const { data, error } = await supabaseAdmin
     .from("site_settings")
@@ -36,16 +49,15 @@ export async function getCertificateLayout() {
     .maybeSingle();
 
   if (error || !data?.value) {
-    return certificateLayout;
+    return applyLockedCertificateColors(certificateLayout);
   }
 
   try {
     const parsed = JSON.parse(data.value) as CertificateLayout;
-    if (validateCertificateLayout(parsed)) return certificateLayout;
-    parsed.certificateNumber.color = "#000000";
-    return parsed;
+    if (validateCertificateLayout(parsed)) return applyLockedCertificateColors(certificateLayout);
+    return applyLockedCertificateColors(parsed);
   } catch {
-    return certificateLayout;
+    return applyLockedCertificateColors(certificateLayout);
   }
 }
 
@@ -55,10 +67,12 @@ export async function saveCertificateLayout(layout: CertificateLayout) {
     return { error: validationError };
   }
 
+  const normalizedLayout = applyLockedCertificateColors(layout);
+
   const { error } = await supabaseAdmin
     .from("site_settings")
     .upsert(
-      { key: CERTIFICATE_LAYOUT_KEY, value: JSON.stringify(layout) },
+      { key: CERTIFICATE_LAYOUT_KEY, value: JSON.stringify(normalizedLayout) },
       { onConflict: "key" },
     );
 
