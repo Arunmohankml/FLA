@@ -6,7 +6,12 @@ import {
   rgb,
 } from "pdf-lib";
 import QRCode from "qrcode";
-import { certificateLayout, CertificateLayout, LayoutField } from "@/lib/certificateLayout";
+import {
+  CERTIFICATE_FIXED_SIZE_FIELDS,
+  certificateLayout,
+  CertificateLayout,
+  LayoutField,
+} from "@/lib/certificateLayout";
 
 export type CertificateValues = Record<string, string>;
 
@@ -177,11 +182,16 @@ function fittedSize(font: PDFFont, value: string, field: LayoutField, scaleX: nu
   return size;
 }
 
+function hasFixedSize(fieldKey: keyof Omit<CertificateLayout, "qr">) {
+  return (CERTIFICATE_FIXED_SIZE_FIELDS as ReadonlyArray<keyof Omit<CertificateLayout, "qr">>).includes(fieldKey);
+}
+
 function drawValue({
   page,
   fonts,
   sourceWidth,
   sourceHeight,
+  fieldKey,
   field,
   value,
   forceAlign,
@@ -190,6 +200,7 @@ function drawValue({
   fonts: FontSet;
   sourceWidth: number;
   sourceHeight: number;
+  fieldKey: keyof Omit<CertificateLayout, "qr">;
   field: LayoutField;
   value: string;
   forceAlign?: LayoutField["align"];
@@ -200,7 +211,9 @@ function drawValue({
   const scaleX = width / sourceWidth;
   const scaleY = height / sourceHeight;
   const font = fontFor(field, fonts);
-  const size = fittedSize(font, value, field, scaleX);
+  const size = hasFixedSize(fieldKey)
+    ? field.fontSize * scaleX
+    : fittedSize(font, value, field, scaleX);
   const textWidth = font.widthOfTextAtSize(value, size);
   const align = forceAlign ?? field.align;
 
@@ -292,6 +305,7 @@ export async function renderCertificatePdf(
       fonts,
       sourceWidth,
       sourceHeight,
+      fieldKey: key,
       field: layout[key],
       value: resolveValue(values, key),
       forceAlign: key === "certificateNumber" ? "center" : undefined,

@@ -58,6 +58,11 @@ export const CERTIFICATE_PRIMARY_TEXT_FIELDS = [
   "resultGrade",
 ] as const satisfies ReadonlyArray<keyof Omit<CertificateLayout, "qr">>;
 
+export const CERTIFICATE_FIXED_SIZE_FIELDS = [
+  "leftGrade",
+  "resultGrade",
+] as const satisfies ReadonlyArray<keyof Omit<CertificateLayout, "qr">>;
+
 export const certificateLayout: CertificateLayout = {
   "studentName": {
     "fontSize": 27,
