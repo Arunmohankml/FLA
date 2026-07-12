@@ -13,6 +13,7 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { downloadCsv } from "@/lib/csvExport";
 
 interface Booking {
   id: string;
@@ -225,8 +226,9 @@ export function DemoBookingsClient({
   }, [items, search]);
 
   const handleExport = () => {
-    const headers = ["Name", "Email", "Phone", "Preferred Date", "Message", "Status", "Created At"];
+    const headers = ["ID", "Name", "Email", "Phone", "Preferred Date", "Message", "Status", "Created At"];
     const rows = filtered.map((item) => [
+      item.id,
       item.name,
       item.email,
       item.phone,
@@ -235,19 +237,7 @@ export function DemoBookingsClient({
       item.status,
       item.created_at,
     ]);
-    const csv = [
-      headers.join(","),
-      ...rows.map((row) =>
-        row.map((c) => `"${(c || "").replace(/"/g, '""')}"`).join(",")
-      ),
-    ].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "demo-bookings.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv("demo-bookings.csv", headers, rows);
   };
 
   async function deleteBookings(target: "all" | string) {

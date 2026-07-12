@@ -3,12 +3,14 @@
 import { useMemo, useState } from "react";
 import {
   HiOutlineChevronDown,
+  HiOutlineDownload,
   HiOutlineMail,
   HiOutlinePhone,
   HiOutlineSearch,
   HiOutlineTrash,
 } from "react-icons/hi";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { downloadCsv } from "@/lib/csvExport";
 
 interface Application {
   id: string;
@@ -69,6 +71,36 @@ export function JobApplicationsClient({
     }
   }
 
+  function handleExport() {
+    const headers = [
+      "ID",
+      "Job Title",
+      "Job Code",
+      "Name",
+      "Email",
+      "Phone",
+      "Experience",
+      "Message",
+      "Resume URL",
+      "Status",
+      "Created At",
+    ];
+    const rows = filtered.map((item) => [
+      item.id,
+      item.jobTitle,
+      item.jobCode,
+      item.name,
+      item.email,
+      item.phone,
+      item.experience,
+      item.message,
+      item.resumeUrl,
+      item.status,
+      item.createdAt,
+    ]);
+    downloadCsv("job-applications.csv", headers, rows);
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -98,6 +130,14 @@ export function JobApplicationsClient({
             className="h-11 w-full rounded-full border border-black/8 bg-[#faf5f0] pl-10 pr-4 text-sm outline-none focus:border-[#e8734a]/40 focus:ring-2 focus:ring-[#e8734a]/10"
           />
           </div>
+          <button
+            type="button"
+            onClick={handleExport}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/8 bg-white px-4 text-sm font-medium transition-colors hover:bg-[#faf5f0]"
+          >
+            <HiOutlineDownload className="size-4" />
+            Export
+          </button>
           <button
             type="button"
             onClick={() => setDeleteTarget("all")}

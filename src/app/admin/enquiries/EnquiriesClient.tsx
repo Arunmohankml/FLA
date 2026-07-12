@@ -13,6 +13,7 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { downloadCsv } from "@/lib/csvExport";
 
 interface Enquiry {
   id: string;
@@ -180,8 +181,9 @@ export function EnquiriesClient({
   );
 
   const handleExport = () => {
-    const headers = ["Name", "Email", "Phone", "Subject", "Message", "Date"];
-    const rows = items.map((e) => [
+    const headers = ["ID", "Name", "Email", "Phone", "Subject", "Message", "Created At"];
+    const rows = filtered.map((e) => [
+      e.id,
       e.name,
       e.email,
       e.phone,
@@ -189,14 +191,7 @@ export function EnquiriesClient({
       e.message,
       e.createdAt,
     ]);
-    const csv = [headers.join(","), ...rows.map((row) => row.map((c) => `"${(c || "").replace(/"/g, '""')}"`).join(","))].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "enquiries.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv("enquiries.csv", headers, rows);
   };
 
   async function deleteEnquiries(target: "all" | string) {

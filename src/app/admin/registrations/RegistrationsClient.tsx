@@ -15,6 +15,7 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { downloadCsv } from "@/lib/csvExport";
 
 const ALL_LANGUAGES = [
   "German",
@@ -270,6 +271,7 @@ export function RegistrationsClient({
 
   const handleExport = () => {
     const headers = [
+      "ID",
       "Name",
       "Email",
       "Phone",
@@ -281,6 +283,7 @@ export function RegistrationsClient({
       "Date",
     ];
     const rows = filtered.map((r) => [
+      r.id,
       r.name,
       r.email,
       r.phone,
@@ -291,21 +294,7 @@ export function RegistrationsClient({
       r.address,
       r.createdAt,
     ]);
-    const csv = [
-      headers.join(","),
-      ...rows
-        .map((row) =>
-          row.map((c) => `"${(c || "").replace(/"/g, '""')}"`).join(",")
-        )
-        .join("\n"),
-    ].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "registrations.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv("registrations.csv", headers, rows);
   };
 
   async function deleteRegistrations(target: "all" | string) {
