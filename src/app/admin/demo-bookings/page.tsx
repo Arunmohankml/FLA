@@ -1,6 +1,8 @@
 import { supabaseAdmin } from "@/lib/supabase";
 import { DemoBookingsClient } from "./DemoBookingsClient";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export const metadata = { title: "Demo Bookings | Admin" };
 
 interface DemoBookingRow {
@@ -15,7 +17,7 @@ interface DemoBookingRow {
 }
 
 export default async function DemoBookingsPage() {
-  const { data } = await supabaseAdmin
+  const { data, error } = await supabaseAdmin
     .from("demo_bookings")
     .select("*")
     .order("created_at", { ascending: false });
@@ -31,5 +33,5 @@ export default async function DemoBookingsPage() {
     created_at: item.created_at ?? "",
   }));
 
-  return <DemoBookingsClient bookings={bookings} />;
+  return <DemoBookingsClient bookings={bookings} error={error?.message ?? ""} />;
 }

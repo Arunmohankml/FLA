@@ -184,7 +184,13 @@ function BookingCard({ item }: { item: Booking }) {
   );
 }
 
-export function DemoBookingsClient({ bookings }: { bookings: Booking[] }) {
+export function DemoBookingsClient({
+  bookings,
+  error = "",
+}: {
+  bookings: Booking[];
+  error?: string;
+}) {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
@@ -235,6 +241,12 @@ export function DemoBookingsClient({ bookings }: { bookings: Booking[] }) {
           {bookings.length} total requests
         </p>
       </div>
+
+      {error && (
+        <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+          Could not load demo bookings: {error}
+        </div>
+      )}
 
       <div className="flex gap-3">
         <div className="relative flex-1">

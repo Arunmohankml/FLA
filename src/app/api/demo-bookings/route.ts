@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
+export const dynamic = "force-dynamic";
+
 function generateId() {
   try {
     return crypto.randomUUID();
@@ -26,7 +28,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const { error } = await supabaseAdmin.from("demo_bookings").insert({
+    const { data, error } = await supabaseAdmin.from("demo_bookings").insert({
       id: generateId(),
       name,
       phone,
@@ -34,11 +36,11 @@ export async function POST(request: Request) {
       preferred_date,
       message,
       status: "new",
-    });
+    }).select("id, created_at").single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, booking: data });
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Internal server error" },
