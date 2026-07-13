@@ -156,7 +156,7 @@ export function ProcessPath() {
               <div
                 key={step.num}
                 ref={(el) => { cardRefs.current[i] = el; }}
-                className="group relative z-10 pt-16 text-center lg:pt-20"
+                className="group relative z-10 pt-20 text-center lg:pt-20"
               >
                 {/* Number circle - centered on the line */}
                 <div

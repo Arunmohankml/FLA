@@ -473,13 +473,13 @@ export function CertificatesClient({
             {list.map((c) => (
               <div
                 key={c.id}
-                className="flex items-center justify-between rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
+                className="flex-col items-start gap-3 rounded-xl border border-black/5 bg-white p-3 transition-shadow hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] sm:flex-row sm:items-center sm:justify-between sm:p-4"
               >
                 <div className="min-w-0 flex-1">
-                  <p className="font-heading text-sm font-semibold text-foreground truncate">
+                  <p className="text-xs font-semibold text-foreground truncate sm:text-sm">
                     {c.studentName}
                   </p>
-                  <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-black/50">
+                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-black/50 sm:text-xs">
                     <span>{c.certificateNumber}</span>
                     <span>{c.courseLevel}</span>
                     {c.grade && <span>Grade: {c.grade}</span>}
@@ -487,40 +487,40 @@ export function CertificatesClient({
                     <span>{new Date(c.createdAt).toLocaleDateString()}</span>
                   </div>
                 </div>
-                <div className="ml-4 flex shrink-0 gap-2">
+                <div className="flex w-full flex-wrap gap-1.5 sm:ml-4 sm:w-auto sm:flex-nowrap sm:gap-2">
                   <button
                     onClick={() => setPreview(c)}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#e8734a]/8 px-3 py-1.5 text-xs font-medium text-[#c9573a] transition-colors hover:bg-[#e8734a]/15"
+                    className="inline-flex items-center gap-1 rounded-lg bg-[#e8734a]/8 px-2 py-1 text-[11px] font-medium text-[#c9573a] transition-colors hover:bg-[#e8734a]/15 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                   >
-                    <HiOutlineEye className="size-3.5" />
-                    View
+                    <HiOutlineEye className="size-3 sm:size-3.5" />
+                    <span className="sm:inline">View</span>
                   </button>
                   <button
                     onClick={() => handleRegenerate(c)}
                     disabled={generating}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-black/5 px-3 py-1.5 text-xs font-medium text-black/60 transition-colors hover:bg-black/10 disabled:opacity-40"
+                    className="inline-flex items-center gap-1 rounded-lg bg-black/5 px-2 py-1 text-[11px] font-medium text-black/60 transition-colors hover:bg-black/10 disabled:opacity-40 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                   >
-                    <HiOutlineArrowPath className={`size-3.5 ${generating ? "animate-spin" : ""}`} />
-                    Regenerate
+                    <HiOutlineArrowPath className={`size-3 sm:size-3.5 ${generating ? "animate-spin" : ""}`} />
+                    <span className="sm:inline">Regenerate</span>
                   </button>
                   <button
                     onClick={() => handleDownload(c)}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-black/5 px-3 py-1.5 text-xs font-medium text-black/60 transition-colors hover:bg-black/10"
+                    className="inline-flex items-center gap-1 rounded-lg bg-black/5 px-2 py-1 text-[11px] font-medium text-black/60 transition-colors hover:bg-black/10 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                   >
-                    <HiOutlineDownload className="size-3.5" />
-                    Download
+                    <HiOutlineDownload className="size-3 sm:size-3.5" />
+                    <span className="sm:inline">Download</span>
                   </button>
                   <button
                     onClick={() => handleDelete(c)}
                     disabled={deletingId === c.id || generating}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-red-50 px-3 py-1.5 text-xs font-medium text-red-600 transition-colors hover:bg-red-100 disabled:opacity-40"
+                    className="inline-flex items-center gap-1 rounded-lg bg-red-50 px-2 py-1 text-[11px] font-medium text-red-600 transition-colors hover:bg-red-100 disabled:opacity-40 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                   >
                     {deletingId === c.id ? (
-                      <span className="size-3.5 animate-spin rounded-full border-2 border-red-200 border-t-red-600" />
+                      <span className="size-3 animate-spin rounded-full border-2 border-red-200 border-t-red-600 sm:size-3.5" />
                     ) : (
-                      <HiOutlineTrash className="size-3.5" />
+                      <HiOutlineTrash className="size-3 sm:size-3.5" />
                     )}
-                    Delete
+                    <span className="sm:inline">Delete</span>
                   </button>
                 </div>
               </div>
