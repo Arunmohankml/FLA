@@ -3,7 +3,7 @@ import "server-only";
 import webpush from "web-push";
 import { supabaseAdmin } from "@/lib/supabase";
 
-const DEFAULT_ADMIN_EMAIL = "t19796146@gmail.com";
+const DEFAULT_ADMIN_EMAIL = "info@foreignlanguageacademy.co.in";
 const DEFAULT_FROM_EMAIL = "Foreign Language Academy <onboarding@resend.dev>";
 const DEFAULT_ADMIN_URL = "/admin";
 
