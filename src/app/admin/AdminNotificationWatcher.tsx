@@ -138,6 +138,7 @@ export function AdminNotificationWatcher() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
+      setPermission(supportsPush() ? Notification.permission : "unsupported");
       seenIds.current = loadSeenIds();
     }, 0);
 
