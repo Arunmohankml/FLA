@@ -14,3 +14,5 @@ alter table public.admin_push_subscriptions enable row level security;
 
 comment on table public.admin_push_subscriptions is
   'Server-managed browser push subscriptions for authenticated FLA admins.';
+
+notify pgrst, 'reload schema';

@@ -12,6 +12,24 @@ type SubscriptionPayload = {
   };
 };
 
+function isMissingPushTableError(message?: string) {
+  return Boolean(
+    message?.includes("admin_push_subscriptions") ||
+      message?.toLowerCase().includes("schema cache"),
+  );
+}
+
+function missingPushTableResponse() {
+  return NextResponse.json(
+    {
+      error:
+        "Admin browser push setup is not complete. Run src/app/api/SETUP_ADMIN_PUSH_NOTIFICATIONS.sql in Supabase SQL editor.",
+      setupRequired: true,
+    },
+    { status: 503 },
+  );
+}
+
 function isValidSubscription(payload: SubscriptionPayload) {
   const endpoint = typeof payload.endpoint === "string" ? payload.endpoint.trim() : "";
   const p256dh = typeof payload.keys?.p256dh === "string" ? payload.keys.p256dh.trim() : "";
@@ -52,6 +70,7 @@ export async function POST(request: Request) {
   );
 
   if (error) {
+    if (isMissingPushTableError(error.message)) return missingPushTableResponse();
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
@@ -76,6 +95,9 @@ export async function DELETE(request: Request) {
     .eq("endpoint", endpoint)
     .eq("admin_email", admin.email);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    if (isMissingPushTableError(error.message)) return missingPushTableResponse();
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
   return NextResponse.json({ success: true });
 }

@@ -24,6 +24,13 @@ type PushSubscriptionRow = {
   auth: string;
 };
 
+function isMissingPushTableError(message?: string) {
+  return Boolean(
+    message?.includes("admin_push_subscriptions") ||
+      message?.toLowerCase().includes("schema cache"),
+  );
+}
+
 const submissionLabels: Record<SubmissionNotificationType, string> = {
   enquiry: "Enquiry",
   jobApplication: "Job Application",
@@ -166,7 +173,16 @@ export async function sendSubmissionPushNotification(
     .from("admin_push_subscriptions")
     .select("endpoint, p256dh, auth");
 
-  if (error) throw new Error(`Could not load admin push subscriptions: ${error.message}`);
+  if (error) {
+    if (isMissingPushTableError(error.message)) {
+      console.warn(
+        "Admin push subscription table is not set up; browser push notification skipped.",
+      );
+      return;
+    }
+
+    throw new Error(`Could not load admin push subscriptions: ${error.message}`);
+  }
 
   const subscriptions = (data ?? []) as PushSubscriptionRow[];
   if (subscriptions.length === 0) return;
