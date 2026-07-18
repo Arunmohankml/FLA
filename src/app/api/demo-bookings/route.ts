@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { notifySubmissionSafely } from "@/lib/submissionNotifications";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +40,14 @@ export async function POST(request: Request) {
     }).select("id, created_at").single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    await notifySubmissionSafely("demoBooking", [
+      { label: "Name", value: name },
+      { label: "Email", value: email },
+      { label: "Phone", value: phone },
+      { label: "Preferred Date", value: preferred_date },
+      { label: "Message", value: message },
+    ], data.id);
 
     return NextResponse.json({ success: true, booking: data });
   } catch (err) {

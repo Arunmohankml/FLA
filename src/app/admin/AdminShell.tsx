@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { adminNav } from "@/lib/constants";
 import { useAuth } from "@/components/AuthContext";
+import { AdminNotificationWatcher } from "./AdminNotificationWatcher";
 import {
   HiOutlineViewGrid,
   HiOutlineDocumentText,
@@ -42,6 +43,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="admin-theme flex min-h-screen flex-col bg-[#F5FAFF] pt-16 text-[#0F172A] lg:flex-row">
+      <AdminNotificationWatcher />
+
       <aside className="hidden w-64 shrink-0 border-r border-[#DCE8F5] bg-white p-6 shadow-[8px_0_28px_rgba(29,155,240,0.06)] lg:block">
         <h2 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#334155]">
           Admin Panel

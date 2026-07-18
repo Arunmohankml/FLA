@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { notifySubmissionSafely } from "@/lib/submissionNotifications";
 
 function generateId() {
   try {
@@ -21,8 +22,9 @@ export async function POST(request: Request) {
       );
     }
 
+    const submissionId = generateId();
     const { error } = await supabaseAdmin.from("enquiries").insert({
-      id: generateId(),
+      id: submissionId,
       name,
       email,
       phone: phone || null,
@@ -34,6 +36,14 @@ export async function POST(request: Request) {
       console.error("Supabase insert error:", JSON.stringify(error, null, 2));
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
+
+    await notifySubmissionSafely("enquiry", [
+      { label: "Name", value: name },
+      { label: "Email", value: email },
+      { label: "Phone", value: phone },
+      { label: "Subject", value: subject || "General Enquiry" },
+      { label: "Message", value: message },
+    ], submissionId);
 
     return NextResponse.json({ success: true });
   } catch (err) {

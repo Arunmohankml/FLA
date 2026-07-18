@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     ".codex/**",
     ".opencode/**",
     "node_modules/**",
+    "public/**/*.ts",
+    "public/**/*.tsx",
     "tsconfig.tsbuildinfo",
   ]),
 ]);
